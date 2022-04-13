@@ -11,11 +11,16 @@ const BusinessPage = () => {
 
   const businesses = useSelector((state) => state?.businesses)
   const business = useSelector((state) => businesses[businessIdParsed])
-  const user_id = useSelector((state) => state.session.user?.id);
+  const userId = useSelector((state) => state.session.user?.id);
 
 
   let showBusiness = false;
   if (business) showBusiness = true;
+
+  let showEdit = false;
+  if (userId && business) {
+    if (business.owner_id === userId) showEdit = true;
+  }
 
   useEffect(() => {
     dispatch(loadBusiness(businessIdParsed));
