@@ -20,12 +20,19 @@ def validation_errors_to_error_messages(validation_errors):
 def create_business():
 
     form = BusinessForm()
-    # Get the csrf_token from the request cookie and put it into the
-    # form manually to validate_on_submit can be used
+
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        # Add the user to the session, we are logged in!
-        user = User.query.filter(User.email == form.data['email']).first()
-        login_user(user)
-        return user.to_dict()
+        business = Business(
+            owner_id = form.data['ownerId'],
+            capacity = form.data['capacity'],
+            name = form.data['name'],
+            description = form.data['description'],
+            phone = form.data['phone'],
+            street_address = form.data['streetAddress'],
+            unit = form.data['unit'],
+            state = form.data['state'],
+            zipcode = form.data['zipcode']
+        )
+        return business.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
