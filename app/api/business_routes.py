@@ -16,8 +16,23 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+# @business_routes.route('/', methods=['GET'])
+# def get_businesses():
+#     businesses = Business.query.all()
+
+#     print('\n\n\n BUSINESSES \n\n\n', businesses)
+
+#     businesses_dicted = {}
+#     for business in businesses:
+#         business_dicted = business.to_dict()
+#         businesses_dicted[business_dicted.id] = business_dicted
+
+#     return {'businesses': businesses_dicted}
+
 @business_routes.route('/', methods=['POST'])
+# @login_required
 def create_business():
+    print('\n\n\n CURRENT USER \n\n\n', current_user.id)
 
     form = BusinessForm()
 
@@ -34,5 +49,8 @@ def create_business():
             state = form.data['state'],
             zip_code = form.data['zipcode']
         )
+        db.session.add(business)
+        db.session.commit()
+        print('\n\n\n NEW BUSINESS\n\n\n', business.to_dict(), '\n\n\n\n')
         return business.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

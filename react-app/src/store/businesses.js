@@ -19,6 +19,7 @@ export const createBusiness = (business) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
+    console.log('new business from businesses store-----------', data)
     dispatch(createdBusiness(data))
     return null;
   } else if (response.status < 500) {

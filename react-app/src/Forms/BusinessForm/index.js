@@ -54,7 +54,6 @@ const CreateBusinessForm = () => {
       unit,
       state,
       zipcode,
-      capacity
     };
 
     let newBusiness;
@@ -63,9 +62,14 @@ const CreateBusinessForm = () => {
 
     if (newBusiness) {
       setErrors([]);
-      // await dispatch(hideModal());
-      // await dispatch(loadChannel(newBusiness.id));
-      // history.push(`/channels/${newBusiness.id}`);
+      setName('');
+      setDescription('');
+      setPhone('');
+      setStreetAddress('');
+      setUnit('');
+      setState('');
+      setZipcode('');
+      history.push(`/businesses/${newBusiness.id}`);
     }
   };
 
