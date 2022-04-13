@@ -23,21 +23,23 @@ def user_exists(form, field):
 #     if not len(phone) == 10:
 #         raise ValidationError('Phone number must include 10 digits')
 
-def valid_image(form, field):
-    image_url = field.data
-    if not (image_url.endswith('.jpg') or image_url.endswith('.jpeg') or image_url.endswith('.png') or image_url.endswith('.gif')):
-        raise ValidationError('Image format must be .jpg, .jpeg, or .png')
+# def valid_image(form, field):
+#     image_url = field.data
+#     if not (image_url.endswith('.jpg') or image_url.endswith('.jpeg') or image_url.endswith('.png') or image_url.endswith('.gif')):
+#         raise ValidationError('Image format must be .jpg, .jpeg, or .png')
 
 
 class SignUpForm(FlaskForm):
-    first_name = StringField('First Name', validators=[DataRequired()])
-    last_name = StringField('Last Name', validators=[DataRequired()])
-    email = StringField('Email Address', validators=[DataRequired(), user_exists, Email()])
-    phone = StringField('Phone Number', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired(), EqualTo('confirm_password', message="Passwords do not match.")])
-    confirm_password = PasswordField('Confirm Password', validators=[DataRequired()])
-    business_owner = BooleanField('business_owner')
-    image_url = StringField('Image URL', validators=[Length(min=0, max=2000), valid_image])
+    firstName = StringField('First Name', validators=[DataRequired()])
+    lastName = StringField('Last Name', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), user_exists, Email()])
+    phone = StringField('Phone', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    businessOwner = BooleanField('Business Owner')
+    imageURL = StringField('Image URL')
+
+    # image_url = StringField('Image URL', validators=[Length(min=0, max=2000), valid_image])
+    # confirm_password = PasswordField('confirm_password', validators=[DataRequired()])
 
 
     # phone = StringField('Phone Number', validators=[

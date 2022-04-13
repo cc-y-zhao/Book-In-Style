@@ -21,8 +21,5 @@ class Service(db.Model):
             'id': self.id,
             'name': self.name,
             'price': self.price,
-            'businesses': {booking.restaurant_id: booking.to_dict() for business in self.businesses},
-            'images': {image.restaurant_id: image.to_dict() for image in self.images},
-
-
+            'images': {image.to_dict() for image in self.images},
         }

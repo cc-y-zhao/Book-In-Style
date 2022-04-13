@@ -14,6 +14,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     business_owner = db.Column(db.Boolean)
     image_url = db.Column(db.String(2000))
+    created_at = db.Column(db.DateTime, default=db.func.now()) # FORMAT: 2022-04-02 13:27:25.457314
+    updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
     businesses = db.relationship('Business', back_populates="owner", cascade="all, delete-orphan")
     bookings = db.relationship('Booking', back_populates="user_who_booked", cascade="all, delete-orphan")

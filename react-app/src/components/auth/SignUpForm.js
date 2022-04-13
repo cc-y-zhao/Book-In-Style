@@ -48,7 +48,7 @@ const SignUpForm = () => {
   };
 
   const updateBusinessOwner = (e) => {
-    setBusinessOwner(e.target.value);
+    setBusinessOwner(true);
   };
 
   const updateImageURL = (e) => {
