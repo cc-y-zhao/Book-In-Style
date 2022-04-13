@@ -6,16 +6,26 @@ import { loadBusiness } from "../../store/businesses";
 
 const BusinessPage = () => {
   const dispatch = useDispatch();
-  const { businessIdString } = useParams();
-  const businessId = parseInt(businessIdString);
+  const { businessId } = useParams();
+  const businessIdParsed = parseInt(businessId);
 
+  const businesses = useSelector((state) => state?.businesses)
+  const business = useSelector((state) => businesses[businessIdParsed])
   const user_id = useSelector((state) => state.session.user?.id);
 
-  let showChannel = false;
+
+  let showBusiness = false;
+  if (business) showBusiness = true;
+
+  useEffect(() => {
+    dispatch(loadBusiness(businessIdParsed));
+  }, [dispatch, businessIdParsed]);
 
   return (
     <>
-      <h2>Business</h2>
+      {showBusiness && (
+        <h2>{business['name']}</h2>
+      )}
     </>
   );
 };

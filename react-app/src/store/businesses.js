@@ -7,9 +7,9 @@ const createdBusiness = (business) => ({
   business
 });
 
-const loadOneBusiness = (id) => ({
+const loadOneBusiness = (business) => ({
   type: GET_ONE_BUSINESS,
-  id
+  business
 });
 
 
@@ -40,11 +40,16 @@ export const createBusiness = (business) => async (dispatch) => {
 }
 
 export const loadBusiness = (businessId) => async (dispatch) => {
+
+  console.log('business id before fetch------------', businessId)
   const response = await fetch(`/api/businesses/${businessId}`);
 
   if (response.ok) {
     const business = await response.json();
     dispatch(loadOneBusiness(business));
+
+    // console.log('business after fetch---------', business)
+
     return business;
   } else {
     const errors = await response.json();
@@ -57,14 +62,24 @@ export const loadBusiness = (businessId) => async (dispatch) => {
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
-  let newState;
+  let newState = {...state};
   switch (action.type) {
     case CREATE_BUSINESS:
-      newState = { ...state };
       const newBusiness = action.business;
       newState[newBusiness.id] = newBusiness;
 
       return newState;
+
+    case GET_ONE_BUSINESS:
+      console.log('action in reducer----------', action)
+      console.log('action.business in reducer----------', action.business)
+      console.log('action.business.id in reducer----------', action.business.id)
+
+      newState[action.business.id] = action.business;
+
+      console.log('new state------------', newState);
+      return newState;
+
     default:
       return state;
   }

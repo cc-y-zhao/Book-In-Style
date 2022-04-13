@@ -29,6 +29,15 @@ def validation_errors_to_error_messages(validation_errors):
 
 #     return {'businesses': businesses_dicted}
 
+@business_routes.route('/<int:businessId>', methods=['GET'])
+def get_businesses(businessId):
+    business = Business.query.get(businessId)
+
+    print('\n\n\n BUSINESS FROM ROUTES \n\n\n', business)
+
+    return business.to_dict()
+
+
 @business_routes.route('/', methods=['POST'])
 # @login_required
 def create_business():
