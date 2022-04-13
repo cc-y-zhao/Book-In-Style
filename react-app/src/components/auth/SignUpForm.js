@@ -5,8 +5,11 @@ import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [imageURL, setImageURL] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -15,19 +18,31 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(firstName, lastName, email, phone, password));
       if (data) {
         setErrors(data)
       }
     }
   };
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
   };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
+  };
+
+  const updatePhone = (e) => {
+    setPhone(e.target.value);
+  };
+
+  const updateImageURL = (e) => {
+    setPhone(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -50,12 +65,23 @@ const SignUpForm = () => {
         ))}
       </div>
       <div>
-        <label>User Name</label>
+        <label>First Name</label>
         <input
           type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
+          name='firstName'
+          onChange={updateFirstName}
+          value={firstName}
+          required={true}
+        ></input>
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input
+          type='text'
+          name='lastName'
+          onChange={updateLastName}
+          value={lastName}
+          required={true}
         ></input>
       </div>
       <div>
@@ -65,6 +91,26 @@ const SignUpForm = () => {
           name='email'
           onChange={updateEmail}
           value={email}
+          required={true}
+        ></input>
+      </div>
+       <div>
+        <label>Phone</label>
+        <input
+          type='text'
+          name='phone'
+          onChange={updatePhone}
+          value={phone}
+          required={true}
+        ></input>
+      </div>
+       <div>
+        <label>Profile Picture</label>
+        <input
+          type='text'
+          name='image_url'
+          onChange={updateImageURL}
+          value={imageURL}
         ></input>
       </div>
       <div>
@@ -74,6 +120,7 @@ const SignUpForm = () => {
           name='password'
           onChange={updatePassword}
           value={password}
+          required={true}
         ></input>
       </div>
       <div>
