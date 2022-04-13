@@ -20,7 +20,7 @@ const CreateBusinessForm = () => {
   const [streetAddress, setStreetAddress] = useState("");
   const [unit, setUnit] = useState("");
   const [state, setState] = useState("");
-  const [zipcode, setZipCode] = useState("");
+  const [zipcode, setZipcode] = useState("");
 
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
@@ -28,7 +28,7 @@ const CreateBusinessForm = () => {
   const updateStreetAddress = (e) => setStreetAddress(e.target.value);
   const updateUnit = (e) => setUnit(e.target.value);
   const updateState = (e) => setState(e.target.value);
-  const updateZipcode = (e) => setState(e.target.value);
+  const updateZipcode = (e) => setZipcode(e.target.value);
 
 
   // useEffect(() => {
@@ -47,14 +47,15 @@ const CreateBusinessForm = () => {
 
     const payload = {
       ownerId,
+      capacity,
       name,
       description,
       phone,
       streetAddress,
+      unit,
       state,
       zipcode,
-      capacity,
-      website,
+      capacity
     };
 
     let newChannel;
