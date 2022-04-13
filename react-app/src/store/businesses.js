@@ -1,10 +1,17 @@
 
 const CREATE_BUSINESS = 'businesses/CREATE_BUSINESS';
+const GET_ONE_BUSINESS = 'businesses/GET_ONE_BUSINESS';
 
 const createdBusiness = (business) => ({
   type: CREATE_BUSINESS,
   business
 });
+
+const loadOneBusiness = (id) => ({
+  type: GET_ONE_BUSINESS,
+  id
+});
+
 
 
 export const createBusiness = (business) => async (dispatch) => {
@@ -19,7 +26,7 @@ export const createBusiness = (business) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log('new business from businesses store-----------', data)
+    // console.log('new business from businesses store-----------', data)
     dispatch(createdBusiness(data))
     return null;
   } else if (response.status < 500) {
@@ -31,6 +38,20 @@ export const createBusiness = (business) => async (dispatch) => {
     return ['An error occurred. Please try again.']
   }
 }
+
+export const loadBusiness = (businessId) => async (dispatch) => {
+  const response = await fetch(`/api/businesses/${businessId}`);
+
+  if (response.ok) {
+    const business = await response.json();
+    dispatch(loadOneBusiness(business));
+    return business;
+  } else {
+    const errors = await response.json();
+    return errors;
+  }
+};
+
 
 
 const initialState = {};

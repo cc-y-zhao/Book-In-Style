@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect } from "react-router-dom";
 
+import { loadBusiness } from "../../store/businesses";
+
 const BusinessPage = () => {
   const dispatch = useDispatch();
   const { businessIdString } = useParams();
