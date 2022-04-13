@@ -1,26 +1,38 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
-import states from './states'
+import { useParams, Redirect, useHistory } from "react-router-dom";
+import states from "../BusinessForm/states";
 
-import { createBusiness } from "../../store/businesses";
+import { loadBusiness } from "../../store/businesses";
 
-import "./CreateBusinessForm.css";
-
-const EditBusinessForm = ({business}) => {
+const EditBusinessForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const { businessId } = useParams();
+  const businessIdParsed = parseInt(businessId);
+
+  console.log('business ID in edit business form-------------', businessIdParsed)
+
+  const businesses = useSelector((state) => state?.businesses)
+  const business = useSelector((state) => businesses[businessIdParsed])
+  const userId = useSelector((state) => state.session.user?.id);
+
+  useEffect(() => {
+    dispatch(loadBusiness(businessId));
+  }, [dispatch, businessId]);
+
+  console.log('business in edit business form-------------', business)
   const [errors, setErrors] = useState([]);
   // const ownerId = useSelector((state) => state.session.user?.id);
   const capacity = 1;
-  const [name, setName] = useState(business.name);
-  const [description, setDescription] = useState(business.description);
-  const [phone, setPhone] = useState(business.phone);
-  const [streetAddress, setStreetAddress] = useState(business.street_address);
-  const [unit, setUnit] = useState(business.unit);
-  const [state, setState] = useState(business.state);
-  const [zipcode, setZipcode] = useState(business.zipcode);
+  const [name, setName] = useState(business?.name);
+  const [description, setDescription] = useState(business?.description);
+  const [phone, setPhone] = useState(business?.phone);
+  const [streetAddress, setStreetAddress] = useState(business?.street_address);
+  const [unit, setUnit] = useState(business?.unit);
+  const [state, setState] = useState(business?.state);
+  const [zipcode, setZipcode] = useState(business?.zipcode);
 
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
@@ -75,16 +87,17 @@ const EditBusinessForm = ({business}) => {
 
   let disabled;
 
-  if (name.length === 0 || description.length === 0 || phone.length < 10 || streetAddress.length === 0 || state.length === 0 || zipcode.length < 5) {
-    disabled = true;
-  } else {
-    disabled = false;
-  }
+  // if (name.length === 0 || description.length === 0 || phone.length < 10 || streetAddress.length === 0 || state.length === 0 || zipcode.length < 5) {
+  //   disabled = true;
+  // } else {
+  //   disabled = false;
+  // }
+
 
   return (
     <div className="CreateBusinessFormWrapper">
       <div className="CreateBusinessFormHeader">
-        <h1>Create Business Listing</h1>
+        <h1>Edit Business Listing</h1>
       </div>
       <div className="CreatChannelFormBody">
         <form onSubmit={handleSubmit}>
@@ -171,10 +184,13 @@ const EditBusinessForm = ({business}) => {
           </div>
           <div className="CreateChannelButton">
             <button type="submit" disabled={disabled}>
-              Update Business Listing
+              Update Listing
             </button>
           </div>
         </form>
+        <div>
+          <button>Delete Listing</button>
+        </div>
       </div>
     </div>
   );

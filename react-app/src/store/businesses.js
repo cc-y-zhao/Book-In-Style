@@ -71,13 +71,13 @@ export default function reducer(state = initialState, action) {
       return newState;
 
     case GET_ONE_BUSINESS:
-      console.log('action in reducer----------', action)
-      console.log('action.business in reducer----------', action.business)
-      console.log('action.business.id in reducer----------', action.business.id)
+      // console.log('action in reducer----------', action)
+      // console.log('action.business in reducer----------', action.business)
+      // console.log('action.business.id in reducer----------', action.business.id)
 
       newState[action.business.id] = action.business;
 
-      console.log('new state------------', newState);
+      // console.log('new state------------', newState);
       return newState;
 
     default:
