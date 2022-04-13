@@ -1,0 +1,78 @@
+************ install dependencies ************
+pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+
+pipenv install psycopg2-binary
+
+************ ALSO GO TO react-app DIRECTORY AND DO THIS: ************
+1) npm install
+2) add .env based on the .env.example
+
+************ psql ************
+
+CREATE USER booker WITH PASSWORD 'password' CREATEDB;
+CREATE DATABASE book_in_style WITH OWNER booker;
+
+DROP DATABASE book_in_style;
+DROP USER booker;
+
+************ .env file ************
+
+FLASK_APP=app
+FLASK_ENV=development
+SECRET_KEY=type_gibberish_this_is_our_secret_key
+DATABASE_URL=postgresql://booker:password@localhost/book_in_style
+
+pipenv shell
+flask db init
+flask db migrate
+flask db upgrade
+flask db downgrade
+flask seed all
+flask run
+
+************ seeding data directly to heroku (without having to push to main) ************
+- make sure you're in pipenv shell, then run:
+heroku run -a slack-ish flask seed all
+
+(for cecilia only (error I got when running above command.. something about my account already using up free size dynos)):
+    Error: Cannot run more than 1 Free size dynos.
+    ›
+    ›   Error ID: cannot_run_above_limit
+    ›   See https://devcenter.heroku.com/articles/dyno-types#default-scaling-limits for more information.
+
+
+
+*********** git commands *************
+to access another branch that someone else pushed upstream:
+git fetch
+git checkout <<branch name>>
+
+git branch -D (DELETE BRANCH PERMANENTLY - BE CAREFUL!)
+
+
+*********** heroku commands *************
+DELETE HEROKU POSTGRES EXTENSION ON HEROKU (if db changes were made)
+
+heroku run -a  slack-ish flask db upgrade
+heroku run -a  slack-ish flask seed all
+
+
+** start from scratch (db) **
+
+psql:
+DROP DATABASE slackish_db;
+CREATE DATABASE slackish_db WITH OWNER slackish_user;
+
+<<DELETE MIGRATIONS DIRECTORY>>
+
+pipenv shell
+flask db init
+flask db migrate
+flask db upgrade
+flask seed all
+flask run
+
+
+to reseed:
+flask seed undo
+flask seed all
