@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, PasswordField, TelField
+from wtforms import StringField, BooleanField, PasswordField
 from wtforms.validators import DataRequired, Email, ValidationError, EqualTo, Length
 from app.models import User
 
@@ -33,7 +33,7 @@ class SignUpForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
     email = StringField('Email Address', validators=[DataRequired(), user_exists, Email()])
-    phone = TelField('Phone Number', validators=[DataRequired(), phone_exists])
+    phone = StringField('Phone Number', validators=[DataRequired(), phone_exists])
     password = PasswordField('Password', validators=[DataRequired(), EqualTo('confirm_password', message="Passwords do not match.")])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired()])
     business_owner = BooleanField('business_owner', validators=[DataRequired()])

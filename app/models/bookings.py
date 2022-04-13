@@ -14,6 +14,7 @@ class Booking(db.Model):
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
     businesses = db.relationship('Business', back_populates="bookings")
+    services = db.relationship('Service', back_populates="bookings")
     user_who_booked = db.relationship('User', back_populates="bookings")
 
     def to_dict(self):

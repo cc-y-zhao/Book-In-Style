@@ -9,6 +9,7 @@ const SignUpForm = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [businessOwner, setBusinessOwner] = useState(false);
   const [imageURL, setImageURL] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -39,6 +40,10 @@ const SignUpForm = () => {
 
   const updatePhone = (e) => {
     setPhone(e.target.value);
+  };
+
+  const updateBusinessOwner = (e) => {
+    setBusinessOwner(e.target.value);
   };
 
   const updateImageURL = (e) => {
@@ -94,7 +99,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-       <div>
+      <div>
         <label>Phone</label>
         <input
           type='text'
@@ -102,6 +107,15 @@ const SignUpForm = () => {
           onChange={updatePhone}
           value={phone}
           required={true}
+        ></input>
+      </div>
+      <div>
+        <label>I am a business owner who wants to list my business</label>
+        <input
+          type='checkbox'
+          name='businessOwner'
+          onChange={updateBusinessOwner}
+          value={businessOwner}
         ></input>
       </div>
        <div>

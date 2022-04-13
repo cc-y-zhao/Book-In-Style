@@ -26,7 +26,7 @@ class Business(db.Model):
     phone = db.Column(db.String(10), unique=True, nullable=False)
     street_address = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(3), nullable=False)
-    zip_code = db.Column(db.Integer(5))
+    zip_code = db.Column(db.Integer)
     capacity = db.Column(db.Integer)
     website = db.Column(db.String(2048))
     created_at = db.Column(db.DateTime, default=db.func.now())
