@@ -17,11 +17,16 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
+    console.log('first name---------------', firstName);
+    console.log('imageURL---------------', imageURL);
+
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(firstName, lastName, email, phone, password));
+      const data = await dispatch(signUp(firstName, lastName, email, phone, businessOwner, imageURL, password));
+
+      console.log('DATA-------------------', data)
       if (data) {
-        setErrors(data)
+        return setErrors(data)
       }
     }
   };
@@ -47,7 +52,7 @@ const SignUpForm = () => {
   };
 
   const updateImageURL = (e) => {
-    setPhone(e.target.value);
+    setImageURL(e.target.value);
   };
 
   const updatePassword = (e) => {

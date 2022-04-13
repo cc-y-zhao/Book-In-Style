@@ -60,8 +60,8 @@ heroku run -a  slack-ish flask seed all
 ** start from scratch (db) **
 
 psql:
-DROP DATABASE slackish_db;
-CREATE DATABASE slackish_db WITH OWNER slackish_user;
+DROP DATABASE book_in_style;
+CREATE DATABASE book_in_style WITH OWNER booker;
 
 <<DELETE MIGRATIONS DIRECTORY>>
 
@@ -78,4 +78,8 @@ flask seed undo
 flask seed all
 
 
-test
+
+
+********
+git reset --hard
+git pull

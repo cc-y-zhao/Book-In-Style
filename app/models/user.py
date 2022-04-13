@@ -12,8 +12,14 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     phone = db.Column(db.String(10), unique=True, nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
-    business_owner = db.Column(db.Boolean, nullable=False)
+    business_owner = db.Column(db.Boolean)
     image_url = db.Column(db.String(2000))
+
+    businesses = db.relationship('Business', back_populates="owner", cascade="all, delete-orphan")
+    bookings = db.relationship('Booking', back_populates="user_who_booked", cascade="all, delete-orphan")
+    reviews = db.relationship('Review', back_populates='user', cascade='all, delete-orphan')
+    favorites = db.relationship('Favorite', back_populates='user', cascade='all, delete-orphan')
+
 
     @property
     def password(self):
@@ -35,4 +41,9 @@ class User(db.Model, UserMixin):
             'phone': self.phone,
             'business_owner': self.business_owner,
             'image_url': self.image_url,
+            'businesses': {business.id: business.to_dict() for business in self.businesses},
+            'bookings': {booking.id: booking.to_dict() for booking in self.bookings},
+            'reviews': {review.id: review.to_dict() for review in self.reviews},
+            'favorites': {favorite.restaurant_id: favorite.to_dict() for favorite in self.favorites},
+            'created_at': self.created_at
         }
