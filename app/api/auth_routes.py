@@ -69,7 +69,7 @@ def sign_up():
             last_name=form.data['lastName'],
             email=form.data['email'],
             phone=form.data['phone'],
-            business_owner=form.data['businessOwner'],
+            is_business_owner=form.data['businessOwner'],
             image_url=form.data['imageURL'],
             password=form.data['password']
         )

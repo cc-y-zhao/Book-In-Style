@@ -41,7 +41,7 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'email': self.email,
             'phone': self.phone,
-            'is_business_owner': self.business_owner,
+            'is_business_owner': self.is_business_owner,
             'image_url': self.image_url,
             'businesses': {business.id: business.to_dict() for business in self.businesses},
             'bookings': {booking.id: booking.to_dict() for booking in self.bookings},

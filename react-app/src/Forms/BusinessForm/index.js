@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import states from './states'
 
-import { createChannel, loadChannel } from "../../store/channels";
+import { createChannel, loadChannel } from "../../store/businesses";
 
 import "./CreateBusinessForm.css";
 
