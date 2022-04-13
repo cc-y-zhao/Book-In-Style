@@ -7,6 +7,8 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import CreateBusinessForm from './Forms/BusinessForm';
+
 import { authenticate } from './store/session';
 
 function App() {
@@ -28,6 +30,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route path='/' exact={true}>
+          {/* home page */}
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -36,6 +41,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/businesses/new' exact={true} >
+          <CreateBusinessForm/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />

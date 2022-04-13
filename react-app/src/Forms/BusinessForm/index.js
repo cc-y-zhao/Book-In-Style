@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import states from './states'
 
-import { createChannel, loadChannel } from "../../store/businesses";
+import { createBusiness } from "../../store/businesses";
 
 import "./CreateBusinessForm.css";
 
@@ -12,7 +12,7 @@ const CreateBusinessForm = () => {
   const history = useHistory();
 
   const [errors, setErrors] = useState([]);
-  const ownerId = useSelector((state) => state.session.user?.id);
+  // const ownerId = useSelector((state) => state.session.user?.id);
   const capacity = 1;
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -46,7 +46,6 @@ const CreateBusinessForm = () => {
     e.preventDefault();
 
     const payload = {
-      ownerId,
       capacity,
       name,
       description,
@@ -58,9 +57,9 @@ const CreateBusinessForm = () => {
       capacity
     };
 
-    let newChannel;
+    let newBusiness;
 
-    // newBusiness = await dispatch(createChannel(payload));
+    newBusiness = await dispatch(createBusiness(payload));
 
     if (newBusiness) {
       setErrors([]);
@@ -69,6 +68,14 @@ const CreateBusinessForm = () => {
       // history.push(`/channels/${newBusiness.id}`);
     }
   };
+
+  let disabled;
+
+  if (name.length === 0 || description.length === 0 || phone.length < 10 || streetAddress.length === 0 || state.length === 0 || zipcode.length < 5) {
+    disabled = true;
+  } else {
+    disabled = false;
+  }
 
   return (
     <div className="CreateBusinessFormWrapper">
@@ -82,47 +89,66 @@ const CreateBusinessForm = () => {
               {errors && errors.map((error) => <li key={error}>{error}</li>)}
             </ul>
           </div>
-          <input type="hidden" value={ownerId} />
           <input type="hidden" value={capacity} />
-          <input
-            type="text"
-            required
-            placeholder="Name"
-            value={name}
-            onChange={updateName}
-          />
-          <textarea
-            type="text"
-            placeholder="Description"
-            value={description}
-            onChange={updateDescription}
-          />
-          <input
-            type="text"
-            required
-            placeholder="Phone Number"
-            value={phone}
-            onChange={updatePhone}
-          />
-          <input
-            type="text"
-            required
-            placeholder="Street Address"
-            value={name}
-            onChange={updateStreetAddress}
-          />
-          <input
-            type="text"
-            placeholder="Unit"
-            value={unit}
-            onChange={updateUnit}
-          />
-          <input
-            type="text"
-            placeholder="Unit"
-            value={unit}
-            onChange={updateUnit}
-          />
+          <div>
+            <div>
+              <label>Business Name</label>
+            </div>
+            <input
+              type="text"
+              required
+              placeholder="Business Name"
+              value={name}
+              onChange={updateName}
+            />
+          </div>
+          <div>
+            <div>
+              <label>Description</label>
+            </div>
+            <textarea
+              type="text"
+              placeholder="Description"
+              value={description}
+              onChange={updateDescription}
+            />
+          </div>
+          <div>
+            <div>
+              <label>Phone Number</label>
+            </div>
+            <input
+              type="text"
+              required
+              placeholder="Phone Number"
+              value={phone}
+              onChange={updatePhone}
+            />
+          </div>
+          <div>
+            <div>
+              <label>Street Address</label>
+            </div>
+            <input
+              type="text"
+              required
+              placeholder="Street Address"
+              value={streetAddress}
+              onChange={updateStreetAddress}
+            />
+          </div>
+          <div>
+            <div className='reg-font-weight'>
+              <label>Unit</label>
+              <span className='optional'> (optional)</span>
+            </div>
+            <input
+              type="text"
+              placeholder="Unit"
+              value={unit}
+              onChange={updateUnit}
+            />
+          </div>
           <div>
             <span>State: </span>
             <select onChange={updateState} value={state}>
@@ -131,20 +157,16 @@ const CreateBusinessForm = () => {
               )}
             </select>
           </div>
-          <input
-            type="text"
-            placeholder="Zipcode"
-            value={zipcode}
-            onChange={updateZipcode}
-          />
-          <input
-            type="text"
-            placeholder="Website"
-            value={unit}
-            onChange={updateUnit}
-          />
+          <div>
+            <input
+              type="text"
+              placeholder="Zipcode"
+              value={zipcode}
+              onChange={updateZipcode}
+            />
+          </div>
           <div className="CreateChannelButton">
-            <button type="submit" disabled={errors.length > 0}>
+            <button type="submit" disabled={disabled}>
               Create Business Listing
             </button>
           </div>

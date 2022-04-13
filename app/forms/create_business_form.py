@@ -20,24 +20,25 @@ def valid_description(form, field):
 def valid_phone(form, field):
     # Checking if phone is already registered
     phone = field.data
-    business = Business.query.filter(business.phone == phone).first()
-    if business:
-        raise ValidationError('Phone number is already registered with an existing business.')
-    if not phone.isnumeric():
-        raise ValidationError('Phone number must contain only digits')
-    if not len(phone) == 10:
-        raise ValidationError('Phone number must include 10 digits')
+    businesses = Business.query.all()
+    for business in businesses:
+        existing_business = Business.query.filter(business.phone == phone).first()
+        if existing_business:
+            raise ValidationError('Phone number is already registered with an existing business.')
+        if not phone.isnumeric():
+            raise ValidationError('Phone number must contain only digits')
+        if not len(phone) == 10:
+            raise ValidationError('Phone number must include 10 digits')
 
 def valid_street_address(form, field):
     streetAddress = field.data
 
-    if len(streetAddress < 4) or len(streetAddress) > 40:
+    if len(streetAddress) < 4 or len(streetAddress) > 40:
         raise ValidationError('Please provide a valid street address.')
 
 
 class BusinessForm(FlaskForm):
-    ownerId = StringField('Owner ID')
-    capacity = StringField('Capacity')
+    capacity = IntegerField('Capacity')
     name = StringField('Name', validators=[DataRequired(), valid_name])
     description = StringField('Description', validators=[DataRequired(), valid_description])
     phone = StringField('Phone Number', validators=[DataRequired(), valid_phone])

@@ -24,7 +24,7 @@ def create_business():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         business = Business(
-            owner_id = form.data['ownerId'],
+            owner_id = current_user.id,
             capacity = form.data['capacity'],
             name = form.data['name'],
             description = form.data['description'],
@@ -32,7 +32,7 @@ def create_business():
             street_address = form.data['streetAddress'],
             unit = form.data['unit'],
             state = form.data['state'],
-            zipcode = form.data['zipcode']
+            zip_code = form.data['zipcode']
         )
         return business.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
