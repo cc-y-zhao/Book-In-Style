@@ -4,10 +4,16 @@
   top: 80px;
 }
 
-.find-pros {
-  position: absolute;
-  top: 630px;
+.home-main-img-div {
   display: flex;
-  text-align: center;
-  /* align-items: center; */
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+.find-pros {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 500px;
 }

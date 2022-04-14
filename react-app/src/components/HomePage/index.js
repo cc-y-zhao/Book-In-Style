@@ -28,14 +28,17 @@ const HomePage = () => {
 
   return (
     <>
-      <div>
+      <div className='home-main-img-div'>
         <img
           className='home-main-img'
           src='/images/homepage.png'
-          width='100%'
+          width='1250'
+          height='400'
         />
       </div>
-      <h2 className='find-pros'>Find top pros by service</h2>
+      <div className='find-pros'>
+        <h2>Find top pros by service</h2>
+      </div>
     </>
   );
 };
