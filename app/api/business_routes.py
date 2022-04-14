@@ -53,7 +53,8 @@ def create_business():
             street_address = form.data['streetAddress'],
             unit = form.data['unit'],
             state = form.data['state'],
-            zip_code = form.data['zipcode']
+            zip_code = form.data['zipcode'],
+            cover_photo = form.data['coverPhoto']
         )
         db.session.add(business)
         db.session.commit()
@@ -79,6 +80,7 @@ def edit_business(business_id):
         business.unit = data['unit'],
         business.state = data['state'],
         business.zip_code = data['zipcode']
+        business.cover_photo = data['coverPhoto']
 
         db.session.commit()
 
@@ -91,18 +93,10 @@ def edit_business(business_id):
 # @login_required
 def delete_business(business_id):
 
-    print('\n\n\n IM IN THE BUSINESS ROUTES \n\n\n')
-
-    print('\n\n\n BUSINESS Id', business_id, '\n\n\n')
-
     business = Business.query.get(business_id)
     deleted_business = business.to_dict()
-
-    print('\n\n\n deleted business before deltee', deleted_business, '\n\n\n')
-
 
     db.session.delete(business)
     db.session.commit()
 
-    print('\n\n\n deleted business', deleted_business, '\n\n\n')
     return deleted_business

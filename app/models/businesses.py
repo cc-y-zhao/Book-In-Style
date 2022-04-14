@@ -27,8 +27,9 @@ class Business(db.Model):
     street_address = db.Column(db.String(255), nullable=False)
     unit = db.Column(db.String(10))
     state = db.Column(db.String(3), nullable=False)
-    zip_code = db.Column(db.Integer)
+    zip_code = db.Column(db.String(10))
     capacity = db.Column(db.Integer)
+    cover_photo = db.Column(db.String(2000))
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
@@ -53,6 +54,7 @@ class Business(db.Model):
             'state': self.state,
             'zip_code': self.zip_code,
             'capacity': self.capacity,
+            'cover_photo': self.cover_photo,
             'services' : [service.to_dict() for service in self.services],
             'languages': [language.to_dict() for language in self.languages],
             'images': [image.to_dict() for image in self.images],

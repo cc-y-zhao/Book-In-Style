@@ -21,6 +21,7 @@ const CreateBusinessForm = () => {
   const [unit, setUnit] = useState("");
   const [state, setState] = useState("");
   const [zipcode, setZipcode] = useState("");
+  const [coverPhoto, setCoverPhoto] = useState("");
 
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
@@ -29,18 +30,7 @@ const CreateBusinessForm = () => {
   const updateUnit = (e) => setUnit(e.target.value);
   const updateState = (e) => setState(e.target.value);
   const updateZipcode = (e) => setZipcode(e.target.value);
-
-
-  // useEffect(() => {
-  //   const validationErrors = [];
-  //   if (title.length === 0) validationErrors.push("");
-  //   if (title.length > 50)
-  //     validationErrors.push("Title must be 50 characters or less");
-  //   if (description.length > 150)
-  //     validationErrors.push("Description must be 150 characters or less");
-
-  //   setErrors(validationErrors);
-  // }, [title, description]);
+  const updateCoverPhoto = (e) => setCoverPhoto(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,6 +44,7 @@ const CreateBusinessForm = () => {
       unit,
       state,
       zipcode,
+      coverPhoto,
     };
 
     let data;
@@ -71,6 +62,7 @@ const CreateBusinessForm = () => {
       setUnit('');
       setState('');
       setZipcode('');
+      setCoverPhoto('');
       console.log('data in if data--------------', data)
       await dispatch(loadBusiness(data.id))
       return history.push(`/businesses/${data.id}`);
@@ -82,7 +74,7 @@ const CreateBusinessForm = () => {
 
   let disabled;
 
-  if (name.length === 0 || description.length === 0 || phone.length < 10 || streetAddress.length === 0 || state.length === 0 || zipcode.length < 5) {
+  if (name.length === 0 || description.length === 0 || phone.length < 10 || streetAddress.length === 0 || state.length === 0 || zipcode.length < 5 || coverPhoto.length < 10) {
     disabled = true;
   } else {
     disabled = false;
@@ -169,11 +161,25 @@ const CreateBusinessForm = () => {
             </select>
           </div>
           <div>
+            <div>
+              <label>Zipcode</label>
+            </div>
             <input
               type="text"
               placeholder="Zipcode"
               value={zipcode}
               onChange={updateZipcode}
+            />
+          </div>
+          <div>
+            <div>
+              <label>Cover Photo</label>
+            </div>
+            <input
+              type="text"
+              placeholder="Please provide an image to represent your business!"
+              value={coverPhoto}
+              onChange={updateCoverPhoto}
             />
           </div>
           <div className="CreateChannelButton">
