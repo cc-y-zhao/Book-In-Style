@@ -25,10 +25,12 @@ class Business(db.Model):
     description = db.Column(db.String(2000))
     phone = db.Column(db.String(10), unique=True, nullable=False)
     street_address = db.Column(db.String(255), nullable=False)
+    unit = db.Column(db.String(10))
     state = db.Column(db.String(3), nullable=False)
-    zip_code = db.Column(db.Integer)
+    city = db.Column(db.String(20), nullable=False)
+    zip_code = db.Column(db.String(10))
     capacity = db.Column(db.Integer)
-    website = db.Column(db.String(2048))
+    cover_photo = db.Column(db.String(2000))
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
@@ -49,10 +51,12 @@ class Business(db.Model):
             'description': self.description,
             'phone': self.phone,
             'street_address': self.street_address,
+            'unit': self.unit,
             'state': self.state,
             'zip_code': self.zip_code,
+            'city': self.city,
             'capacity': self.capacity,
-            'website': self.website,
+            'cover_photo': self.cover_photo,
             'services' : [service.to_dict() for service in self.services],
             'languages': [language.to_dict() for language in self.languages],
             'images': [image.to_dict() for image in self.images],

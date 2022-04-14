@@ -7,6 +7,10 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import CreateBusinessForm from './Forms/BusinessForm';
+import EditBusinessForm from './Forms/EditBusinessForm';
+import BusinessPage from './components/BusinessPage';
+
 import { authenticate } from './store/session';
 
 function App() {
@@ -28,6 +32,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route path='/' exact={true}>
+          {/* home page */}
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -37,6 +44,15 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
+        <ProtectedRoute path='/businesses/new' exact={true} >
+          <CreateBusinessForm/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/businesses/:businessId/edit' exact={true} >
+          <EditBusinessForm/>
+        </ProtectedRoute>
+        <Route path='/businesses/:businessId' exact={true}>
+          <BusinessPage />
+        </Route>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>

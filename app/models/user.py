@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     phone = db.Column(db.String(10), unique=True, nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
-    business_owner = db.Column(db.Boolean)
+    is_business_owner = db.Column(db.Boolean)
     image_url = db.Column(db.String(2000))
     created_at = db.Column(db.DateTime, default=db.func.now()) # FORMAT: 2022-04-02 13:27:25.457314
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
@@ -21,6 +21,11 @@ class User(db.Model, UserMixin):
     bookings = db.relationship('Booking', back_populates="user_who_booked", cascade="all, delete-orphan")
     reviews = db.relationship('Review', back_populates='user', cascade='all, delete-orphan')
     favorites = db.relationship('Favorite', back_populates='user', cascade='all, delete-orphan')
+
+    # businesses = db.relationship('Business', back_populates="owner", cascade="all, delete-orphan")
+    # bookings = db.relationship('Booking', back_populates="user_who_booked", cascade="all, delete-orphan")
+    # reviews = db.relationship('Review', back_populates='user', cascade='all, delete-orphan')
+    # favorites = db.relationship('Favorite', back_populates='user', cascade='all, delete-orphan')
 
 
     @property
@@ -41,7 +46,7 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'email': self.email,
             'phone': self.phone,
-            'business_owner': self.business_owner,
+            'is_business_owner': self.is_business_owner,
             'image_url': self.image_url,
             'businesses': {business.id: business.to_dict() for business in self.businesses},
             'bookings': {booking.id: booking.to_dict() for booking in self.bookings},
