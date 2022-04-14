@@ -32,7 +32,7 @@ const HomePage = () => {
         <img
           className='home-main-img'
           src='/images/homepage.png'
-          width='1250'
+          width='90%'
           height='400'
         />
       </div>

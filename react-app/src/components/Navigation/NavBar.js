@@ -2,7 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import LogoutButton from '../auth/LogoutButton';
+import LoginModal from '../Modals/LoginModal';
 import ProfileButtonModal from './ProfileButtonModal';
 import './NavBar.css'
 
@@ -15,10 +15,9 @@ const NavBar = () => {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <ProfileButtonModal user={sessionUser} />
-        <span className='welcome-msg nav-element'>Welcome, {sessionUser.first_name}!</span>
-        <div>
-          <LogoutButton />
+        <div className='logged-in-div'>
+          <ProfileButtonModal user={sessionUser} />
+          <span className='welcome-msg nav-element'>Welcome, {sessionUser.first_name}!</span>
         </div>
       </>
     );
@@ -26,14 +25,14 @@ const NavBar = () => {
     sessionLinks = (
       <>
         <div>
-          <NavLink className='login-nav' to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </div>
-        <div>
-          <NavLink className='signup-nav' to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
+          <div className='login-nav'>
+            <LoginModal />
+          </div>
+          <div>
+            <NavLink className='signup-nav' to='/sign-up' exact={true}>
+              Sign Up
+            </NavLink>
+          </div>
         </div>
       </>
     );
