@@ -36,8 +36,9 @@ export const createBusiness = (business) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
+    console.log('data in action creator-----------', data)
     dispatch(createdBusiness(data))
-    return null;
+    return data;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) {

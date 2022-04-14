@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import states from './states'
 
-import { createBusiness } from "../../store/businesses";
+import { createBusiness, loadBusiness } from "../../store/businesses";
 
 import "./CreateBusinessForm.css";
 
@@ -56,11 +56,13 @@ const CreateBusinessForm = () => {
       zipcode,
     };
 
-    let newBusiness;
+    let data;
 
-    newBusiness = await dispatch(createBusiness(payload));
+    data = await dispatch(createBusiness(payload));
 
-    if (newBusiness) {
+    console.log('data in beofre if data--------------', data)
+
+    if (data?.id) {
       setErrors([]);
       setName('');
       setDescription('');
@@ -69,7 +71,12 @@ const CreateBusinessForm = () => {
       setUnit('');
       setState('');
       setZipcode('');
-      history.push(`/businesses/${newBusiness.id}`);
+      console.log('data in if data--------------', data)
+      await dispatch(loadBusiness(data.id))
+      return history.push(`/businesses/${data.id}`);
+      // return <Redirect to={`/businesses/${data.id}`}/>
+    } else {
+      return setErrors(data)
     }
   };
 

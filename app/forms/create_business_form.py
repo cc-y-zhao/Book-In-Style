@@ -29,14 +29,22 @@ def valid_phone(form, field):
     businesses = Business.query.all()
     for business in businesses:
         existing_business = Business.query.filter(business.phone == phone).first()
-        if existing_business.owner_id is not current_user.id:
-            raise ValidationError('Phone number is already registered with an existing business.')
+        if existing_business:
+            if existing_business.owner_id is not current_user.id:
+                raise ValidationError('Phone number is already registered with an existing business.')
 
 def valid_street_address(form, field):
     streetAddress = field.data
 
     if len(streetAddress) < 4 or len(streetAddress) > 40:
         raise ValidationError('Please provide a valid street address.')
+
+def valid_zipcode(form, field):
+    zipcode = field.data
+    if not zipcode.isnumeric():
+        raise ValidationError('Phone number must contain only digits')
+
+
 
 
 class BusinessForm(FlaskForm):
@@ -47,4 +55,4 @@ class BusinessForm(FlaskForm):
     streetAddress = StringField('Street Address', validators=[DataRequired(), valid_street_address])
     unit = StringField('Unit')
     state = StringField('State', validators=[DataRequired()])
-    zipcode = StringField('Zipcode', validators=[DataRequired()])
+    zipcode = IntegerField('Zipcode', validators=[DataRequired()])
