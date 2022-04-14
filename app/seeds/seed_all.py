@@ -54,15 +54,95 @@ def seed_all():
         unit = '',
         city = 'Pasadena',
         state = 'CA',
-        zip_code = '91765',
+        zip_code = '91001',
         capacity = 1,
         cover_photo = 'https://cdn.vox-cdn.com/thumbor/WenHe_SMDEmFp6FwNVc8Vkltn7A=/0x93:750x656/1200x900/filters:focal(0x93:750x656)/cdn.vox-cdn.com/uploads/chorus_image/image/49198829/stacks_image_468.0.0.0.0.0.jpg'
     )
 
+    business2 = Business(
+        owner_id = '2',
+        name = 'Hair Shapers',
+        description = 'A hairstyle, hairdo, haircut or coiffure refers to the styling of hair, usually on the human scalp. Sometimes, this could also mean an editing of facial or body hair. The fashioning of hair can be considered an aspect of personal grooming, fashion, and cosmetics, although practical, cultural, and popular considerations also influence some hairstyles.',
+        phone = '9091231234',
+        street_address = '123 Cherry Ave',
+        unit = '',
+        city = 'Pasadena',
+        state = 'CA',
+        zip_code = '91001',
+        capacity = 1,
+        cover_photo = 'https://www.genroe.com/wp-content/uploads/customer-feedback-beauty-salon-e1591225978543.jpg'
+    )
+
+    business3 = Business(
+        owner_id = '3',
+        name = 'Beautiful Hair',
+        description = 'A hairstyle, hairdo, haircut or coiffure refers to the styling of hair, usually on the human scalp. Sometimes, this could also mean an editing of facial or body hair. The fashioning of hair can be considered an aspect of personal grooming, fashion, and cosmetics, although practical, cultural, and popular considerations also influence some hairstyles.',
+        phone = '8881231234',
+        street_address = '123 Apple Ave',
+        unit = '405',
+        city = 'Pasadena',
+        state = 'CA',
+        zip_code = '91001',
+        capacity = 1,
+        cover_photo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAcPoq0Gu_rst-vTwICDk7fsF-LWNkwtjp7g&usqp=CAU'
+    )
+
+    business4 = Business(
+        owner_id = '4',
+        name = 'Hair By Jen',
+        description = 'A hairstyle, hairdo, haircut or coiffure refers to the styling of hair, usually on the human scalp. Sometimes, this could also mean an editing of facial or body hair. The fashioning of hair can be considered an aspect of personal grooming, fashion, and cosmetics, although practical, cultural, and popular considerations also influence some hairstyles.',
+        phone = '8081231234',
+        street_address = '123 Peach Ave',
+        unit = '416',
+        city = 'Pasadena',
+        state = 'CA',
+        zip_code = '91001',
+        capacity = 1,
+        cover_photo = 'https://media.istockphoto.com/photos/curls-of-hair-is-freely-flying-in-front-of-the-face-of-young-woman-picture-id1267002400?k=20&m=1267002400&s=612x612&w=0&h=H3NjFxmGwdt155DQkDGqmPQEWuDzpVdf5DlVlJJpsyA=',
+    )
+
+    business5 = Business(
+        owner_id = '5',
+        name = 'Spa Heaven',
+        description = 'The word “spa” may be derived from the Walloon word “espa” meaning fountain. This, in turn, came from the name of the Belgian town Spa, where in the 14th century a curative, thermal spring was discovered.',
+        phone = '8681231234',
+        street_address = '123 Pear Ave',
+        unit = '4B',
+        city = 'Pasadena',
+        state = 'CA',
+        zip_code = '91001',
+        capacity = 1,
+        cover_photo = 'https://www.longisland.com/site_media/images/article/subarticle_image/shutterstock_626152427.jpg.644x0_q85.jpg',
+    )
+
+    business6 = Business(
+        owner_id = '6',
+        name = "Men's Cuts",
+        description = 'A hairstyle, hairdo, haircut or coiffure refers to the styling of hair, usually on the human scalp. Sometimes, this could also mean an editing of facial or body hair. The fashioning of hair can be considered an aspect of personal grooming, fashion, and cosmetics, although practical, cultural, and popular considerations also influence some hairstyles.',
+        phone = '8381231234',
+        street_address = '123 Pear Ave',
+        unit = '',
+        city = 'Pasadena',
+        state = 'CA',
+        zip_code = '91001',
+        capacity = 1,
+        cover_photo = 'https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/mens_haircut_2021_hp_tile.ec1c6afffd0129b6951b.png',
+    )
+
+
+
 
     db.session.add(business1)
+    db.session.add(business2)
+    db.session.add(business3)
+    db.session.add(business4)
+    db.session.add(business5)
+    db.session.add(business6)
 
-    # db.session.flush()
+
+
+
+    db.session.flush()
 
 
 
