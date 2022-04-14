@@ -50,7 +50,7 @@ const CreateBusinessForm = () => {
       coverPhoto,
     };
 
-    console.log('payload-------------', payload)
+    // console.log('payload-------------', payload)
 
     let data;
 
