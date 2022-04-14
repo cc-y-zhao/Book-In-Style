@@ -1,8 +1,9 @@
 
 const CREATE_BUSINESS = 'businesses/CREATE_BUSINESS';
 const GET_ONE_BUSINESS = 'businesses/GET_ONE_BUSINESS';
+const GET_ALL_BUSINESSES = 'businesses/GET_ALL_BUSINESSES';
 const EDIT_ONE_BUSINESS = 'businesses/EDIT_ONE_BUSINESS';
-const DELETE_ONE_BUSINESS = 'businesses/DELETE_ONE_BUSINESS'
+const DELETE_ONE_BUSINESS = 'businesses/DELETE_ONE_BUSINESS';
 
 const createdBusiness = (business) => ({
   type: CREATE_BUSINESS,
@@ -12,6 +13,11 @@ const createdBusiness = (business) => ({
 const loadOneBusiness = (business) => ({
   type: GET_ONE_BUSINESS,
   business
+});
+
+const loadBusinesses = (businesses) => ({
+  type: GET_ALL_BUSINESSES,
+  businesses
 });
 
 const editOneBusiness = (business) => ({
@@ -36,7 +42,7 @@ export const createBusiness = (business) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log('data in action creator-----------', data)
+    // console.log('data in action creator-----------', data)
     dispatch(createdBusiness(data))
     return data;
   } else if (response.status < 500) {
@@ -51,13 +57,27 @@ export const createBusiness = (business) => async (dispatch) => {
 
 export const loadBusiness = (businessId) => async (dispatch) => {
 
-  console.log('business id before fetch------------', businessId)
+  // console.log('business id before fetch------------', businessId)
   const response = await fetch(`/api/businesses/${businessId}`);
 
   if (response.ok) {
     const business = await response.json();
     dispatch(loadOneBusiness(business));
     return business;
+  } else {
+    const errors = await response.json();
+    return errors;
+  }
+};
+
+export const loadAllBusinesses = () => async (dispatch) => {
+
+  const response = await fetch(`/api/businesses/`);
+
+  if (response.ok) {
+    const businesses = await response.json();
+    dispatch(loadBusinesses(businesses));
+    return businesses;
   } else {
     const errors = await response.json();
     return errors;
@@ -95,7 +115,7 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
   // console.log('response in action creator----------', response.json())
   if (response.ok) {
     const deletedBusiness = await response.json();
-    console.log('deleted business in action creator-------', deletedBusiness)
+    // console.log('deleted business in action creator-------', deletedBusiness)
     dispatch(deleteOneBusiness(deletedBusiness));
     return deletedBusiness;
   } else {
@@ -118,6 +138,16 @@ export default function reducer(state = initialState, action) {
 
     case GET_ONE_BUSINESS:
       newState[action.business.id] = action.business;
+      return newState;
+
+    case GET_ALL_BUSINESSES:
+      // console.log('action in get all businesses------------', action)
+      newState['businesses_list'] = action.businesses.businesses;
+      // console.log('action.businesses in get all businesses------------', action.businesses)
+      action.businesses.businesses.forEach((business) => {
+        newState[business.id] = business;
+      });
+
       return newState;
 
     case EDIT_ONE_BUSINESS:

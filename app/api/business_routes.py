@@ -13,24 +13,22 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append([field, ':', error])
+            errorMessages.append(error)
+            # errorMessages.append([field, ':', error])
     return errorMessages
 
-# @business_routes.route('/', methods=['GET'])
-# def get_businesses():
-#     businesses = Business.query.all()
+@business_routes.route('/', methods=['GET'])
+def get_all_business():
+    businesses_no_dict = Business.query.all()
+    businesses = []
 
-#     print('\n\n\n BUSINESSES \n\n\n', businesses)
+    for business in businesses_no_dict:
+        businesses.append(business.to_dict())
 
-#     businesses_dicted = {}
-#     for business in businesses:
-#         business_dicted = business.to_dict()
-#         businesses_dicted[business_dicted.id] = business_dicted
-
-#     return {'businesses': businesses_dicted}
+    return {'businesses': businesses}
 
 @business_routes.route('/<int:businessId>', methods=['GET'])
-def get_businesses(businessId):
+def get_business(businessId):
     business = Business.query.get(businessId)
 
     return business.to_dict()
@@ -60,10 +58,8 @@ def create_business():
         db.session.add(business)
         db.session.commit()
 
-        print('\n\n\n IM HEREEEEE \n\n\n')
-
         return business.to_dict()
-    print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
+    # print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -90,7 +86,7 @@ def edit_business(business_id):
         db.session.commit()
 
         return business.to_dict()
-    print('\n\n\n\n errors from business routes \n\n\n', {'errors': validation_errors_to_error_messages(form.errors)}, '\n\n\n')
+    # print('\n\n\n\n errors from business routes \n\n\n', {'errors': validation_errors_to_error_messages(form.errors)}, '\n\n\n')
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
