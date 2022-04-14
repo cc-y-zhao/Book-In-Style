@@ -11,6 +11,7 @@ import CreateBusinessForm from './Forms/BusinessForm';
 import EditBusinessForm from './Forms/EditBusinessForm';
 import BusinessPage from './components/BusinessPage';
 import BusinessesPage from './components/Businesses';
+import HomePage from './components/HomePage';
 
 import { authenticate } from './store/session';
 
@@ -34,7 +35,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/' exact={true}>
-          {/* home page */}
+          <HomePage />
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
