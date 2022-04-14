@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
-import { loadBusiness } from "../../store/businesses";
+import { loadBusiness, deleteBusiness } from "../../store/businesses";
 
 const DeleteBusiness = ({businessId, setShowModal}) => {
   const dispatch = useDispatch();
@@ -18,10 +18,18 @@ const DeleteBusiness = ({businessId, setShowModal}) => {
   //   dispatch(loadBusiness(businessIdParsed));
   // }, [dispatch, businessIdParsed]);
 
-  const handleDelete = (e) => {
+  const handleDelete = async (e) => {
     e.preventDefault();
-    return history.push(`/`)
-    // return <Redirect to={`/businesses/${businessIdParsed}/edit`}/>
+    let deletedBusiness;
+
+    console.log('business in in frontend---------'. businessId)
+
+    deletedBusiness = await dispatch(deleteBusiness(businessId));
+
+    if (deletedBusiness) {
+      return history.push('/')
+      // return <Redirect to='/'/>
+    }
   }
 
   return (

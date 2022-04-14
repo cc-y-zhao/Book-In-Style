@@ -90,10 +90,19 @@ def edit_business(business_id):
 @business_routes.route('/<int:business_id>', methods=["DELETE"])
 # @login_required
 def delete_business(business_id):
+
+    print('\n\n\n IM IN THE BUSINESS ROUTES \n\n\n')
+
+    print('\n\n\n BUSINESS Id', business_id, '\n\n\n')
+
     business = Business.query.get(business_id)
     deleted_business = business.to_dict()
+
+    print('\n\n\n deleted business before deltee', deleted_business, '\n\n\n')
+
 
     db.session.delete(business)
     db.session.commit()
 
+    print('\n\n\n deleted business', deleted_business, '\n\n\n')
     return deleted_business

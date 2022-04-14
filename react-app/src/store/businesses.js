@@ -86,11 +86,15 @@ export const editBusiness = (editedBusiness) => async (dispatch) => {
 };
 
 export const deleteBusiness = (businessId) => async (dispatch) => {
-  const response = await fetch(`/api/businesss/${businessId}`, {
+  console.log('business id in action creator------', businessId)
+  const response = await fetch(`/api/businesses/${businessId}`, {
     method: "DELETE",
   });
+
+  // console.log('response in action creator----------', response.json())
   if (response.ok) {
     const deletedBusiness = await response.json();
+    console.log('deleted business in action creator-------', deletedBusiness)
     dispatch(deleteOneBusiness(deletedBusiness));
     return deletedBusiness;
   } else {
