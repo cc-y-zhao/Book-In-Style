@@ -13,7 +13,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(error)
     return errorMessages
 
 # @business_routes.route('/', methods=['GET'])
@@ -83,4 +83,5 @@ def edit_business(business_id):
         db.session.commit()
 
         return business.to_dict()
+    print('\n\n\n\n errors from business routes \n\n\n', {'errors': validation_errors_to_error_messages(form.errors)}, '\n\n\n')
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

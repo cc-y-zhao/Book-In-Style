@@ -12,8 +12,6 @@ const EditBusinessForm = () => {
   const { businessId } = useParams();
   const businessIdParsed = parseInt(businessId);
 
-  console.log('business ID in edit business form-------------', businessIdParsed)
-
   const businesses = useSelector((state) => state?.businesses)
   const business = businesses[businessIdParsed]
   const userId = useSelector((state) => state.session.user?.id);
@@ -22,7 +20,6 @@ const EditBusinessForm = () => {
     dispatch(loadBusiness(businessIdParsed));
   }, [dispatch, businessIdParsed]);
 
-  console.log('business in edit business form-------------', business)
   const [errors, setErrors] = useState([]);
   const capacity = 1;
   const id = businessIdParsed;
@@ -69,11 +66,12 @@ const EditBusinessForm = () => {
       zipcode,
     };
 
-    let updatedBusiness;
+    let data;
 
-    updatedBusiness = await dispatch(editBusiness(editedBusiness));
+    data = await dispatch(editBusiness(editedBusiness));
 
-    if (updatedBusiness) {
+    console.log('data in edit form----------', data)
+    if (data?.id === businessIdParsed) {
       setErrors([]);
       setName('');
       setDescription('');
@@ -82,7 +80,9 @@ const EditBusinessForm = () => {
       setUnit('');
       setState('');
       setZipcode('');
-      history.push(`/businesses/${updatedBusiness.id}`);
+      history.push(`/businesses/${data.id}`);
+    } else {
+      return setErrors(data)
     }
   };
 
@@ -97,6 +97,8 @@ const EditBusinessForm = () => {
   let showEditForm = false;
 
   if (business) showEditForm = true;
+
+  console.log('errors frontend ---------', errors)
 
 
   return (

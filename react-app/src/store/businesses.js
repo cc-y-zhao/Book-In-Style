@@ -73,13 +73,27 @@ export const editBusiness = (editedBusiness) => async (dispatch) => {
     body: JSON.stringify(editedBusiness),
   });
 
-  if (!response.ok) {
-    return response.errors;
+  if (response.ok) {
+    const updatedBusiness = await response.json();
+    dispatch(editOneBusiness(updatedBusiness))
+    return editOneBusiness;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
   }
-  const updatedBusiness = await response.json();
 
-  dispatch(editOneBusiness(updatedBusiness));
-  return updatedBusiness;
+  // if (!response.ok) {
+  //   console.log('response------------', response)
+  //   return response.errors;
+  // }
+  // const updatedBusiness = await response.json();
+
+  // dispatch(editOneBusiness(updatedBusiness));
+  // return updatedBusiness;
 };
 
 

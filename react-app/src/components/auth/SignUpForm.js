@@ -32,8 +32,6 @@ const SignUpForm = () => {
         password,
       }
       const data = await dispatch(signUp(payload));
-
-      console.log('DATA-------------------', data)
       if (data) {
         return setErrors(data)
       }
