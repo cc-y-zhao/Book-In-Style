@@ -19,35 +19,44 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  /* position: absolute; */
-  /* top: 30px; */
-  right: 20%;
+}
+
+.logged-out-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.signup-nav {
+  /* position: absolute;
+  right: 90px; */
+  /* margin-right: 20%; */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-nav {
+  /* position: absolute;
+  right: 170px; */
+  margin-right: 20px;
+  font-weight: 500;
 }
 
 .set-up-business {
   margin-right: 20px;
   text-decoration: none;
   color: #E10984;
+  font-weight: 500;
 }
 
 .welcome-msg {
   margin-right: 20px;
   font-style: italic;
+  font-weight: 500;
 }
 
 .prof-icon {
   margin-right: 5%;
-}
-
-.signup-nav {
-  position: absolute;
-  right: 90px;
-  text-decoration: none;
-}
-
-.login-nav {
-  position: absolute;
-  right: 170px;
 }
 
 

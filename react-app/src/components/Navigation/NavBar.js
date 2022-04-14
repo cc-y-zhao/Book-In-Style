@@ -25,15 +25,9 @@ const NavBar = () => {
   } else {
     sessionLinks = (
       <>
-        <div>
-          <div className='login-nav'>
-            <LoginModal />
-          </div>
-          <div>
-            <NavLink className='signup-nav' to='/sign-up' exact={true}>
-              Sign Up
-            </NavLink>
-          </div>
+        <div className='logged-out-div'>
+          <div className='login-nav'><LoginModal /></div>
+          <div><NavLink className='signup-nav' to='/sign-up' exact={true}>Sign Up</NavLink></div>
         </div>
       </>
     );
