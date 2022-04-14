@@ -27,8 +27,8 @@ const DeleteBusiness = ({businessId, setShowModal}) => {
     deletedBusiness = await dispatch(deleteBusiness(businessId));
 
     if (deletedBusiness) {
-      // return history.push('/')
-      return <Redirect to='/'/>
+      return history.push('/')
+      // return <Redirect to='/'/>
     }
   }
 

@@ -75,7 +75,7 @@ export const editBusiness = (editedBusiness) => async (dispatch) => {
   if (response.ok) {
     const updatedBusiness = await response.json();
     dispatch(editOneBusiness(updatedBusiness))
-    return editOneBusiness;
+    return updatedBusiness;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) {
