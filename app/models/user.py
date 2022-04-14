@@ -22,6 +22,11 @@ class User(db.Model, UserMixin):
     reviews = db.relationship('Review', back_populates='user', cascade='all, delete-orphan')
     favorites = db.relationship('Favorite', back_populates='user', cascade='all, delete-orphan')
 
+    # businesses = db.relationship('Business', back_populates="owner", cascade="all, delete-orphan")
+    # bookings = db.relationship('Booking', back_populates="user_who_booked", cascade="all, delete-orphan")
+    # reviews = db.relationship('Review', back_populates='user', cascade='all, delete-orphan')
+    # favorites = db.relationship('Favorite', back_populates='user', cascade='all, delete-orphan')
+
 
     @property
     def password(self):

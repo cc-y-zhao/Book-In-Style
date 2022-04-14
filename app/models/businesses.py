@@ -27,6 +27,7 @@ class Business(db.Model):
     street_address = db.Column(db.String(255), nullable=False)
     unit = db.Column(db.String(10))
     state = db.Column(db.String(3), nullable=False)
+    city = db.Column(db.String(20), nullable=False)
     zip_code = db.Column(db.String(10))
     capacity = db.Column(db.Integer)
     cover_photo = db.Column(db.String(2000))
@@ -53,6 +54,7 @@ class Business(db.Model):
             'unit': self.unit,
             'state': self.state,
             'zip_code': self.zip_code,
+            'city': self.city,
             'capacity': self.capacity,
             'cover_photo': self.cover_photo,
             'services' : [service.to_dict() for service in self.services],

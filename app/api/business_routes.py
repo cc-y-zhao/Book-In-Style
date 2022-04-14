@@ -51,6 +51,7 @@ def create_business():
             description = form.data['description'],
             phone = form.data['phone'],
             street_address = form.data['streetAddress'],
+            city = form.data['city'],
             unit = form.data['unit'],
             state = form.data['state'],
             zip_code = form.data['zipcode'],
@@ -77,6 +78,7 @@ def edit_business(business_id):
         business.description = data['description'],
         business.phone = data['phone'],
         business.street_address = data['streetAddress'],
+        business.city = data['city'],
         business.unit = data['unit'],
         business.state = data['state'],
         business.zip_code = data['zipcode']

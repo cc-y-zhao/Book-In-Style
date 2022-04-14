@@ -18,6 +18,7 @@ const CreateBusinessForm = () => {
   const [description, setDescription] = useState("");
   const [phone, setPhone] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
+  const [city, setCity] = useState("");
   const [unit, setUnit] = useState("");
   const [state, setState] = useState("");
   const [zipcode, setZipcode] = useState("");
@@ -28,6 +29,7 @@ const CreateBusinessForm = () => {
   const updatePhone = (e) => setPhone(e.target.value);
   const updateStreetAddress = (e) => setStreetAddress(e.target.value);
   const updateUnit = (e) => setUnit(e.target.value);
+  const updateCity = (e) => setCity(e.target.value);
   const updateState = (e) => setState(e.target.value);
   const updateZipcode = (e) => setZipcode(e.target.value);
   const updateCoverPhoto = (e) => setCoverPhoto(e.target.value);
@@ -60,10 +62,11 @@ const CreateBusinessForm = () => {
       setPhone('');
       setStreetAddress('');
       setUnit('');
+      setCity('');
       setState('');
       setZipcode('');
       setCoverPhoto('');
-      console.log('data in if data--------------', data)
+
       await dispatch(loadBusiness(data.id))
       return history.push(`/businesses/${data.id}`);
       // return <Redirect to={`/businesses/${data.id}`}/>
@@ -74,7 +77,7 @@ const CreateBusinessForm = () => {
 
   let disabled;
 
-  if (name.length === 0 || description.length === 0 || phone.length < 10 || streetAddress.length === 0 || state.length === 0 || zipcode.length < 5 || coverPhoto.length < 10) {
+  if (name.length === 0 || description.length === 0 || phone.length < 10 || streetAddress.length === 0 || state.length === 0 || zipcode.length < 5 || coverPhoto.length < 10 || city.length < 3) {
     disabled = true;
   } else {
     disabled = false;
@@ -150,6 +153,18 @@ const CreateBusinessForm = () => {
               placeholder="Unit"
               value={unit}
               onChange={updateUnit}
+            />
+          </div>
+          <div>
+            <div>
+              <label>City</label>
+            </div>
+            <input
+              type="text"
+              required
+              placeholder="City"
+              value={city}
+              onChange={updateCity}
             />
           </div>
           <div>

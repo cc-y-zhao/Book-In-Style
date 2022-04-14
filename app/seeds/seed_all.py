@@ -1,4 +1,4 @@
-from app.models import db, User
+from app.models import db, User, Business
 # from app.models import db, Business
 
 # from app.models import db, User, Business, Booking, Review, Favorite, Image, Language, Service
@@ -43,29 +43,26 @@ def seed_all():
     db.session.add(user9)
     db.session.add(user10)
 
+    db.session.flush()
 
+    business1 = Business(
+        owner_id = '1',
+        name = 'Nails By Jane',
+        description = 'A nail salon or nail bar is a specialty beauty salon establishment that primarily offers nail care services such as manicures, pedicures, and nail enhancements. Often, nail salons also offer skin care services. Manicures are also offered by general beauty salons, spas, and hotels.',
+        phone = '6261231234',
+        street_address = '123 Hillsbury Lane',
+        unit = '',
+        city = 'Pasadena',
+        state = 'CA',
+        zip_code = '91765',
+        capacity = 1,
+        cover_photo = 'https://cdn.vox-cdn.com/thumbor/WenHe_SMDEmFp6FwNVc8Vkltn7A=/0x93:750x656/1200x900/filters:focal(0x93:750x656)/cdn.vox-cdn.com/uploads/chorus_image/image/49198829/stacks_image_468.0.0.0.0.0.jpg'
+    )
+
+
+    db.session.add(business1)
 
     # db.session.flush()
-
-    # seed_channels():
-    # channel2 = Channel(
-    #     owner_id='1', title='App Academy', is_dm=False, description='This is BootCAMP!')
-    # channel3 = Channel(
-    #     owner_id='1', title='Just For Funsies', is_dm=False, description='Slackin\' around!')
-    # channel4 = Channel(
-    #     owner_id='2', title='RIOT', is_dm=False, description='Sharon loves Riot Games')
-    # channel5 = Channel(
-    #     owner_id='3', title='Interview Prep', is_dm=False, description='Gabe\'s Interview Preppers')
-    # channel6 = Channel(
-    #     owner_id='4', title='Cecilia\'s Corner', is_dm=False, description='Welcome to Cecilia\'s Corner!')
-
-
-    # db.session.add(channel2)
-    # db.session.add(channel3)
-    # db.session.add(channel4)
-    # db.session.add(channel5)
-    # db.session.add(channel6)
-
 
 
 
