@@ -2,6 +2,7 @@
 const CREATE_BUSINESS = 'businesses/CREATE_BUSINESS';
 const GET_ONE_BUSINESS = 'businesses/GET_ONE_BUSINESS';
 const EDIT_ONE_BUSINESS = 'businesses/EDIT_ONE_BUSINESS';
+const DELETE_ONE_BUSINESS = 'businesses/DELETE_ONE_BUSINESS'
 
 const createdBusiness = (business) => ({
   type: CREATE_BUSINESS,
@@ -18,7 +19,10 @@ const editOneBusiness = (business) => ({
   business
 });
 
-
+const deleteOneBusiness = (business) => ({
+  type: DELETE_ONE_BUSINESS,
+  business
+});
 
 export const createBusiness = (business) => async (dispatch) => {
 
@@ -32,7 +36,6 @@ export const createBusiness = (business) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    // console.log('new business from businesses store-----------', data)
     dispatch(createdBusiness(data))
     return null;
   } else if (response.status < 500) {
@@ -53,9 +56,6 @@ export const loadBusiness = (businessId) => async (dispatch) => {
   if (response.ok) {
     const business = await response.json();
     dispatch(loadOneBusiness(business));
-
-    // console.log('business after fetch---------', business)
-
     return business;
   } else {
     const errors = await response.json();
@@ -64,8 +64,6 @@ export const loadBusiness = (businessId) => async (dispatch) => {
 };
 
 export const editBusiness = (editedBusiness) => async (dispatch) => {
-  console.log('editedbusiness in store-------------', editedBusiness)
-  console.log('editedbusiness ID in store-------------', editedBusiness.id)
 
   const response = await fetch(`/api/businesses/${editedBusiness.id}`, {
     method: "PUT",
@@ -85,15 +83,20 @@ export const editBusiness = (editedBusiness) => async (dispatch) => {
   } else {
     return ['An error occurred. Please try again.']
   }
+};
 
-  // if (!response.ok) {
-  //   console.log('response------------', response)
-  //   return response.errors;
-  // }
-  // const updatedBusiness = await response.json();
-
-  // dispatch(editOneBusiness(updatedBusiness));
-  // return updatedBusiness;
+export const deleteBusiness = (businessId) => async (dispatch) => {
+  const response = await fetch(`/api/businesss/${businessId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const deletedBusiness = await response.json();
+    dispatch(deleteOneBusiness(deletedBusiness));
+    return deletedBusiness;
+  } else {
+    const errors = await response.json();
+    return errors;
+  }
 };
 
 
@@ -109,19 +112,18 @@ export default function reducer(state = initialState, action) {
       return newState;
 
     case GET_ONE_BUSINESS:
-      // console.log('action in reducer----------', action)
-      // console.log('action.business in reducer----------', action.business)
-      // console.log('action.business.id in reducer----------', action.business.id)
-
       newState[action.business.id] = action.business;
-
-      // console.log('new state------------', newState);
       return newState;
 
     case EDIT_ONE_BUSINESS:
-      const updatedBusiness = action.business
-      newState[updatedBusiness.id] = updatedBusiness
+      const updatedBusiness = action.business;
+      newState[updatedBusiness.id] = updatedBusiness;
 
+      return newState;
+
+    case DELETE_ONE_BUSINESS:
+      const deletedBusiness = action.business;
+      delete newState[deletedBusiness.id];
       return newState;
 
     default:

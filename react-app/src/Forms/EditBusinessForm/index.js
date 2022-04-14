@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 import states from "../BusinessForm/states";
+import DeleteBusinessModal from "../../components/Modals/DeleteBusinessModal"
 
-import { loadBusiness, editBusiness } from "../../store/businesses";
+import { loadBusiness, editBusiness, deleteBusiness } from "../../store/businesses";
 
 const EditBusinessForm = () => {
   const dispatch = useDispatch();
@@ -86,6 +87,10 @@ const EditBusinessForm = () => {
     }
   };
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+  }
+
   let disabled;
 
   if (name?.length === 0 || description?.length === 0 || phone?.length < 10 || streetAddress?.length === 0 || state?.length === 0 || zipcode?.length < 5) {
@@ -97,9 +102,6 @@ const EditBusinessForm = () => {
   let showEditForm = false;
 
   if (business) showEditForm = true;
-
-  console.log('errors frontend ---------', errors)
-
 
   return (
     <>
@@ -198,7 +200,7 @@ const EditBusinessForm = () => {
             </div>
           </form>
           <div>
-            <button>Delete Listing</button>
+            <DeleteBusinessModal businessId={businessIdParsed}/>
           </div>
         </div>
       </div>

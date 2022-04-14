@@ -85,3 +85,15 @@ def edit_business(business_id):
         return business.to_dict()
     print('\n\n\n\n errors from business routes \n\n\n', {'errors': validation_errors_to_error_messages(form.errors)}, '\n\n\n')
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@business_routes.route('/<int:business_id>', methods=["DELETE"])
+# @login_required
+def delete_business(business_id):
+    business = Business.query.get(business_id)
+    deleted_business = business.to_dict()
+
+    db.session.delete(business)
+    db.session.commit()
+
+    return deleted_business
