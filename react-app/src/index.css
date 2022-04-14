@@ -1,1 +1,13 @@
 /* TODO Add site wide styles */
+.home-main-img {
+  position: absolute;
+  top: 80px;
+}
+
+.find-pros {
+  position: absolute;
+  top: 630px;
+  display: flex;
+  text-align: center;
+  /* align-items: center; */
+}

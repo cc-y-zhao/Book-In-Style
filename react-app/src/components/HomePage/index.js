@@ -29,11 +29,13 @@ const HomePage = () => {
   return (
     <>
       <div>
-        <h2>Find top pros by service</h2>
         <img
+          className='home-main-img'
           src='/images/homepage.png'
+          width='100%'
         />
       </div>
+      <h2 className='find-pros'>Find top pros by service</h2>
     </>
   );
 };
