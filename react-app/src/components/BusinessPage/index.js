@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
-import EditBusinessForm from "../../Forms/EditBusinessForm";
-
 import { loadBusiness } from "../../store/businesses";
+
+import './BusinessPage.css'
 
 const BusinessPage = () => {
   const dispatch = useDispatch();
@@ -38,13 +38,26 @@ const BusinessPage = () => {
   return (
     <>
       {showBusiness && (
-        <div>
-          <h2>{business['name']}</h2>
+        <div className='biz-page-container'>
           <div>
             {showEdit && (
               <button onClick={(e) => handleEditRedirect(e)}>Edit Listing</button>
             )}
           </div>
+          <div className='biz-page-prof'>
+            <div>
+              <img
+                className='cover-photo'
+                src={business.cover_photo}
+                alt={`${business.name}`}
+                height="180px"
+                width="180px"
+              />
+            </div>
+            <div className='biz-name'>{business['name']}</div>
+            <div>------Additional pics will go here------</div>
+          </div>
+
         </div>
       )}
     </>
