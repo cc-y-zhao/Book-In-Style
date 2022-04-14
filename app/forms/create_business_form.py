@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, BooleanField, IntegerField
 from wtforms.validators import DataRequired, Email, ValidationError, EqualTo, Length
+from flask_login import current_user, login_user, logout_user, login_required
 from app.models import Business
 
 
@@ -18,17 +19,18 @@ def valid_description(form, field):
         raise ValidationError('Descriptions cannot be longer than 2000 characters.')
 
 def valid_phone(form, field):
-    # Checking if phone is already registered
     phone = field.data
+
+    if not phone.isnumeric():
+        raise ValidationError('Phone number must contain only digits')
+    if not len(phone) == 10:
+        raise ValidationError('Phone number must include 10 digits')
+
     businesses = Business.query.all()
     for business in businesses:
         existing_business = Business.query.filter(business.phone == phone).first()
-        if existing_business:
+        if existing_business.owner_id is not current_user.id:
             raise ValidationError('Phone number is already registered with an existing business.')
-        if not phone.isnumeric():
-            raise ValidationError('Phone number must contain only digits')
-        if not len(phone) == 10:
-            raise ValidationError('Phone number must include 10 digits')
 
 def valid_street_address(form, field):
     streetAddress = field.data

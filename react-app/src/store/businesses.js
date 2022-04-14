@@ -1,6 +1,7 @@
 
 const CREATE_BUSINESS = 'businesses/CREATE_BUSINESS';
 const GET_ONE_BUSINESS = 'businesses/GET_ONE_BUSINESS';
+const EDIT_ONE_BUSINESS = 'businesses/EDIT_ONE_BUSINESS';
 
 const createdBusiness = (business) => ({
   type: CREATE_BUSINESS,
@@ -9,6 +10,11 @@ const createdBusiness = (business) => ({
 
 const loadOneBusiness = (business) => ({
   type: GET_ONE_BUSINESS,
+  business
+});
+
+const editOneBusiness = (business) => ({
+  type: EDIT_ONE_BUSINESS,
   business
 });
 
@@ -57,6 +63,24 @@ export const loadBusiness = (businessId) => async (dispatch) => {
   }
 };
 
+export const editBusiness = (editedBusiness) => async (dispatch) => {
+  console.log('editedbusiness in store-------------', editedBusiness)
+  console.log('editedbusiness ID in store-------------', editedBusiness.id)
+
+  const response = await fetch(`/api/businesses/${editedBusiness.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(editedBusiness),
+  });
+
+  if (!response.ok) {
+    return response.errors;
+  }
+  const updatedBusiness = await response.json();
+
+  dispatch(editOneBusiness(updatedBusiness));
+  return updatedBusiness;
+};
 
 
 const initialState = {};
@@ -78,6 +102,12 @@ export default function reducer(state = initialState, action) {
       newState[action.business.id] = action.business;
 
       // console.log('new state------------', newState);
+      return newState;
+
+    case EDIT_ONE_BUSINESS:
+      const updatedBusiness = action.business
+      newState[updatedBusiness.id] = updatedBusiness
+
       return newState;
 
     default:

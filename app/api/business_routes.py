@@ -33,15 +33,12 @@ def validation_errors_to_error_messages(validation_errors):
 def get_businesses(businessId):
     business = Business.query.get(businessId)
 
-    print('\n\n\n BUSINESS FROM ROUTES \n\n\n', business)
-
     return business.to_dict()
 
 
 @business_routes.route('/', methods=['POST'])
 # @login_required
 def create_business():
-    print('\n\n\n CURRENT USER \n\n\n', current_user.id)
 
     form = BusinessForm()
 
@@ -60,6 +57,30 @@ def create_business():
         )
         db.session.add(business)
         db.session.commit()
-        print('\n\n\n NEW BUSINESS\n\n\n', business.to_dict(), '\n\n\n\n')
+
+        return business.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@business_routes.route('/<int:business_id>', methods=['PUT'])
+# @login_required
+def edit_business(business_id):
+    form = BusinessForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    data = form.data
+
+    if form.validate_on_submit():
+        business = Business.query.get(business_id)
+        business.capacity = data['capacity'],
+        business.name = data['name'],
+        business.description = data['description'],
+        business.phone = data['phone'],
+        business.street_address = data['streetAddress'],
+        business.unit = data['unit'],
+        business.state = data['state'],
+        business.zip_code = data['zipcode']
+
+        db.session.commit()
+
         return business.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

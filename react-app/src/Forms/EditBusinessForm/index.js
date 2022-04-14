@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 import states from "../BusinessForm/states";
 
-import { loadBusiness } from "../../store/businesses";
+import { loadBusiness, editBusiness } from "../../store/businesses";
 
 const EditBusinessForm = () => {
   const dispatch = useDispatch();
@@ -15,24 +15,24 @@ const EditBusinessForm = () => {
   console.log('business ID in edit business form-------------', businessIdParsed)
 
   const businesses = useSelector((state) => state?.businesses)
-  const business = useSelector((state) => businesses[businessIdParsed])
+  const business = businesses[businessIdParsed]
   const userId = useSelector((state) => state.session.user?.id);
 
   useEffect(() => {
-    dispatch(loadBusiness(businessId));
-  }, [dispatch, businessId]);
+    dispatch(loadBusiness(businessIdParsed));
+  }, [dispatch, businessIdParsed]);
 
   console.log('business in edit business form-------------', business)
   const [errors, setErrors] = useState([]);
-  // const ownerId = useSelector((state) => state.session.user?.id);
   const capacity = 1;
+  const id = businessIdParsed;
   const [name, setName] = useState(business?.name);
   const [description, setDescription] = useState(business?.description);
   const [phone, setPhone] = useState(business?.phone);
   const [streetAddress, setStreetAddress] = useState(business?.street_address);
   const [unit, setUnit] = useState(business?.unit);
   const [state, setState] = useState(business?.state);
-  const [zipcode, setZipcode] = useState(business?.zipcode);
+  const [zipcode, setZipcode] = useState(business?.zip_code);
 
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
@@ -57,7 +57,8 @@ const EditBusinessForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const payload = {
+    const editedBusiness = {
+      id,
       capacity,
       name,
       description,
@@ -68,11 +69,11 @@ const EditBusinessForm = () => {
       zipcode,
     };
 
-    let editedBusiness;
+    let updatedBusiness;
 
-    // editedBusiness = await dispatch(editBusiness(payload));
+    updatedBusiness = await dispatch(editBusiness(editedBusiness));
 
-    if (editedBusiness) {
+    if (updatedBusiness) {
       setErrors([]);
       setName('');
       setDescription('');
@@ -81,118 +82,126 @@ const EditBusinessForm = () => {
       setUnit('');
       setState('');
       setZipcode('');
-      history.push(`/businesses/${editedBusiness.id}`);
+      history.push(`/businesses/${updatedBusiness.id}`);
     }
   };
 
   let disabled;
 
-  // if (name.length === 0 || description.length === 0 || phone.length < 10 || streetAddress.length === 0 || state.length === 0 || zipcode.length < 5) {
-  //   disabled = true;
-  // } else {
-  //   disabled = false;
-  // }
+  if (name?.length === 0 || description?.length === 0 || phone?.length < 10 || streetAddress?.length === 0 || state?.length === 0 || zipcode?.length < 5) {
+    disabled = true;
+  } else {
+    disabled = false;
+  }
+
+  let showEditForm = false;
+
+  if (business) showEditForm = true;
 
 
   return (
-    <div className="CreateBusinessFormWrapper">
-      <div className="CreateBusinessFormHeader">
-        <h1>Edit Business Listing</h1>
-      </div>
-      <div className="CreatChannelFormBody">
-        <form onSubmit={handleSubmit}>
-          <div className="CreateBusinessFormErrors">
-            <ul>
-              {errors && errors.map((error) => <li key={error}>{error}</li>)}
-            </ul>
-          </div>
-          <input type="hidden" value={capacity} />
-          <div>
+    <>
+      {showEditForm && (
+      <div className="CreateBusinessFormWrapper">
+        <div className="CreateBusinessFormHeader">
+          <h1>Edit Business Listing</h1>
+        </div>
+        <div className="CreatChannelFormBody">
+          <form onSubmit={handleSubmit}>
+            <div className="CreateBusinessFormErrors">
+              <ul>
+                {errors && errors.map((error) => <li key={error}>{error}</li>)}
+              </ul>
+            </div>
+            <input type="hidden" value={capacity} />
             <div>
-              <label>Business Name</label>
+              <div>
+                <label>Business Name</label>
+              </div>
+              <input
+                type="text"
+                required
+                placeholder="Business Name"
+                value={name}
+                onChange={updateName}
+              />
             </div>
-            <input
-              type="text"
-              required
-              placeholder="Business Name"
-              value={name}
-              onChange={updateName}
-            />
-          </div>
-          <div>
             <div>
-              <label>Description</label>
+              <div>
+                <label>Description</label>
+              </div>
+              <textarea
+                type="text"
+                placeholder="Description"
+                value={description}
+                onChange={updateDescription}
+              />
             </div>
-            <textarea
-              type="text"
-              placeholder="Description"
-              value={description}
-              onChange={updateDescription}
-            />
-          </div>
-          <div>
             <div>
-              <label>Phone Number</label>
+              <div>
+                <label>Phone Number</label>
+              </div>
+              <input
+                type="text"
+                required
+                placeholder="Phone Number"
+                value={phone}
+                onChange={updatePhone}
+              />
             </div>
-            <input
-              type="text"
-              required
-              placeholder="Phone Number"
-              value={phone}
-              onChange={updatePhone}
-            />
-          </div>
-          <div>
             <div>
-              <label>Street Address</label>
+              <div>
+                <label>Street Address</label>
+              </div>
+              <input
+                type="text"
+                required
+                placeholder="Street Address"
+                value={streetAddress}
+                onChange={updateStreetAddress}
+              />
             </div>
-            <input
-              type="text"
-              required
-              placeholder="Street Address"
-              value={streetAddress}
-              onChange={updateStreetAddress}
-            />
-          </div>
-          <div>
-            <div className='reg-font-weight'>
-              <label>Unit</label>
-              <span className='optional'> (optional)</span>
+            <div>
+              <div className='reg-font-weight'>
+                <label>Unit</label>
+                <span className='optional'> (optional)</span>
+              </div>
+              <input
+                type="text"
+                placeholder="Unit"
+                value={unit}
+                onChange={updateUnit}
+              />
             </div>
-            <input
-              type="text"
-              placeholder="Unit"
-              value={unit}
-              onChange={updateUnit}
-            />
-          </div>
+            <div>
+              <span>State: </span>
+              <select onChange={updateState} value={state}>
+                {states.map(state =>
+                  <option key={state}>{state}</option>
+                )}
+              </select>
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Zipcode"
+                value={zipcode}
+                onChange={updateZipcode}
+              />
+            </div>
+            <div className="CreateChannelButton">
+              <button type="submit" disabled={disabled}>
+                Update Listing
+              </button>
+            </div>
+          </form>
           <div>
-            <span>State: </span>
-            <select onChange={updateState} value={state}>
-              {states.map(state =>
-                <option key={state}>{state}</option>
-              )}
-            </select>
+            <button>Delete Listing</button>
           </div>
-          <div>
-            <input
-              type="text"
-              placeholder="Zipcode"
-              value={zipcode}
-              onChange={updateZipcode}
-            />
-          </div>
-          <div className="CreateChannelButton">
-            <button type="submit" disabled={disabled}>
-              Update Listing
-            </button>
-          </div>
-        </form>
-        <div>
-          <button>Delete Listing</button>
         </div>
       </div>
-    </div>
+      )}
+    </>
   );
 };
 
