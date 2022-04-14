@@ -29,16 +29,20 @@ const EditBusinessForm = () => {
   const [phone, setPhone] = useState(business?.phone);
   const [streetAddress, setStreetAddress] = useState(business?.street_address);
   const [unit, setUnit] = useState(business?.unit);
+  const [city, setCity] = useState(business?.city);
   const [state, setState] = useState(business?.state);
   const [zipcode, setZipcode] = useState(business?.zip_code);
+  const [coverPhoto, setCoverPhoto] = useState(business?.cover_photo);
 
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
   const updatePhone = (e) => setPhone(e.target.value);
   const updateStreetAddress = (e) => setStreetAddress(e.target.value);
   const updateUnit = (e) => setUnit(e.target.value);
+  const updateCity = (e) => setCity(e.target.value);
   const updateState = (e) => setState(e.target.value);
   const updateZipcode = (e) => setZipcode(e.target.value);
+  const updateCoverPhoto = (e) => setCoverPhoto(e.target.value);
 
 
   // useEffect(() => {
@@ -63,8 +67,10 @@ const EditBusinessForm = () => {
       phone,
       streetAddress,
       unit,
+      city,
       state,
       zipcode,
+      coverPhoto,
     };
 
     let data;
@@ -178,6 +184,18 @@ const EditBusinessForm = () => {
               />
             </div>
             <div>
+              <div>
+                <label>City</label>
+              </div>
+              <input
+                type="text"
+                required
+                placeholder="City"
+                value={city}
+                onChange={updateCity}
+              />
+          </div>
+            <div>
               <span>State: </span>
               <select onChange={updateState} value={state}>
                 {states.map(state =>
@@ -191,6 +209,17 @@ const EditBusinessForm = () => {
                 placeholder="Zipcode"
                 value={zipcode}
                 onChange={updateZipcode}
+              />
+            </div>
+            <div>
+              <div>
+                <label>Cover Photo</label>
+              </div>
+              <input
+                type="text"
+                placeholder="Please provide an image to represent your business!"
+                value={coverPhoto}
+                onChange={updateCoverPhoto}
               />
             </div>
             <div className="CreateChannelButton">

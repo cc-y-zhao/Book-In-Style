@@ -30,7 +30,7 @@ class Business(db.Model):
     city = db.Column(db.String(20), nullable=False)
     zip_code = db.Column(db.String(10))
     capacity = db.Column(db.Integer)
-    cover_photo = db.Column(db.String(2000))
+    cover_photo = db.Column(db.String(2083))
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 

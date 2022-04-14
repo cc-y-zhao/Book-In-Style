@@ -45,9 +45,12 @@ const CreateBusinessForm = () => {
       streetAddress,
       unit,
       state,
+      city,
       zipcode,
       coverPhoto,
     };
+
+    console.log('payload-------------', payload)
 
     let data;
 

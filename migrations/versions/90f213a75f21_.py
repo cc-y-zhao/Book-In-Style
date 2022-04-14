@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: dbb3138d58a8
+Revision ID: 90f213a75f21
 Revises: 
-Create Date: 2022-04-14 00:47:04.733688
+Create Date: 2022-04-14 09:28:33.361494
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'dbb3138d58a8'
+revision = '90f213a75f21'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -58,7 +58,7 @@ def upgrade():
     sa.Column('city', sa.String(length=20), nullable=False),
     sa.Column('zip_code', sa.String(length=10), nullable=True),
     sa.Column('capacity', sa.Integer(), nullable=True),
-    sa.Column('cover_photo', sa.String(length=2000), nullable=True),
+    sa.Column('cover_photo', sa.String(length=2083), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
@@ -103,7 +103,7 @@ def upgrade():
     )
     op.create_table('images',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('img_url', sa.String(length=2000), nullable=False),
+    sa.Column('img_url', sa.String(length=2083), nullable=False),
     sa.Column('business_id', sa.Integer(), nullable=False),
     sa.Column('service_id', sa.Integer(), nullable=True),
     sa.Column('name', sa.String(length=25), nullable=True),
@@ -118,9 +118,9 @@ def upgrade():
     sa.Column('business_id', sa.Integer(), nullable=True),
     sa.Column('rating', sa.Integer(), nullable=False),
     sa.Column('review', sa.Text(), nullable=False),
-    sa.Column('img_url_1', sa.String(length=2000), nullable=True),
-    sa.Column('img_url_2', sa.String(length=2000), nullable=True),
-    sa.Column('img_url_3', sa.String(length=2000), nullable=True),
+    sa.Column('img_url_1', sa.String(length=2083), nullable=True),
+    sa.Column('img_url_2', sa.String(length=2083), nullable=True),
+    sa.Column('img_url_3', sa.String(length=2083), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),

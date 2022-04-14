@@ -9,9 +9,9 @@ class Review(db.Model):
   business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'))
   rating = db.Column(db.Integer, nullable=False)
   review = db.Column(db.Text, nullable=False)
-  img_url_1 = db.Column(db.String(2000))
-  img_url_2 = db.Column(db.String(2000))
-  img_url_3 = db.Column(db.String(2000))
+  img_url_1 = db.Column(db.String(2083))
+  img_url_2 = db.Column(db.String(2083))
+  img_url_3 = db.Column(db.String(2083))
   created_at = db.Column(db.DateTime, default=db.func.now())
   updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
