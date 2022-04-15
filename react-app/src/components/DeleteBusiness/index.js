@@ -7,16 +7,6 @@ import { loadBusiness, deleteBusiness } from "../../store/businesses";
 const DeleteBusiness = ({businessId, setShowModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  // const { businessId } = useParams();
-  // const businessIdParsed = parseInt(businessId);
-
-  // const businesses = useSelector((state) => state?.businesses)
-  // const business = useSelector((state) => businesses[businessIdParsed])
-  // const userId = useSelector((state) => state.session.user?.id);
-
-  // useEffect(() => {
-  //   dispatch(loadBusiness(businessIdParsed));
-  // }, [dispatch, businessIdParsed]);
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -27,10 +17,9 @@ const DeleteBusiness = ({businessId, setShowModal}) => {
     deletedBusiness = await dispatch(deleteBusiness(businessId));
 
     if (deletedBusiness) {
-      setShowModal(false)
-      window.alert('Your listing has been deleted')
-      return history.push('/')
-      // return <Redirect to='/'/>
+      setShowModal(false);
+      window.alert('Your listing has been deleted');
+      return history.push('/');
     }
   }
 
