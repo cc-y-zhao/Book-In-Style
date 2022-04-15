@@ -53,7 +53,14 @@ def create_business():
             unit = form.data['unit'],
             state = form.data['state'],
             zip_code = form.data['zipcode'],
-            cover_photo = form.data['coverPhoto']
+            cover_photo = form.data['coverPhoto'],
+            monday = '9:00AM - 6:00PM',
+            tuesday = '9:00AM - 6:00PM',
+            wednesday = '9:00AM - 6:00PM',
+            thursday = '9:00AM - 6:00PM',
+            friday = '9:00AM - 6:00PM',
+            saturday = '9:00AM - 6:00PM',
+            sunday = '9:00AM - 6:00PM',
         )
         db.session.add(business)
         db.session.commit()

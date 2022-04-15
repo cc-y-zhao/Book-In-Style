@@ -31,9 +31,17 @@ class Business(db.Model):
     zip_code = db.Column(db.String(10))
     capacity = db.Column(db.Integer)
     cover_photo = db.Column(db.String(2083))
+
+    monday = db.Column(db.String(20))
+    tuesday = db.Column(db.String(20))
+    wednesday = db.Column(db.String(20))
+    thursday = db.Column(db.String(20))
+    friday = db.Column(db.String(20))
+    saturday = db.Column(db.String(20))
+    sunday = db.Column(db.String(20))
+
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
-
 
     owner = db.relationship("User", back_populates="businesses")
     services = db.relationship('Service', secondary=business_services, back_populates="businesses")
@@ -57,6 +65,7 @@ class Business(db.Model):
             'city': self.city,
             'capacity': self.capacity,
             'cover_photo': self.cover_photo,
+            'hours': {'monday': self.monday, 'tuesday': self.tuesday, 'wednesday': self.wednesday, 'thursday': self.thursday, 'friday': self.friday, 'saturday': self.saturday, 'sunday': self.sunday},
             'services' : [service.to_dict() for service in self.services],
             'languages': [language.to_dict() for language in self.languages],
             'images': [image.to_dict() for image in self.images],
