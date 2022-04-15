@@ -1,4 +1,4 @@
-from app.models import db, User, Business
+from app.models import db, User, Business, Service
 # from app.models import db, Business
 
 # from app.models import db, User, Business, Booking, Review, Favorite, Image, Language, Service
@@ -181,14 +181,41 @@ def seed_all():
     db.session.add(business5)
     db.session.add(business6)
 
-
-
-
     db.session.flush()
 
+    service1 = Service (
+        business_id = '2',
+        name = "Women's Haircut",
+        price = 40,
+    )
 
 
+    service2 = Service (
+        business_id = '2',
+        name = "Men's Haircut",
+        price = 20,
+    )
 
+
+    service3 = Service (
+        business_id = '2',
+        name = "Kid's Haircut",
+        price = 15,
+    )
+
+
+    service4 = Service (
+        business_id = '2',
+        name = "Women's Hair Coloring",
+        price = 80,
+    )
+
+    db.session.add(service1)
+    db.session.add(service2)
+    db.session.add(service3)
+    db.session.add(service4)
+
+    db.session.flush()
 
 
 
@@ -199,9 +226,9 @@ def undo_seed_all():
     db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
     db.session.commit()
 
-    # undo_channels():
-    # db.session.execute('TRUNCATE channels RESTART IDENTITY CASCADE;')
-    # db.session.commit()
+    # undo_services():
+    db.session.execute('TRUNCATE services RESTART IDENTITY CASCADE;')
+    db.session.commit()
 
     # undo_messages():
     # db.session.execute('TRUNCATE messages RESTART IDENTITY CASCADE;')

@@ -44,7 +44,7 @@ class Business(db.Model):
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
     owner = db.relationship("User", back_populates="businesses")
-    services = db.relationship('Service', back_populates="businesses", cascade='all, delete-orphan')
+    services = db.relationship('Service', back_populates="businesses")
     # services = db.relationship('Service', secondary=business_services, back_populates="businesses")
     languages = db.relationship('Language', secondary=business_languages, back_populates="businesses")
     bookings = db.relationship('Booking', back_populates="businesses", cascade="all, delete-orphan")
@@ -67,9 +67,12 @@ class Business(db.Model):
             'capacity': self.capacity,
             'cover_photo': self.cover_photo,
             'hours': {'monday': self.monday, 'tuesday': self.tuesday, 'wednesday': self.wednesday, 'thursday': self.thursday, 'friday': self.friday, 'saturday': self.saturday, 'sunday': self.sunday},
-            'services' : [service.to_dict() for service in self.services],
+            'services' : {service.id: service.to_dict() for service in self.services},
             'languages': [language.to_dict() for language in self.languages],
             'images': [image.to_dict() for image in self.images],
             'bookings': {booking.id: booking.to_dict() for booking in self.bookings},
             'reviews': {review.id: review.to_dict() for review in self.reviews},
         }
+
+
+    # 'services' : [service.to_dict() for service in self.services],

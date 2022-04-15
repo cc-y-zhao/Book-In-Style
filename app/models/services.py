@@ -1,6 +1,6 @@
 import datetime
 from .db import db
-from .businesses import business_services
+# from .businesses import business_services
 
 
 class Service(db.Model):
@@ -14,14 +14,17 @@ class Service(db.Model):
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
     businesses = db.relationship('Business', back_populates='services')
-    # businesses = db.relationship('Business', secondary=business_services, back_populates="services")
     bookings = db.relationship('Booking', back_populates='service', cascade='all, delete-orphan')
     images = db.relationship('Image', back_populates='service', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {
             'id': self.id,
+            'business_id': self.business_id,
             'name': self.name,
             'price': self.price,
-            'images': {image.to_dict() for image in self.images},
+            'images': [image.to_dict() for image in self.images],
         }
+
+    # businesses = db.relationship('Business', secondary=business_services, back_populates="services")
+            # 'images': {image.to_dict() for image in self.images},
