@@ -11,6 +11,9 @@
   justify-content: center;
   align-items: flex-start;
   margin-top: 55px;
+  border: 0.6mm ridge black;
+  width: 1000px;
+  height: 400px;
 }
 
 .cover-photo {
@@ -22,4 +25,14 @@
   margin-right: 100px;
   font-size: 20px;
   font-weight: 600;
+}
+
+.biz-page-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* align-items: flex-start; */
+  margin-top: 35px;
+  width: 1000px;
+  border: 0.6mm ridge black;
 }

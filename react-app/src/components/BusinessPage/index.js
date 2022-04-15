@@ -39,9 +39,9 @@ const BusinessPage = () => {
     <>
       {showBusiness && (
         <div className='biz-page-container'>
-          <div>
+          <div className='edit-biz'>
             {showEdit && (
-              <button onClick={(e) => handleEditRedirect(e)}>Edit Listing</button>
+              <button className='edit-biz-btn' onClick={(e) => handleEditRedirect(e)}>Edit Listing</button>
             )}
           </div>
           <div className='biz-page-prof'>
@@ -56,6 +56,18 @@ const BusinessPage = () => {
             </div>
             <div className='biz-name'>{business['name']}</div>
             <div>------Additional pics will go here------</div>
+          </div>
+          <div className='biz-page-bottom'>
+            <div>About, Reviews, Services</div>
+            <div>Business Hours
+              <div>Monday: </div>
+              <div>Tuesday: </div>
+              <div>Wednesday: </div>
+              <div>Thursday: </div>
+              <div>Friday: </div>
+              <div>Saturday: </div>
+              <div>Sunday: </div>
+            </div>
           </div>
 
         </div>
