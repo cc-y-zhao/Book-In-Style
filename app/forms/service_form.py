@@ -13,7 +13,7 @@ def valid_price(form, field):
   if not price.isnumeric():
       raise ValidationError('Price must contain only digits')
 
-class BookingForm(FlaskForm):
+class ServiceForm(FlaskForm):
   business_id = IntegerField('Business Id', validators=DataRequired())
   name = StringField('Service Name', validators=[DataRequired()])
   price = IntegerField('Service Price', validators=DataRequired())
