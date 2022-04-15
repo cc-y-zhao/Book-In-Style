@@ -210,14 +210,6 @@ const CreateBusinessForm = ({setShowModal}) => {
               onChange={updateCoverPhoto}
             />
           </div>
-          <div>
-            <span>Monday: </span>
-            <select onChange={updateState} value={state}>
-              {states.map(state =>
-                <option key={state}>{state}</option>
-              )}
-            </select>
-          </div>
           <div className="create-biz-btn">
             <button type="submit" disabled={disabled}>
               Create Business Listing

@@ -30,6 +30,17 @@ const BusinessPage = () => {
     dispatch(loadBusiness(businessIdParsed));
   }, [dispatch, businessIdParsed]);
 
+  if (!(businessIdParsed in businesses)) {
+    let sadFace = ':(';
+    return (
+      <>
+        <div className='error-msg'>
+          <h2>The page you are looking for could not be found {sadFace}</h2>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       {showBusiness && (
