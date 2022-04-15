@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
 import EditBusinessModal from "../Modals/EditBusinessModal";
+import AddServiceModal from "../Modals/AddServiceModal";
 import EditBusinessHoursModal from "../Modals/EditBusinessHoursModal";
 
 import ErrorPage from "../Errors/ErrorPage";
@@ -51,6 +52,11 @@ const BusinessPage = () => {
                 <EditBusinessModal/>
               </div>
               // <button className='edit-biz-btn' onClick={(e) => handleEditRedirect(e)}>Edit Listing</button>
+            )}
+            {showEdit && (
+              <div className='edit-biz-btn'>
+                <AddServiceModal/>
+              </div>
             )}
           </div>
           <div className='biz-page-prof'>
