@@ -12,42 +12,29 @@ const CreateBookingForm = ({setShowModal}) => {
   const history = useHistory();
 
   const [errors, setErrors] = useState([]);
-  // const ownerId = useSelector((state) => state.session.user?.id);
-  const capacity = 1;
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [phone, setPhone] = useState("");
-  const [streetAddress, setStreetAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [unit, setUnit] = useState("");
-  const [state, setState] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [coverPhoto, setCoverPhoto] = useState("");
 
-  const updateName = (e) => setName(e.target.value);
-  const updateDescription = (e) => setDescription(e.target.value);
-  const updatePhone = (e) => setPhone(e.target.value);
-  const updateStreetAddress = (e) => setStreetAddress(e.target.value);
-  const updateUnit = (e) => setUnit(e.target.value);
-  const updateCity = (e) => setCity(e.target.value);
-  const updateState = (e) => setState(e.target.value);
-  const updateZipcode = (e) => setZipcode(e.target.value);
-  const updateCoverPhoto = (e) => setCoverPhoto(e.target.value);
+  //business id will grabbed from modal context
+  // will need to grab business' services from useselector... or pass through modal context?
+
+  const userId = useSelector((state) => state.session.user?.id);
+  const [serviceId, setServiceId] = useState("")
+  const [time, setTime] = useState("");
+  const [date, setDate] = useState("");
+
+  const updateServiceId = (e) => setServiceId(e.target.value);
+  const updateTime = (e) => setTime(e.target.value);
+  const updateDate = (e) => setDate(e.target.value);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const payload = {
-      capacity,
-      name,
-      description,
-      phone,
-      streetAddress,
-      unit,
-      state,
-      city,
-      zipcode,
-      coverPhoto,
+      userId,
+      serviceId,
+      businessId,
+      date,
+      time
     };
 
     // console.log('payload-------------', payload)
@@ -60,15 +47,9 @@ const CreateBookingForm = ({setShowModal}) => {
 
     if (data?.id) {
       setErrors([]);
-      setName('');
-      setDescription('');
-      setPhone('');
-      setStreetAddress('');
-      setUnit('');
-      setCity('');
-      setState('');
-      setZipcode('');
-      setCoverPhoto('');
+      setServiceId('');
+      setTime('');
+      setDate('');
 
       await dispatch(loadBusiness(data.id))
       setShowModal(false)
@@ -81,11 +62,11 @@ const CreateBookingForm = ({setShowModal}) => {
 
   let disabled;
 
-  if (name.length === 0 || description.length === 0 || phone.length < 10 || streetAddress.length === 0 || state.length === 0 || zipcode.length < 5 || coverPhoto.length < 10 || city.length < 3) {
-    disabled = true;
-  } else {
-    disabled = false;
-  }
+  // if (name.length === 0 || description.length === 0 || phone.length < 10 || streetAddress.length === 0 || state.length === 0 || zipcode.length < 5 || coverPhoto.length < 10 || city.length < 3) {
+  //   disabled = true;
+  // } else {
+  //   disabled = false;
+  // }
 
   return (
     <div className="CreateBusinessFormWrapper">
@@ -178,28 +159,6 @@ const CreateBookingForm = ({setShowModal}) => {
                 <option key={state}>{state}</option>
               )}
             </select>
-          </div>
-          <div>
-            <div>
-              <label>Zipcode</label>
-            </div>
-            <input
-              type="text"
-              placeholder="Zipcode"
-              value={zipcode}
-              onChange={updateZipcode}
-            />
-          </div>
-          <div>
-            <div>
-              <label>Cover Photo</label>
-            </div>
-            <input
-              type="text"
-              placeholder="Please provide an image to represent your business!"
-              value={coverPhoto}
-              onChange={updateCoverPhoto}
-            />
           </div>
           <div className="create-biz-btn">
             <button type="submit" disabled={disabled}>
