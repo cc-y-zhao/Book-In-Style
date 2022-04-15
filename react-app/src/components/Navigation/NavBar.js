@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LoginModal from '../Modals/LoginModal';
 import ProfileButtonModal from './ProfileButtonModal';
+import CreateBusinessModal from '../Modals/CreateBusinessModal';
 import './NavBar.css'
 
 
@@ -16,7 +17,8 @@ const NavBar = () => {
     sessionLinks = (
       <>
         <div className='logged-in-div'>
-          <NavLink to='/businesses/new' className='set-up-business'>Set Up My Business</NavLink>
+          <div className='set-up-business'><CreateBusinessModal/></div>
+          {/* <NavLink to='/businesses/new' className='set-up-business'>Set Up My Business</NavLink> */}
           <span className='welcome-msg nav-element'>Welcome, {sessionUser.first_name}!</span>
           <ProfileButtonModal user={sessionUser} />
         </div>

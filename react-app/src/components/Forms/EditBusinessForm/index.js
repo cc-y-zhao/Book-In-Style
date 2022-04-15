@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 import states from "../BusinessForm/states";
-import DeleteBusinessModal from "../../components/Modals/DeleteBusinessModal"
+import DeleteBusinessModal from "../../Modals/DeleteBusinessModal"
 
-import { loadBusiness, editBusiness, deleteBusiness } from "../../store/businesses";
+import { loadBusiness, editBusiness, deleteBusiness } from "../../../store/businesses";
 
 const EditBusinessForm = () => {
   const dispatch = useDispatch();

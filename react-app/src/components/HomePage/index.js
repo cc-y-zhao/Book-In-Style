@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory, NavLink } from "react-router-dom";
 
 import { loadBusiness, loadAllBusinesses } from "../../store/businesses";
-
+import './HomePage.css';
 const HomePage = () => {
   const dispatch = useDispatch();
   const history = useHistory();

@@ -24,13 +24,27 @@
 
 .biz-right {
   position: absolute;
-  margin-left: 60%;
+  margin-left: 50%;
+}
+
+.street-address {
+  width: 60px;
 }
 
 .cover-photo {
   border: 0.6mm ridge black;
 }
 
+.about-reviews-services {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.biz-hours-title {
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
 .biz-name {
   margin-left: 15px;
   margin-right: 100px;

@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import states from './states'
 
-import { createBusiness, loadBusiness } from "../../store/businesses";
+import { createBusiness, loadBusiness } from "../../../store/businesses";
 
 import "./CreateBusinessForm.css";
 
-const CreateBusinessForm = () => {
+const CreateBusinessForm = ({setShowModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -71,6 +71,7 @@ const CreateBusinessForm = () => {
       setCoverPhoto('');
 
       await dispatch(loadBusiness(data.id))
+      setShowModal(false)
       return history.push(`/businesses/${data.id}`);
       // return <Redirect to={`/businesses/${data.id}`}/>
     } else {
@@ -89,10 +90,10 @@ const CreateBusinessForm = () => {
   return (
     <div className="CreateBusinessFormWrapper">
       <div className="CreateBusinessFormHeader">
-        <h1>Create Business Listing</h1>
+        <h3 className='list-biz-title'>List Your Business</h3>
       </div>
       <div className="CreatChannelFormBody">
-        <form onSubmit={handleSubmit}>
+        <form className='create-biz-form' onSubmit={handleSubmit}>
           <div className="CreateBusinessFormErrors">
             <ul>
               {errors && errors.map((error) => <li key={error}>{error}</li>)}
@@ -117,7 +118,7 @@ const CreateBusinessForm = () => {
             </div>
             <textarea
               type="text"
-              placeholder="Description"
+              placeholder="Tell us a bit about your business"
               value={description}
               onChange={updateDescription}
             />
@@ -200,7 +201,7 @@ const CreateBusinessForm = () => {
               onChange={updateCoverPhoto}
             />
           </div>
-          <div className="CreateChannelButton">
+          <div className="create-biz-btn">
             <button type="submit" disabled={disabled}>
               Create Business Listing
             </button>

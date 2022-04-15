@@ -58,11 +58,13 @@ const BusinessPage = () => {
             <div className='biz-pics'>------Additional pics will go here------</div>
           </div>
           <div className='biz-page-bottom'>
-            <div>About, Reviews, Services</div>
+            <div className="about-reviews-services">About, Reviews, Services
+              <div>{business.description}</div>
+            </div>
             <div className='biz-right'>
-              <div>{business.street_address} {business.unit}</div>
+              <div className='street-address'>{business.street_address} {business.unit}</div>
               <div>{business.city}, {business.state} {business.zip_code}</div>
-              <div>Business Hours</div>
+              <div className='biz-hours-title'>Business Hours</div>
               <div>
                 <div>Monday: </div>
                 <div>Tuesday: </div>
