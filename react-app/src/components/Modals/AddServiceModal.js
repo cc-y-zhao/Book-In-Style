@@ -4,7 +4,7 @@ import ServiceForm from '../Forms/ServiceForm';
 
 import '../Navigation/NavBar.css'
 
-function AddServiceModal() {
+function AddServiceModal({businessId}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -12,7 +12,7 @@ function AddServiceModal() {
       <div onClick={() => setShowModal(true)}>Add Service</div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ServiceForm setShowModal={setShowModal}/>
+          <ServiceForm setShowModal={setShowModal} businessId={businessId}/>
         </Modal>
       )}
     </>

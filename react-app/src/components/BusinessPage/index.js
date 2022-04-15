@@ -55,7 +55,7 @@ const BusinessPage = () => {
             )}
             {showEdit && (
               <div className='edit-biz-btn'>
-                <AddServiceModal/>
+                <AddServiceModal businessId={businessIdParsed}/>
               </div>
             )}
           </div>

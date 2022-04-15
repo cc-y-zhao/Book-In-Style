@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 
-import { createBusiness, loadBusiness } from "../../../store/businesses";
+import { createService, loadBusiness } from "../../../store/businesses";
 
 // import "./CreateBusinessForm.css";
 
@@ -32,16 +32,17 @@ const ServiceForm = ({setShowModal, businessId}) => {
 
     let data;
 
-    data = await dispatch(createBusiness(payload));
+    data = await dispatch(createService(payload));
 
     console.log('data in beofre if data--------------', data)
 
     if (data?.id) {
       setErrors([]);
 
-      await dispatch(loadBusiness(data.id))
+      await dispatch(loadBusiness(businessId))
       setShowModal(false)
-      return history.push(`/businesses/${data.id}`);
+      return window.alert('This service was sucessfully added!')
+      // return history.push(`/businesses/${data.id}`);
       // return <Redirect to={`/businesses/${data.id}`}/>
     } else {
       return setErrors(data)
