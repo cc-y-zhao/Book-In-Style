@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 90f213a75f21
+Revision ID: bf5f2a416d29
 Revises: 
-Create Date: 2022-04-14 09:28:33.361494
+Create Date: 2022-04-15 11:10:11.651951
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '90f213a75f21'
+revision = 'bf5f2a416d29'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -59,6 +59,13 @@ def upgrade():
     sa.Column('zip_code', sa.String(length=10), nullable=True),
     sa.Column('capacity', sa.Integer(), nullable=True),
     sa.Column('cover_photo', sa.String(length=2083), nullable=True),
+    sa.Column('monday', sa.String(length=20), nullable=True),
+    sa.Column('tuesday', sa.String(length=20), nullable=True),
+    sa.Column('wednesday', sa.String(length=20), nullable=True),
+    sa.Column('thursday', sa.String(length=20), nullable=True),
+    sa.Column('friday', sa.String(length=20), nullable=True),
+    sa.Column('saturday', sa.String(length=20), nullable=True),
+    sa.Column('sunday', sa.String(length=20), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),

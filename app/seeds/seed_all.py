@@ -56,7 +56,14 @@ def seed_all():
         state = 'CA',
         zip_code = '91001',
         capacity = 1,
-        cover_photo = 'https://cdn.vox-cdn.com/thumbor/WenHe_SMDEmFp6FwNVc8Vkltn7A=/0x93:750x656/1200x900/filters:focal(0x93:750x656)/cdn.vox-cdn.com/uploads/chorus_image/image/49198829/stacks_image_468.0.0.0.0.0.jpg'
+        cover_photo = 'https://cdn.vox-cdn.com/thumbor/WenHe_SMDEmFp6FwNVc8Vkltn7A=/0x93:750x656/1200x900/filters:focal(0x93:750x656)/cdn.vox-cdn.com/uploads/chorus_image/image/49198829/stacks_image_468.0.0.0.0.0.jpg',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
     )
 
     business2 = Business(
@@ -70,7 +77,14 @@ def seed_all():
         state = 'CA',
         zip_code = '91001',
         capacity = 1,
-        cover_photo = 'https://www.genroe.com/wp-content/uploads/customer-feedback-beauty-salon-e1591225978543.jpg'
+        cover_photo = 'https://www.genroe.com/wp-content/uploads/customer-feedback-beauty-salon-e1591225978543.jpg',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
     )
 
     business3 = Business(
@@ -84,7 +98,14 @@ def seed_all():
         state = 'CA',
         zip_code = '91001',
         capacity = 1,
-        cover_photo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAcPoq0Gu_rst-vTwICDk7fsF-LWNkwtjp7g&usqp=CAU'
+        cover_photo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAcPoq0Gu_rst-vTwICDk7fsF-LWNkwtjp7g&usqp=CAU',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
     )
 
     business4 = Business(
@@ -99,6 +120,13 @@ def seed_all():
         zip_code = '91001',
         capacity = 1,
         cover_photo = 'https://media.istockphoto.com/photos/curls-of-hair-is-freely-flying-in-front-of-the-face-of-young-woman-picture-id1267002400?k=20&m=1267002400&s=612x612&w=0&h=H3NjFxmGwdt155DQkDGqmPQEWuDzpVdf5DlVlJJpsyA=',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
     )
 
     business5 = Business(
@@ -113,6 +141,13 @@ def seed_all():
         zip_code = '91001',
         capacity = 1,
         cover_photo = 'https://www.longisland.com/site_media/images/article/subarticle_image/shutterstock_626152427.jpg.644x0_q85.jpg',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
     )
 
     business6 = Business(
@@ -127,6 +162,13 @@ def seed_all():
         zip_code = '91001',
         capacity = 1,
         cover_photo = 'https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/mens_haircut_2021_hp_tile.ec1c6afffd0129b6951b.png',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
     )
 
 
