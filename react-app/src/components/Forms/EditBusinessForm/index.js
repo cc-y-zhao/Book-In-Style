@@ -88,7 +88,9 @@ const EditBusinessForm = ({setShowModal}) => {
       setUnit('');
       setState('');
       setZipcode('');
-      history.push(`/businesses/${data.id}`);
+      await loadBusiness(data.id);
+      setShowModal(false);
+      // history.push(`/businesses/${data.id}`);
     } else {
       return setErrors(data)
     }
