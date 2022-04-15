@@ -3,11 +3,11 @@ from sqlalchemy import DateTime
 from sqlalchemy.sql import func
 
 # Join table for businesses/services
-business_services = db.Table(
-    "business_services",
-    db.Column("business_id", db.ForeignKey("businesses.id"), primary_key=True),
-    db.Column("service_id", db.ForeignKey("services.id"), primary_key=True)
-)
+# business_services = db.Table(
+#     "business_services",
+#     db.Column("business_id", db.ForeignKey("businesses.id"), primary_key=True),
+#     db.Column("service_id", db.ForeignKey("services.id"), primary_key=True)
+# )
 
 # Join table for businesses/languages
 business_languages = db.Table(
@@ -44,7 +44,8 @@ class Business(db.Model):
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
     owner = db.relationship("User", back_populates="businesses")
-    services = db.relationship('Service', secondary=business_services, back_populates="businesses")
+    services = db.relationship('Service', back_populates="businesses", cascade='all, delete-orphan')
+    # services = db.relationship('Service', secondary=business_services, back_populates="businesses")
     languages = db.relationship('Language', secondary=business_languages, back_populates="businesses")
     bookings = db.relationship('Booking', back_populates="businesses", cascade="all, delete-orphan")
     reviews = db.relationship('Review', back_populates='businesses', cascade='all, delete-orphan')

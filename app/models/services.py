@@ -7,12 +7,14 @@ class Service(db.Model):
     __tablename__ = 'services'
 
     id = db.Column(db.Integer, primary_key=True)
+    business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'))
     name = db.Column(db.String(50), nullable=False)
     price = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
-    businesses = db.relationship('Business', secondary=business_services, back_populates="services")
+    businesses = db.relationship('Business', back_populates='services')
+    # businesses = db.relationship('Business', secondary=business_services, back_populates="services")
     bookings = db.relationship('Booking', back_populates='service', cascade='all, delete-orphan')
     images = db.relationship('Image', back_populates='service', cascade='all, delete-orphan')
 
