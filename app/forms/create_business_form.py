@@ -26,19 +26,19 @@ def valid_phone(form, field):
     if not len(phone) == 10:
         raise ValidationError('Phone number must include 10 digits')
 
-    print('\n\n\n phone of current user\n\n\n', phone, '\n\n\n')
+    # print('\n\n\n phone of current user\n\n\n', phone, '\n\n\n')
 
     existing_business = Business.query.filter(Business.phone == phone).first()
 
-    print('\n\n\n EXISTING BUSINESS \n\n\n', existing_business, '\n\n\n')
+    # print('\n\n\n EXISTING BUSINESS \n\n\n', existing_business, '\n\n\n')
 
     if existing_business:
         if existing_business.owner_id != current_user.id:
-            print('\n\n\n curreent user id \n\n\n', current_user.id, '\n\n\n')
-            print('\n\n\n existing biz owner user id \n\n\n', existing_business.owner_id, '\n\n\n')
-            print('\n\n\n BOOLEAN \n\n\n', existing_business.owner_id != current_user.id, '\n\n\n')
-            print('\n\n\n VBUSINESS \n\n\n', existing_business, '\n\n\n')
-            print('\n\n\n VBUSINESS phone \n\n\n', existing_business.phone, '\n\n\n')
+            # print('\n\n\n curreent user id \n\n\n', current_user.id, '\n\n\n')
+            # print('\n\n\n existing biz owner user id \n\n\n', existing_business.owner_id, '\n\n\n')
+            # print('\n\n\n BOOLEAN \n\n\n', existing_business.owner_id != current_user.id, '\n\n\n')
+            # print('\n\n\n VBUSINESS \n\n\n', existing_business, '\n\n\n')
+            # print('\n\n\n VBUSINESS phone \n\n\n', existing_business.phone, '\n\n\n')
 
 
             raise ValidationError('Phone number is already registered with an existing business.')

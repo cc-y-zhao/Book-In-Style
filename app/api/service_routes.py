@@ -19,7 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 @service_routes.route('/', methods=['POST'])
 # @login_required
-def create_business():
+def create_service():
 
     form = ServiceForm()
 
