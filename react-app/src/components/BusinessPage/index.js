@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
+import EditBusinessModal from "../Modals/EditBusinessModal";
 import { loadBusiness } from "../../store/businesses";
 
 import './BusinessPage.css'
@@ -29,19 +30,16 @@ const BusinessPage = () => {
     dispatch(loadBusiness(businessIdParsed));
   }, [dispatch, businessIdParsed]);
 
-  const handleEditRedirect = (e) => {
-    e.preventDefault();
-    return history.push(`/businesses/${businessIdParsed}/edit`)
-    // return <Redirect to={`/businesses/${businessIdParsed}/edit`}/>
-  }
-
   return (
     <>
       {showBusiness && (
         <div className='biz-page-container'>
           <div className='edit-biz'>
             {showEdit && (
-              <button className='edit-biz-btn' onClick={(e) => handleEditRedirect(e)}>Edit Listing</button>
+              <div className='edit-biz-btn'>
+                <EditBusinessModal/>
+              </div>
+              // <button className='edit-biz-btn' onClick={(e) => handleEditRedirect(e)}>Edit Listing</button>
             )}
           </div>
           <div className='biz-page-prof'>

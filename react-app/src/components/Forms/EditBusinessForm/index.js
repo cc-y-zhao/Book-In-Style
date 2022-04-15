@@ -5,8 +5,9 @@ import states from "../BusinessForm/states";
 import DeleteBusinessModal from "../../Modals/DeleteBusinessModal"
 
 import { loadBusiness, editBusiness, deleteBusiness } from "../../../store/businesses";
+import './EditBusiness.css';
 
-const EditBusinessForm = () => {
+const EditBusinessForm = ({setShowModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -114,10 +115,10 @@ const EditBusinessForm = () => {
       {showEditForm && (
       <div className="CreateBusinessFormWrapper">
         <div className="CreateBusinessFormHeader">
-          <h1>Edit Business Listing</h1>
+          <h3 className='list-biz-title'>Edit Listing</h3>
         </div>
-        <div className="CreatChannelFormBody">
-          <form onSubmit={handleSubmit}>
+        <div className="CreateBizFormBody">
+          <form className='create-biz-form' onSubmit={handleSubmit}>
             <div className="CreateBusinessFormErrors">
               <ul>
                 {errors && errors.map((error) => <li key={error}>{error}</li>)}
@@ -222,13 +223,13 @@ const EditBusinessForm = () => {
                 onChange={updateCoverPhoto}
               />
             </div>
-            <div className="CreateChannelButton">
+            <div className="create-biz-btn">
               <button type="submit" disabled={disabled}>
                 Update Listing
               </button>
             </div>
           </form>
-          <div>
+          <div className='delete-biz-btn'>
             <DeleteBusinessModal businessId={businessIdParsed}/>
           </div>
         </div>
