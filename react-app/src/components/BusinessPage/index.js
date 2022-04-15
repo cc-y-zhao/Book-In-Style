@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
-import EditBusinessForm from "../../Forms/EditBusinessForm";
-
+import EditBusinessModal from "../Modals/EditBusinessModal";
 import { loadBusiness } from "../../store/businesses";
+
+import './BusinessPage.css'
 
 const BusinessPage = () => {
   const dispatch = useDispatch();
@@ -29,22 +30,51 @@ const BusinessPage = () => {
     dispatch(loadBusiness(businessIdParsed));
   }, [dispatch, businessIdParsed]);
 
-  const handleEditRedirect = (e) => {
-    e.preventDefault();
-    return history.push(`/businesses/${businessIdParsed}/edit`)
-    // return <Redirect to={`/businesses/${businessIdParsed}/edit`}/>
-  }
-
   return (
     <>
       {showBusiness && (
-        <div>
-          <h2>{business['name']}</h2>
-          <div>
+        <div className='biz-page-container'>
+          <div className='edit-biz'>
             {showEdit && (
-              <button onClick={(e) => handleEditRedirect(e)}>Edit Listing</button>
+              <div className='edit-biz-btn'>
+                <EditBusinessModal/>
+              </div>
+              // <button className='edit-biz-btn' onClick={(e) => handleEditRedirect(e)}>Edit Listing</button>
             )}
           </div>
+          <div className='biz-page-prof'>
+            <div>
+              <img
+                className='cover-photo'
+                src={business.cover_photo}
+                alt={`${business.name}`}
+                height="180px"
+                width="180px"
+              />
+            </div>
+            <div className='biz-name'>{business['name']}</div>
+            <div className='biz-pics'>------Additional pics will go here------</div>
+          </div>
+          <div className='biz-page-bottom'>
+            <div className="about-reviews-services">About, Reviews, Services
+              <div>{business.description}</div>
+            </div>
+            <div className='biz-right'>
+              <div className='street-address'>{business.street_address} {business.unit}</div>
+              <div>{business.city}, {business.state} {business.zip_code}</div>
+              <div className='biz-hours-title'>Business Hours</div>
+              <div>
+                <div>Monday: </div>
+                <div>Tuesday: </div>
+                <div>Wednesday: </div>
+                <div>Thursday: </div>
+                <div>Friday: </div>
+                <div>Saturday: </div>
+                <div>Sunday: </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       )}
     </>

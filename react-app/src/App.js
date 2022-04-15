@@ -3,13 +3,15 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/Navigation/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import CreateBusinessForm from './Forms/BusinessForm';
-import EditBusinessForm from './Forms/EditBusinessForm';
+import CreateBusinessForm from './components/Forms/BusinessForm';
+import EditBusinessForm from './components/Forms/EditBusinessForm';
 import BusinessPage from './components/BusinessPage';
+import BusinessesPage from './components/Businesses';
+import HomePage from './components/HomePage';
 
 import { authenticate } from './store/session';
 
@@ -33,13 +35,16 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/' exact={true}>
-          {/* home page */}
+          <HomePage />
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/businesses' exact={true}>
+          <BusinessesPage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

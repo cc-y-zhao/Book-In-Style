@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 import states from "../BusinessForm/states";
-import DeleteBusinessModal from "../../components/Modals/DeleteBusinessModal"
+import DeleteBusinessModal from "../../Modals/DeleteBusinessModal"
 
-import { loadBusiness, editBusiness, deleteBusiness } from "../../store/businesses";
+import { loadBusiness, editBusiness, deleteBusiness } from "../../../store/businesses";
+import './EditBusiness.css';
 
-const EditBusinessForm = () => {
+const EditBusinessForm = ({setShowModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -29,16 +30,20 @@ const EditBusinessForm = () => {
   const [phone, setPhone] = useState(business?.phone);
   const [streetAddress, setStreetAddress] = useState(business?.street_address);
   const [unit, setUnit] = useState(business?.unit);
+  const [city, setCity] = useState(business?.city);
   const [state, setState] = useState(business?.state);
   const [zipcode, setZipcode] = useState(business?.zip_code);
+  const [coverPhoto, setCoverPhoto] = useState(business?.cover_photo);
 
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
   const updatePhone = (e) => setPhone(e.target.value);
   const updateStreetAddress = (e) => setStreetAddress(e.target.value);
   const updateUnit = (e) => setUnit(e.target.value);
+  const updateCity = (e) => setCity(e.target.value);
   const updateState = (e) => setState(e.target.value);
   const updateZipcode = (e) => setZipcode(e.target.value);
+  const updateCoverPhoto = (e) => setCoverPhoto(e.target.value);
 
 
   // useEffect(() => {
@@ -63,8 +68,10 @@ const EditBusinessForm = () => {
       phone,
       streetAddress,
       unit,
+      city,
       state,
       zipcode,
+      coverPhoto,
     };
 
     let data;
@@ -81,7 +88,9 @@ const EditBusinessForm = () => {
       setUnit('');
       setState('');
       setZipcode('');
-      history.push(`/businesses/${data.id}`);
+      await loadBusiness(data.id);
+      setShowModal(false);
+      // history.push(`/businesses/${data.id}`);
     } else {
       return setErrors(data)
     }
@@ -108,10 +117,10 @@ const EditBusinessForm = () => {
       {showEditForm && (
       <div className="CreateBusinessFormWrapper">
         <div className="CreateBusinessFormHeader">
-          <h1>Edit Business Listing</h1>
+          <h3 className='list-biz-title'>Edit Listing</h3>
         </div>
-        <div className="CreatChannelFormBody">
-          <form onSubmit={handleSubmit}>
+        <div className="CreateBizFormBody">
+          <form className='create-biz-form' onSubmit={handleSubmit}>
             <div className="CreateBusinessFormErrors">
               <ul>
                 {errors && errors.map((error) => <li key={error}>{error}</li>)}
@@ -178,6 +187,18 @@ const EditBusinessForm = () => {
               />
             </div>
             <div>
+              <div>
+                <label>City</label>
+              </div>
+              <input
+                type="text"
+                required
+                placeholder="City"
+                value={city}
+                onChange={updateCity}
+              />
+          </div>
+            <div>
               <span>State: </span>
               <select onChange={updateState} value={state}>
                 {states.map(state =>
@@ -193,13 +214,24 @@ const EditBusinessForm = () => {
                 onChange={updateZipcode}
               />
             </div>
-            <div className="CreateChannelButton">
+            <div>
+              <div>
+                <label>Cover Photo</label>
+              </div>
+              <input
+                type="text"
+                placeholder="Please provide an image to represent your business!"
+                value={coverPhoto}
+                onChange={updateCoverPhoto}
+              />
+            </div>
+            <div className="create-biz-btn">
               <button type="submit" disabled={disabled}>
                 Update Listing
               </button>
             </div>
           </form>
-          <div>
+          <div className='delete-biz-btn'>
             <DeleteBusinessModal businessId={businessIdParsed}/>
           </div>
         </div>

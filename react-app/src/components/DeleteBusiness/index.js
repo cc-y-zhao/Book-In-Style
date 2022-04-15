@@ -27,6 +27,8 @@ const DeleteBusiness = ({businessId, setShowModal}) => {
     deletedBusiness = await dispatch(deleteBusiness(businessId));
 
     if (deletedBusiness) {
+      setShowModal(false)
+      window.alert('Your listing has been deleted')
       return history.push('/')
       // return <Redirect to='/'/>
     }
