@@ -24,15 +24,6 @@ const CreateBusinessForm = ({setShowModal}) => {
   const [zipcode, setZipcode] = useState("");
   const [coverPhoto, setCoverPhoto] = useState("");
 
-  const [monday, setMonday] = useState('');
-  const [tuesday, setTuesday] = useState('');
-  const [wednesday, setWednesday] = useState('');
-  const [thursday, setThursday] = useState('');
-  const [friday, setFriday] = useState('');
-  const [saturday, setSaturday] = useState('');
-  const [sunday, setSunday] = useState('');
-
-
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
   const updatePhone = (e) => setPhone(e.target.value);

@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
 import EditBusinessModal from "../Modals/EditBusinessModal";
+import EditBusinessHoursModal from "../Modals/EditBusinessHoursModal";
+
+import ErrorPage from "../Errors/ErrorPage";
 import { loadBusiness } from "../../store/businesses";
 
 import './BusinessPage.css'
@@ -31,12 +34,9 @@ const BusinessPage = () => {
   }, [dispatch, businessIdParsed]);
 
   if (!(businessIdParsed in businesses)) {
-    let sadFace = ':(';
     return (
       <>
-        <div className='error-msg'>
-          <h2>The page you are looking for could not be found {sadFace}</h2>
-        </div>
+        <ErrorPage />
       </>
     );
   }
@@ -73,6 +73,13 @@ const BusinessPage = () => {
             <div className='biz-right'>
               <div className='street-address'>{business.street_address} {business.unit}</div>
               <div>{business.city}, {business.state} {business.zip_code}</div>
+              <div className='edit-biz'>
+                {showEdit && (
+                  <div className='edit-biz-btn'>
+                    <EditBusinessHoursModal businessId={businessIdParsed}/>
+                  </div>
+                )}
+              </div>
               <div className='biz-hours-title'>Business Hours</div>
               <div>
                 <div>Monday: </div>

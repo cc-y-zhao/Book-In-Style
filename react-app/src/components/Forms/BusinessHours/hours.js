@@ -39,3 +39,6 @@ const hours = [
   '11:30 PM',
   '12:00 AM',
 ]
+
+
+export default hours;
