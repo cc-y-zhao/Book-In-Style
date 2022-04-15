@@ -124,6 +124,41 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
   }
 };
 
+/////////////////////////////////SERVICES////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+const CREATE_SERVICE = 'services/CREATE_SERVICE'
+
+
+const createdService = (service) => ({
+  type: CREATE_SERVICE,
+  service
+});
+
+
+export const createService = (service) => async (dispatch) => {
+
+  const response = await fetch('/api/services/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(service),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    // console.log('data in action creator-----------', data)
+    dispatch(createdBusiness(data))
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
+  }
+}
 
 const initialState = {};
 

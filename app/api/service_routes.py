@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db, Business
-from app.forms import BusinessForm
+from app.models import User, db, Business, Service
+from app.forms import ServiceForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 
@@ -17,37 +17,22 @@ def validation_errors_to_error_messages(validation_errors):
             # errorMessages.append([field, ':', error])
     return errorMessages
 
-# @service_routes.route('/', methods=['POST'])
-# # @login_required
-# def create_business():
+@service_routes.route('/', methods=['POST'])
+# @login_required
+def create_business():
 
-#     form = BusinessForm()
+    form = ServiceForm()
 
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         business = Business(
-#             owner_id = current_user.id,
-#             capacity = form.data['capacity'],
-#             name = form.data['name'],
-#             description = form.data['description'],
-#             phone = form.data['phone'],
-#             street_address = form.data['streetAddress'],
-#             city = form.data['city'],
-#             unit = form.data['unit'],
-#             state = form.data['state'],
-#             zip_code = form.data['zipcode'],
-#             cover_photo = form.data['coverPhoto'],
-#             monday = '9:00AM - 6:00PM',
-#             tuesday = '9:00AM - 6:00PM',
-#             wednesday = '9:00AM - 6:00PM',
-#             thursday = '9:00AM - 6:00PM',
-#             friday = '9:00AM - 6:00PM',
-#             saturday = '9:00AM - 6:00PM',
-#             sunday = '9:00AM - 6:00PM',
-#         )
-#         db.session.add(business)
-#         db.session.commit()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        service = Service(
+            business_id = form.data['businessId'],
+            name = form.data['name'],
+            price = form.data['price'],
+        )
+        db.session.add(service)
+        db.session.commit()
 
-#         return business.to_dict()
-#     # print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
-#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        return service.to_dict()
+    # print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
