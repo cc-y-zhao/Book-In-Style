@@ -80,8 +80,9 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service}) => {
             <div>
               <label>Date: </label>
             </div>
+      			<label htmlFor="date" style={{ marginTop: "10px" }}></label>
             <input
-              type="text"
+              type="date"
               required
               placeholder="Date"
               value={date}
