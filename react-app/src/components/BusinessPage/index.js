@@ -5,6 +5,7 @@ import { useParams, Redirect, useHistory } from "react-router-dom";
 import EditBusinessModal from "../Modals/EditBusinessModal";
 import AddServiceModal from "../Modals/AddServiceModal";
 import EditBusinessHoursModal from "../Modals/EditBusinessHoursModal";
+import Services from "../Services";
 
 import ErrorPage from "../Errors/ErrorPage";
 import { loadBusiness } from "../../store/businesses";
@@ -19,6 +20,7 @@ const BusinessPage = () => {
 
   const businesses = useSelector((state) => state?.businesses)
   const business = useSelector((state) => businesses[businessIdParsed])
+  const services = business.services;
   const userId = useSelector((state) => state.session.user?.id);
 
 
@@ -78,7 +80,8 @@ const BusinessPage = () => {
           </div>
           <div className='biz-page-bottom'>
             <div className="about-reviews-services">About, Reviews, Services
-              <div>{business.description}</div>
+              {/* <div>{business.description}</div> */}
+              <div><Services services={services}/></div>
             </div>
             <div className='biz-right'>
               <div className='street-address'>{business.street_address} {business.unit}</div>
