@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
-import { loadBusiness, deleteBusiness } from "../../store/businesses";
+import { deleteBooking } from "../../store/bookings";
 
 const DeleteBooking = ({booking, setShowModal}) => {
   const dispatch = useDispatch();

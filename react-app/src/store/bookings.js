@@ -1,7 +1,8 @@
 
 const CREATE_BOOKING = 'bookings/CREATE_BOOKING';
 const GET_BOOKINGS_BY_USER_WHO_BOOKED = 'bookings/GET_BOOKINGS_BY_USER_WHO_BOOKED';
-const DELETE_ONE_BOOKING = 'bookings/DELETE_ONE_BOOKING';
+const EDIT_BOOKING = 'bookings/EDIT_BOOKING';
+const DELETE_BOOKING = 'bookings/DELETE_BOOKING';
 
 const createdBooking = (booking) => ({
   type: CREATE_BOOKING,
@@ -13,8 +14,13 @@ const bookingsByUser = (bookings) => ({
   bookings
 });
 
+const editOneBooking = (booking) => ({
+  type: EDIT_BOOKING,
+  booking
+});
+
 const deleteOneBooking = (booking) => ({
-  type: DELETE_ONE_BOOKING,
+  type: DELETE_BOOKING,
   booking
 });
 
@@ -62,9 +68,34 @@ export const loadBookingsByUser = (userId) => async (dispatch) => {
   }
 }
 
-export const deleteBooking = (businessId) => async (dispatch) => {
-  console.log('business id in action creator------', businessId)
-  const response = await fetch(`/api/businesses/${businessId}`, {
+export const editBooking = (editedBooking) => async (dispatch) => {
+
+  console.log('edited booking beofre fetch----------', editedBooking)
+
+  const response = await fetch(`/api/bookings/${editedBooking.bookingId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(editedBooking),
+  });
+
+
+  if (response.ok) {
+    const updatedBooking = await response.json();
+    dispatch(editOneBooking(updatedBooking))
+    return updatedBooking;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
+  }
+};
+
+export const deleteBooking = (bookingId) => async (dispatch) => {
+  console.log('business id in action creator------', bookingId)
+  const response = await fetch(`/api/bookings/${bookingId}`, {
     method: "DELETE",
   });
 
@@ -98,9 +129,15 @@ export default function reducer(state = initialState, action) {
 
       return newState;
 
-    case DELETE_ONE_BOOKING:
-      const booking = action.booking;
-      delete newState[booking.id];
+    case EDIT_BOOKING:
+      let updatedBooking = action.booking;
+      newState[updatedBooking.id] = updatedBooking;
+
+      return newState;
+
+    case DELETE_BOOKING:
+      let deletedBooking = action.booking;
+      delete newState[deletedBooking.id];
 
       return newState;
 

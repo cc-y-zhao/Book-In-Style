@@ -5,8 +5,7 @@ import hours from "../BookingForm/hours";
 import "../BusinessForm/CreateBusinessForm.css";
 import DeleteBookingModal from "../../Modals/DeleteBookingModal";
 
-import { loadBusiness } from "../../../store/businesses";
-import { createBooking } from "../../../store/bookings";
+import { editBooking, loadBookingsByUser } from "../../../store/bookings";
 
 const EditBookingForm = ({setShowModal, booking}) => {
   const dispatch = useDispatch();
@@ -21,6 +20,7 @@ const EditBookingForm = ({setShowModal, booking}) => {
   const [date, setDate] = useState('2022-05-06');
 
   // const [date, setDate] = useState(booking.date);
+  const bookingId = booking.id;
   const serviceId = booking.service_id;
   const userId = booking.user_id;
   const businessId = booking.business_id;
@@ -37,18 +37,21 @@ const EditBookingForm = ({setShowModal, booking}) => {
     e.preventDefault();
 
     const payload = {
+      bookingId,
       userId,
       serviceId,
       businessId,
+      serviceName,
+      businessName,
       date,
       time
     };
 
-    // console.log('payload-------------', payload)
+    console.log('payload in frontend-------------', payload)
 
     let data;
 
-    data = await dispatch(createBooking(payload));
+    data = await dispatch(editBooking(payload));
 
     console.log('data in beofre if data--------------', data)
 
@@ -57,9 +60,10 @@ const EditBookingForm = ({setShowModal, booking}) => {
       setTime('');
       setDate('');
 
-      await dispatch(loadBusiness(data.id))
-      setShowModal(false)
-      return history.push(`/businesses/${data.id}`);
+      await dispatch(loadBookingsByUser(userId))
+      window.alert('Your appointment was successfully updated!')
+      return setShowModal(false)
+      // return history.push(`/profile`);
       // return <Redirect to={`/businesses/${data.id}`}/>
     } else {
       return setErrors(data)
