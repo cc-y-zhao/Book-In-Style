@@ -66,6 +66,7 @@ class Business(db.Model):
             'city': self.city,
             'capacity': self.capacity,
             'cover_photo': self.cover_photo,
+            'created_at': self.created_at,
             'hours': {'monday': self.monday, 'tuesday': self.tuesday, 'wednesday': self.wednesday, 'thursday': self.thursday, 'friday': self.friday, 'saturday': self.saturday, 'sunday': self.sunday},
             'services' : {service.id: service.to_dict() for service in self.services},
             'languages': [language.to_dict() for language in self.languages],

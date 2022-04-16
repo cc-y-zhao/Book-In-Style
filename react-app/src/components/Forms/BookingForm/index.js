@@ -21,7 +21,6 @@ const CreateBookingForm = ({setShowModal, businessId, userId, serviceId}) => {
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
 
-  const updateServiceId = (e) => setServiceId(e.target.value);
   const updateTime = (e) => setTime(e.target.value);
   const updateDate = (e) => setDate(e.target.value);
 
@@ -47,7 +46,6 @@ const CreateBookingForm = ({setShowModal, businessId, userId, serviceId}) => {
 
     if (data?.id) {
       setErrors([]);
-      setServiceId('');
       setTime('');
       setDate('');
 

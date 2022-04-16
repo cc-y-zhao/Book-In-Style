@@ -7,7 +7,7 @@ const createdBooking = (booking) => ({
 });
 
 
-export const createBusiness = (booking) => async (dispatch) => {
+export const createBooking = (booking) => async (dispatch) => {
 
   const response = await fetch('/api/bookings/', {
     method: 'POST',
