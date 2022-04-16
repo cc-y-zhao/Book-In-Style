@@ -24,8 +24,7 @@ def create_booking():
 
     form = BookingForm()
 
-    print('\n\n\n current user id:', current_user, '\n\n\n')
-
+    # print('\n\n\n current user id:', current_user, '\n\n\n')
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -42,3 +41,14 @@ def create_booking():
         return booking.to_dict()
     # print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@booking_routes.route('/users/<int:user_id>', methods=['GET'])
+def get_bookings_by_user(user_id):
+    bookings_pre_dict = Booking.query.filter(Booking.user_id == user_id).all()
+    bookings = []
+
+    for booking in bookings_pre_dict:
+        bookings.append(booking.to_dict())
+
+    return {'bookings': bookings}
