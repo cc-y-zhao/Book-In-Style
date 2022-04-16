@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
+import BookingModal from "../Modals/BookingModal";
 
-const Services = ({services, userId}) => {
+const Services = ({services, userId, businessId}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -24,7 +25,9 @@ const Services = ({services, userId}) => {
         {servicesArr && servicesArr.map((service) =>
         <div key={service.id}>
           {service.name}{dollarSign}{service.price}
-        </div>)}
+          <BookingModal service={service} userId={userId} businessId={businessId}/>
+        </div>
+        )}
       </div>
     </>
   );

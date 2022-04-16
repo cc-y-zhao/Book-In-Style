@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import states from './states'
 
 import { createBusiness, loadBusiness } from "../../../store/businesses";
-
-import "./CreateBusinessForm.css";
 
 const CreateBookingForm = ({setShowModal, businessId, userId, serviceId}) => {
   const dispatch = useDispatch();
@@ -16,8 +13,6 @@ const CreateBookingForm = ({setShowModal, businessId, userId, serviceId}) => {
   //business id will grabbed from modal context
   // will need to grab business' services from useselector... or pass through modal context?
 
-  const userId = useSelector((state) => state.session.user?.id);
-  const [serviceId, setServiceId] = useState("")
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
 
@@ -169,4 +164,4 @@ const CreateBookingForm = ({setShowModal, businessId, userId, serviceId}) => {
   );
 };
 
-export default CreateBusinessForm;
+export default CreateBookingForm;

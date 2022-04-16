@@ -20,7 +20,7 @@ const BusinessPage = () => {
 
   const businesses = useSelector((state) => state?.businesses)
   const business = useSelector((state) => businesses[businessIdParsed])
-  const services = business.services;
+  const services = business?.services;
   const userId = useSelector((state) => state.session.user?.id);
 
 
@@ -81,7 +81,7 @@ const BusinessPage = () => {
           <div className='biz-page-bottom'>
             <div className="about-reviews-services">About, Reviews, Services
               {/* <div>{business.description}</div> */}
-              <div><Services services={services}/></div>
+              <div><Services services={services} userId={userId} businessId={businessIdParsed}/></div>
             </div>
             <div className='biz-right'>
               <div className='street-address'>{business.street_address} {business.unit}</div>
