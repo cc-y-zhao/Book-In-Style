@@ -22,6 +22,10 @@ const BusinessPage = () => {
   const userId = useSelector((state) => state.session.user?.id);
 
 
+  useEffect(() => {
+    dispatch(loadBusiness(businessIdParsed));
+  }, [dispatch, businessIdParsed]);
+
   let showBusiness = false;
   if (business) showBusiness = true;
 
@@ -30,9 +34,9 @@ const BusinessPage = () => {
     if (business.owner_id === userId) showEdit = true;
   }
 
-  useEffect(() => {
-    dispatch(loadBusiness(businessIdParsed));
-  }, [dispatch, businessIdParsed]);
+  let disableBookingForm = true;
+  if (userId) disableBookingForm = false;
+
 
   if (!(businessIdParsed in businesses)) {
     return (

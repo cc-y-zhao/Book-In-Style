@@ -7,7 +7,7 @@ import { createBusiness, loadBusiness } from "../../../store/businesses";
 
 import "./CreateBusinessForm.css";
 
-const CreateBookingForm = ({setShowModal}) => {
+const CreateBookingForm = ({setShowModal, businessId, userId, serviceId}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 

@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired, Email, ValidationError, EqualTo, Le
 
 def valid_name(form, field):
   name = field.data
-  if len(name) <= 3:
+  if len(name) < 4:
     raise ValidationError('Please provide a valid name for the service you are providing')
 
 def valid_price(form, field):

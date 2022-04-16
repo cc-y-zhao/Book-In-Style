@@ -24,6 +24,9 @@ def create_booking():
 
     form = BookingForm()
 
+    print('\n\n\n current user id:', current_user, '\n\n\n')
+
+
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         booking = Booking(
