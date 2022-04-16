@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db, Business, Booking
+from app.models import User, db, Business, Booking, Service
 from app.forms import BookingForm
 from flask_login import current_user, login_user, logout_user, login_required
 
@@ -28,7 +28,7 @@ def create_booking():
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        booking = Booking(
+        booking_pre_dict = Booking(
             business_id = form.data['businessId'],
             user_id = current_user.id,
             service_id = form.data['serviceId'],
@@ -41,11 +41,11 @@ def create_booking():
         db.session.add(booking)
         db.session.commit()
 
-        booking_info = booking.to_dict()
-        booking_info['service_name'] = service_name
-        booking_info['business_name'] = business_name
+        booking = booking_pre_dict.to_dict()
+        booking['service_name'] = service_name
+        booking['business_name'] = business_name
 
-        return booking_info
+        return booking
     # print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -55,7 +55,17 @@ def get_bookings_by_user(user_id):
     bookings_pre_dict = Booking.query.filter(Booking.user_id == user_id).all()
     bookings = []
 
-    for booking in bookings_pre_dict:
-        bookings.append(booking.to_dict())
+    for booking_pre_dict in bookings_pre_dict:
+        booking = booking_pre_dict.to_dict()
+
+        business = Business.query.get(booking['business_id'])
+        business_name = business.to_dict()['name']
+        booking['business_name'] = business_name
+
+        service = Service.query.get(booking['service_id'])
+        service_name = service.to_dict()['name']
+        booking['service_name'] = service_name
+
+        bookings.append(booking)
 
     return {'bookings': bookings}
