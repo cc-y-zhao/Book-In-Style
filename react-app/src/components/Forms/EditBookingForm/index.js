@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import hours from "../BookingForm/hours";
 import "../BusinessForm/CreateBusinessForm.css";
-
+import DeleteBookingModal from "../../Modals/DeleteBookingModal";
 
 import { loadBusiness } from "../../../store/businesses";
 import { createBooking } from "../../../store/bookings";
@@ -25,6 +25,7 @@ const EditBookingForm = ({setShowModal, booking}) => {
   const userId = booking.user_id;
   const businessId = booking.business_id;
   const serviceName = booking.service_name;
+  const businessName = booking.business_name;
 
   // console.log('date-----------------', date);
 
@@ -65,17 +66,13 @@ const EditBookingForm = ({setShowModal, booking}) => {
     }
   };
 
-  let disabled;
-
-  // if (name.length === 0 || description.length === 0 || phone.length < 10 || streetAddress.length === 0 || state.length === 0 || zipcode.length < 5 || coverPhoto.length < 10 || city.length < 3) {
-  //   disabled = true;
-  // } else {
-  //   disabled = false;
-  // }
+  let disabled = false;
+  if (time.includes('Select') || date.length < 1) disabled = true;
 
   return (
     <div className="CreateBusinessFormWrapper">
       <div className="CreateBusinessFormHeader">
+        <h2 className='list-biz-title'>{businessName}</h2>
         <h3 className='list-biz-title'>{serviceName}</h3>
       </div>
       <div className="CreatChannelFormBody">
@@ -112,6 +109,9 @@ const EditBookingForm = ({setShowModal, booking}) => {
             </button>
           </div>
         </form>
+        <div className='delete-biz-btn'>
+          <DeleteBookingModal booking={booking}/>
+        </div>
       </div>
     </div>
   );
