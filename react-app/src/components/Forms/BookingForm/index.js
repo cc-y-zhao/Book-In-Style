@@ -24,6 +24,18 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
   const updateDate = (e) => setDate(e.target.value);
 
 
+  // useEffect(() => {
+  //   const validationErrors = [];
+  //   if (title.length === 0) validationErrors.push("");
+  //   if (title.length > 50)
+  //     validationErrors.push("Title must be 50 characters or less");
+  //   if (description.length > 150)
+  //     validationErrors.push("Description must be 150 characters or less");
+
+  //   setErrors(validationErrors);
+  // }, [date, time]);
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -62,6 +74,26 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
   let disabled = false;
   if (time.includes('Select') || date.length < 1) disabled = true;
 
+  //Min booking date:
+  let today = new Date();
+  let dd = today.getDate() + 1;
+  let mm = today.getMonth() + 1;
+  let yyyy = today.getFullYear();
+
+  if (dd < 10) dd = '0' + dd;
+  if (mm < 10) mm = '0' + mm;
+  today = yyyy + '-' + mm + '-' + dd;
+
+  //Max booking date:
+  let max = new Date();
+  let ddMax = max.getDate();
+  let mmMax = max.getMonth() + 3;
+
+  if (ddMax < 10) ddMax = '0' + ddMax;
+  if (mmMax < 10) mmMax = '0' + mmMax;
+  max = yyyy + '-' + mmMax + '-' + ddMax;
+
+
   return (
     <div className="CreateBusinessFormWrapper">
       <div className="CreateBusinessFormHeader">
@@ -81,6 +113,8 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
       			<label htmlFor="date" style={{ marginTop: "10px" }}></label>
             <input
               type="date"
+              min={today}
+              max={max}
               required
               placeholder="Date"
               value={date}
