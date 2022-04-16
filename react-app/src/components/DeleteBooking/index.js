@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
-import { deleteBooking } from "../../store/bookings";
+import { deleteBooking, loadBookingsByUser } from "../../store/bookings";
 
-const DeleteBooking = ({booking, setShowModal}) => {
+const DeleteBooking = ({booking, setShowModal, setEditBookingModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -17,10 +17,12 @@ const DeleteBooking = ({booking, setShowModal}) => {
     deletedBooking = await dispatch(deleteBooking(booking.id));
 
     if (deletedBooking) {
-      setShowModal(false);
-      window.alert('Your appointment has been cancelled :(');
+      await dispatch(loadBookingsByUser(deletedBooking.user_id))
+      await setShowModal(false);
+      await setEditBookingModal(false);
+      return window.alert('Your appointment has been cancelled');
       //TO DO: DISPATCH PROFILE TO SHOW ALL USER'S UPCOMING APPOINTMENTS----------
-      return history.push('/profile');
+      // return history.push('/profile');
     }
   }
 

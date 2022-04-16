@@ -114,7 +114,7 @@ const EditBookingForm = ({setShowModal, booking}) => {
           </div>
         </form>
         <div className='delete-biz-btn'>
-          <DeleteBookingModal booking={booking}/>
+          <DeleteBookingModal booking={booking} setEditBookingModal={setShowModal}/>
         </div>
       </div>
     </div>
