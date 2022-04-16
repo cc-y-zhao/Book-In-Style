@@ -68,7 +68,8 @@ export default function reducer(state = initialState, action) {
       return newState;
 
     case GET_BOOKINGS_BY_USER_WHO_BOOKED:
-      const bookings = action.bookings;
+      const bookings = action.bookings.bookings;
+      // console.log('bookings in store----------', bookings);
       newState['bookings_by_user'] = bookings;
 
       return newState;
