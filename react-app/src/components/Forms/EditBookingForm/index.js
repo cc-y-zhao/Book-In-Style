@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import hours from './hours';
+import hours from "../BookingForm/hours";
 
 import { loadBusiness } from "../../../store/businesses";
 import { createBooking } from "../../../store/bookings";
 
-const CreateBookingForm = ({setShowModal, businessId, userId, service, businessName}) => {
+const EditBookingForm = ({setShowModal, booking}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -15,10 +15,11 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
   //business id will grabbed from modal context
   // will need to grab business' services from useselector... or pass through modal context?
 
-  const [time, setTime] = useState("");
-  const [date, setDate] = useState("");
-  const serviceId = service.id;
-  const serviceName = service.name;
+  const [time, setTime] = useState(booking.time);
+  const [date, setDate] = useState(booking.date);
+  const serviceId = booking.service_id;
+  const userId = booking.user_id;
+  const businessId = booking.business_id;
 
   const updateTime = (e) => setTime(e.target.value);
   const updateDate = (e) => setDate(e.target.value);
@@ -32,8 +33,7 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
       serviceId,
       businessId,
       date,
-      time,
-      serviceName,
+      time
     };
 
     // console.log('payload-------------', payload)
@@ -110,4 +110,4 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
   );
 };
 
-export default CreateBookingForm;
+export default EditBookingForm;

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory, NavLink } from "react-router-dom";
 
+import EditBookingModal from "../Modals/EditBookingModal";
 import { loadBookingsByUser } from "../../store/bookings";
 
 const Profile = () => {
@@ -39,6 +40,7 @@ const Profile = () => {
           <div key={booking.id}>
             {booking.time}
             {booking.date}
+            <EditBookingModal booking={booking}/>
           </div>
           )}
         </div>

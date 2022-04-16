@@ -4,7 +4,7 @@ import { useParams, Redirect, useHistory } from "react-router-dom";
 
 import BookingModal from "../Modals/BookingModal";
 
-const Services = ({services, userId, businessId}) => {
+const Services = ({services, userId, businessId, businessName}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -25,7 +25,7 @@ const Services = ({services, userId, businessId}) => {
         {servicesArr && servicesArr.map((service) =>
         <div key={service.id}>
           {service.name}{dollarSign}{service.price}
-          <BookingModal service={service} userId={userId} businessId={businessId}/>
+          <BookingModal service={service} userId={userId} businessId={businessId} businessName={businessName}/>
         </div>
         )}
       </div>

@@ -81,7 +81,7 @@ const BusinessPage = () => {
           <div className='biz-page-bottom'>
             <div className="about-reviews-services">About, Reviews, Services
               {/* <div>{business.description}</div> */}
-              <div><Services services={services} userId={userId} businessId={businessIdParsed}/></div>
+              <div><Services services={services} userId={userId} businessId={businessIdParsed} businessName={business.name}/></div>
             </div>
             <div className='biz-right'>
               <div className='street-address'>{business.street_address} {business.unit}</div>
