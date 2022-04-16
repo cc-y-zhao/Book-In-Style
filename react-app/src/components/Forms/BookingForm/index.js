@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import hours from './hours';
 
-import { createBusiness, loadBusiness } from "../../../store/businesses";
+import { loadBusiness } from "../../../store/businesses";
+import { createBooking } from "../../../store/bookings";
 
 const CreateBookingForm = ({setShowModal, businessId, userId, service}) => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service}) => {
 
     let data;
 
-    data = await dispatch(createBusiness(payload));
+    data = await dispatch(createBooking(payload));
 
     console.log('data in beofre if data--------------', data)
 
