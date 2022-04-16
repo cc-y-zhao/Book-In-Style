@@ -19,7 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 @booking_routes.route('/users/<int:user_id>', methods=['GET'])
 def get_bookings_by_user(user_id):
-    bookings_pre_dict = Booking.query.filter(Booking.user_id == user_id).all()
+    bookings_pre_dict = Booking.query.filter(Booking.user_id == user_id).order_by(Booking.date).all()
     bookings = []
 
     for booking_pre_dict in bookings_pre_dict:
