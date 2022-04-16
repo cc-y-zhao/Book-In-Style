@@ -47,22 +47,24 @@ const EditBookingForm = ({setShowModal, booking}) => {
       time
     };
 
-    console.log('payload in frontend-------------', payload)
+    // console.log('payload in frontend-------------', payload)
 
     let data;
 
     data = await dispatch(editBooking(payload));
 
-    console.log('data in beofre if data--------------', data)
+    // console.log('data in beofre if data--------------', data)
 
     if (data?.id) {
-      setErrors([]);
-      setTime('');
-      setDate('');
+      // setErrors([]);
+      // setTime('');
+      // setDate('');
 
       await dispatch(loadBookingsByUser(userId))
-      window.alert('Your appointment was successfully updated!')
-      return setShowModal(false)
+        .then(() => setShowModal(false))
+        .then(() => window.alert('Your appointment was successfully updated!'));
+      // await setShowModal(false)
+      // return window.alert('Your appointment was successfully updated!')
       // return history.push(`/profile`);
       // return <Redirect to={`/businesses/${data.id}`}/>
     } else {
