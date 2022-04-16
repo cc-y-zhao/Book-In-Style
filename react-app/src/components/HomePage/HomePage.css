@@ -4,10 +4,25 @@
 }
 
 .home-main-img-div {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: center;
-  /* background-image: url('../homepage.png'); */
+  justify-content: center; */
+  /* align-items: stretch; */
+  /* background-position-x: 100px;
+  background-position-y: 50%; */
+  /* border-image-slice: 100%; */
+  /* border-bottom-style: none;
+  border-bottom-width: none; */
+  /* border-image-repeat: stretch; */
+  /* border-image-outset: 0;
+  border-image-width: none;
+  box-sizing: border-box; */
+  background-position: left;
+  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/homepage_banner_desktop.bbe277e6004165e8db3a.jpg);
+  background-size: cover;
+  height: 450px;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .find-pros {
