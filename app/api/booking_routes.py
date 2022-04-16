@@ -35,10 +35,17 @@ def create_booking():
             date = form.data['date'],
             time = form.data['time'],
         )
+        service_name = form.data['serviceName']
+        business_name = form.data['businessName']
+
         db.session.add(booking)
         db.session.commit()
 
-        return booking.to_dict()
+        booking_info = booking.to_dict()
+        booking_info['service_name'] = service_name
+        booking_info['business_name'] = business_name
+
+        return booking_info
     # print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

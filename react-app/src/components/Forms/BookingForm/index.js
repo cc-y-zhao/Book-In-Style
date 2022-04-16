@@ -34,6 +34,7 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
       date,
       time,
       serviceName,
+      businessName,
     };
 
     // console.log('payload-------------', payload)

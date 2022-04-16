@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import hours from "../BookingForm/hours";
+import "../BusinessForm/CreateBusinessForm.css";
+
 
 import { loadBusiness } from "../../../store/businesses";
 import { createBooking } from "../../../store/bookings";
@@ -16,10 +18,15 @@ const EditBookingForm = ({setShowModal, booking}) => {
   // will need to grab business' services from useselector... or pass through modal context?
 
   const [time, setTime] = useState(booking.time);
-  const [date, setDate] = useState(booking.date);
+  const [date, setDate] = useState('2022-05-06');
+
+  // const [date, setDate] = useState(booking.date);
   const serviceId = booking.service_id;
   const userId = booking.user_id;
   const businessId = booking.business_id;
+  const serviceName = booking.service_name;
+
+  console.log('date-----------------', date);
 
   const updateTime = (e) => setTime(e.target.value);
   const updateDate = (e) => setDate(e.target.value);
@@ -69,7 +76,7 @@ const EditBookingForm = ({setShowModal, booking}) => {
   return (
     <div className="CreateBusinessFormWrapper">
       <div className="CreateBusinessFormHeader">
-        <h3 className='list-biz-title'>{service.name}</h3>
+        <h3 className='list-biz-title'>{serviceName}</h3>
       </div>
       <div className="CreatChannelFormBody">
         <form className='create-biz-form' onSubmit={handleSubmit}>
@@ -82,7 +89,7 @@ const EditBookingForm = ({setShowModal, booking}) => {
             <div>
               <label>Date: </label>
             </div>
-      			<label htmlFor="date" style={{ marginTop: "10px" }}></label>
+      			{/* <label htmlFor="date" style={{ marginTop: "10px" }}></label> */}
             <input
               type="date"
               required
@@ -101,7 +108,7 @@ const EditBookingForm = ({setShowModal, booking}) => {
           </div>
           <div className="create-biz-btn">
             <button type="submit" disabled={disabled}>
-              Book
+              Update
             </button>
           </div>
         </form>
