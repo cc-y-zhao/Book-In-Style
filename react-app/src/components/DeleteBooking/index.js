@@ -4,32 +4,33 @@ import { useParams, Redirect, useHistory } from "react-router-dom";
 
 import { loadBusiness, deleteBusiness } from "../../store/businesses";
 
-const DeleteBooking = ({businessId, setShowModal}) => {
+const DeleteBooking = ({booking, setShowModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    let deletedBusiness;
+    let deletedBooking;
 
-    console.log('business in in frontend---------'. businessId)
+    // console.log('business in in frontend---------'. businessId)
 
-    deletedBusiness = await dispatch(deleteBusiness(businessId));
+    deletedBooking = await dispatch(deleteBooking(booking.id));
 
-    if (deletedBusiness) {
+    if (deletedBooking) {
       setShowModal(false);
-      window.alert('Your listing has been deleted');
-      return history.push('/');
+      window.alert('Your appointment has been cancelled :(');
+      //TO DO: DISPATCH PROFILE TO SHOW ALL USER'S UPCOMING APPOINTMENTS----------
+      return history.push('/profile');
     }
   }
 
   return (
     <>
       <div>
-        <h3>Are you sure you want to remove your business from Book-In-Style?</h3>
+        <h3>Are you sure you want to cancel your appointment with {booking?.business_name}?</h3>
         <div>
-          <button onClick={(e) => handleDelete(e)}>Yes, remove this listing</button>
-          <button onClick={() => setShowModal(false)}>Cancel</button>
+          <button onClick={(e) => handleDelete(e)}>Yes</button>
+          <button onClick={() => setShowModal(false)}>No, nevermind</button>
         </div>
       </div>
     </>
