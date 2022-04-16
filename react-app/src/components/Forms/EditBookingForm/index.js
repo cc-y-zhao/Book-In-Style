@@ -26,7 +26,7 @@ const EditBookingForm = ({setShowModal, booking}) => {
   const businessId = booking.business_id;
   const serviceName = booking.service_name;
 
-  console.log('date-----------------', date);
+  // console.log('date-----------------', date);
 
   const updateTime = (e) => setTime(e.target.value);
   const updateDate = (e) => setDate(e.target.value);

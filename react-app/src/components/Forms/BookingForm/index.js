@@ -15,7 +15,7 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
   //business id will grabbed from modal context
   // will need to grab business' services from useselector... or pass through modal context?
 
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState('--Select a time--');
   const [date, setDate] = useState("");
   const serviceId = service.id;
   const serviceName = service.name;
@@ -51,21 +51,17 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
       setDate('');
 
       await dispatch(loadBusiness(data.id))
+      window.alert('Your booking has been confirmed!')
       setShowModal(false)
-      return history.push(`/businesses/${data.id}`);
+      return history.push(`/profile`);
       // return <Redirect to={`/businesses/${data.id}`}/>
     } else {
       return setErrors(data)
     }
   };
 
-  let disabled;
-
-  // if (name.length === 0 || description.length === 0 || phone.length < 10 || streetAddress.length === 0 || state.length === 0 || zipcode.length < 5 || coverPhoto.length < 10 || city.length < 3) {
-  //   disabled = true;
-  // } else {
-  //   disabled = false;
-  // }
+  let disabled = false;
+  if (time.includes('Select') || date.length < 1) disabled = true;
 
   return (
     <div className="CreateBusinessFormWrapper">
