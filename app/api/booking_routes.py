@@ -58,7 +58,7 @@ def create_booking():
         service_name = form.data['serviceName']
         business_name = form.data['businessName']
 
-        db.session.add(booking)
+        db.session.add(booking_pre_dict)
         db.session.commit()
 
         booking = booking_pre_dict.to_dict()

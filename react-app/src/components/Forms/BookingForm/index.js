@@ -47,12 +47,11 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
 
     if (data?.id) {
       setErrors([]);
-      setTime('');
-      setDate('');
+      // setTime('');
+      // setDate('');
 
-      await dispatch(loadBusiness(data.id))
+      await setShowModal(false)
       window.alert('Your booking has been confirmed!')
-      setShowModal(false)
       return history.push(`/profile`);
       // return <Redirect to={`/businesses/${data.id}`}/>
     } else {
