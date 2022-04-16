@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
+import hours from './hours';
 
 import { createBusiness, loadBusiness } from "../../../store/businesses";
 
-const CreateBookingForm = ({setShowModal, businessId, userId, serviceId}) => {
+const CreateBookingForm = ({setShowModal, businessId, userId, service}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -15,6 +16,7 @@ const CreateBookingForm = ({setShowModal, businessId, userId, serviceId}) => {
 
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
+  const serviceId = service.id;
 
   const updateTime = (e) => setTime(e.target.value);
   const updateDate = (e) => setDate(e.target.value);
@@ -64,7 +66,7 @@ const CreateBookingForm = ({setShowModal, businessId, userId, serviceId}) => {
   return (
     <div className="CreateBusinessFormWrapper">
       <div className="CreateBusinessFormHeader">
-        <h3 className='list-biz-title'>List Your Business</h3>
+        <h3 className='list-biz-title'>{service.name}</h3>
       </div>
       <div className="CreatChannelFormBody">
         <form className='create-biz-form' onSubmit={handleSubmit}>
@@ -73,89 +75,29 @@ const CreateBookingForm = ({setShowModal, businessId, userId, serviceId}) => {
               {errors && errors.map((error) => <li key={error}>{error}</li>)}
             </ul>
           </div>
-          <input type="hidden" value={capacity} />
           <div>
             <div>
-              <label>Business Name</label>
+              <label>Date: </label>
             </div>
             <input
               type="text"
               required
-              placeholder="Business Name"
-              value={name}
-              onChange={updateName}
+              placeholder="Date"
+              value={date}
+              onChange={updateDate}
             />
           </div>
           <div>
-            <div>
-              <label>Description</label>
-            </div>
-            <textarea
-              type="text"
-              placeholder="Tell us a bit about your business"
-              value={description}
-              onChange={updateDescription}
-            />
-          </div>
-          <div>
-            <div>
-              <label>Phone Number</label>
-            </div>
-            <input
-              type="text"
-              required
-              placeholder="Phone Number"
-              value={phone}
-              onChange={updatePhone}
-            />
-          </div>
-          <div>
-            <div>
-              <label>Street Address</label>
-            </div>
-            <input
-              type="text"
-              required
-              placeholder="Street Address"
-              value={streetAddress}
-              onChange={updateStreetAddress}
-            />
-          </div>
-          <div>
-            <div className='reg-font-weight'>
-              <label>Unit</label>
-              <span className='optional'> (optional)</span>
-            </div>
-            <input
-              type="text"
-              placeholder="Unit"
-              value={unit}
-              onChange={updateUnit}
-            />
-          </div>
-          <div>
-            <div>
-              <label>City</label>
-            </div>
-            <input
-              type="text"
-              required
-              placeholder="City"
-              value={city}
-              onChange={updateCity}
-            />
-          </div>
-          <div>
-            <span>State: </span>
-            <select onChange={updateState} value={state}>
-              {states.map(state =>
-                <option key={state}>{state}</option>
+            <span>Time: </span>
+            <select onChange={updateTime} value={time}>
+              {hours.map(hour =>
+                <option key={hour}>{hour}</option>
               )}
             </select>
           </div>
           <div className="create-biz-btn">
             <button type="submit" disabled={disabled}>
-              Create Business Listing
+              Book
             </button>
           </div>
         </form>
