@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 
@@ -18,15 +18,35 @@ const BusinessPage = () => {
   const { businessId } = useParams();
   const businessIdParsed = parseInt(businessId);
 
+  const userId = useSelector((state) => state.session.user?.id);
   const businesses = useSelector((state) => state?.businesses)
   const business = useSelector((state) => businesses[businessIdParsed])
-  const services = business?.services;
-  const userId = useSelector((state) => state.session.user?.id);
+  // const services = useSelector((state) => business?.services);
 
+  // let services;
+  // if (business) services = business?.services;
+
+
+  // console.log('services in business page------------', services);
+
+  const [selectedTab, setSelectedTab] = useState(<Services/>)
+
+  const onClickServices = async (e) => {
+    e.preventDefault();
+    setSelectedTab(<Services />)
+  }
 
   useEffect(() => {
     dispatch(loadBusiness(businessIdParsed));
+    setSelectedTab(<Services />);
   }, [dispatch, businessIdParsed]);
+
+  // useEffect(() => {
+  //   (async () => {
+  //     await dispatch(loadBusiness(businessIdParsed));
+  //     await setSelectedTab(<Services />);
+  //   })();
+  // }, [dispatch, businessIdParsed]);
 
   let showBusiness = false;
   if (business) showBusiness = true;
@@ -47,6 +67,10 @@ const BusinessPage = () => {
       </>
     );
   }
+
+  let showSelectedTab = false;
+  if (selectedTab) showSelectedTab = true;
+
 
   return (
     <>
@@ -81,13 +105,22 @@ const BusinessPage = () => {
           <div className='biz-page-bottom'>
             <div className="about-reviews-services">
               <div className='about-reviews-services-nav'>
-                <span className='services-title-biz-pg'>Services</span>
+                <span className='services-title-biz-pg'
+                  onClick={(e) => onClickServices(e)}
+                >
+                  Services
+                </span>
                 <span className='reviews-title-biz-pg'>Reviews</span>
                 <span>About</span>
               </div>
+              {showSelectedTab && (
+              <div>
+                  {selectedTab}
+              </div>
+              )}
               {/* -----------------THIS IS WHERE THE SELECTED CONTENT WILL GO--------------- */}
               {/* <div>{business.description}</div> */}
-              <div><Services services={services} userId={userId} businessId={businessIdParsed} businessName={business.name}/></div>
+              {/* <div><Services services={services} userId={userId} businessId={businessIdParsed} businessName={business.name}/></div> */}
             </div>
 
 
