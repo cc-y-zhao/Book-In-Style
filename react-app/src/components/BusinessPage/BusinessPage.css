@@ -1,10 +1,18 @@
 .about-reviews-services {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  border: 1px ridge rgb(242, 242, 242);
+  width: 70%;
+  /* border: 1px ridge rgb(242, 242, 242); */
   /* border-right: 1px ridge rgb(242, 242, 242); */
   /* border: 0.6mm ridge black; */
+}
+
+.biz-bottom-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  /* border-bottom: 1px ridge rgb(242, 242, 242); */
 }
 
 .about-reviews-services-nav {
@@ -33,31 +41,43 @@
   height: 400px;
 }
 
-.biz-bottom-right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 30%;
-}
-
 .biz-pics {
   position: absolute;
   margin-left: 50%;
 }
 
 .street-address {
-  width: 60px;
+  margin-top: 10px;
 }
 
+.biz-name-bottom {
+  font-size: 16px;
+  font-weight: bold;
+}
 .cover-photo {
   border: 0.6mm ridge black;
 }
 
-
 .biz-hours-title {
+  font-weight: bold;
   margin-top: 25px;
   margin-bottom: 20px;
 }
+
+.biz-hours {
+  display: flex;
+  flex-direction: row;
+}
+
+.biz-days {
+  margin-right: 8px;
+}
+
+.biz-city {
+  padding-bottom: 20px;
+  /* border-bottom: 1px ridge rgb(242, 242, 242); */
+}
+
 .biz-name {
   margin-left: 15px;
   margin-right: 100px;

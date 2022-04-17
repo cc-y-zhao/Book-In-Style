@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 40px;
+  align-items: center;
+  border: 1px ridge rgb(242, 242, 242);
+  height: 150px;
 }
 
 .each-service {

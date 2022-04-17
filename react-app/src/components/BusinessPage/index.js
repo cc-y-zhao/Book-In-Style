@@ -94,10 +94,30 @@ const BusinessPage = () => {
 
             {/* BOTTOM RIGHT OF PAGE */}
             <div className='biz-bottom-right'>
-              <div>{business['name']}</div>
+              <div className='biz-name-bottom'>{business['name']}</div>
               <div className='street-address'>{business.street_address} {business.unit}</div>
-              <div>{business.city}, {business.state} {business.zip_code}</div>
-
+              <div className='biz-city'>{business.city}, {business.state} {business.zip_code}</div>
+              <div className='biz-hours-title'>Business Hours</div>
+              <div className='biz-hours'>
+                <div className='biz-days'>
+                  <div>Monday:</div>
+                  <div>Tuesday:</div>
+                  <div>Wednesday:</div>
+                  <div>Thursday:</div>
+                  <div>Friday:</div>
+                  <div>Saturday:</div>
+                  <div>Sunday:</div>
+                </div>
+                <div>
+                  <div>{business.hours.monday}</div>
+                  <div>{business.hours.tuesday}</div>
+                  <div>{business.hours.wednesday}</div>
+                  <div>{business.hours.thursday}</div>
+                  <div>{business.hours.friday}</div>
+                  <div>{business.hours.saturday}</div>
+                  <div>{business.hours.sunday}</div>
+                </div>
+              </div>
             </div>
           </div>
 
