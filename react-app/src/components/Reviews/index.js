@@ -30,7 +30,6 @@ const Reviews = () => {
   let disableReviewForm = true;
   if (userId) disableReviewForm = false;
 
-  let dollarSign = '$';
 
   return (
     <>

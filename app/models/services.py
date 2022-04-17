@@ -13,9 +13,10 @@ class Service(db.Model):
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
-    businesses = db.relationship('Business', back_populates='services')
+    business = db.relationship('Business', back_populates='services')
     bookings = db.relationship('Booking', back_populates='service', cascade='all, delete-orphan')
     images = db.relationship('Image', back_populates='service', cascade='all, delete-orphan')
+    reviews = db.relationship('Review', back_populates='service', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {

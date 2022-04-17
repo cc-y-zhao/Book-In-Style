@@ -9,6 +9,7 @@ class Review(db.Model):
   business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'))
   rating = db.Column(db.Integer, nullable=False)
   review = db.Column(db.Text, nullable=False)
+  service_id = db.Column(db.Integer, db.ForeignKey('services.id'))
   img_url_1 = db.Column(db.String(2083))
   img_url_2 = db.Column(db.String(2083))
   img_url_3 = db.Column(db.String(2083))
@@ -17,6 +18,7 @@ class Review(db.Model):
 
   user = db.relationship('User', back_populates='reviews')
   businesses = db.relationship('Business', back_populates='reviews')
+  service = db.relationship('Service', back_populates='reviews')
 
   def to_dict(self):
     return {
@@ -25,6 +27,7 @@ class Review(db.Model):
         'business_id': self.business_id,
         'rating': self.rating,
         'review': self.review,
+        'service_id': self.service_id,
         'img_url': self.img_url_1,
         'img_url_2': self.img_url_2,
         'img_url_3': self.img_url_3,
