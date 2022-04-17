@@ -61,7 +61,7 @@ const ServiceForm = ({setShowModal, businessId}) => {
   return (
     <div className="CreateBusinessFormWrapper">
       <div className="CreateBusinessFormHeader">
-        <h3 className='list-biz-title'>List Your Business</h3>
+        <h3 className='list-biz-title'>Add Service</h3>
       </div>
       <div className="CreatChannelFormBody">
         <form className='create-biz-form' onSubmit={handleSubmit}>

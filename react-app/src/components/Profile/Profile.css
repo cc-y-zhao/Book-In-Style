@@ -1,0 +1,42 @@
+.bookings-in-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.each-booking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  border-bottom: 1px ridge rgb(242, 242, 242);
+}
+
+.calendar-icon {
+  display: flex;
+  flex-direction: row;
+}
+
+.date-calendar {
+  margin-left: 7px;
+  font-weight: 200;
+  margin-bottom: 10px;
+}
+
+.biz-name-bookings {
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.service-name-bookings {
+  margin-bottom: 10px;
+  font-weight: 200;
+}
+
+.time-in-bookings {
+  font-weight: 200;
+}
+
+.modify-booking-btn {
+  margin-bottom: 10px;
+}

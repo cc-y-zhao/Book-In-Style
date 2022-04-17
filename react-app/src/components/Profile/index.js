@@ -5,6 +5,8 @@ import { useParams, Redirect, useHistory, NavLink } from "react-router-dom";
 import EditBookingModal from "../Modals/EditBookingModal";
 import { loadBookingsByUser } from "../../store/bookings";
 
+import './Profile.css'
+
 const Profile = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -39,14 +41,19 @@ const Profile = () => {
 
   return (
     <>
-      <div>
+      <div className='bookings-in-profile'>
         <h2>Upcoming Appointments</h2>
-        <div className='services-container'>
+        <div className='bookings-container'>
           {/* <div>{bookings && bookings[0][0].toString()}</div> */}
           {bookings && bookings.map((booking) =>
-          <div key={booking.id}>
-            {booking.time}
-            {formatDate(booking.date)}
+          <div className='each-booking' key={booking.id}>
+            <div className='biz-name-bookings'>{booking.business_name}</div>
+            <div className='service-name-bookings'>{booking.service_name}</div>
+            <div className='time-in-bookings'>{booking.time}</div>
+            <div className='calendar-icon'>
+              <i class="far fa-calendar-alt"></i>
+              <div className='date-calendar'>{formatDate(booking.date)}</div>
+            </div>
             <EditBookingModal booking={booking}/>
           </div>
           )}
