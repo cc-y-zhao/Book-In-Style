@@ -1,7 +1,7 @@
 .about-reviews-services {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 100%;
   border: 1px ridge rgb(242, 242, 242);
   /* border-right: 1px ridge rgb(242, 242, 242); */
   /* border: 0.6mm ridge black; */
@@ -17,6 +17,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .biz-page-prof {
@@ -27,18 +29,19 @@
   /* align-items: flex-start; */
   margin-top: 55px;
   border: 0.6mm ridge black;
-  width: 1000px;
+  width: 100%;
   height: 400px;
+}
+
+.biz-bottom-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
 }
 
 .biz-pics {
   position: absolute;
-  margin-left: 50%;
-}
-
-.biz-right {
-  position: absolute;
-  width: 30%;
   margin-left: 50%;
 }
 
@@ -63,13 +66,15 @@
 }
 
 .biz-page-bottom {
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   /* align-items: flex-start; */
   margin-top: 35px;
-  width: 1000px;
-  height: 1000px;
+  width: 100%;
+  /* width: 1000px; */
+  /* height: 1000px; */
   /* border: 0.6mm ridge black; */
 }
 

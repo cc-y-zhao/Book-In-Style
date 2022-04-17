@@ -85,9 +85,18 @@ const BusinessPage = () => {
                 <span>Reviews</span>
                 <span>About</span>
               </div>
+              {/* -----------------THIS IS WHERE THE SELECTED CONTENT WILL GO--------------- */}
               {/* <div>{business.description}</div> */}
               <div><Services services={services} userId={userId} businessId={businessIdParsed} businessName={business.name}/></div>
+            </div>
 
+
+
+            {/* BOTTOM RIGHT OF PAGE */}
+            <div className='biz-bottom-right'>
+              <div>{business['name']}</div>
+              <div className='street-address'>{business.street_address} {business.unit}</div>
+              <div>{business.city}, {business.state} {business.zip_code}</div>
 
             </div>
           </div>
