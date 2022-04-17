@@ -79,9 +79,17 @@ const BusinessPage = () => {
             <div className='biz-pics'>------Additional pics will go here------</div>
           </div>
           <div className='biz-page-bottom'>
-            <div className="about-reviews-services">About, Reviews, Services
+            <div className="about-reviews-services">
+              <div className='about-reviews-services-nav'>
+                <span>Services</span>
+                <span>Reviews</span>
+                <span>About</span>
+              </div>
               {/* <div>{business.description}</div> */}
               <div><Services services={services} userId={userId} businessId={businessIdParsed} businessName={business.name}/></div>
+
+
+
             </div>
             <div className='biz-right'>
               <div className='street-address'>{business.street_address} {business.unit}</div>

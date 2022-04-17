@@ -1,3 +1,17 @@
+.about-reviews-services {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  border: 1px ridge rgb(242, 242, 242);
+  /* border-right: 1px ridge rgb(242, 242, 242); */
+  /* border: 0.6mm ridge black; */
+}
+
+.about-reviews-services-nav {
+  border-bottom: 1px ridge rgb(242, 242, 242);
+  padding: 5px;
+  margin-bottom: 20px;
+}
 
 .biz-page-container {
   display: flex;
@@ -24,6 +38,7 @@
 
 .biz-right {
   position: absolute;
+  width: 30%;
   margin-left: 50%;
 }
 
@@ -35,11 +50,6 @@
   border: 0.6mm ridge black;
 }
 
-.about-reviews-services {
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-}
 
 .biz-hours-title {
   margin-top: 25px;
@@ -60,7 +70,7 @@
   margin-top: 35px;
   width: 1000px;
   height: 1000px;
-  border: 0.6mm ridge black;
+  /* border: 0.6mm ridge black; */
 }
 
 

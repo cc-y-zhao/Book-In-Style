@@ -4,6 +4,8 @@ import { useParams, Redirect, useHistory } from "react-router-dom";
 
 import BookingModal from "../Modals/BookingModal";
 
+import './Services.css';
+
 const Services = ({services, userId, businessId, businessName}) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -17,15 +19,18 @@ const Services = ({services, userId, businessId, businessName}) => {
   let disableBookingForm = true;
   if (userId) disableBookingForm = false;
 
-  let dollarSign = ' - $';
+  let dollarSign = '$';
 
   return (
     <>
       <div className='services-container'>
         {servicesArr && servicesArr.map((service) =>
-        <div key={service.id}>
-          {service.name}{dollarSign}{service.price}
-          <BookingModal service={service} userId={userId} businessId={businessId} businessName={businessName}/>
+        <div>
+          <div className='each-service' key={service.id}>
+            <div className='service-name-biz-pg'>{service.name}</div>
+            <div className='service-price-biz-pg'>{dollarSign}{service.price}</div>
+          </div>
+          <div><BookingModal service={service} userId={userId} businessId={businessId} businessName={businessName}/></div>
         </div>
         )}
       </div>
