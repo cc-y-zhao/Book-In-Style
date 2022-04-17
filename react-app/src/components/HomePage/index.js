@@ -38,6 +38,11 @@ const HomePage = () => {
       </div>
       <div className='find-pros'>
         <h2>Find top pros by service</h2>
+        <div className='services-homepage'>
+          <div className='homepage-img-1'></div>
+          <div className='homepage-img-2'></div>
+
+        </div>
       </div>
     </>
   );

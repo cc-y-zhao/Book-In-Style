@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 
+import './LoginForm.css';
+
 const LoginForm = ({setShowModal}) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -46,14 +48,14 @@ const LoginForm = ({setShowModal}) => {
 
   return (
     <>
-      <form onSubmit={onLogin}>
+      <form className='login-modal' onSubmit={onLogin}>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
         <div>
-          <label htmlFor='email'>Email</label>
+          <label htmlFor='email'>Email: </label>
           <input
             name='email'
             type='text'
@@ -63,7 +65,7 @@ const LoginForm = ({setShowModal}) => {
           />
         </div>
         <div>
-          <label htmlFor='password'>Password</label>
+          <label htmlFor='password'>Password: </label>
           <input
             name='password'
             type='password'
@@ -71,8 +73,11 @@ const LoginForm = ({setShowModal}) => {
             value={password}
             onChange={updatePassword}
           />
+        <div>
           <button type='submit'>Login</button>
         </div>
+        </div>
+        <div>Don't have an account?</div>
       </form>
     </>
   );
