@@ -4,7 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 
 import { loadBusiness } from "../../store/businesses";
 
-const Reviews = () => {
+const About = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -28,18 +28,13 @@ const Reviews = () => {
     dispatch(loadBusiness(businessIdParsed));
   }, [dispatch, businessIdParsed]);
 
-  let disableReviewForm = true;
-  if (userId) disableReviewForm = false;
-
-  let dollarSign = '$';
-
   return (
     <>
       <div>
-        This is the review section
+        {business?.description}
       </div>
     </>
   );
 };
 
-export default Reviews;
+export default About;

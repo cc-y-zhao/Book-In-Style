@@ -5,9 +5,12 @@ import { useParams, Redirect, useHistory } from "react-router-dom";
 import EditBusinessModal from "../Modals/EditBusinessModal";
 import AddServiceModal from "../Modals/AddServiceModal";
 import EditBusinessHoursModal from "../Modals/EditBusinessHoursModal";
-import Services from "../Services";
-
 import ErrorPage from "../Errors/ErrorPage";
+
+import Services from "../Services";
+import Reviews from "../Reviews";
+import About from "./About";
+
 import { loadBusiness } from "../../store/businesses";
 
 import './BusinessPage.css'
@@ -27,6 +30,16 @@ const BusinessPage = () => {
   const onClickServices = async (e) => {
     e.preventDefault();
     setSelectedTab(<Services />)
+  }
+
+  const onClickReviews = async (e) => {
+    e.preventDefault();
+    setSelectedTab(<Reviews />)
+  }
+
+  const onClickAbout = async (e) => {
+    e.preventDefault();
+    setSelectedTab(<About />)
   }
 
   useEffect(() => {
@@ -103,8 +116,16 @@ const BusinessPage = () => {
                 >
                   Services
                 </span>
-                <span className='reviews-title-biz-pg'>Reviews</span>
-                <span>About</span>
+                <span className='reviews-title-biz-pg'
+                  onClick={(e) => onClickReviews(e)}
+                >
+                  Reviews
+                </span>
+                <span
+                  onClick={(e) => onClickAbout(e)}
+                >
+                  About
+                </span>
               </div>
               {showSelectedTab && (
               <div>
