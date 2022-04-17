@@ -4,6 +4,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import hours from "../BookingForm/hours";
 import "../BusinessForm/CreateBusinessForm.css";
 import DeleteBookingModal from "../../Modals/DeleteBookingModal";
+import convertedDate from "./DateConversion";
 
 import { editBooking, loadBookingsByUser } from "../../../store/bookings";
 
@@ -12,14 +13,10 @@ const EditBookingForm = ({setShowModal, booking}) => {
   const history = useHistory();
 
   const [errors, setErrors] = useState([]);
-
-  //business id will grabbed from modal context
-  // will need to grab business' services from useselector... or pass through modal context?
-
   const [time, setTime] = useState(booking.time);
-  const [date, setDate] = useState('2022-05-06');
+  const [date, setDate] = useState(convertedDate(booking.date));
+  // const [date, setDate] = useState('2022-05-06');
 
-  // const [date, setDate] = useState(booking.date);
   const bookingId = booking.id;
   const serviceId = booking.service_id;
   const userId = booking.user_id;
