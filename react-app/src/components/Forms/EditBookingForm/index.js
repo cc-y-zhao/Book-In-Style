@@ -75,11 +75,31 @@ const EditBookingForm = ({setShowModal, booking}) => {
   let disabled = false;
   if (time.includes('Select') || date.length < 1) disabled = true;
 
+  //Min booking date:
+  let today = new Date();
+  let dd = today.getDate() + 1;
+  let mm = today.getMonth() + 1;
+  let yyyy = today.getFullYear();
+
+  if (dd < 10) dd = '0' + dd;
+  if (mm < 10) mm = '0' + mm;
+  today = yyyy + '-' + mm + '-' + dd;
+
+  //Max booking date:
+  let max = new Date();
+  let ddMax = max.getDate();
+  let mmMax = max.getMonth() + 4;
+
+  if (ddMax < 10) ddMax = '0' + ddMax;
+  if (mmMax < 10) mmMax = '0' + mmMax;
+  max = yyyy + '-' + mmMax + '-' + ddMax;
+
   return (
     <div className="CreateBusinessFormWrapper">
       <div className="CreateBusinessFormHeader">
         <h2 className='list-biz-title'>{businessName}</h2>
         <h3 className='list-biz-title'>{serviceName}</h3>
+        <div>You can book up to 3 months in advance</div>
       </div>
       <div className="CreatChannelFormBody">
         <form className='create-biz-form' onSubmit={handleSubmit}>
@@ -95,6 +115,8 @@ const EditBookingForm = ({setShowModal, booking}) => {
       			{/* <label htmlFor="date" style={{ marginTop: "10px" }}></label> */}
             <input
               type="date"
+              min={today}
+              max={max}
               required
               placeholder="Date"
               value={date}

@@ -87,7 +87,7 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
   //Max booking date:
   let max = new Date();
   let ddMax = max.getDate();
-  let mmMax = max.getMonth() + 3;
+  let mmMax = max.getMonth() + 4;
 
   if (ddMax < 10) ddMax = '0' + ddMax;
   if (mmMax < 10) mmMax = '0' + mmMax;
@@ -98,6 +98,7 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
     <div className="CreateBusinessFormWrapper">
       <div className="CreateBusinessFormHeader">
         <h3 className='list-biz-title'>{service.name}</h3>
+        <div>You can book up to 3 months in advance</div>
       </div>
       <div className="CreatChannelFormBody">
         <form className='create-biz-form' onSubmit={handleSubmit}>

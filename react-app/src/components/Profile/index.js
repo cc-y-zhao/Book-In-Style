@@ -24,11 +24,18 @@ const Profile = () => {
     dispatch(loadBookingsByUser(userId));
   }, [dispatch]);
 
-  // const handleEditRedirect = (e) => {
-  //   e.preventDefault();
-  //   return history.push(`/businesses/${businessIdParsed}/edit`)
-  //   // return <Redirect to={`/businesses/${businessIdParsed}/edit`}/>
-  // }
+  // const prevDate = "Tue, 26 Apr 2022 00:00:00 GMT";
+  // const prevDateArr = prevDate.split(' ');
+  // console.log('prev data array-----------', prevDateArr);
+
+  const formatDate = (date) => {
+    let dateArr = date.split(" ");
+    let newDate = dateArr[0] + " " + dateArr[2] + " " + dateArr[1] + ", " + dateArr[3];
+    return newDate;
+  }
+
+  // console.log('formatted date----------', formatDate(prevDate));
+
 
   return (
     <>
@@ -39,7 +46,7 @@ const Profile = () => {
           {bookings && bookings.map((booking) =>
           <div key={booking.id}>
             {booking.time}
-            {booking.date}
+            {formatDate(booking.date)}
             <EditBookingModal booking={booking}/>
           </div>
           )}
