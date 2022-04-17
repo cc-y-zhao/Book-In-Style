@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 90f213a75f21
+Revision ID: 86997ba2c1bf
 Revises: 
-Create Date: 2022-04-14 09:28:33.361494
+Create Date: 2022-04-15 17:54:01.792700
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '90f213a75f21'
+revision = '86997ba2c1bf'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,14 +21,6 @@ def upgrade():
     op.create_table('languages',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=50), nullable=False),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('services',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=50), nullable=False),
-    sa.Column('price', sa.Integer(), nullable=False),
-    sa.Column('created_at', sa.DateTime(), nullable=True),
-    sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('users',
@@ -59,25 +51,18 @@ def upgrade():
     sa.Column('zip_code', sa.String(length=10), nullable=True),
     sa.Column('capacity', sa.Integer(), nullable=True),
     sa.Column('cover_photo', sa.String(length=2083), nullable=True),
+    sa.Column('monday', sa.String(length=20), nullable=True),
+    sa.Column('tuesday', sa.String(length=20), nullable=True),
+    sa.Column('wednesday', sa.String(length=20), nullable=True),
+    sa.Column('thursday', sa.String(length=20), nullable=True),
+    sa.Column('friday', sa.String(length=20), nullable=True),
+    sa.Column('saturday', sa.String(length=20), nullable=True),
+    sa.Column('sunday', sa.String(length=20), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('phone')
-    )
-    op.create_table('bookings',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('business_id', sa.Integer(), nullable=True),
-    sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.Column('service_id', sa.Integer(), nullable=True),
-    sa.Column('date', sa.Date(), nullable=False),
-    sa.Column('time', sa.String(), nullable=False),
-    sa.Column('created_at', sa.DateTime(), nullable=True),
-    sa.Column('updated_at', sa.DateTime(), nullable=True),
-    sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
-    sa.ForeignKeyConstraint(['service_id'], ['services.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('business_languages',
     sa.Column('business_id', sa.Integer(), nullable=False),
@@ -86,30 +71,12 @@ def upgrade():
     sa.ForeignKeyConstraint(['language_id'], ['languages.id'], ),
     sa.PrimaryKeyConstraint('business_id', 'language_id')
     )
-    op.create_table('business_services',
-    sa.Column('business_id', sa.Integer(), nullable=False),
-    sa.Column('service_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
-    sa.ForeignKeyConstraint(['service_id'], ['services.id'], ),
-    sa.PrimaryKeyConstraint('business_id', 'service_id')
-    )
     op.create_table('favorites',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('business_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('images',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('img_url', sa.String(length=2083), nullable=False),
-    sa.Column('business_id', sa.Integer(), nullable=False),
-    sa.Column('service_id', sa.Integer(), nullable=True),
-    sa.Column('name', sa.String(length=25), nullable=True),
-    sa.Column('description', sa.String(length=50), nullable=True),
-    sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
-    sa.ForeignKeyConstraint(['service_id'], ['services.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('reviews',
@@ -127,19 +94,53 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('services',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('business_id', sa.Integer(), nullable=True),
+    sa.Column('name', sa.String(length=50), nullable=False),
+    sa.Column('price', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('bookings',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('business_id', sa.Integer(), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('service_id', sa.Integer(), nullable=True),
+    sa.Column('date', sa.Date(), nullable=False),
+    sa.Column('time', sa.String(), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
+    sa.ForeignKeyConstraint(['service_id'], ['services.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('images',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('img_url', sa.String(length=2083), nullable=False),
+    sa.Column('business_id', sa.Integer(), nullable=False),
+    sa.Column('service_id', sa.Integer(), nullable=True),
+    sa.Column('name', sa.String(length=25), nullable=True),
+    sa.Column('description', sa.String(length=50), nullable=True),
+    sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
+    sa.ForeignKeyConstraint(['service_id'], ['services.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     # ### end Alembic commands ###
 
 
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
-    op.drop_table('reviews')
     op.drop_table('images')
-    op.drop_table('favorites')
-    op.drop_table('business_services')
-    op.drop_table('business_languages')
     op.drop_table('bookings')
+    op.drop_table('services')
+    op.drop_table('reviews')
+    op.drop_table('favorites')
+    op.drop_table('business_languages')
     op.drop_table('businesses')
     op.drop_table('users')
-    op.drop_table('services')
     op.drop_table('languages')
     # ### end Alembic commands ###

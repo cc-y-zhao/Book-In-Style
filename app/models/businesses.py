@@ -3,11 +3,11 @@ from sqlalchemy import DateTime
 from sqlalchemy.sql import func
 
 # Join table for businesses/services
-business_services = db.Table(
-    "business_services",
-    db.Column("business_id", db.ForeignKey("businesses.id"), primary_key=True),
-    db.Column("service_id", db.ForeignKey("services.id"), primary_key=True)
-)
+# business_services = db.Table(
+#     "business_services",
+#     db.Column("business_id", db.ForeignKey("businesses.id"), primary_key=True),
+#     db.Column("service_id", db.ForeignKey("services.id"), primary_key=True)
+# )
 
 # Join table for businesses/languages
 business_languages = db.Table(
@@ -31,12 +31,21 @@ class Business(db.Model):
     zip_code = db.Column(db.String(10))
     capacity = db.Column(db.Integer)
     cover_photo = db.Column(db.String(2083))
+
+    monday = db.Column(db.String(20))
+    tuesday = db.Column(db.String(20))
+    wednesday = db.Column(db.String(20))
+    thursday = db.Column(db.String(20))
+    friday = db.Column(db.String(20))
+    saturday = db.Column(db.String(20))
+    sunday = db.Column(db.String(20))
+
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
-
     owner = db.relationship("User", back_populates="businesses")
-    services = db.relationship('Service', secondary=business_services, back_populates="businesses")
+    services = db.relationship('Service', back_populates="businesses")
+    # services = db.relationship('Service', secondary=business_services, back_populates="businesses")
     languages = db.relationship('Language', secondary=business_languages, back_populates="businesses")
     bookings = db.relationship('Booking', back_populates="businesses", cascade="all, delete-orphan")
     reviews = db.relationship('Review', back_populates='businesses', cascade='all, delete-orphan')
@@ -57,9 +66,14 @@ class Business(db.Model):
             'city': self.city,
             'capacity': self.capacity,
             'cover_photo': self.cover_photo,
-            'services' : [service.to_dict() for service in self.services],
+            'created_at': self.created_at,
+            'hours': {'monday': self.monday, 'tuesday': self.tuesday, 'wednesday': self.wednesday, 'thursday': self.thursday, 'friday': self.friday, 'saturday': self.saturday, 'sunday': self.sunday},
+            'services' : {service.id: service.to_dict() for service in self.services},
             'languages': [language.to_dict() for language in self.languages],
             'images': [image.to_dict() for image in self.images],
             'bookings': {booking.id: booking.to_dict() for booking in self.bookings},
             'reviews': {review.id: review.to_dict() for review in self.reviews},
         }
+
+
+    # 'services' : [service.to_dict() for service in self.services],

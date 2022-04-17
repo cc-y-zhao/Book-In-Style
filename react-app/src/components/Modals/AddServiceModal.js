@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import LoginForm from '../auth/LoginForm';
+import ServiceForm from '../Forms/ServiceForm';
 
 import '../Navigation/NavBar.css'
 
-function LoginModal() {
+function AddServiceModal({businessId}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <div className='login-nav' onClick={() => setShowModal(true)}>Log In</div>
+      <div onClick={() => setShowModal(true)}>Add Service</div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <LoginForm showModal={showModal} setShowModal={setShowModal}/>
+          <ServiceForm setShowModal={setShowModal} businessId={businessId}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default LoginModal;
+export default AddServiceModal;

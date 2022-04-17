@@ -12,6 +12,8 @@ import EditBusinessForm from './components/Forms/EditBusinessForm';
 import BusinessPage from './components/BusinessPage';
 import BusinessesPage from './components/Businesses';
 import HomePage from './components/HomePage';
+import ErrorPage from './components/Errors/ErrorPage';
+import Profile from './components/Profile';
 
 import { authenticate } from './store/session';
 
@@ -55,6 +57,9 @@ function App() {
         <ProtectedRoute path='/businesses/:businessId/edit' exact={true} >
           <EditBusinessForm/>
         </ProtectedRoute>
+        <ProtectedRoute path='/profile' exact={true} >
+          <Profile/>
+        </ProtectedRoute>
         <Route path='/businesses/:businessId' exact={true}>
           <BusinessPage />
         </Route>
@@ -64,6 +69,9 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
+        <Route path="*">
+          <ErrorPage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

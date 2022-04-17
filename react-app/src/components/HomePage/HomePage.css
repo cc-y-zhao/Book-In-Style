@@ -4,15 +4,43 @@
 }
 
 .home-main-img-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  /* background-image: url('../homepage.png'); */
+  background-position: 320px;
+  background-repeat: no-repeat;
+  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/homepage_banner_desktop.bbe277e6004165e8db3a.jpg);
+  background-size: cover;
+  background-color: #ebebeb;
+  height: 450px;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .find-pros {
   display: flex;
-  justify-content: center;
-  position: relative;
-  top: 500px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.services-homepage {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.homepage-img-1 {
+  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/braids_2021_hp_tile.1d8f177e32b689f51b29.png);
+  height: 350px;
+  width: 250px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 35px;
+}
+
+.homepage-img-2 {
+  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/natural_hair_2021_hp_tile.e95360827ef13815210a.png);
+  height: 350px;
+  width: 250px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 35px;
 }

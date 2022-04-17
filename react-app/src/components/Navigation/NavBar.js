@@ -29,7 +29,7 @@ const NavBar = () => {
       <>
         <div className='logged-out-div'>
           <div className='login-nav'><LoginModal /></div>
-          <div><NavLink className='signup-nav' to='/sign-up' exact={true}>Sign Up</NavLink></div>
+          <div className='signup-nav'><NavLink to='/sign-up' exact={true}>Sign Up</NavLink></div>
         </div>
       </>
     );
@@ -37,7 +37,7 @@ const NavBar = () => {
 
   return (
     <nav>
-      <div>
+      <div className='nav-container'>
         <NavLink className='navlink nav-element nav-home' exact to="/">
           <img
             className='logo-in-nav'
@@ -47,8 +47,8 @@ const NavBar = () => {
             width='150px'
           />
         </NavLink>
+        {sessionLinks}
       </div>
-      {sessionLinks}
     </nav>
   );
 }

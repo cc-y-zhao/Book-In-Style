@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import LoginForm from '../auth/LoginForm';
+import BusinessHoursForm from '../Forms/BusinessHours';
 
 import '../Navigation/NavBar.css'
 
-function LoginModal() {
+function EditBusinessHoursModal({businessId}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <div className='login-nav' onClick={() => setShowModal(true)}>Log In</div>
+      <div onClick={() => setShowModal(true)}>Update Hours</div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <LoginForm showModal={showModal} setShowModal={setShowModal}/>
+          <BusinessHoursForm setShowModal={setShowModal} businessId={businessId}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default LoginModal;
+export default EditBusinessHoursModal;

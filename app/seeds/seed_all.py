@@ -1,4 +1,4 @@
-from app.models import db, User, Business
+from app.models import db, User, Business, Service
 # from app.models import db, Business
 
 # from app.models import db, User, Business, Booking, Review, Favorite, Image, Language, Service
@@ -56,7 +56,14 @@ def seed_all():
         state = 'CA',
         zip_code = '91001',
         capacity = 1,
-        cover_photo = 'https://cdn.vox-cdn.com/thumbor/WenHe_SMDEmFp6FwNVc8Vkltn7A=/0x93:750x656/1200x900/filters:focal(0x93:750x656)/cdn.vox-cdn.com/uploads/chorus_image/image/49198829/stacks_image_468.0.0.0.0.0.jpg'
+        cover_photo = 'https://cdn.vox-cdn.com/thumbor/WenHe_SMDEmFp6FwNVc8Vkltn7A=/0x93:750x656/1200x900/filters:focal(0x93:750x656)/cdn.vox-cdn.com/uploads/chorus_image/image/49198829/stacks_image_468.0.0.0.0.0.jpg',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
     )
 
     business2 = Business(
@@ -70,7 +77,14 @@ def seed_all():
         state = 'CA',
         zip_code = '91001',
         capacity = 1,
-        cover_photo = 'https://www.genroe.com/wp-content/uploads/customer-feedback-beauty-salon-e1591225978543.jpg'
+        cover_photo = 'https://www.genroe.com/wp-content/uploads/customer-feedback-beauty-salon-e1591225978543.jpg',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
     )
 
     business3 = Business(
@@ -84,7 +98,14 @@ def seed_all():
         state = 'CA',
         zip_code = '91001',
         capacity = 1,
-        cover_photo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAcPoq0Gu_rst-vTwICDk7fsF-LWNkwtjp7g&usqp=CAU'
+        cover_photo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAcPoq0Gu_rst-vTwICDk7fsF-LWNkwtjp7g&usqp=CAU',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
     )
 
     business4 = Business(
@@ -99,6 +120,13 @@ def seed_all():
         zip_code = '91001',
         capacity = 1,
         cover_photo = 'https://media.istockphoto.com/photos/curls-of-hair-is-freely-flying-in-front-of-the-face-of-young-woman-picture-id1267002400?k=20&m=1267002400&s=612x612&w=0&h=H3NjFxmGwdt155DQkDGqmPQEWuDzpVdf5DlVlJJpsyA=',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
     )
 
     business5 = Business(
@@ -113,6 +141,13 @@ def seed_all():
         zip_code = '91001',
         capacity = 1,
         cover_photo = 'https://www.longisland.com/site_media/images/article/subarticle_image/shutterstock_626152427.jpg.644x0_q85.jpg',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
     )
 
     business6 = Business(
@@ -127,6 +162,13 @@ def seed_all():
         zip_code = '91001',
         capacity = 1,
         cover_photo = 'https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/mens_haircut_2021_hp_tile.ec1c6afffd0129b6951b.png',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
     )
 
 
@@ -139,14 +181,41 @@ def seed_all():
     db.session.add(business5)
     db.session.add(business6)
 
-
-
-
     db.session.flush()
 
+    service1 = Service (
+        business_id = '2',
+        name = "Women's Haircut",
+        price = 40,
+    )
 
 
+    service2 = Service (
+        business_id = '2',
+        name = "Men's Haircut",
+        price = 20,
+    )
 
+
+    service3 = Service (
+        business_id = '2',
+        name = "Kid's Haircut",
+        price = 15,
+    )
+
+
+    service4 = Service (
+        business_id = '2',
+        name = "Women's Hair Coloring",
+        price = 80,
+    )
+
+    db.session.add(service1)
+    db.session.add(service2)
+    db.session.add(service3)
+    db.session.add(service4)
+
+    db.session.flush()
 
 
 
@@ -157,9 +226,9 @@ def undo_seed_all():
     db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
     db.session.commit()
 
-    # undo_channels():
-    # db.session.execute('TRUNCATE channels RESTART IDENTITY CASCADE;')
-    # db.session.commit()
+    # undo_services():
+    db.session.execute('TRUNCATE services RESTART IDENTITY CASCADE;')
+    db.session.commit()
 
     # undo_messages():
     # db.session.execute('TRUNCATE messages RESTART IDENTITY CASCADE;')
