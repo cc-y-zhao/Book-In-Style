@@ -29,7 +29,7 @@ const NavBar = () => {
       <>
         <div className='logged-out-div'>
           <div className='login-nav'><LoginModal /></div>
-          <div><NavLink className='signup-nav' to='/sign-up' exact={true}>Sign Up</NavLink></div>
+          <div className='signup-nav'><NavLink to='/sign-up' exact={true}>Sign Up</NavLink></div>
         </div>
       </>
     );
