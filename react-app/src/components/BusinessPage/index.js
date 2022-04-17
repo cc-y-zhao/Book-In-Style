@@ -21,13 +21,6 @@ const BusinessPage = () => {
   const userId = useSelector((state) => state.session.user?.id);
   const businesses = useSelector((state) => state?.businesses)
   const business = useSelector((state) => businesses[businessIdParsed])
-  // const services = useSelector((state) => business?.services);
-
-  // let services;
-  // if (business) services = business?.services;
-
-
-  // console.log('services in business page------------', services);
 
   const [selectedTab, setSelectedTab] = useState(<Services/>)
 
