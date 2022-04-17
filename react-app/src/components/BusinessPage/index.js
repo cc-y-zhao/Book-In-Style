@@ -81,8 +81,8 @@ const BusinessPage = () => {
           <div className='biz-page-bottom'>
             <div className="about-reviews-services">
               <div className='about-reviews-services-nav'>
-                <span>Services</span>
-                <span>Reviews</span>
+                <span className='services-title-biz-pg'>Services</span>
+                <span className='reviews-title-biz-pg'>Reviews</span>
                 <span>About</span>
               </div>
               {/* -----------------THIS IS WHERE THE SELECTED CONTENT WILL GO--------------- */}
