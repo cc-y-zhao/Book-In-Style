@@ -89,9 +89,19 @@ const BusinessPage = () => {
               <div><Services services={services} userId={userId} businessId={businessIdParsed} businessName={business.name}/></div>
 
 
-
             </div>
-            <div className='biz-right'>
+          </div>
+
+        </div>
+      )}
+    </>
+  );
+};
+
+export default BusinessPage;
+
+
+           {/* <div className='biz-right'>
               <div className='street-address'>{business.street_address} {business.unit}</div>
               <div>{business.city}, {business.state} {business.zip_code}</div>
               <div className='edit-biz'>
@@ -111,13 +121,4 @@ const BusinessPage = () => {
                 <div>Saturday: </div>
                 <div>Sunday: </div>
               </div>
-            </div>
-          </div>
-
-        </div>
-      )}
-    </>
-  );
-};
-
-export default BusinessPage;
+            </div> */}

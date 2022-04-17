@@ -23,14 +23,14 @@ const Services = ({services, userId, businessId, businessName}) => {
 
   return (
     <>
-      <div className='services-container'>
+      <div>
         {servicesArr && servicesArr.map((service) =>
-        <div>
+        <div className='services-container'>
           <div className='each-service' key={service.id}>
             <div className='service-name-biz-pg'>{service.name}</div>
             <div className='service-price-biz-pg'>{dollarSign}{service.price}</div>
           </div>
-          <div><BookingModal service={service} userId={userId} businessId={businessId} businessName={businessName}/></div>
+          <div className='see-times'><BookingModal service={service} userId={userId} businessId={businessId} businessName={businessName}/></div>
         </div>
         )}
       </div>
