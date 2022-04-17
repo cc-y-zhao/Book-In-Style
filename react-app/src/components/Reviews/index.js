@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { loadBusiness } from "../../store/businesses";
 
 const Reviews = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const { businessId } = useParams();
   const businessIdParsed = parseInt(businessId);

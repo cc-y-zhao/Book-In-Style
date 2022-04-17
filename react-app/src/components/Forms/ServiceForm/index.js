@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+// import { useHistory } from "react-router-dom";
 
 import { createService, loadBusiness } from "../../../store/businesses";
 
@@ -8,9 +8,6 @@ import { createService, loadBusiness } from "../../../store/businesses";
 
 const ServiceForm = ({setShowModal, businessId}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
-
-  //business id will be passed in from modal context
 
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState("");
@@ -28,13 +25,13 @@ const ServiceForm = ({setShowModal, businessId}) => {
       price,
     };
 
-    console.log('payload-------------', payload)
+    // console.log('payload-------------', payload)
 
     let data;
 
     data = await dispatch(createService(payload));
 
-    console.log('data in beofre if data--------------', data)
+    // console.log('data in beofre if data--------------', data)
 
     if (data?.id) {
       setErrors([]);
@@ -56,7 +53,6 @@ const ServiceForm = ({setShowModal, businessId}) => {
   // } else {
   //   disabled = false;
   // }
-  let to = ' - ';
 
   return (
     <div className="CreateBusinessFormWrapper">

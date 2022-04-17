@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import BookingModal from "../Modals/BookingModal";
 
 import { loadBusiness } from "../../store/businesses";
@@ -9,7 +9,6 @@ import './Services.css';
 
 const Services = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const { businessId } = useParams();
   const businessIdParsed = parseInt(businessId);
@@ -32,9 +31,6 @@ const Services = () => {
   useEffect(() => {
     dispatch(loadBusiness(businessIdParsed));
   }, [dispatch, businessIdParsed]);
-
-  let disableBookingForm = true;
-  if (userId) disableBookingForm = false;
 
   let dollarSign = '$';
 

@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect, useHistory } from "react-router-dom";
+import React from "react";
+import { useDispatch } from "react-redux";
+// import { useHistory } from "react-router-dom";
 
 import { deleteBooking, loadBookingsByUser } from "../../store/bookings";
 
 const DeleteBooking = ({booking, setShowModal, setEditBookingModal}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleDelete = async (e) => {
     e.preventDefault();

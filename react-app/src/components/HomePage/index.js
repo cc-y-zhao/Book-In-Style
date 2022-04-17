@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect, useHistory, NavLink } from "react-router-dom";
+import React from "react";
+// import { useDispatch } from "react-redux";
+// import { useHistory } from "react-router-dom";
 
-import { loadBusiness, loadAllBusinesses } from "../../store/businesses";
+// import { loadBusiness, loadAllBusinesses } from "../../store/businesses";
 import './HomePage.css';
 const HomePage = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
+  // const dispatch = useDispatch();
+  // const history = useHistory();
 
   // const businesses = useSelector((state) => state?.businesses?.businesses_list)
   // console.log('businesses om businesses page-------------', businesses)

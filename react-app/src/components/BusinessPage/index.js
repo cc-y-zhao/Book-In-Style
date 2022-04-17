@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import EditBusinessModal from "../Modals/EditBusinessModal";
 import AddServiceModal from "../Modals/AddServiceModal";
-import EditBusinessHoursModal from "../Modals/EditBusinessHoursModal";
+// import EditBusinessHoursModal from "../Modals/EditBusinessHoursModal";
 import ErrorPage from "../Errors/ErrorPage";
 
 import Services from "../Services";
@@ -17,7 +17,7 @@ import './BusinessPage.css'
 
 const BusinessPage = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+
   const { businessId } = useParams();
   const businessIdParsed = parseInt(businessId);
 
@@ -61,10 +61,6 @@ const BusinessPage = () => {
   if (userId && business) {
     if (business.owner_id === userId) showEdit = true;
   }
-
-  let disableBookingForm = true;
-  if (userId) disableBookingForm = false;
-
 
   if (!(businessIdParsed in businesses)) {
     return (
@@ -175,26 +171,3 @@ const BusinessPage = () => {
 };
 
 export default BusinessPage;
-
-
-           {/* <div className='biz-right'>
-              <div className='street-address'>{business.street_address} {business.unit}</div>
-              <div>{business.city}, {business.state} {business.zip_code}</div>
-              <div className='edit-biz'>
-                {showEdit && (
-                  <div className='edit-biz-btn'>
-                    <EditBusinessHoursModal businessId={businessIdParsed}/>
-                  </div>
-                )}
-              </div>
-              <div className='biz-hours-title'>Business Hours</div>
-              <div>
-                <div>Monday: </div>
-                <div>Tuesday: </div>
-                <div>Wednesday: </div>
-                <div>Thursday: </div>
-                <div>Friday: </div>
-                <div>Saturday: </div>
-                <div>Sunday: </div>
-              </div>
-            </div> */}

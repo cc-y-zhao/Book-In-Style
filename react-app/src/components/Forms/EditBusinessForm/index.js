@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import states from "../BusinessForm/states";
 import DeleteBusinessModal from "../../Modals/DeleteBusinessModal"
 
-import { loadBusiness, editBusiness, deleteBusiness } from "../../../store/businesses";
+import { loadBusiness, editBusiness } from "../../../store/businesses";
 import './EditBusiness.css';
 
 const EditBusinessForm = ({setShowModal}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
   const { businessId } = useParams();
   const businessIdParsed = parseInt(businessId);
 
   const businesses = useSelector((state) => state?.businesses)
   const business = businesses[businessIdParsed]
-  const userId = useSelector((state) => state.session.user?.id);
+  // const userId = useSelector((state) => state.session.user?.id);
 
   useEffect(() => {
     dispatch(loadBusiness(businessIdParsed));
@@ -95,10 +95,6 @@ const EditBusinessForm = ({setShowModal}) => {
       return setErrors(data)
     }
   };
-
-  const handleDelete = (e) => {
-    e.preventDefault();
-  }
 
   let disabled;
 

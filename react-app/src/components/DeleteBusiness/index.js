@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect, useHistory } from "react-router-dom";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-import { loadBusiness, deleteBusiness } from "../../store/businesses";
+import { deleteBusiness } from "../../store/businesses";
 
 const DeleteBusiness = ({businessId, setShowModal}) => {
   const dispatch = useDispatch();
@@ -11,8 +11,6 @@ const DeleteBusiness = ({businessId, setShowModal}) => {
   const handleDelete = async (e) => {
     e.preventDefault();
     let deletedBusiness;
-
-    console.log('business in in frontend---------'. businessId)
 
     deletedBusiness = await dispatch(deleteBusiness(businessId));
 
