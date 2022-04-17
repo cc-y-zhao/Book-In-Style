@@ -19,6 +19,14 @@ nav {
   justify-content: flex-end;
 }
 
+.nav-container.logo-in-nav {
+  justify-self: flex-start !important;
+}
+
+.nav-home {
+  margin-right: auto;
+}
+
 .nav-element {
   display: inline-flex;
   justify-content: space-around;
@@ -28,6 +36,7 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
+  /* justify-content: space-between; */
   /* justify-content:safe; */
   /* margin-right: 5% */
 }
@@ -47,36 +56,34 @@ nav {
 }
 
 .login-nav {
-  /* position: absolute;
-  right: 170px; */
+  /* /* position: absolute;
+  right: 170px;
   /* margin-right: 20px; */
   font-weight: 500;
 }
 
 .set-up-business {
-  /* margin-right: 20px; */
+  margin-right: 40px;
   text-decoration: none;
   color: #E10984;
   font-weight: 500;
 }
 
 .welcome-msg {
-  margin-left: 5%;
+  margin-right: 40px;
   font-style: italic;
   font-weight: 500;
 }
 
-.prof-icon {
+/* .prof-icon {
   margin-left: 5%;
-}
+} */
 
 
 .logo-in-nav {
   /* position: absolute; */
-  margin-top: 5%;
-  /* left: 90px; */
-  /* margin-top: 5%; */
-  /* margin-left: 5%; */
+  /* justify-self: flex-start; */
+  vertical-align: baseline;
 }
 
 .navlink:hover {
