@@ -12,21 +12,21 @@ def user_exists(form, field):
         raise ValidationError('Email address is already registered.')
 
 
-# def phone_exists(form, field):
-#     # Checking if phone is already registered
-#     phone = field.data
-#     user = User.query.filter(User.phone == phone).first()
-#     if user:
-#         raise ValidationError('Phone number is already registered.')
-#     if not phone.isnumeric():
-#         raise ValidationError('Phone number must contain only digits')
-#     if not len(phone) == 10:
-#         raise ValidationError('Phone number must include 10 digits')
+def phone_exists(form, field):
+    # Checking if phone is already registered
+    phone = field.data
+    user = User.query.filter(User.phone == phone).first()
+    if user:
+        raise ValidationError('Phone number is already registered.')
+    if not phone.isnumeric():
+        raise ValidationError('Phone number must contain only digits')
+    if not len(phone) == 10:
+        raise ValidationError('Phone number must include 10 digits')
 
-# def valid_image(form, field):
-#     image_url = field.data
-#     if not (image_url.endswith('.jpg') or image_url.endswith('.jpeg') or image_url.endswith('.png') or image_url.endswith('.gif')):
-#         raise ValidationError('Image format must be .jpg, .jpeg, or .png')
+def valid_image(form, field):
+    image_url = field.data
+    if not (image_url.endswith('.jpg') or image_url.endswith('.jpeg') or image_url.endswith('.png') or image_url.endswith('.gif')):
+        raise ValidationError('Image format must be .jpg, .jpeg, or .png')
 
 
 class SignUpForm(FlaskForm):

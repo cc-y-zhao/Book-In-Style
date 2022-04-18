@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
+import AddReviewModal from "../Modals/AddReviewModal";
 import { loadBusiness } from "../../store/businesses";
 
 const Reviews = () => {
@@ -27,14 +28,19 @@ const Reviews = () => {
     dispatch(loadBusiness(businessIdParsed));
   }, [dispatch, businessIdParsed]);
 
-  let disableReviewForm = true;
-  if (userId) disableReviewForm = false;
+  let showAddReviewButton = false;
+  if (userId) showAddReviewButton = true;
 
 
   return (
     <>
+      {showAddReviewButton && (
       <div>
-        This is the review section
+        <AddReviewModal businessId={business_id}/>
+      </div>
+      )}
+      <div>
+        All reviews will go here
       </div>
     </>
   );
