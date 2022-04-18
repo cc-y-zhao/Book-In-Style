@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import AddReviewModal from "../Modals/AddReviewModal";
-import { loadBusiness } from "../../store/businesses";
+import { loadReviewsByBusiness } from "../../store/reviews";
 
 const Reviews = () => {
   const dispatch = useDispatch();
@@ -14,12 +14,22 @@ const Reviews = () => {
 
   const userId = useSelector((state) => state.session.user?.id);
   const businesses = useSelector((state) => state?.businesses);
+  const reviewsState = useSelector((state) => state?.reviews);
   let business;
   if (businesses) business = businesses[business_id];
   let reviews;
-  if (business) reviews = Object.values(business.reviews);
+  if (reviewsState) {
+    // console.log('IN first IF STATEMENT----------',reviewsState);
+    if (reviewsState.reviews_by_business) {
+      // console.log('IN second STATEMENT----------',reviewsState.reviews_by_business);
+      if (reviewsState.reviews_by_business[business_id]) {
+        // console.log('IN third IF STATEMENT----------',reviewsState.reviews_by_business[business_id]);
+        reviews = Object.values(reviewsState.reviews_by_business[business_id]);
+      }
+    }
+  }
 
-  // console.log('reviews in reviews page-------------', reviews);
+  console.log('reviews in reviews page-------------', reviews);
 
 
   // let services;
@@ -30,7 +40,7 @@ const Reviews = () => {
 
 
   useEffect(() => {
-    dispatch(loadBusiness(businessIdParsed));
+    dispatch(loadReviewsByBusiness(businessIdParsed));
   }, [dispatch, businessIdParsed]);
 
   let showAddReviewButton = false;

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import './ReviewForm.css';
-import { createReview } from "../../../store/reviews";
+import { createReview, loadReviewsByBusiness } from "../../../store/reviews";
 
 const CreateReviewForm = ({setShowModal, businessId}) => {
   const dispatch = useDispatch();
@@ -103,12 +103,12 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
 
     data = await dispatch(createReview(payload));
 
-    console.log('data in beofre if data--------------', data)
+    // console.log('data in beofre if data--------------', data)
 
     if (data?.id) {
       setErrors([]);
 
-      // await dispatch(loadBusiness(businessId))
+      await dispatch(loadReviewsByBusiness(businessId))
       await setShowModal(false)
       return window.alert('Thanks for submitting your review!')
       // return history.push(`/profile`);

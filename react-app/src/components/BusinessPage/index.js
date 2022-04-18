@@ -12,6 +12,7 @@ import Reviews from "../Reviews";
 import About from "./About";
 
 import { loadBusiness } from "../../store/businesses";
+import { loadReviewsByBusiness } from "../../store/reviews";
 
 import './BusinessPage.css'
 
@@ -44,6 +45,7 @@ const BusinessPage = () => {
 
   useEffect(() => {
     dispatch(loadBusiness(businessIdParsed));
+    dispatch(loadReviewsByBusiness(businessIdParsed));
     setSelectedTab(<Services />);
   }, [dispatch, businessIdParsed]);
 

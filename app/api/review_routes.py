@@ -17,22 +17,18 @@ def validation_errors_to_error_messages(validation_errors):
             # errorMessages.append([field, ':', error])
     return errorMessages
 
-# @review_routes.route('/', methods=['GET'])
-# def get_all_business():
-#     businesses_no_dict = Business.query.all()
-#     businesses = []
-
-#     for business in businesses_no_dict:
-#         businesses.append(business.to_dict())
-
-#     return {'businesses': businesses}
-
 @review_routes.route('/businesses/<int:business_id>', methods=['GET'])
 def get_business(business_id):
     business_before_dict = Business.query.get(business_id)
+
+    # print ('\n\n\n REVIEWS FROM BACKEND:', business_before_dict.reviews, '\n\n\n')
+
     business = business_before_dict.to_dict()
 
-    return business.reviews
+    reviews = business['reviews']
+    # print ('\n\n\n REVIEWS FROM BACKEND:', reviews, '\n\n\n')
+
+    return reviews
 
 
 @review_routes.route('/', methods=['POST'])
