@@ -42,18 +42,24 @@ def create_review():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        review = Review(
+        review_before_dict = Review(
             business_id = form.data['businessId'],
             service_id = form.data['serviceId'],
-            name = form.data['name'],
-            description = form.data['description'],
-            phone = form.data['phone'],
+            user_id = form.data['userId'],
+            rating = form.data['rating'],
+            review = form.data['review'],
+            img_url_1 = form.data['img1'],
+            img_url_2 = form.data['img2'],
+            img_url_3 = form.data['img3'],
         )
 
-        db.session.add(review)
+        db.session.add(review_before_dict)
         db.session.commit()
 
-        return review.to_dict()
+        review = review_before_dict.to_dict()
+        review['reviewer_name'] = form.data['userName']
+
+        return review
     # print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

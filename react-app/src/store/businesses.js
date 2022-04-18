@@ -181,7 +181,7 @@ export const createService = (service) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    // console.log('data in action creator-----------', data)
+    console.log('data in action creator-----------', data)
     dispatch(createdBusiness(data))
     return data;
   } else if (response.status < 500) {

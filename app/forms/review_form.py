@@ -6,12 +6,13 @@ from app.models import Booking
 
 def valid_image(form, field):
     image_url = field.data
-    if not (image_url.endswith('.jpg') or image_url.endswith('.jpeg') or image_url.endswith('.png') or image_url.endswith('.gif')):
-      raise ValidationError('Image format must be .jpg, .jpeg, or .png')
-    if not(image_url.startswith('https://') or image_url.startswith('http://')):
-      raise ValidationError('Image URL must start with "https://" or "http://"')
-    if len(image_url) > 2048:
-      raise ValidationError('Image URL is too long')
+    if image_url != "":
+      if not (image_url.endswith('.jpg') or image_url.endswith('.jpeg') or image_url.endswith('.png') or image_url.endswith('.gif')):
+        raise ValidationError('Image format must be .jpg, .jpeg, or .png')
+      if not(image_url.startswith('https://') or image_url.startswith('http://')):
+        raise ValidationError('Image URL must start with "https://" or "http://"')
+      if len(image_url) > 2048:
+        raise ValidationError('Image URL is too long')
 
 def valid_review(form, field):
   review = field.data

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import './ReviewForm.css';
-import { loadBusiness } from "../../../store/businesses";
+import { loadBusiness, createReview } from "../../../store/businesses";
 
 const CreateReviewForm = ({setShowModal, businessId}) => {
   const dispatch = useDispatch();
@@ -21,8 +21,8 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
   let servicesArr;
   if (services) servicesArr = Object.values(services);
 
-  console.log('services in review form -------------', services);
-  console.log('services ARRAY in review form -------------', servicesArr);
+  // console.log('services in review form -------------', services);
+  // console.log('services ARRAY in review form -------------', servicesArr);
 
   let servicesNamesAndIds = {};
   servicesArr.forEach((service) => {
@@ -100,7 +100,7 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
 
     let data;
 
-    // data = await dispatch(createBooking(payload));
+    data = await dispatch(createReview(payload));
 
     console.log('data in beofre if data--------------', data)
 
@@ -154,9 +154,9 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
             <div>Service:
               <span className='optional-service'>(optional) </span>
             </div>
-            <select onChange={updateRating} value={rating}>
-              {servicesOptions.map(rating =>
-                <option key={rating}>{rating}</option>
+            <select onChange={updateServiceName} value={serviceName}>
+              {servicesOptions.map(service =>
+                <option key={service}>{service}</option>
               )}
             </select>
           </div>
@@ -166,7 +166,6 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
             </div>
             <input
               type="text"
-              required
               placeholder="Image URL"
               value={img1}
               onChange={updateImg1}
@@ -178,7 +177,6 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
             </div>
             <input
               type="text"
-              required
               placeholder="Image URL"
               value={img2}
               onChange={updateImg2}
@@ -190,7 +188,6 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
             </div>
             <input
               type="text"
-              required
               placeholder="Image URL"
               value={img3}
               onChange={updateImg3}
