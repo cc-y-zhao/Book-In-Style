@@ -32,7 +32,7 @@ class Review(db.Model):
       'rating': self.rating,
       'review': self.review,
       'service_id': self.service_id,
-      'img_url': self.img_url_1,
+      'img_url_1': self.img_url_1,
       'img_url_2': self.img_url_2,
       'img_url_3': self.img_url_3,
       'reviewer_name': reviewer_name,

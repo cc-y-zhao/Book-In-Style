@@ -14,9 +14,7 @@ const EditReviewForm = ({setShowModal, origReview}) => {
   let businessId = origReview.business_id;
 
   const businesses = useSelector((state) => state?.businesses);
-  const user = useSelector((state) => state?.session?.user);
-  const userId = user.id;
-  const userName = user.first_name + " " + user.last_name[0] + '.';
+  const userId = origReview.user_id;
 
   let business;
   if (businesses) business = businesses[businessId];
@@ -41,7 +39,6 @@ const EditReviewForm = ({setShowModal, origReview}) => {
   });
 
 
-
   const ratingsOptions = [
     '--Select Rating--',
     1,
@@ -52,12 +49,12 @@ const EditReviewForm = ({setShowModal, origReview}) => {
   ];
 
   const [errors, setErrors] = useState([]);
-  const [rating, setRating] = useState('--Select Rating--');
-  const [review, setReview] = useState('');
-  const [img1, setImg1] = useState('');
-  const [img2, setImg2] = useState('');
-  const [img3, setImg3] = useState('');
-  const [serviceName, setServiceName] = useState('');
+  const [rating, setRating] = useState(origReview.rating);
+  const [review, setReview] = useState(origReview.review);
+  const [img1, setImg1] = useState(origReview.img_url_1);
+  const [img2, setImg2] = useState(origReview.img_url_2);
+  const [img3, setImg3] = useState(origReview.img_url_3);
+  const [serviceName, setServiceName] = useState(origReview.service_name);
 
   const updateRating = (e) => setRating(e.target.value);
   const updateReview = (e) => setReview(e.target.value);
@@ -66,21 +63,6 @@ const EditReviewForm = ({setShowModal, origReview}) => {
   const updateImg2 = (e) => setImg2(e.target.value);
   const updateImg3 = (e) => setImg3(e.target.value);
 
-  // useEffect(() => {
-  //   dispatch(loadBusiness(businessId));
-  // }, [dispatch, businessId]);
-
-  // let obj = {};
-
-  // console.log('BOOLEAN----------', obj['key'])
-
-  // if (obj['key']) {
-  //   console.log('HEY')
-  // } else {
-  //   obj['key'] = 'hi'
-  // }
-
-  // console.log('NEW OBJ---------', obj)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -121,7 +103,7 @@ const EditReviewForm = ({setShowModal, origReview}) => {
   };
 
   let disabled = false;
-  if (rating.includes('Select') || review.length < 1) disabled = true;
+  if (rating === '--Select Rating--' || review.length < 1) disabled = true;
 
   return (
     <div className="CreateReviewFormWrapper">
@@ -199,7 +181,7 @@ const EditReviewForm = ({setShowModal, origReview}) => {
 
           <div className="create-biz-btn">
             <button type="submit" disabled={disabled}>
-              Post Review
+              Post Updated Review
             </button>
           </div>
         </form>

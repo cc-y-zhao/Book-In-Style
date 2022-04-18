@@ -60,22 +60,6 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
   const updateImg2 = (e) => setImg2(e.target.value);
   const updateImg3 = (e) => setImg3(e.target.value);
 
-  // useEffect(() => {
-  //   dispatch(loadBusiness(businessId));
-  // }, [dispatch, businessId]);
-
-  // let obj = {};
-
-  // console.log('BOOLEAN----------', obj['key'])
-
-  // if (obj['key']) {
-  //   console.log('HEY')
-  // } else {
-  //   obj['key'] = 'hi'
-  // }
-
-  // console.log('NEW OBJ---------', obj)
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -115,7 +99,8 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
   };
 
   let disabled = false;
-  if (rating.includes('Select') || review.length < 1) disabled = true;
+  if (rating === '--Select Rating--' || review.length < 1) disabled = true;
+
 
   return (
     <div className="CreateReviewFormWrapper">
