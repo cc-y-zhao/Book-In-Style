@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import AddReviewModal from "../Modals/AddReviewModal";
+import EditReviewModal from "../Modals/EditReviewModal";
 import { loadReviewsByBusiness } from "../../store/reviews";
 
 import './Reviews.css';
@@ -51,8 +52,6 @@ const Reviews = () => {
   let showAddReviewButton = false;
   if (userId) showAddReviewButton = true;
 
-  // "Mon, 18 Apr 2022 10:26:41 GMT"
-
   const createdAt = (date) => {
     let array = date.split(" ");
     let newDate = array[2] + " " + array[1] + ", " + array[3];
@@ -77,6 +76,13 @@ const Reviews = () => {
                 {ratingStars(review.rating)}
               </div>
               <div className='service-name-in-review'>{review.service_name}</div>
+              <div>
+                {userId === review.user_id ? (
+                  <EditReviewModal review={review}/>
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
             <div className='reviewer-name-and-date'>
               <div className='reviewer-name'>{review.reviewer_name}</div>
