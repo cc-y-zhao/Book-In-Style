@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import './ReviewForm.css';
-import { loadBusiness, createReview } from "../../../store/businesses";
+import { createReview } from "../../../store/reviews";
 
 const CreateReviewForm = ({setShowModal, businessId}) => {
   const dispatch = useDispatch();
@@ -62,9 +62,9 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
   const updateImg2 = (e) => setImg2(e.target.value);
   const updateImg3 = (e) => setImg3(e.target.value);
 
-  useEffect(() => {
-    dispatch(loadBusiness(businessId));
-  }, [dispatch, businessId]);
+  // useEffect(() => {
+  //   dispatch(loadBusiness(businessId));
+  // }, [dispatch, businessId]);
 
   // let obj = {};
 
@@ -108,7 +108,7 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
     if (data?.id) {
       setErrors([]);
 
-      await dispatch(loadBusiness(businessId))
+      // await dispatch(loadBusiness(businessId))
       await setShowModal(false)
       return window.alert('Thanks for submitting your review!')
       // return history.push(`/profile`);
