@@ -1,15 +1,21 @@
 const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
 const GET_REVIEWS_BY_BUSINESS = 'reviews/GET_REVIEWS_BY_BUSINESS';
+const EDIT_REVIEW = 'reviews/EDIT_REVIEW';
 
 const createdReview = (review) => ({
   type: CREATE_REVIEW,
   review
-})
+});
 
 const loadAllReviewsByBusiness = (reviews, businessId) => ({
   type: GET_REVIEWS_BY_BUSINESS,
   reviews,
   businessId,
+});
+
+const editedReview = (review) => ({
+  type: GET_REVIEWS_BY_BUSINESS,
+  review
 })
 
 export const createReview = (review) => async (dispatch) => {
@@ -51,6 +57,31 @@ export const loadReviewsByBusiness = (businessId) => async (dispatch) => {
   }
 };
 
+export const editReview = (editedReview) => async (dispatch) => {
+
+  console.log('edited booking beofre fetch----------', editedReview);
+
+  const response = await fetch(`/api/reviews/${editedReview.reviewId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(editedReview),
+  });
+
+
+  if (response.ok) {
+    const updatedReview = await response.json();
+    dispatch(editedReview(updatedReview))
+    return updatedReview;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
+  }
+};
+
 
 const initialState = {};
 
@@ -85,6 +116,11 @@ export default function reducer(state = initialState, action) {
       // console.log('action.reviews from reducer ----------', action.reviews);
       newState['reviews_by_business'] = {};
       newState['reviews_by_business'][action.businessId] = action.reviews.reviews;
+
+      return newState;
+
+    case EDIT_REVIEW:
+      newState['reviews_by_business'][action.review.business_id] = action.review;
 
       return newState;
 

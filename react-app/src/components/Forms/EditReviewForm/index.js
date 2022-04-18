@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import '../ReviewForm/ReviewForm.css';
-import { createReview, loadReviewsByBusiness } from "../../../store/reviews";
+import { editReview, loadReviewsByBusiness } from "../../../store/reviews";
 
 const EditReviewForm = ({setShowModal, origReview}) => {
   const dispatch = useDispatch();
@@ -68,6 +68,7 @@ const EditReviewForm = ({setShowModal, origReview}) => {
     e.preventDefault();
 
     const serviceId = servicesNamesAndIds[serviceName];
+    const reviewId = origReview.id;
 
     const payload = {
       rating,
@@ -79,13 +80,14 @@ const EditReviewForm = ({setShowModal, origReview}) => {
       img2,
       img3,
       userId,
+      reviewId,
     };
 
     // console.log('payload-------------', payload)
 
     let data;
 
-    data = await dispatch(createReview(payload));
+    data = await dispatch(editReview(payload));
 
     // console.log('data in beofre if data--------------', data)
 
@@ -94,7 +96,7 @@ const EditReviewForm = ({setShowModal, origReview}) => {
 
       await dispatch(loadReviewsByBusiness(businessId))
       await setShowModal(false)
-      return window.alert('Thanks for submitting your review!')
+      return window.alert('Thanks for updating your review!')
       // return history.push(`/profile`);
       // return <Redirect to={`/businesses/${data.id}`}/>
     } else {
