@@ -10,6 +10,10 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
   const history = useHistory();
 
   const businesses = useSelector((state) => state?.businesses);
+  const user = useSelector((state) => state?.session?.user);
+  const userId = user.id;
+  const userName = user.first_name + " " + user.last_name[0] + '.';
+
   let business;
   if (businesses) business = businesses[businessId];
   let services;
@@ -78,6 +82,8 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
       img1,
       img2,
       img3,
+      userId,
+      userName,
     };
 
     // console.log('payload-------------', payload)

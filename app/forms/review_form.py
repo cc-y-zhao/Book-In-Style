@@ -24,6 +24,8 @@ def valid_review(form, field):
 class ReviewForm(FlaskForm):
   businessId = IntegerField('Business Id')
   serviceId = IntegerField('Service Id')
+  userId = IntegerField('User Id')
+  userName = StringField('Reviewer Name')
   rating = IntegerField('Rating', validators=[DataRequired()])
   review = StringField('Review', validators=[DataRequired(), valid_review])
   serviceName = StringField('Service Name')
