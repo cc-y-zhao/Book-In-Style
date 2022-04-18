@@ -23,24 +23,78 @@
 .services-homepage {
   display: flex;
   flex-direction: row;
+  /* flex-basis: auto; */
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .homepage-img-1 {
-  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/braids_2021_hp_tile.1d8f177e32b689f51b29.png);
-  height: 350px;
-  width: 250px;
+  box-sizing: border-box;
+  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/haircut_2021_hp_tile.429a033a2e17a9e06644.png);
+  height: 300px;
+  width: 200px;
   background-size: cover;
   background-repeat: no-repeat;
-  margin-right: 35px;
+  /* margin-right: 35px; */
 }
 
 .homepage-img-2 {
-  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/natural_hair_2021_hp_tile.e95360827ef13815210a.png);
-  height: 350px;
-  width: 250px;
+  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/eyelashes_2021_hp_tile.968a9a77d3e861882b87.png);
+  height: 300px;
+  width: 200px;
   background-size: cover;
   background-repeat: no-repeat;
-  margin-right: 35px;
+  /* margin-right: 35px; */
 }
+
+.homepage-img-3 {
+  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/mens_haircut_2021_hp_tile.ec1c6afffd0129b6951b.png);
+  height: 300px;
+  width: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* margin-right: 35px; */
+}
+
+.homepage-img-4 {
+  background-image: url(https://mayersonjcc.org/app/uploads/2022/02/j-spa-stock-image-square-634x646.jpg);
+  height: 300px;
+  width: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* margin-right: 35px; */
+}
+
+
+.homepage-img-5 {
+  background-image: url(https://image.shutterstock.com/image-photo/beautiful-womans-hands-nails-after-260nw-165763607.jpg);
+  height: 300px;
+  width: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* margin-right: 35px; */
+}
+
+
+.homepage-img-6 {
+  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/kids_2021_hp_tile.744c88154e8a3d37f16c.png);
+  height: 300px;
+  width: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* margin-right: 35px; */
+}
+
+.homepage-img-7 {
+  background-image: url(https://i.pinimg.com/originals/b7/8a/7d/b78a7d867ae5c80e8d8443b5030498c3.jpg);
+  height: 300px;
+  width: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-position: right 15%; */
+  /* margin-right: 35px; */
+}
+
+ /* font for services: BentonSans */

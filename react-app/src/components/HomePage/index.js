@@ -41,6 +41,13 @@ const HomePage = () => {
         <div className='services-homepage'>
           <div className='homepage-img-1'></div>
           <div className='homepage-img-2'></div>
+          <div className='homepage-img-3'></div>
+          <div className='homepage-img-4'></div>
+          <div className='homepage-img-5'></div>
+          <div className='homepage-img-6'></div>
+          <div className='homepage-img-7'></div>
+
+
 
         </div>
       </div>
