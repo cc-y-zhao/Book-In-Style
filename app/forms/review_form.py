@@ -13,10 +13,6 @@ def valid_image(form, field):
 
         if not (new_image_url.endswith('.jpg') or new_image_url.endswith('.jpeg') or new_image_url.endswith('.png')):
           raise ValidationError('Image format must be .jpg, .jpeg, or .png')
-        # if not ((new_image_url.endswith('.jpg') == True) or (new_image_url.endswith('.jpeg') == True) or (new_image_url.endswith('.png') == True)):
-        #   raise ValidationError('Image format must be .jpg, .jpeg, or .png')
-        # if not (new_image_url.endswith('.jpg') or new_image_url.endswith('.jpeg') or new_image_url.endswith('.png')):
-        #   raise ValidationError('Image format must be .jpg, .jpeg, or .png')
       else:
         if not (image_url.endswith('.jpg') or image_url.endswith('.jpeg') or image_url.endswith('.png')):
           raise ValidationError('Image format must be .jpg, .jpeg, or .png')

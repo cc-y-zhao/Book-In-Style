@@ -16,6 +16,11 @@ const Reviews = () => {
   const businesses = useSelector((state) => state?.businesses);
   let business;
   if (businesses) business = businesses[business_id];
+  let reviews;
+  if (business) reviews = Object.values(business.reviews);
+
+  console.log('reviews in reviews page-------------', reviews);
+
 
   // let services;
   // if (business) services = business.services;
@@ -34,14 +39,24 @@ const Reviews = () => {
 
   return (
     <>
+    <div className='reviews-container'>
       {showAddReviewButton && (
       <div>
         <AddReviewModal businessId={business_id}/>
       </div>
       )}
       <div>
-        All reviews will go here
+        {reviews && reviews.map((review) =>
+        <>
+          <div className='each-review'>
+            <div>{review.user_first_name}</div>
+            <div>{review.rating}</div>
+            <div>{review.review}</div>
+          </div>
+        </>
+        )}
       </div>
+    </div>
     </>
   );
 };
