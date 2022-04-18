@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import AddReviewModal from "../Modals/AddReviewModal";
 import { loadReviewsByBusiness } from "../../store/reviews";
 
+import './Reviews.css';
+
 const Reviews = () => {
   const dispatch = useDispatch();
 
@@ -61,8 +63,8 @@ const Reviews = () => {
         {reviews && reviews.map((review) =>
         <>
           <div className='each-review'>
-            <div>{review.serviceName}</div>
-            <div>{review.user_first_name}</div>
+            <div>{review.service_name}</div>
+            <div>{review.reviewer_name}</div>
             <div>{review.rating}</div>
             <div>{review.review}</div>
           </div>

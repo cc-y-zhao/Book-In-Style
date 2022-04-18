@@ -21,25 +21,9 @@ class Review(db.Model):
   service = db.relationship('Service', back_populates='reviews')
 
   def to_dict(self):
-    # reviewer = self.user
-    # reviewer_dict = reviewer.to_dict()
-    # first_name = reviewer_dict['first_name']
-    # last_name = reviewer_dict['last_name']
-    # reviewer_name = first_name + " " + last_name[0] + "."
-
-    # service_reviewed = self.service
-    # service_reviewed_dict = service_reviewed.to_dict()
-    # service_name = service_reviewed_dict['name']
-    # print(f'\n\nuser:\n{self.user}\n\n')
-    # print(f'\n\nuser type:\n{type(self.user)}\n\n')
-    # print(f'\n\nuser:\n{self.user.first_name}\n\n')
-    # print(f'\n\nname:\n{f"{self.user.first_name} {self.user.last_name[:1]}."}\n\n')
 
     reviewer_name = f"{self.user.first_name} {self.user.last_name[:1]}."
     service_name = self.service.name if self.service else ''
-
-    # print(service_name)
-
 
     return {
       'id': self.id,

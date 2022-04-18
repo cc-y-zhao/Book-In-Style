@@ -1,0 +1,7 @@
+.each-review {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px ridge rgb(242, 242, 242);
+  padding: 25px;
+  height: max-content;
+}
