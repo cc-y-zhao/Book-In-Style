@@ -5,3 +5,8 @@
   padding: 25px;
   height: max-content;
 }
+
+.stars-and-service {
+  display: flex;
+  flex-direction: row;
+}

@@ -6,6 +6,7 @@ import AddReviewModal from "../Modals/AddReviewModal";
 import { loadReviewsByBusiness } from "../../store/reviews";
 
 import './Reviews.css';
+import ratingStars from "./stars";
 
 const Reviews = () => {
   const dispatch = useDispatch();
@@ -63,9 +64,15 @@ const Reviews = () => {
         {reviews && reviews.map((review) =>
         <>
           <div className='each-review'>
-            <div>{review.service_name}</div>
+            <div className='stars-and-service'>
+              <div>
+                {ratingStars(review.rating)}
+              </div>
+              <div>{review.service_name}</div>
+            </div>
             <div>{review.reviewer_name}</div>
-            <div>{review.rating}</div>
+            <div>{review.rating}
+            </div>
             <div>{review.review}</div>
           </div>
         </>
