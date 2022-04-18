@@ -94,6 +94,7 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
       img3,
       userId,
       userName,
+      serviceName,
     };
 
     // console.log('payload-------------', payload)

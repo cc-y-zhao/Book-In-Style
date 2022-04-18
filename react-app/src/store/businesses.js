@@ -253,7 +253,15 @@ export default function reducer(state = initialState, action) {
     //////////////////////REVIEWS//////////////////////////
     case CREATE_REVIEW:
       let newReview = action.review;
-      newState[newReview.business_id]['reviews'][newReview.id] = newReview
+      console.log('new review in reducer-----------', newReview);
+      if (newState[newReview.business_id]['reviews_by_business']) {
+        newState[newReview.business_id]['reviews_by_business'][newReview.id] = newReview
+      } else {
+        let newReviewId = newReview.id;
+        newState[newReview.business_id]['reviews_by_business'] = {newReviewId: newReview}
+
+      }
+
       return newState;
 
     default:

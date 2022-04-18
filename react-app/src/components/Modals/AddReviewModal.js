@@ -9,7 +9,7 @@ function AddReviewModal({businessId}) {
 
   return (
     <>
-      <div onClick={() => setShowModal(true)}>Add Review</div>
+      <button onClick={() => setShowModal(true)}>Add Review</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <CreateReviewForm setShowModal={setShowModal} businessId={businessId}/>

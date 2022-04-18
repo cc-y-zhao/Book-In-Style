@@ -19,7 +19,7 @@ const Reviews = () => {
   let reviews;
   if (business) reviews = Object.values(business.reviews);
 
-  console.log('reviews in reviews page-------------', reviews);
+  // console.log('reviews in reviews page-------------', reviews);
 
 
   // let services;
@@ -49,6 +49,7 @@ const Reviews = () => {
         {reviews && reviews.map((review) =>
         <>
           <div className='each-review'>
+            <div>{review.serviceName}</div>
             <div>{review.user_first_name}</div>
             <div>{review.rating}</div>
             <div>{review.review}</div>
