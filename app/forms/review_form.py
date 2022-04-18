@@ -6,9 +6,20 @@ from app.models import Booking
 
 def valid_image(form, field):
     image_url = field.data
-    if image_url != "":
-      if not (image_url.endswith('.jpg') or image_url.endswith('.jpeg') or image_url.endswith('.png') or image_url.endswith('.gif')):
-        raise ValidationError('Image format must be .jpg, .jpeg, or .png')
+    if image_url != '':
+      if '?' in image_url:
+        split_image_url = image_url.split('?')
+        new_image_url = split_image_url[0]
+
+        if not (new_image_url.endswith('.jpg') or new_image_url.endswith('.jpeg') or new_image_url.endswith('.png')):
+          raise ValidationError('Image format must be .jpg, .jpeg, or .png')
+        # if not ((new_image_url.endswith('.jpg') == True) or (new_image_url.endswith('.jpeg') == True) or (new_image_url.endswith('.png') == True)):
+        #   raise ValidationError('Image format must be .jpg, .jpeg, or .png')
+        # if not (new_image_url.endswith('.jpg') or new_image_url.endswith('.jpeg') or new_image_url.endswith('.png')):
+        #   raise ValidationError('Image format must be .jpg, .jpeg, or .png')
+      else:
+        if not (image_url.endswith('.jpg') or image_url.endswith('.jpeg') or image_url.endswith('.png')):
+          raise ValidationError('Image format must be .jpg, .jpeg, or .png')
       if not(image_url.startswith('https://') or image_url.startswith('http://')):
         raise ValidationError('Image URL must start with "https://" or "http://"')
       if len(image_url) > 2048:
