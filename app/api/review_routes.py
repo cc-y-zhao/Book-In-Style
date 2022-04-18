@@ -19,16 +19,24 @@ def validation_errors_to_error_messages(validation_errors):
 
 @review_routes.route('/businesses/<int:business_id>', methods=['GET'])
 def get_business(business_id):
-    business_before_dict = Business.query.get(business_id)
+    reviews_before_dict = Review.query.filter(Review.business_id == business_id).order_by(Review.created_at.desc()).all()
+
+    print ('\n\n\n REVIEWS FROM BACKEND:', reviews_before_dict, '\n\n\n')
+    reviews_dict = [review.to_dict() for review in reviews_before_dict]
+
+    print ('\n\n\n REVIEWS DICT FROM BACKEND:', reviews_dict, '\n\n\n')
+
+    # reviews = {review.id: review.to_dict() for review in reviews_before_dict}
+    # business_before_dict = Business.query.get(business_id)
 
     # print ('\n\n\n REVIEWS FROM BACKEND:', business_before_dict.reviews, '\n\n\n')
 
-    business = business_before_dict.to_dict()
+    # business = business_before_dict.to_dict()
 
-    reviews = business['reviews']
+    # reviews = business['reviews']
     # print ('\n\n\n REVIEWS FROM BACKEND:', reviews, '\n\n\n')
 
-    return reviews
+    return {'reviews': reviews_dict}
 
 
 @review_routes.route('/', methods=['POST'])

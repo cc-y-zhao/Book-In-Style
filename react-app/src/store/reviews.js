@@ -67,15 +67,16 @@ export default function reducer(state = initialState, action) {
       if (newState['reviews_by_business']) {
         if (newState['reviews_by_business'][newReview.business_id]) {
           // let newReviewId = newReview.id;
-          newState['reviews_by_business'][newReview.business_id][newReview.id] = newReview;
+          newState['reviews_by_business'][newReview.business_id].push(newReview);
           // newState['reviews_by_business'][newReview.business_id].push(newReview)
         } else {
           let newReviewId = newReview.id;
-          newState['reviews_by_business'][newReview.business_id] = {newReviewId: newReview};
+          newState['reviews_by_business'][newReview.business_id] = [];
+          newState['reviews_by_business'][newReview.business_id].push(newReview);
         }
       } else {
         newState['reviews_by_business'] = {};
-        newState['reviews_by_business'][newReview.business_id] = newReview
+        newState['reviews_by_business'][newReview.business_id] = [newReview];
       }
 
       return newState;
@@ -83,7 +84,7 @@ export default function reducer(state = initialState, action) {
     case GET_REVIEWS_BY_BUSINESS:
       // console.log('action.reviews from reducer ----------', action.reviews);
       newState['reviews_by_business'] = {};
-      newState['reviews_by_business'][action.businessId] = action.reviews;
+      newState['reviews_by_business'][action.businessId] = action.reviews.reviews;
 
       return newState;
 
