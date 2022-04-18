@@ -124,10 +124,44 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
   }
 };
 
+/////////////////////////////////REVIEWS////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
+
+const createdReview = (review) => ({
+  type: CREATE_REVIEW,
+  review
+})
+
+export const createReview = (review) => async (dispatch) => {
+
+  const response = await fetch('/api/reviews/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(review),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    // console.log('data in action creator-----------', data)
+    dispatch(createdReview(data))
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
+  }
+}
+
+
 /////////////////////////////////SERVICES////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
-const CREATE_SERVICE = 'services/CREATE_SERVICE'
-
+const CREATE_SERVICE = 'services/CREATE_SERVICE';
 
 const createdService = (service) => ({
   type: CREATE_SERVICE,
@@ -195,6 +229,10 @@ export default function reducer(state = initialState, action) {
       const deletedBusiness = action.business;
       delete newState[deletedBusiness.id];
       return newState;
+
+    // case CREATE_REVIEW:
+    //   newState['reviews'] = action.reviews
+
 
     default:
       return state;

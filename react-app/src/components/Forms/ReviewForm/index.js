@@ -66,7 +66,17 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
     dispatch(loadBusiness(businessId));
   }, [dispatch, businessId]);
 
+  // let obj = {};
 
+  // console.log('BOOLEAN----------', obj['key'])
+
+  // if (obj['key']) {
+  //   console.log('HEY')
+  // } else {
+  //   obj['key'] = 'hi'
+  // }
+
+  // console.log('NEW OBJ---------', obj)
 
   const handleSubmit = async (e) => {
     e.preventDefault();

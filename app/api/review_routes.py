@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db, Business, Review
-from app.forms import BusinessForm
+from app.forms import ReviewForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 
@@ -36,36 +36,24 @@ def validation_errors_to_error_messages(validation_errors):
 
 @review_routes.route('/', methods=['POST'])
 # @login_required
-def create_business():
+def create_review():
 
-    form = BusinessForm()
-
+    form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
-        business = Business(
-            owner_id = current_user.id,
-            capacity = form.data['capacity'],
+        review = Review(
+            business_id = form.data['businessId'],
+            service_id = form.data['serviceId'],
             name = form.data['name'],
             description = form.data['description'],
             phone = form.data['phone'],
-            street_address = form.data['streetAddress'],
-            city = form.data['city'],
-            unit = form.data['unit'],
-            state = form.data['state'],
-            zip_code = form.data['zipcode'],
-            cover_photo = form.data['coverPhoto'],
-            monday = '9:00AM - 6:00PM',
-            tuesday = '9:00AM - 6:00PM',
-            wednesday = '9:00AM - 6:00PM',
-            thursday = '9:00AM - 6:00PM',
-            friday = '9:00AM - 6:00PM',
-            saturday = '9:00AM - 6:00PM',
-            sunday = '9:00AM - 6:00PM',
         )
-        db.session.add(business)
+
+        db.session.add(review)
         db.session.commit()
 
-        return business.to_dict()
+        return review.to_dict()
     # print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
