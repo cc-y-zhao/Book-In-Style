@@ -127,10 +127,16 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
 /////////////////////////////////REVIEWS////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
 const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
+const GET_REVIEWS_BY_BUSINESS = 'reviews/GET_REVIEWS_BY_BUSINESS';
 
 const createdReview = (review) => ({
   type: CREATE_REVIEW,
   review
+})
+
+const loadAllReviewsByBusiness = (reviews) => ({
+  type: GET_REVIEWS_BY_BUSINESS,
+  reviews
 })
 
 export const createReview = (review) => async (dispatch) => {
@@ -157,6 +163,20 @@ export const createReview = (review) => async (dispatch) => {
     return ['An error occurred. Please try again.']
   }
 }
+
+export const loadReviewsByBusiness = (businessId) => async (dispatch) => {
+
+  const response = await fetch(`/api/reviews/businesses/${businessId}`);
+
+  if (response.ok) {
+    const reviews = await response.json();
+    dispatch(loadAllReviewsByBusiness(reviews));
+    return reviews;
+  } else {
+    const errors = await response.json();
+    return errors;
+  }
+};
 
 
 /////////////////////////////////SERVICES////////////////////////////////////////
@@ -230,9 +250,11 @@ export default function reducer(state = initialState, action) {
       delete newState[deletedBusiness.id];
       return newState;
 
-    // case CREATE_REVIEW:
-    //   newState['reviews'] = action.reviews
-
+    //////////////////////REVIEWS//////////////////////////
+    case CREATE_REVIEW:
+      let newReview = action.review;
+      newState[newReview.business_id]['reviews'][newReview.id] = newReview
+      return newState;
 
     default:
       return state;

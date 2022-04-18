@@ -27,11 +27,12 @@ def validation_errors_to_error_messages(validation_errors):
 
 #     return {'businesses': businesses}
 
-# @review_routes.route('/<int:businessId>', methods=['GET'])
-# def get_business(businessId):
-#     business = Business.query.get(businessId)
+@review_routes.route('/businesses/<int:business_id>', methods=['GET'])
+def get_business(business_id):
+    business_before_dict = Business.query.get(business_id)
+    business = business_before_dict.to_dict()
 
-#     return business.to_dict()
+    return business.reviews
 
 
 @review_routes.route('/', methods=['POST'])
