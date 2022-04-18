@@ -59,27 +59,29 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case CREATE_REVIEW:
       let newReview = action.review;
-      return action.review;
 
-      // let businessId = newReview.business_id;
-      // console.log('businessId in reducer-----------', businessId);
-      // console.log('new review in reducer-----------', newReview);
+      let businessId = newReview.business_id;
+      console.log('businessId in reducer-----------', businessId);
+      console.log('new review in reducer-----------', newReview);
 
-      // if (newState['reviews_by_business']) {
-      //   if (newState['reviews_by_business'][newReview.business_id]) {
-      //     newState['reviews_by_business'][newReview.business_id].push(newReview)
-      //   } else {
-      //     newState['reviews_by_business'][newReview.business_id] = [newReview];
-      //   }
-      // } else {
-      //   newState['reviews_by_business'] = {};
-      //   newState['reviews_by_business'][newReview.business_id] = [newReview]
-      // }
+      if (newState['reviews_by_business']) {
+        if (newState['reviews_by_business'][newReview.business_id]) {
+          // let newReviewId = newReview.id;
+          newState['reviews_by_business'][newReview.business_id][newReview.id] = newReview;
+          // newState['reviews_by_business'][newReview.business_id].push(newReview)
+        } else {
+          let newReviewId = newReview.id;
+          newState['reviews_by_business'][newReview.business_id] = {newReviewId: newReview};
+        }
+      } else {
+        newState['reviews_by_business'] = {};
+        newState['reviews_by_business'][newReview.business_id] = newReview
+      }
 
-      // return newState;
+      return newState;
 
     case GET_REVIEWS_BY_BUSINESS:
-      console.log('action.reviews from reducer ----------', action.reviews);
+      // console.log('action.reviews from reducer ----------', action.reviews);
       newState['reviews_by_business'] = {};
       newState['reviews_by_business'][action.businessId] = action.reviews;
 

@@ -29,7 +29,9 @@ const Reviews = () => {
     }
   }
 
-  console.log('reviews in reviews page-------------', reviews);
+  // console.log('reviews in reviews page-------------', reviews);
+  // console.log('reviews TO STRING in reviews page-------------', reviews.toString());
+
 
 
   // let services;
