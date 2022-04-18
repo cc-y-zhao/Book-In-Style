@@ -11,6 +11,26 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
   const businesses = useSelector((state) => state?.businesses);
   let business;
   if (businesses) business = businesses[businessId];
+  let services;
+  if (business) services = business.services;
+  let servicesArr;
+  if (services) servicesArr = Object.values(services);
+
+  console.log('services in review form -------------', services);
+  console.log('services ARRAY in review form -------------', servicesArr);
+
+  let servicesNamesAndIds = {};
+  servicesArr.forEach((service) => {
+    let serviceName = service.name;
+    let serviceId = service.id;
+    servicesNamesAndIds[serviceName] = serviceId;
+  });
+
+  let servicesOptions = ['--Select service received--'];
+  servicesArr.forEach((service) => {
+    servicesOptions.push(service.name);
+  });
+
 
 
   const ratingsOptions = [
@@ -28,10 +48,11 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
   const [img1, setImg1] = useState('');
   const [img2, setImg2] = useState('');
   const [img3, setImg3] = useState('');
-  const [serviceId, setServiceId] = useState('');
+  const [serviceName, setServiceName] = useState('');
 
   const updateRating = (e) => setRating(e.target.value);
   const updateReview = (e) => setReview(e.target.value);
+  const updateServiceName = (e) => setServiceName(e.target.value);
   const updateImg1 = (e) => setImg1(e.target.value);
   const updateImg2 = (e) => setImg2(e.target.value);
   const updateImg3 = (e) => setImg3(e.target.value);
@@ -44,6 +65,8 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const serviceId = servicesNamesAndIds[serviceName];
 
     const payload = {
       rating,
@@ -92,6 +115,14 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
             <ul>
               {errors && errors.map((error) => <li key={error}>{error}</li>)}
             </ul>
+          </div>
+          <div>
+            <span>Service: </span>
+            <select onChange={updateRating} value={rating}>
+              {servicesOptions.map(rating =>
+                <option key={rating}>{rating}</option>
+              )}
+            </select>
           </div>
           <div>
             <span>Rating: </span>
