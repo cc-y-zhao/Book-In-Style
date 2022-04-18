@@ -9,4 +9,37 @@
 .stars-and-service {
   display: flex;
   flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.reviewer-name {
+  margin-bottom: 10px;
+  margin-right: 10px;
+  font-weight: 200;
+}
+
+.review-divider {
+  margin-right: 10px;
+  font-weight: 200;
+}
+
+.review-date {
+  font-weight: 200;
+}
+
+.stars {
+  margin-right: 10px;
+}
+
+.service-name-in-review {
+  font-weight: 600;
+}
+
+.review-content {
+  font-style: italic;
+}
+
+.reviewer-name-and-date {
+  display: flex;
+  flex-direction: row;
 }

@@ -51,6 +51,14 @@ const Reviews = () => {
   let showAddReviewButton = false;
   if (userId) showAddReviewButton = true;
 
+  // "Mon, 18 Apr 2022 10:26:41 GMT"
+
+  const createdAt = (date) => {
+    let array = date.split(" ");
+    let newDate = array[2] + " " + array[1] + ", " + array[3];
+    return newDate;
+  }
+
 
   return (
     <>
@@ -65,15 +73,17 @@ const Reviews = () => {
         <>
           <div className='each-review'>
             <div className='stars-and-service'>
-              <div>
+              <div className='stars'>
                 {ratingStars(review.rating)}
               </div>
-              <div>{review.service_name}</div>
+              <div className='service-name-in-review'>{review.service_name}</div>
             </div>
-            <div>{review.reviewer_name}</div>
-            <div>{review.rating}
+            <div className='reviewer-name-and-date'>
+              <div className='reviewer-name'>{review.reviewer_name}</div>
+              <div className='review-divider'> | </div>
+              <div className='review-date'>{createdAt(review.created_at)}</div>
             </div>
-            <div>{review.review}</div>
+            <div className='review-content'>"{review.review}"</div>
           </div>
         </>
         )}

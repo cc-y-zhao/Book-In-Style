@@ -37,4 +37,5 @@ class Review(db.Model):
       'img_url_3': self.img_url_3,
       'reviewer_name': reviewer_name,
       'service_name': service_name,
+      'created_at': self.created_at,
     }
