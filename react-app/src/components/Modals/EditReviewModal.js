@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import CreateReviewForm from '../Forms/ReviewForm';
+import EditReviewForm from '../Forms/EditReviewForm';
 
 import '../Navigation/NavBar.css'
 
-function EditReviewModal({businessId}) {
+function EditReviewModal({review}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -12,7 +12,7 @@ function EditReviewModal({businessId}) {
       <button onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateReviewForm setShowModal={setShowModal} businessId={businessId}/>
+          <EditReviewForm setShowModal={setShowModal} origReview={review}/>
         </Modal>
       )}
     </>

@@ -62,8 +62,8 @@ def create_review():
         db.session.commit()
 
         review = review_before_dict.to_dict()
-        review['reviewer_name'] = form.data['userName']
-        review['service_name'] = form.data['serviceName']
+        # review['reviewer_name'] = form.data['userName']
+        # review['service_name'] = form.data['serviceName']
 
         return review
     # print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))

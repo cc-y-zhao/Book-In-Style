@@ -39,6 +39,6 @@ class ReviewForm(FlaskForm):
   img2 = StringField('Image 2', validators=[valid_image])
   img3 = StringField('Image 3', validators=[valid_image])
   submit = SubmitField('Submit')
-  userName = StringField('Reviewer Name')
-  serviceName = StringField('Service Name')
+  # userName = StringField('Reviewer Name')
+  # serviceName = StringField('Service Name')
   # businessName = StringField('Business Name')

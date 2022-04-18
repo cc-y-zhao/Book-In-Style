@@ -2,16 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import './ReviewForm.css';
+import '../ReviewForm/ReviewForm.css';
 import { createReview, loadReviewsByBusiness } from "../../../store/reviews";
 
-const CreateReviewForm = ({setShowModal, businessId}) => {
+const EditReviewForm = ({setShowModal, origReview}) => {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  console.log('review in edit review form ----------', origReview);
+
+  let businessId = origReview.business_id;
 
   const businesses = useSelector((state) => state?.businesses);
   const user = useSelector((state) => state?.session?.user);
   const userId = user.id;
+  const userName = user.first_name + " " + user.last_name[0] + '.';
 
   let business;
   if (businesses) business = businesses[businessId];
@@ -34,6 +39,7 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
   servicesArr.forEach((service) => {
     servicesOptions.push(service.name);
   });
+
 
 
   const ratingsOptions = [
@@ -202,4 +208,4 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
   );
 };
 
-export default CreateReviewForm;
+export default EditReviewForm;
