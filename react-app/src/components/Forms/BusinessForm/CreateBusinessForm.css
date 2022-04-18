@@ -3,9 +3,9 @@
   font-weight: normal;
 }
 .optional {
-  font-weight: 100;
+  font-weight: 150;
   color: rgb(107, 106, 106);
-  font-style: oblique;
+  /* font-style: oblique; */
 }
 
 .list-biz-title {

@@ -1,0 +1,18 @@
+.optional-service {
+  font-weight: 150;
+  color: rgb(107, 106, 106);
+  /* font-style: oblique; */
+  margin-left: 5px;
+}
+
+.CreateReviewFormWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: max-content;
+  width: 600px;
+}
+
+.list-biz-title {
+  margin-top: 20px;
+}

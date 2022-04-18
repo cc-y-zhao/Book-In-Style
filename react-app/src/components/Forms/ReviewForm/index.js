@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
+import './ReviewForm.css';
 import { loadBusiness } from "../../../store/businesses";
 
 const CreateReviewForm = ({setShowModal, businessId}) => {
@@ -104,10 +105,9 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
   if (rating.includes('Select') || review.length < 1) disabled = true;
 
   return (
-    <div className="CreateBusinessFormWrapper">
+    <div className="CreateReviewFormWrapper">
       <div className="CreateBusinessFormHeader">
-        {/* <h3 className='list-biz-title'>{service.name}</h3> */}
-        <div>Tell us about your experience at {business?.name}</div>
+        <div className='list-biz-title'>Tell us about your experience at {business?.name}</div>
       </div>
       <div className="CreatChannelFormBody">
         <form className='create-biz-form' onSubmit={handleSubmit}>
@@ -117,15 +117,7 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
             </ul>
           </div>
           <div>
-            <span>Service: </span>
-            <select onChange={updateRating} value={rating}>
-              {servicesOptions.map(rating =>
-                <option key={rating}>{rating}</option>
-              )}
-            </select>
-          </div>
-          <div>
-            <span>Rating: </span>
+            <div>Rating: </div>
             <select onChange={updateRating} value={rating}>
               {ratingsOptions.map(rating =>
                 <option key={rating}>{rating}</option>
@@ -133,10 +125,8 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
             </select>
           </div>
           <div>
-            <div>
-              <label>Review: </label>
-            </div>
-            <input
+            <div>Review: </div>
+            <textarea
               type="textArea"
               required
               placeholder="Date"
@@ -144,6 +134,53 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
               onChange={updateReview}
             />
           </div>
+          <div>
+            <div>Service:
+              <span className='optional-service'>(optional) </span>
+            </div>
+            <select onChange={updateRating} value={rating}>
+              {servicesOptions.map(rating =>
+                <option key={rating}>{rating}</option>
+              )}
+            </select>
+          </div>
+          <div>
+            <div>Photo:
+              <span className='optional-service'>(optional) </span>
+            </div>
+            <input
+              type="text"
+              required
+              placeholder="Image URL"
+              value={img1}
+              onChange={updateImg1}
+            />
+          </div>
+          <div>
+            <div>Photo:
+              <span className='optional-service'>(optional) </span>
+            </div>
+            <input
+              type="text"
+              required
+              placeholder="Image URL"
+              value={img2}
+              onChange={updateImg2}
+            />
+          </div>
+          <div>
+            <div>Photo:
+              <span className='optional-service'>(optional) </span>
+            </div>
+            <input
+              type="text"
+              required
+              placeholder="Image URL"
+              value={img3}
+              onChange={updateImg3}
+            />
+          </div>
+
           <div className="create-biz-btn">
             <button type="submit" disabled={disabled}>
               Post Review
