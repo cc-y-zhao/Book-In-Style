@@ -9,7 +9,13 @@ function AddServiceModal({businessId}) {
 
   return (
     <>
-      <div className='add-service-modal' onClick={() => setShowModal(true)}>Add Service</div>
+      <div
+        className='add-service-modal'
+        onClick={() => setShowModal(true)}>
+        Add Service
+        <span className='space-in-edit-listing-modal'></span>
+        <i class="fa-solid fa-pencil"></i>
+      </div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <ServiceForm setShowModal={setShowModal} businessId={businessId}/>

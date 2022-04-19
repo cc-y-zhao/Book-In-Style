@@ -104,14 +104,11 @@ const BusinessPage = () => {
             {showEdit && (
               <div className='edit-listing-btn'>
                 <EditBusinessModal/>
-                <i class="fa-solid fa-pencil"></i>
               </div>
-              // <button className='edit-biz-btn' onClick={(e) => handleEditRedirect(e)}>Edit Listing</button>
             )}
             {showEdit && (
               <div className='edit-services-btn'>
                 <AddServiceModal businessId={businessIdParsed}/>
-                <i class="fa-solid fa-pencil"></i>
               </div>
             )}
           </div>

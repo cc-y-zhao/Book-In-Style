@@ -23,11 +23,11 @@ const DeleteBusiness = ({businessId, setShowModal}) => {
 
   return (
     <>
-      <div>
-        <h3>Are you sure you want to remove your business from Book-In-Style?</h3>
+      <div className='delete-review-modal'>
+        <h4>Are you sure you want to remove your business from Book-In-Style?</h4>
         <div>
-          <button onClick={(e) => handleDelete(e)}>Yes, remove this listing</button>
-          <button onClick={() => setShowModal(false)}>Cancel</button>
+          <button className='yes-sure' onClick={(e) => handleDelete(e)}>Yes, remove this listing</button>
+          <button onClick={() => setShowModal(false)}>No, nevermind</button>
         </div>
       </div>
     </>
