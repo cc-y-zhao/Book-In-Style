@@ -9,7 +9,7 @@ function EditBusinessModal() {
 
   return (
     <>
-      <div onClick={() => setShowModal(true)}>Edit Listing</div>
+      <div className='edit-listing-modal' onClick={() => setShowModal(true)}>Edit Listing</div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditBusinessForm setShowModal={setShowModal}/>
