@@ -86,6 +86,8 @@
   background-image: url(https://image.shutterstock.com/image-photo/beautiful-womans-hands-nails-after-260nw-165763607.jpg);
   height: 340px;
   width: 256px;
+  max-width: 256px;
+  /* background-size: contain; */
   background-size: cover;
   background-repeat: no-repeat;
   /* margin-right: 35px; */

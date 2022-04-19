@@ -22,7 +22,7 @@ def validation_errors_to_error_messages(validation_errors):
 def create_favorite():
   body = request.json
 
-  user_id = body['business_id']
+  user_id = body['user_id']
   business_id = body['business_id']
 
   print('\n\n\n REQUEST BODY:', body, '\n\n\n')

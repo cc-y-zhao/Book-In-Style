@@ -94,6 +94,7 @@ const BusinessPage = () => {
     dispatch(loadBusiness(businessIdParsed));
     dispatch(loadReviewsByBusiness(businessIdParsed));
     setSelectedTab(<Services />);
+    // setSelectedTabTitle(servicesTab);
   }, [dispatch, businessIdParsed]);
 
   // useEffect(() => {
