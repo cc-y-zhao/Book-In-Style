@@ -127,8 +127,9 @@ const BusinessPage = () => {
               {/* <div className='biz-pics'>------Additional pics will go here------</div> */}
             </div>
 
-            <div>
-              <button>Add to Favorites</button>
+            <div className='heart-biz-page'>
+              <i class="fa-regular fa-heart fa-lg"></i>
+              {/* <i class="fa-solid fa-heart fa-lg"></i> */}
             </div>
 
           </div>

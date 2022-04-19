@@ -3,6 +3,19 @@
   top: 80px;
 }
 
+.discover {
+  position: absolute;
+  top: 200px;
+  text-align: left;
+  color: #121111;
+  font-weight: 700;
+  line-height: 46px;
+  width: 400px;
+  margin-left: 6%;
+  /* vertical-align: baseline;
+  overflow-wrap: break-word; */
+}
+
 .home-main-img-div {
   background-position: 320px;
   background-repeat: no-repeat;
