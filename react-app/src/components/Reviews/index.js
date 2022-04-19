@@ -86,8 +86,9 @@ const Reviews = () => {
               <div>
                 {userId === review.user_id ? (
                   <div>
-                    <EditReviewModal review={review}/>
-                    <DeleteReviewModal businessId={businessIdParsed} reviewId={review.id}/>
+                    <span><EditReviewModal review={review}/></span>
+                    <span className='space-after-pencil'></span>
+                    <span><DeleteReviewModal businessId={businessIdParsed} reviewId={review.id}/></span>
                   </div>
                 ) : (
                   <></>

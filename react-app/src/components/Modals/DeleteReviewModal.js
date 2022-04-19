@@ -9,7 +9,11 @@ function DeleteReviewModal({setEditReviewModal, businessId, reviewId}) {
 
   return (
     <>
-      <button className='delete-review-modal-btn' onClick={() => setShowModal(true)}>Delete Review</button>
+      <i
+        class="fa-solid fa-trash-can"
+        onClick={() => setShowModal(true)}
+      >
+      </i>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <DeleteReview setEditReviewModal={setEditReviewModal} businessId={businessId} reviewId={reviewId} setShowModal={setShowModal}/>
@@ -22,3 +26,4 @@ function DeleteReviewModal({setEditReviewModal, businessId, reviewId}) {
 export default DeleteReviewModal;
 
 // className='navlink nav-element login-nav login-btn-nav'
+{/* <button className='delete-review-modal-btn' onClick={() => setShowModal(true)}>Delete Review</button> */}
