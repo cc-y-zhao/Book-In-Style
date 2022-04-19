@@ -36,10 +36,18 @@
   /* justify-content: space-between; */
   /* justify-content: center; */
   /* align-items: flex-start; */
-  margin-top: 55px;
-  border-bottom: 1px ridge rgb(242, 242, 242);
+  /* margin-top: 55px; */
+  /* border-bottom: 1px ridge rgb(242, 242, 242); */
   width: 100%;
   height: 250px;
+}
+
+.prof-and-heart {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 55px;
+  /* border-bottom: 1px ridge rgb(242, 242, 242); */
 }
 
 .biz-pics {
@@ -92,11 +100,13 @@
   flex-direction: row;
   justify-content: space-between;
   /* align-items: flex-start; */
-  margin-top: 35px;
+  margin-top: 20px;
   width: 100%;
   /* width: 1000px; */
   /* height: 1000px; */
   /* border: 0.6mm ridge black; */
+  border-top: 1px ridge rgb(242, 242, 242);
+  padding-top: 30px;
 }
 
 
