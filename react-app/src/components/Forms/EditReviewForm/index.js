@@ -132,7 +132,7 @@ const EditReviewForm = ({setShowModal, origReview}) => {
             <textarea
               type="textArea"
               required
-              placeholder="Date"
+              placeholder="Please describe your experience"
               value={review}
               onChange={updateReview}
             />

@@ -14,7 +14,7 @@ const loadAllReviewsByBusiness = (payload, businessId) => ({
 });
 
 const editedReview = (review) => ({
-  type: GET_REVIEWS_BY_BUSINESS,
+  type: EDIT_REVIEW,
   review
 })
 
@@ -57,14 +57,14 @@ export const loadReviewsByBusiness = (businessId) => async (dispatch) => {
   }
 };
 
-export const editReview = (editedReview) => async (dispatch) => {
+export const editReview = (review) => async (dispatch) => {
 
-  console.log('edited booking beofre fetch----------', editedReview);
+  console.log('edited booking beofre fetch----------', review);
 
-  const response = await fetch(`/api/reviews/${editedReview.reviewId}`, {
+  const response = await fetch(`/api/reviews/${review.reviewId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(editedReview),
+    body: JSON.stringify(review),
   });
 
 
@@ -132,7 +132,7 @@ export default function reducer(state = initialState, action) {
       return newState;
 
     case EDIT_REVIEW:
-      newState['reviews_by_business'][action.review.business_id] = action.review;
+      newState['reviews_by_business_dict'][action.review.id] = action.review;
 
       return newState;
 
