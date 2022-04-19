@@ -1,12 +1,14 @@
 const CREATE_FAVORITE = 'favorites/CREATE_FAVORITE';
 
-const createdFavorite = (favorite) => ({
+const createdFavorite = (data) => ({
   type: CREATE_FAVORITE,
-  favorite
+  data
 });
 
 
 export const createFavorite = (payload) => async (dispatch) => {
+
+  console.log('payload frrom store-----------', payload)
 
   const response = await fetch('/api/favorites/', {
     method: 'POST',
@@ -39,10 +41,30 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   let newState = {...state};
+  let newFavorite;
+  let businessId;
+  let userId;
+  let businessName;
+  let businessCoverPhoto;
   switch (action.type) {
     case CREATE_FAVORITE:
-      let newFavorite = action.favorite
+      newFavorite = action.data.favorite;
+      userId = newFavorite.user_id;
+      businessId = newFavorite.business_id;
+      businessName = action.data.business_name;
+      businessCoverPhoto = action.data.business_cover_photo
 
+      if (newState['user'][userId]) {
+        newState['user'][userId][businessId] = {'businessName': businessName, 'businessCoverPhoto': businessCoverPhoto};
+      } else {
+        newState['user'][userId] = {businessId: {'businessName': businessName, 'businessCoverPhoto': businessCoverPhoto}};
+      }
+
+      if (newState['business'][businessId]) {
+        newState['business'][businessId][userId] = newFavorite
+      } else {
+        newState['business'][businessId] = {userId: newFavorite}
+      }
       return newState;
 
 

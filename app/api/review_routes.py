@@ -21,11 +21,11 @@ def validation_errors_to_error_messages(validation_errors):
 def get_business(business_id):
     reviews_before_dict = Review.query.filter(Review.business_id == business_id).order_by(Review.updated_at.desc()).all()
 
-    print ('\n\n\n REVIEWS FROM BACKEND:', reviews_before_dict, '\n\n\n')
+    # print ('\n\n\n REVIEWS FROM BACKEND:', reviews_before_dict, '\n\n\n')
     reviews_list = [review.to_dict() for review in reviews_before_dict]
     reviews_dict = {review.id: review.to_dict() for review in reviews_before_dict}
 
-    print ('\n\n\n REVIEWS DICT FROM BACKEND:', reviews_dict, '\n\n\n')
+    # print ('\n\n\n REVIEWS DICT FROM BACKEND:', reviews_dict, '\n\n\n')
 
     # reviews = {review.id: review.to_dict() for review in reviews_before_dict}
     # business_before_dict = Business.query.get(business_id)

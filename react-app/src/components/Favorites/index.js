@@ -6,7 +6,7 @@ import { loadBusiness } from "../../store/businesses";
 
 import '../BusinessPage/BusinessPage.css';
 
-const Favorite = ({businessId, userId}) => {
+const Favorite = ({businessId, userId, businessName, businessCoverPhoto}) => {
   const dispatch = useDispatch();
 
   const businesses = useSelector((state) => state?.businesses)
@@ -15,6 +15,12 @@ const Favorite = ({businessId, userId}) => {
   const [favorite, setFavorite] = useState(false);
 
   const addToFavorites = async (e) => {
+    // if (!userId) {
+    //   let smiley = ':)';
+    //   return (
+    //     <h2>Please log in or sign up to continue {smiley}</h2>
+    //   )
+    // }
     e.preventDefault();
     let addedFavorite;
 
@@ -22,6 +28,8 @@ const Favorite = ({businessId, userId}) => {
     let payload = {
       businessId,
       userId,
+      businessName,
+      businessCoverPhoto,
     }
 
     addedFavorite = await dispatch(createFavorite(payload));

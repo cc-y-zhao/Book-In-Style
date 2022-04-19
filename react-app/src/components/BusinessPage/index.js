@@ -134,7 +134,7 @@ const BusinessPage = () => {
               {/* <div className='biz-pics'>------Additional pics will go here------</div> */}
             </div>
 
-            <Favorite businessId={businessIdParsed} userId={userId}/>
+            <Favorite businessId={businessIdParsed} userId={userId} businessName={business.name} businessCoverPhoto={business.cover_photo}/>
 
             {/* <div className='heart-biz-page'>
               {favorite ? (
