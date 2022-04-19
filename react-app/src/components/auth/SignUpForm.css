@@ -2,10 +2,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 70px;
+  margin: 60px;
 }
 
 .signup-btn {
   margin-top: 20px;
   width: max-content;
+}
+
+.signup-input {
+  width: 350px;
+}
+
+.signup-label-and-input {
+  margin-bottom: 15px;
+}
+
+.welcome-signup {
+  margin-bottom: 35px;
+  color: #E10984;
 }

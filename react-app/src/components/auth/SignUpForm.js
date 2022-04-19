@@ -77,14 +77,16 @@ const SignUpForm = () => {
   return (
     <div className>
       <form className='signup-form-wrapper' onSubmit={onSignUp}>
+        <h3 className='welcome-signup'>Welcome to Book-In-Style!</h3>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
+        <div className='signup-label-and-input'>
           <div>First Name:</div>
           <input
+            className='signup-input'
             type='text'
             name='firstName'
             onChange={updateFirstName}
@@ -92,9 +94,10 @@ const SignUpForm = () => {
             required={true}
           ></input>
         </div>
-        <div>
+        <div className='signup-label-and-input'>
           <div>Last Name:</div>
           <input
+            className='signup-input'
             type='text'
             name='lastName'
             onChange={updateLastName}
@@ -102,9 +105,10 @@ const SignUpForm = () => {
             required={true}
           ></input>
         </div>
-        <div>
+        <div className='signup-label-and-input'>
           <div>Email:</div>
           <input
+            className='signup-input'
             type='text'
             name='email'
             onChange={updateEmail}
@@ -112,9 +116,10 @@ const SignUpForm = () => {
             required={true}
           ></input>
         </div>
-        <div>
+        <div className='signup-label-and-input'>
           <div>Phone:</div>
           <input
+            className='signup-input'
             type='text'
             name='phone'
             onChange={updatePhone}
@@ -122,18 +127,20 @@ const SignUpForm = () => {
             required={true}
           ></input>
         </div>
-        <div>
+        <div className='signup-label-and-input'>
           <div>Profile Picture: </div>
           <input
+            className='signup-input'
             type='text'
             name='image_url'
             onChange={updateImageURL}
             value={imageURL}
           ></input>
         </div>
-        <div>
+        <div className='signup-label-and-input'>
           <div>Password: </div>
           <input
+            className='signup-input'
             type='password'
             name='password'
             onChange={updatePassword}
@@ -141,9 +148,10 @@ const SignUpForm = () => {
             required={true}
           ></input>
         </div>
-        <div>
+        <div className='signup-label-and-input'>
           <div>Repeat Password: </div>
           <input
+            className='signup-input'
             type='password'
             name='repeat_password'
             onChange={updateRepeatPassword}
@@ -151,7 +159,7 @@ const SignUpForm = () => {
             required={true}
           ></input>
         </div>
-        <div>
+        <div className='signup-label-and-input'>
           <label>I want to list my business: </label>
           <input
             type='checkbox'
