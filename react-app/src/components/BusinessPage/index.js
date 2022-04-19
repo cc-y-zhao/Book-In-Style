@@ -28,18 +28,38 @@ const BusinessPage = () => {
 
   const [selectedTab, setSelectedTab] = useState(<Services/>)
 
+  let servicesTab = document?.getElementById("services-tab");
+  let reviewsTab = document?.getElementById("reviews-tab");
+  let aboutTab = document?.getElementById("about-tab");
+  const [selectedTabTitle, setSelectedTabTitle] = useState(servicesTab)
+  if (selectedTabTitle) {
+    selectedTabTitle.style.fontWeight = 'bold';
+    selectedTabTitle.style.borderBottom = 'solid';
+  }
+
+
   const onClickServices = async (e) => {
     e.preventDefault();
+    setSelectedTabTitle(servicesTab);
+    // servicesTab.style.fontWeight = 'bold';
+    // servicesTab.style.borderBottom = 'solid';
+
+    // reviewsTab.style.fontWeight = 'normal';
+    // reviewsTab.style.borderBottom = 'none';
+    // aboutTab.style.fontWeight = 'normal';
+    // aboutTab.style.borderBottom = 'none';
     setSelectedTab(<Services />)
   }
 
   const onClickReviews = async (e) => {
     e.preventDefault();
+    setSelectedTabTitle(reviewsTab);
     setSelectedTab(<Reviews />)
   }
 
   const onClickAbout = async (e) => {
     e.preventDefault();
+    setSelectedTabTitle(aboutTab);
     setSelectedTab(<About />)
   }
 
@@ -109,18 +129,23 @@ const BusinessPage = () => {
           <div className='biz-page-bottom'>
             <div className="about-reviews-services">
               <div className='about-reviews-services-nav'>
-                <span className='services-title-biz-pg'
+                <span
+                  className='services-title-biz-pg'
+                  id='services-tab'
                   onClick={(e) => onClickServices(e)}
                 >
                   Services
                 </span>
-                <span className='reviews-title-biz-pg'
+                <span
+                  className='reviews-title-biz-pg'
+                  id='reviews-tab'
                   onClick={(e) => onClickReviews(e)}
                 >
                   Reviews
                 </span>
                 <span
                   onClick={(e) => onClickAbout(e)}
+                  id='about-tab'
                 >
                   About
                 </span>
