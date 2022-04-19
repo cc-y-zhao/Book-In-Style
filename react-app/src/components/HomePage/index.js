@@ -38,6 +38,8 @@ const HomePage = () => {
       </div>
       <div className='find-pros'>
         <h2>Find top pros by service</h2>
+      </div>
+      <div>
         <div className='services-homepage-top'>
           <div className='homepage-img-1'></div>
           <div className='homepage-img-2'></div>
@@ -52,9 +54,6 @@ const HomePage = () => {
           <div className='homepage-img-9'></div>
           <div className='homepage-img-10'></div>
         </div>
-
-
-
       </div>
     </>
   );
