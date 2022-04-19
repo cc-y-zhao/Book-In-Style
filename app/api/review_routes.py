@@ -92,3 +92,26 @@ def edit_review(review_id):
         return review.to_dict()
     # print('\n\n\n\n errors from business routes \n\n\n', {'errors': validation_errors_to_error_messages(form.errors)}, '\n\n\n')
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@review_routes.route('/<int:review_id>', methods=["DELETE"])
+# @login_required
+def delete_review(review_id):
+
+    review = Review.query.get(review_id)
+    deletedReview = review.to_dict()
+
+    business_id = deletedReview['business_id']
+
+    db.session.delete(review)
+    db.session.commit()
+
+    reviews_before_dict = Review.query.filter(Review.business_id == business_id).order_by(Review.updated_at.desc()).all()
+
+    # print ('\n\n\n REVIEWS FROM BACKEND:', reviews_before_dict, '\n\n\n')
+    reviews_list = [review.to_dict() for review in reviews_before_dict]
+    reviews_dict = {review.id: review.to_dict() for review in reviews_before_dict}
+
+    # print ('\n\n\n REVIEWS DICT FROM BACKEND:', reviews_dict, '\n\n\n')
+
+    return {'reviews_list': reviews_list, 'reviews_dict': reviews_dict}

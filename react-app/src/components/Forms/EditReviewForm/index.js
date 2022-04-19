@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import '../ReviewForm/ReviewForm.css';
 import { editReview, loadReviewsByBusiness } from "../../../store/reviews";
+import DeleteReviewModal from "../../Modals/DeleteReviewModal";
 
 const EditReviewForm = ({setShowModal, origReview}) => {
   const dispatch = useDispatch();
@@ -187,6 +188,9 @@ const EditReviewForm = ({setShowModal, origReview}) => {
             </button>
           </div>
         </form>
+        <div>
+          <DeleteReviewModal setEditReviewModal={setShowModal} businessId={origReview.business_id} reviewId={origReview.id}/>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
 const GET_REVIEWS_BY_BUSINESS = 'reviews/GET_REVIEWS_BY_BUSINESS';
 const EDIT_REVIEW = 'reviews/EDIT_REVIEW';
+const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
 
 const createdReview = (review) => ({
   type: CREATE_REVIEW,
@@ -15,7 +16,12 @@ const loadAllReviewsByBusiness = (payload, businessId) => ({
 
 const editedReview = (review) => ({
   type: EDIT_REVIEW,
-  review
+  review,
+});
+
+const deleteOneReview = (payload) => ({
+  type: DELETE_REVIEW,
+  payload,
 })
 
 export const createReview = (review) => async (dispatch) => {
@@ -82,6 +88,24 @@ export const editReview = (review) => async (dispatch) => {
   }
 };
 
+export const deleteReview = (reviewId) => async (dispatch) => {
+
+  const response = await fetch(`/api/reviews/${reviewId}`, {
+    method: "DELETE",
+  });
+
+  // console.log('response in action creator----------', response.json())
+  if (response.ok) {
+    const payload = await response.json();
+    // console.log('deleted business in action creator-------', payload)
+    dispatch(deleteOneReview(payload));
+    return payload;
+  } else {
+    const errors = await response.json();
+    return errors;
+  }
+};
+
 
 const initialState = {
   'reviews_by_business_dict': {},
@@ -135,6 +159,13 @@ export default function reducer(state = initialState, action) {
       newState['reviews_by_business_dict'][action.review.id] = action.review;
 
       return newState;
+
+    case DELETE_REVIEW:
+      newState['reviews_by_business_dict'] = action.payload.reviews_dict;
+      newState['reviews_by_business_list'] = action.payload.reviews_list;
+
+      return newState;
+
 
     default:
       return state;
