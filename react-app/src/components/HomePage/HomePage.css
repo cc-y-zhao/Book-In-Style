@@ -18,29 +18,117 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
-.services-homepage {
+.services-homepage-top {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 35px;
 }
 
 .homepage-img-1 {
-  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/braids_2021_hp_tile.1d8f177e32b689f51b29.png);
-  height: 350px;
-  width: 250px;
+  box-sizing: border-box;
+  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/haircut_2021_hp_tile.429a033a2e17a9e06644.png);
+  height: 340px;
+  width: 256px;
   background-size: cover;
   background-repeat: no-repeat;
-  margin-right: 35px;
+  /* margin-right: 35px; */
 }
 
 .homepage-img-2 {
-  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/natural_hair_2021_hp_tile.e95360827ef13815210a.png);
-  height: 350px;
-  width: 250px;
+  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/eyelashes_2021_hp_tile.968a9a77d3e861882b87.png);
+  height: 340px;
+  width: 256px;
   background-size: cover;
   background-repeat: no-repeat;
-  margin-right: 35px;
+  /* margin-right: 35px; */
 }
+
+.homepage-img-3 {
+  background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/mens_haircut_2021_hp_tile.ec1c6afffd0129b6951b.png);
+  height: 340px;
+  width: 256px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* margin-right: 35px; */
+}
+
+.homepage-img-4 {
+  background-image: url(https://mayersonjcc.org/app/uploads/2022/02/j-spa-stock-image-square-634x646.jpg);
+  height: 340px;
+  width: 256px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* margin-right: 35px; */
+}
+
+
+.homepage-img-5 {
+  background-image: url(https://image.shutterstock.com/image-photo/beautiful-womans-hands-nails-after-260nw-165763607.jpg);
+  height: 340px;
+  width: 256px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* margin-right: 35px; */
+}
+
+
+.homepage-img-6 {
+  background-image: url(https://merakihairsuite.com.au/wp-content/uploads/2020/03/services_kidscuts-home-min.jpg);
+  height: 340px;
+  width: 256px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 43%;
+  /* margin-right: 35px; */
+}
+
+.homepage-img-7 {
+  background-image: url(https://i.pinimg.com/originals/b7/8a/7d/b78a7d867ae5c80e8d8443b5030498c3.jpg);
+  height: 340px;
+  width: 256px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 43%;
+  /* background-position: right 15%; */
+  /* margin-right: 35px; */
+}
+
+.homepage-img-8 {
+  background-image: url(https://media.istockphoto.com/photos/portrait-of-young-afro-woman-with-bright-makeup-picture-id1331637318?k=20&m=1331637318&s=170667a&w=0&h=MmUci1mVhp_CToDeA1ayRvuP_SMAvyV_q82XV2rse3I=);
+  height: 340px;
+  width: 256px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 25%;
+  /* background-position: right 15%; */
+  /* margin-right: 35px; */
+}
+
+.homepage-img-9 {
+  background-image: url(https://images.squarespace-cdn.com/content/v1/58ceea0c2994ca05c6f5405b/1522859590487-MZ7BWK0FCMP5NF06S2OP/les-couleurs-de-cheveux-tendance_peach2_wp2.jpg);
+  height: 340px;
+  width: 256px;
+  background-size: cover;
+  background-repeat: no-repeat;
+    background-position: 35%;
+}
+
+.homepage-img-10 {
+  background-image: url(https://thedrawingroomny.com/wp-content/uploads/2019/11/beach-wave-perm.jpg);
+  height: 340px;
+  width: 256px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left 10%;
+}
+
+
+
+ /* font for services: BentonSans */

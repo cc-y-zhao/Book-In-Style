@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import {useHistory} from 'react-router-dom';
-import LogoutButton from "../auth/LogoutButton";
+// import LogoutButton from "../auth/LogoutButton";
 import './ProfileButton.css'
 
 function ProfileButton({ user, setShowModal }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [showMenu, setShowMenu] = useState(false);
+  // const [showMenu, setShowMenu] = useState(false);
 
   const logout = (e) => {
     e.preventDefault();

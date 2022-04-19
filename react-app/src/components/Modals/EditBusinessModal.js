@@ -9,7 +9,13 @@ function EditBusinessModal() {
 
   return (
     <>
-      <div onClick={() => setShowModal(true)}>Edit Listing</div>
+      <div
+        className='edit-listing-modal'
+        onClick={() => setShowModal(true)}>
+        Edit Listing
+        <span className='space-in-edit-listing-modal'></span>
+        <i class="fa-solid fa-pencil"></i>
+      </div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditBusinessForm setShowModal={setShowModal}/>

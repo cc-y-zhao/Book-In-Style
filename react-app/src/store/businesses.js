@@ -126,8 +126,7 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
 
 /////////////////////////////////SERVICES////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
-const CREATE_SERVICE = 'services/CREATE_SERVICE'
-
+const CREATE_SERVICE = 'services/CREATE_SERVICE';
 
 const createdService = (service) => ({
   type: CREATE_SERVICE,
@@ -147,7 +146,7 @@ export const createService = (service) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    // console.log('data in action creator-----------', data)
+    console.log('data in action creator-----------', data)
     dispatch(createdBusiness(data))
     return data;
   } else if (response.status < 500) {

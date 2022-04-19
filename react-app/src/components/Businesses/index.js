@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect, useHistory, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-import { loadBusiness, loadAllBusinesses } from "../../store/businesses";
+import { loadAllBusinesses } from "../../store/businesses";
 
 const BusinessesPage = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
   const businesses = useSelector((state) => state?.businesses?.businesses_list)
-  console.log('businesses om businesses page-------------', businesses)
+  // console.log('businesses om businesses page-------------', businesses)
   // const userId = useSelector((state) => state.session.user?.id);
 
 

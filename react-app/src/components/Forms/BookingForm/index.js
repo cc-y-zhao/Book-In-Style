@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import hours from './hours';
 
-import { loadBusiness } from "../../../store/businesses";
+// import { loadBusiness } from "../../../store/businesses";
 import { createBooking } from "../../../store/bookings";
+import './BookingForm.css';
 
 const CreateBookingForm = ({setShowModal, businessId, userId, service, businessName}) => {
   const dispatch = useDispatch();
@@ -95,8 +96,8 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
 
 
   return (
-    <div className="CreateBusinessFormWrapper">
-      <div className="CreateBusinessFormHeader">
+    <div className="CreateBookingFormWrapper">
+      <div className="CreateBookingFormHeader">
         <h3 className='list-biz-title'>{service.name}</h3>
         <div>You can book up to 3 months in advance</div>
       </div>
@@ -108,11 +109,12 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
             </ul>
           </div>
           <div>
-            <div>
+            <span>
               <label>Date: </label>
-            </div>
+            </span>
       			<label htmlFor="date" style={{ marginTop: "10px" }}></label>
             <input
+              className="calendar"
               type="date"
               min={today}
               max={max}
@@ -130,7 +132,7 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
               )}
             </select>
           </div>
-          <div className="create-biz-btn">
+          <div className="create-biz-btn create-booking-btn">
             <button type="submit" disabled={disabled}>
               Book
             </button>

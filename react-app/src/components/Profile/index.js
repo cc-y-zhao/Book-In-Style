@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect, useHistory, NavLink } from "react-router-dom";
+// import { Redirect, useHistory, NavLink } from "react-router-dom";
 
 import EditBookingModal from "../Modals/EditBookingModal";
 import { loadBookingsByUser } from "../../store/bookings";
@@ -9,7 +9,7 @@ import './Profile.css'
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
   const bookingsObj = useSelector((state) => state?.bookings?.bookings_by_user);
 
@@ -24,7 +24,7 @@ const Profile = () => {
 
   useEffect(() => {
     dispatch(loadBookingsByUser(userId));
-  }, [dispatch]);
+  }, [dispatch, userId]);
 
   // const prevDate = "Tue, 26 Apr 2022 00:00:00 GMT";
   // const prevDateArr = prevDate.split(' ');

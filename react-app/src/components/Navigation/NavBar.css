@@ -86,3 +86,7 @@ nav {
 .navlink:hover {
   text-decoration: underline;
 }
+
+.space-in-edit-listing-modal {
+  margin-right: 10px;
+}

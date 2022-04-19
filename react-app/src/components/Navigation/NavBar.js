@@ -3,6 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LoginModal from '../Modals/LoginModal';
+import SignUpModal from '../Modals/SignUpModal';
 import ProfileButtonModal from './ProfileButtonModal';
 import CreateBusinessModal from '../Modals/CreateBusinessModal';
 import './NavBar.css'
@@ -29,7 +30,7 @@ const NavBar = () => {
       <>
         <div className='logged-out-div'>
           <div className='login-nav'><LoginModal /></div>
-          <div className='signup-nav'><NavLink to='/sign-up' exact={true}>Sign Up</NavLink></div>
+          <div className='signup-nav'><SignUpModal /></div>
         </div>
       </>
     );
@@ -54,3 +55,6 @@ const NavBar = () => {
 }
 
 export default NavBar;
+
+
+{/* <div className='signup-nav'><NavLink to='/sign-up' exact={true}>Sign Up</NavLink></div> */}

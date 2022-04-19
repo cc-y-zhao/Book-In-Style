@@ -3,9 +3,8 @@
 }
 
 .optional {
-  font-weight: 100;
+  font-weight: 150;
   color: rgb(107, 106, 106);
-  font-style: oblique;
 }
 
 .list-biz-title {
@@ -49,7 +48,8 @@
   /* width: 150px; */
 
 }
-/*
+
 .delete-biz-btn {
-  margin: 0 auto;
-} */
+  margin-left: 4%;
+  margin-bottom: 20px;
+}

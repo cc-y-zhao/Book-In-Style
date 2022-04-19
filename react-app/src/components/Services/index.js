@@ -1,23 +1,36 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect, useHistory } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 import BookingModal from "../Modals/BookingModal";
+
+import { loadBusiness } from "../../store/businesses";
 
 import './Services.css';
 
-const Services = ({services, userId, businessId, businessName}) => {
+const Services = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
-  const servicesArr = Object.values(services)
+  const { businessId } = useParams();
+  const businessIdParsed = parseInt(businessId);
+  const business_id = businessIdParsed;
 
-  // useEffect(() => {
-  //   dispatch(loadBusiness(businessIdParsed));
-  // }, [dispatch, businessIdParsed]);
+  const userId = useSelector((state) => state.session.user?.id);
+  const businesses = useSelector((state) => state?.businesses);
 
-  let disableBookingForm = true;
-  if (userId) disableBookingForm = false;
+  let business;
+  if (businesses) business = businesses[business_id];
+
+  let services;
+  if (business) services = business.services;
+  let servicesArr;
+  if (services) servicesArr = Object.values(services);
+
+  const businessName = business?.name;
+
+
+  useEffect(() => {
+    dispatch(loadBusiness(businessIdParsed));
+  }, [dispatch, businessIdParsed]);
 
   let dollarSign = '$';
 
@@ -25,7 +38,7 @@ const Services = ({services, userId, businessId, businessName}) => {
     <>
       <div>
         {servicesArr && servicesArr.map((service) =>
-        <div className='services-container'>
+        <div className='services-container' key={service.id}>
           <div className='each-service' key={service.id}>
             <div className='service-name-biz-pg'>{service.name}</div>
             <div className='service-price-biz-pg'>{dollarSign}{service.price}</div>

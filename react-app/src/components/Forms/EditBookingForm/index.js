@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+// import { useHistory } from "react-router-dom";
 import hours from "../BookingForm/hours";
 import "../BusinessForm/CreateBusinessForm.css";
 import DeleteBookingModal from "../../Modals/DeleteBookingModal";
@@ -10,7 +10,6 @@ import { editBooking, loadBookingsByUser } from "../../../store/bookings";
 
 const EditBookingForm = ({setShowModal, booking}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const [errors, setErrors] = useState([]);
   const [time, setTime] = useState(booking.time);

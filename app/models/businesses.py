@@ -44,8 +44,7 @@ class Business(db.Model):
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
     owner = db.relationship("User", back_populates="businesses")
-    services = db.relationship('Service', back_populates="businesses")
-    # services = db.relationship('Service', secondary=business_services, back_populates="businesses")
+    services = db.relationship('Service', back_populates="business", cascade="all, delete-orphan")
     languages = db.relationship('Language', secondary=business_languages, back_populates="businesses")
     bookings = db.relationship('Booking', back_populates="businesses", cascade="all, delete-orphan")
     reviews = db.relationship('Review', back_populates='businesses', cascade='all, delete-orphan')

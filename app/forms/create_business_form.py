@@ -54,7 +54,22 @@ def valid_zipcode(form, field):
     if not zipcode.isnumeric():
         raise ValidationError('Phone number must contain only digits')
 
+def valid_image(form, field):
+    image_url = field.data
+    if image_url != '':
+      if '?' in image_url:
+        split_image_url = image_url.split('?')
+        new_image_url = split_image_url[0]
 
+        if not (new_image_url.endswith('.jpg') or new_image_url.endswith('.jpeg') or new_image_url.endswith('.png')):
+          raise ValidationError('Image format must be .jpg, .jpeg, or .png')
+      else:
+        if not (image_url.endswith('.jpg') or image_url.endswith('.jpeg') or image_url.endswith('.png')):
+          raise ValidationError('Image format must be .jpg, .jpeg, or .png')
+      if not(image_url.startswith('https://') or image_url.startswith('http://')):
+        raise ValidationError('Image URL must start with "https://" or "http://"')
+      if len(image_url) > 2048:
+        raise ValidationError('Image URL is too long')
 
 
 class BusinessForm(FlaskForm):
@@ -64,7 +79,7 @@ class BusinessForm(FlaskForm):
     phone = StringField('Phone Number', validators=[DataRequired(), valid_phone])
     streetAddress = StringField('Street Address', validators=[DataRequired(), valid_street_address])
     city = StringField('City', validators=[DataRequired()])
-    coverPhoto = StringField('Cover Photo', validators=[DataRequired()])
+    coverPhoto = StringField('Cover Photo', validators=[DataRequired(), valid_image])
     unit = StringField('Unit')
     state = StringField('State', validators=[DataRequired()])
     zipcode = IntegerField('Zipcode', validators=[DataRequired()])

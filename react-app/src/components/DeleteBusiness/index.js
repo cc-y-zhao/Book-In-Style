@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect, useHistory } from "react-router-dom";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-import { loadBusiness, deleteBusiness } from "../../store/businesses";
+import { deleteBusiness } from "../../store/businesses";
 
 const DeleteBusiness = ({businessId, setShowModal}) => {
   const dispatch = useDispatch();
@@ -11,8 +11,6 @@ const DeleteBusiness = ({businessId, setShowModal}) => {
   const handleDelete = async (e) => {
     e.preventDefault();
     let deletedBusiness;
-
-    console.log('business in in frontend---------'. businessId)
 
     deletedBusiness = await dispatch(deleteBusiness(businessId));
 
@@ -25,11 +23,11 @@ const DeleteBusiness = ({businessId, setShowModal}) => {
 
   return (
     <>
-      <div>
-        <h3>Are you sure you want to remove your business from Book-In-Style?</h3>
+      <div className='delete-review-modal'>
+        <h4>Are you sure you want to remove your business from Book-In-Style?</h4>
         <div>
-          <button onClick={(e) => handleDelete(e)}>Yes, remove this listing</button>
-          <button onClick={() => setShowModal(false)}>Cancel</button>
+          <button className='yes-sure' onClick={(e) => handleDelete(e)}>Yes, remove this listing</button>
+          <button onClick={() => setShowModal(false)}>No, nevermind</button>
         </div>
       </div>
     </>

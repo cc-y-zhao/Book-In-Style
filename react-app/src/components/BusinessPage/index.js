@@ -1,32 +1,80 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import EditBusinessModal from "../Modals/EditBusinessModal";
 import AddServiceModal from "../Modals/AddServiceModal";
-import EditBusinessHoursModal from "../Modals/EditBusinessHoursModal";
-import Services from "../Services";
-
+// import EditBusinessHoursModal from "../Modals/EditBusinessHoursModal";
 import ErrorPage from "../Errors/ErrorPage";
+
+import Services from "../Services";
+import Reviews from "../Reviews";
+import About from "./About";
+
 import { loadBusiness } from "../../store/businesses";
+import { loadReviewsByBusiness } from "../../store/reviews";
 
 import './BusinessPage.css'
 
 const BusinessPage = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+
   const { businessId } = useParams();
   const businessIdParsed = parseInt(businessId);
 
+  const userId = useSelector((state) => state.session.user?.id);
   const businesses = useSelector((state) => state?.businesses)
   const business = useSelector((state) => businesses[businessIdParsed])
-  const services = business?.services;
-  const userId = useSelector((state) => state.session.user?.id);
 
+  const [selectedTab, setSelectedTab] = useState(<Services/>)
+
+  let servicesTab = document?.getElementById("services-tab");
+  let reviewsTab = document?.getElementById("reviews-tab");
+  let aboutTab = document?.getElementById("about-tab");
+  const [selectedTabTitle, setSelectedTabTitle] = useState(servicesTab)
+  if (selectedTabTitle) {
+    selectedTabTitle.style.fontWeight = 'bold';
+    selectedTabTitle.style.borderBottom = 'solid';
+  }
+
+
+  const onClickServices = async (e) => {
+    e.preventDefault();
+    setSelectedTabTitle(servicesTab);
+    // servicesTab.style.fontWeight = 'bold';
+    // servicesTab.style.borderBottom = 'solid';
+
+    // reviewsTab.style.fontWeight = 'normal';
+    // reviewsTab.style.borderBottom = 'none';
+    // aboutTab.style.fontWeight = 'normal';
+    // aboutTab.style.borderBottom = 'none';
+    setSelectedTab(<Services />)
+  }
+
+  const onClickReviews = async (e) => {
+    e.preventDefault();
+    setSelectedTabTitle(reviewsTab);
+    setSelectedTab(<Reviews />)
+  }
+
+  const onClickAbout = async (e) => {
+    e.preventDefault();
+    setSelectedTabTitle(aboutTab);
+    setSelectedTab(<About />)
+  }
 
   useEffect(() => {
     dispatch(loadBusiness(businessIdParsed));
+    dispatch(loadReviewsByBusiness(businessIdParsed));
+    setSelectedTab(<Services />);
   }, [dispatch, businessIdParsed]);
+
+  // useEffect(() => {
+  //   (async () => {
+  //     await dispatch(loadBusiness(businessIdParsed));
+  //     await setSelectedTab(<Services />);
+  //   })();
+  // }, [dispatch, businessIdParsed]);
 
   let showBusiness = false;
   if (business) showBusiness = true;
@@ -36,10 +84,6 @@ const BusinessPage = () => {
     if (business.owner_id === userId) showEdit = true;
   }
 
-  let disableBookingForm = true;
-  if (userId) disableBookingForm = false;
-
-
   if (!(businessIdParsed in businesses)) {
     return (
       <>
@@ -48,19 +92,22 @@ const BusinessPage = () => {
     );
   }
 
+  let showSelectedTab = false;
+  if (selectedTab) showSelectedTab = true;
+
+
   return (
     <>
       {showBusiness && (
         <div className='biz-page-container'>
           <div className='edit-biz'>
             {showEdit && (
-              <div className='edit-biz-btn'>
+              <div className='edit-listing-btn'>
                 <EditBusinessModal/>
               </div>
-              // <button className='edit-biz-btn' onClick={(e) => handleEditRedirect(e)}>Edit Listing</button>
             )}
             {showEdit && (
-              <div className='edit-biz-btn'>
+              <div className='edit-services-btn'>
                 <AddServiceModal businessId={businessIdParsed}/>
               </div>
             )}
@@ -76,18 +123,40 @@ const BusinessPage = () => {
               />
             </div>
             <div className='biz-name'>{business['name']}</div>
-            <div className='biz-pics'>------Additional pics will go here------</div>
+            {/* <div className='biz-pics'>------Additional pics will go here------</div> */}
           </div>
           <div className='biz-page-bottom'>
             <div className="about-reviews-services">
               <div className='about-reviews-services-nav'>
-                <span>Services</span>
-                <span>Reviews</span>
-                <span>About</span>
+                <span
+                  className='services-title-biz-pg'
+                  id='services-tab'
+                  onClick={(e) => onClickServices(e)}
+                >
+                  Services
+                </span>
+                <span
+                  className='reviews-title-biz-pg'
+                  id='reviews-tab'
+                  onClick={(e) => onClickReviews(e)}
+                >
+                  Reviews
+                </span>
+                <span
+                  onClick={(e) => onClickAbout(e)}
+                  id='about-tab'
+                >
+                  About
+                </span>
               </div>
+              {showSelectedTab && (
+              <div>
+                  {selectedTab}
+              </div>
+              )}
               {/* -----------------THIS IS WHERE THE SELECTED CONTENT WILL GO--------------- */}
               {/* <div>{business.description}</div> */}
-              <div><Services services={services} userId={userId} businessId={businessIdParsed} businessName={business.name}/></div>
+              {/* <div><Services services={services} userId={userId} businessId={businessIdParsed} businessName={business.name}/></div> */}
             </div>
 
 
@@ -128,26 +197,3 @@ const BusinessPage = () => {
 };
 
 export default BusinessPage;
-
-
-           {/* <div className='biz-right'>
-              <div className='street-address'>{business.street_address} {business.unit}</div>
-              <div>{business.city}, {business.state} {business.zip_code}</div>
-              <div className='edit-biz'>
-                {showEdit && (
-                  <div className='edit-biz-btn'>
-                    <EditBusinessHoursModal businessId={businessIdParsed}/>
-                  </div>
-                )}
-              </div>
-              <div className='biz-hours-title'>Business Hours</div>
-              <div>
-                <div>Monday: </div>
-                <div>Tuesday: </div>
-                <div>Wednesday: </div>
-                <div>Thursday: </div>
-                <div>Friday: </div>
-                <div>Saturday: </div>
-                <div>Sunday: </div>
-              </div>
-            </div> */}
