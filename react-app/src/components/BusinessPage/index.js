@@ -123,7 +123,7 @@ const BusinessPage = () => {
               />
             </div>
             <div className='biz-name'>{business['name']}</div>
-            <div className='biz-pics'>------Additional pics will go here------</div>
+            {/* <div className='biz-pics'>------Additional pics will go here------</div> */}
           </div>
           <div className='biz-page-bottom'>
             <div className="about-reviews-services">

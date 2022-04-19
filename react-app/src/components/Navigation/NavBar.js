@@ -19,7 +19,7 @@ const NavBar = () => {
       <>
         <div className='logged-in-div'>
           <div className='set-up-business'><CreateBusinessModal/></div>
-          <NavLink to='/businesses/new' className='set-up-business'>Set Up My Business</NavLink>
+          {/* <NavLink to='/businesses/new' className='set-up-business'>Set Up My Business</NavLink> */}
           <span className='welcome-msg nav-element'>Welcome, {sessionUser.first_name}!</span>
           <ProfileButtonModal user={sessionUser} />
         </div>
