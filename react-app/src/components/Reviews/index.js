@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import AddReviewModal from "../Modals/AddReviewModal";
 import EditReviewModal from "../Modals/EditReviewModal";
+import DeleteReviewModal from "../Modals/DeleteReviewModal";
 import { loadReviewsByBusiness } from "../../store/reviews";
 
 import './Reviews.css';
@@ -84,7 +85,10 @@ const Reviews = () => {
               <div className='service-name-in-review'>{review.service_name}</div>
               <div>
                 {userId === review.user_id ? (
-                  <EditReviewModal review={review}/>
+                  <div>
+                    <EditReviewModal review={review}/>
+                    <DeleteReviewModal businessId={businessIdParsed} reviewId={review.id}/>
+                  </div>
                 ) : (
                   <></>
                 )}

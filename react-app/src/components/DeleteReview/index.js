@@ -4,7 +4,9 @@ import { useHistory } from "react-router-dom";
 
 import { deleteReview, loadReviewsByBusiness } from "../../store/reviews";
 
-const DeleteReview = ({setEditReviewModal, businessId, reviewId, setShowModal}) => {
+import './DeleteReview.css';
+
+const DeleteReview = ({businessId, reviewId, setShowModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -17,7 +19,6 @@ const DeleteReview = ({setEditReviewModal, businessId, reviewId, setShowModal}) 
     if (deletedReview) {
       await dispatch(loadReviewsByBusiness(businessId));
       await setShowModal(false);
-      await setEditReviewModal(false);
       return window.alert('Your review has been deleted');
       // return history.push('/');
     }
@@ -25,11 +26,11 @@ const DeleteReview = ({setEditReviewModal, businessId, reviewId, setShowModal}) 
 
   return (
     <>
-      <div>
-        <h3>Are you sure you want to delete this review?</h3>
+      <div className='delete-review-modal'>
+        <h4>Are you sure you want to delete this review?</h4>
         <div>
-          <button onClick={(e) => handleDelete(e)}>Yes, I'm sure</button>
-          <button onClick={() => setShowModal(false)}>Cancel</button>
+          <button className='yes-sure' onClick={(e) => handleDelete(e)}>Yes, I'm sure</button>
+          <button onClick={() => setShowModal(false)}>No, nevermind</button>
         </div>
       </div>
     </>

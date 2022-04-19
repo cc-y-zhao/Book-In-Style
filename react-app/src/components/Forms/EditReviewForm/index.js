@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import '../ReviewForm/ReviewForm.css';
+import './EditReviewForm.css';
 import { editReview, loadReviewsByBusiness } from "../../../store/reviews";
 import DeleteReviewModal from "../../Modals/DeleteReviewModal";
 
@@ -183,14 +184,14 @@ const EditReviewForm = ({setShowModal, origReview}) => {
           </div>
 
           <div className="create-biz-btn">
-            <button type="submit" disabled={disabled}>
+            <button className='post-review-btn' type="submit" disabled={disabled}>
               Post Updated Review
             </button>
           </div>
         </form>
-        <div>
+        {/* <div>
           <DeleteReviewModal setEditReviewModal={setShowModal} businessId={origReview.business_id} reviewId={origReview.id}/>
-        </div>
+        </div> */}
       </div>
     </div>
   );
