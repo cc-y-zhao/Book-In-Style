@@ -34,6 +34,7 @@ const BusinessPage = () => {
   let reviewsTab = document?.getElementById("reviews-tab");
   let aboutTab = document?.getElementById("about-tab");
   const [selectedTabTitle, setSelectedTabTitle] = useState(servicesTab)
+
   if (selectedTabTitle) {
     selectedTabTitle.style.fontWeight = 'bold';
     selectedTabTitle.style.borderBottom = 'solid';
@@ -43,12 +44,18 @@ const BusinessPage = () => {
     e.preventDefault();
     let addedFavorite;
 
-    addedFavorite = await dispatch(createFavorite(businessIdParsed, userId));
+    console.log('user id------------------', userId)
+    let payload = {
+      'business_id': businessIdParsed,
+      'user_id': userId,
+    }
+
+    addedFavorite = await dispatch(createFavorite(payload));
 
     if (addedFavorite) {
       setFavorite(true);
       // await dispatch(loadReviewsByBusiness(businessId));
-      return window.alert('Your review has been deleted');
+      return window.alert('Added to favorites!');
       // return history.push('/');
     }
   }
@@ -56,18 +63,30 @@ const BusinessPage = () => {
   const onClickServices = async (e) => {
     e.preventDefault();
     setSelectedTabTitle(servicesTab);
+    reviewsTab.style.fontWeight = 'normal';
+    reviewsTab.style.borderBottom = 'none';
+    aboutTab.style.fontWeight = 'normal';
+    aboutTab.style.borderBottom = 'none';
     setSelectedTab(<Services />)
   }
 
   const onClickReviews = async (e) => {
     e.preventDefault();
     setSelectedTabTitle(reviewsTab);
+    servicesTab.style.fontWeight = 'normal';
+    servicesTab.style.borderBottom = 'none';
+    aboutTab.style.fontWeight = 'normal';
+    aboutTab.style.borderBottom = 'none';
     setSelectedTab(<Reviews />)
   }
 
   const onClickAbout = async (e) => {
     e.preventDefault();
     setSelectedTabTitle(aboutTab);
+    reviewsTab.style.fontWeight = 'normal';
+    reviewsTab.style.borderBottom = 'none';
+    servicesTab.style.fontWeight = 'normal';
+    servicesTab.style.borderBottom = 'none';
     setSelectedTab(<About />)
   }
 
