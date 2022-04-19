@@ -26,6 +26,7 @@ const BusinessPage = () => {
   const userId = useSelector((state) => state.session.user?.id);
   const businesses = useSelector((state) => state?.businesses)
   const business = useSelector((state) => businesses[businessIdParsed])
+  const favorites = useSelector((state) => state?.favorites?.user)
 
   const [selectedTab, setSelectedTab] = useState(<Services/>)
 
@@ -68,6 +69,7 @@ const BusinessPage = () => {
     servicesTab.style.borderBottom = 'none';
     setSelectedTab(<About />)
   }
+  // TO DO: DISPATCH USER'S FAVORITES UPON EVERY PAGE VISIT
 
   useEffect(() => {
     dispatch(loadBusiness(businessIdParsed));

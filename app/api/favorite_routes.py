@@ -38,3 +38,17 @@ def create_favorite():
   business_cover_photo = body['businessCoverPhoto']
 
   return {'favorite': favorite, 'business_name': business_name, 'business_cover_photo': business_cover_photo}
+
+
+@favorite_routes.route('/users/<int:user_id>', methods=['GET'])
+def get_bookings_by_user(user_id):
+  favorites_before_dict = Favorite.query.filter(Favorite.user_id == user_id).order_by(Favorite.updated_at.desc()).all()
+
+  favorites_dict = {}
+  for favorite in favorites_before_dict:
+    business = Business.query.get(favorite.business_id)
+    favorites_dict[business.id] = {'business_name': business.name, 'business_cover_photo': business.cover_photo}
+
+  favorites_list = [favorite.to_dict() for favorite in favorites_before_dict]
+
+  return {'favorites_dict': favorites_dict, 'favorites_list': favorites_list}

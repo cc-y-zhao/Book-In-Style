@@ -1,9 +1,15 @@
 const CREATE_FAVORITE = 'favorites/CREATE_FAVORITE';
+const GET_FAVORITES_BY_BUSINESS = 'favorites/GET_FAVORITES_BY_BUSINESS';
 
 const createdFavorite = (data) => ({
   type: CREATE_FAVORITE,
   data
 });
+
+const favoritesByUser = (data) => ({
+  type: GET_FAVORITES_BY_BUSINESS,
+  data,
+})
 
 
 export const createFavorite = (payload) => async (dispatch) => {
@@ -33,6 +39,24 @@ export const createFavorite = (payload) => async (dispatch) => {
   }
 }
 
+export const loadFavoritesByUser = (userId) => async (dispatch) => {
+
+  const response = await fetch(`/api/favorites/users/${userId}`);
+
+  if (response.ok) {
+    const data = await response.json();
+    // console.log('data in action creator-----------', data)
+    dispatch(favoritesByUser(data))
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
+  }
+}
 
 const initialState = {
   'user': {},
