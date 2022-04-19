@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import EditBusinessModal from "../Modals/EditBusinessModal";
 import AddServiceModal from "../Modals/AddServiceModal";
-// import EditBusinessHoursModal from "../Modals/EditBusinessHoursModal";
+import { createFavorite } from "../../store/favorites";
 import ErrorPage from "../Errors/ErrorPage";
 
 import Services from "../Services";
@@ -28,6 +28,8 @@ const BusinessPage = () => {
 
   const [selectedTab, setSelectedTab] = useState(<Services/>)
 
+  const [favorite, setFavorite] = useState(false);
+
   let servicesTab = document?.getElementById("services-tab");
   let reviewsTab = document?.getElementById("reviews-tab");
   let aboutTab = document?.getElementById("about-tab");
@@ -37,17 +39,23 @@ const BusinessPage = () => {
     selectedTabTitle.style.borderBottom = 'solid';
   }
 
+  const addToFavorites = async (e) => {
+    e.preventDefault();
+    let addedFavorite;
+
+    addedFavorite = await dispatch(createFavorite(businessIdParsed, userId));
+
+    if (addedFavorite) {
+      setFavorite(true);
+      // await dispatch(loadReviewsByBusiness(businessId));
+      return window.alert('Your review has been deleted');
+      // return history.push('/');
+    }
+  }
 
   const onClickServices = async (e) => {
     e.preventDefault();
     setSelectedTabTitle(servicesTab);
-    // servicesTab.style.fontWeight = 'bold';
-    // servicesTab.style.borderBottom = 'solid';
-
-    // reviewsTab.style.fontWeight = 'normal';
-    // reviewsTab.style.borderBottom = 'none';
-    // aboutTab.style.fontWeight = 'normal';
-    // aboutTab.style.borderBottom = 'none';
     setSelectedTab(<Services />)
   }
 
@@ -128,7 +136,14 @@ const BusinessPage = () => {
             </div>
 
             <div className='heart-biz-page'>
-              <i class="fa-regular fa-heart fa-lg"></i>
+              {favorite ? (
+                <i class="fa-solid fa-heart fa-lg"></i>
+              ) : (
+                <i
+                  class="fa-regular fa-heart fa-lg"
+                  onClick={(e) => addToFavorites(e)}
+                ></i>
+              )}
               {/* <i class="fa-solid fa-heart fa-lg"></i> */}
             </div>
 
