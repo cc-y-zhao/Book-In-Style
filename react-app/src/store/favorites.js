@@ -6,14 +6,14 @@ const createdFavorite = (favorite) => ({
 });
 
 
-export const createFavorite = (favorite) => async (dispatch) => {
+export const createFavorite = (businessId, userId) => async (dispatch) => {
 
   const response = await fetch('/api/favorites/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(favorite),
+    body: JSON.stringify(businessId, userId),
   });
 
   if (response.ok) {
