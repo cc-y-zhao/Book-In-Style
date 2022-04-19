@@ -38,4 +38,5 @@ class Review(db.Model):
       'reviewer_name': reviewer_name,
       'service_name': service_name,
       'created_at': self.created_at,
+      'updated_at': self.updated_at,
     }

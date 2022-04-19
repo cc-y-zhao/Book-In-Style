@@ -7,9 +7,9 @@ const createdReview = (review) => ({
   review
 });
 
-const loadAllReviewsByBusiness = (reviews, businessId) => ({
+const loadAllReviewsByBusiness = (payload, businessId) => ({
   type: GET_REVIEWS_BY_BUSINESS,
-  reviews,
+  payload,
   businessId,
 });
 
@@ -48,9 +48,9 @@ export const loadReviewsByBusiness = (businessId) => async (dispatch) => {
   const response = await fetch(`/api/reviews/businesses/${businessId}`);
 
   if (response.ok) {
-    const reviews = await response.json();
-    dispatch(loadAllReviewsByBusiness(reviews, businessId));
-    return reviews;
+    const payload = await response.json();
+    dispatch(loadAllReviewsByBusiness(payload, businessId));
+    return payload;
   } else {
     const errors = await response.json();
     return errors;
@@ -83,7 +83,12 @@ export const editReview = (editedReview) => async (dispatch) => {
 };
 
 
-const initialState = {};
+const initialState = {
+  'reviews_by_business_dict': {},
+  'reviews_by_business_list': [],
+  'reviews_by_user_dict': {},
+  'reviews_by_user_list': [],
+};
 
 export default function reducer(state = initialState, action) {
   let newState = {...state};
@@ -95,27 +100,34 @@ export default function reducer(state = initialState, action) {
       console.log('businessId in reducer-----------', businessId);
       console.log('new review in reducer-----------', newReview);
 
-      if (newState['reviews_by_business']) {
-        if (newState['reviews_by_business'][newReview.business_id]) {
-          // let newReviewId = newReview.id;
-          newState['reviews_by_business'][newReview.business_id].push(newReview);
-          // newState['reviews_by_business'][newReview.business_id].push(newReview)
-        } else {
-          let newReviewId = newReview.id;
-          newState['reviews_by_business'][newReview.business_id] = [];
-          newState['reviews_by_business'][newReview.business_id].push(newReview);
-        }
-      } else {
-        newState['reviews_by_business'] = {};
-        newState['reviews_by_business'][newReview.business_id] = [newReview];
-      }
+      newState['reviews_by_business_dict'][newReview.business_id] = newReview;
+      newState['reviews_by_business_list'].push(newReview);
 
       return newState;
 
+      // if (newState['reviews_by_business']) {
+      //   if (newState['reviews_by_business'][newReview.business_id]) {
+      //     // let newReviewId = newReview.id;
+      //     newState['reviews_by_business'][newReview.business_id].push(newReview);
+      //     // newState['reviews_by_business'][newReview.business_id].push(newReview)
+      //   } else {
+      //     let newReviewId = newReview.id;
+      //     newState['reviews_by_business'][newReview.business_id] = [];
+      //     newState['reviews_by_business'][newReview.business_id].push(newReview);
+      //   }
+      // } else {
+      //   newState['reviews_by_business'] = {};
+      //   newState['reviews_by_business'][newReview.business_id] = [newReview];
+      // }
+
+      // return newState;
+
     case GET_REVIEWS_BY_BUSINESS:
       // console.log('action.reviews from reducer ----------', action.reviews);
-      newState['reviews_by_business'] = {};
-      newState['reviews_by_business'][action.businessId] = action.reviews.reviews;
+      // newState['reviews_by_business'] = {};
+      // newState['reviews_by_business'][action.businessId] = action.reviews.reviews;
+      newState['reviews_by_business_dict'] = action.payload.reviews_dict;
+      newState['reviews_by_business_list'] = action.payload.reviews_list;
 
       return newState;
 
