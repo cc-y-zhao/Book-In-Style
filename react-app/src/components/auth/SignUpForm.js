@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
+import './SignUpForm.css';
+
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState('');
@@ -73,92 +75,94 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label>First Name</label>
-        <input
-          type='text'
-          name='firstName'
-          onChange={updateFirstName}
-          value={firstName}
-          required={true}
-        ></input>
-      </div>
-      <div>
-        <label>Last Name</label>
-        <input
-          type='text'
-          name='lastName'
-          onChange={updateLastName}
-          value={lastName}
-          required={true}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-          required={true}
-        ></input>
-      </div>
-      <div>
-        <label>Phone</label>
-        <input
-          type='text'
-          name='phone'
-          onChange={updatePhone}
-          value={phone}
-          required={true}
-        ></input>
-      </div>
-      <div>
-        <label>I am a business owner who wants to list my business</label>
-        <input
-          type='checkbox'
-          name='businessOwner'
-          onChange={updateBusinessOwner}
-          value={businessOwner}
-        ></input>
-      </div>
-       <div>
-        <label>Profile Picture</label>
-        <input
-          type='text'
-          name='image_url'
-          onChange={updateImageURL}
-          value={imageURL}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-          required={true}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+    <div className>
+      <form className='signup-form-wrapper' onSubmit={onSignUp}>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+        <div>
+          <label>First Name:</label>
+          <input
+            type='text'
+            name='firstName'
+            onChange={updateFirstName}
+            value={firstName}
+            required={true}
+          ></input>
+        </div>
+        <div>
+          <label>Last Name:</label>
+          <input
+            type='text'
+            name='lastName'
+            onChange={updateLastName}
+            value={lastName}
+            required={true}
+          ></input>
+        </div>
+        <div>
+          <label>Email:</label>
+          <input
+            type='text'
+            name='email'
+            onChange={updateEmail}
+            value={email}
+            required={true}
+          ></input>
+        </div>
+        <div>
+          <label>Phone:</label>
+          <input
+            type='text'
+            name='phone'
+            onChange={updatePhone}
+            value={phone}
+            required={true}
+          ></input>
+        </div>
+        <div>
+          <label>I am a business owner who wants to list my business: </label>
+          <input
+            type='checkbox'
+            name='businessOwner'
+            onChange={updateBusinessOwner}
+            value={businessOwner}
+          ></input>
+        </div>
+        <div>
+          <label>Profile Picture: </label>
+          <input
+            type='text'
+            name='image_url'
+            onChange={updateImageURL}
+            value={imageURL}
+          ></input>
+        </div>
+        <div>
+          <label>Password: </label>
+          <input
+            type='password'
+            name='password'
+            onChange={updatePassword}
+            value={password}
+            required={true}
+          ></input>
+        </div>
+        <div>
+          <label>Repeat Password: </label>
+          <input
+            type='password'
+            name='repeat_password'
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+          ></input>
+        </div>
+        <button type='submit'>Sign Up</button>
+      </form>
+    </div>
   );
 };
 
