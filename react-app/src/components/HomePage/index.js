@@ -38,18 +38,23 @@ const HomePage = () => {
       </div>
       <div className='find-pros'>
         <h2>Find top pros by service</h2>
-        <div className='services-homepage'>
+        <div className='services-homepage-top'>
           <div className='homepage-img-1'></div>
           <div className='homepage-img-2'></div>
           <div className='homepage-img-3'></div>
           <div className='homepage-img-4'></div>
           <div className='homepage-img-5'></div>
+        </div>
+        <div className='services-homepage-top'>
           <div className='homepage-img-6'></div>
           <div className='homepage-img-7'></div>
-
-
-
+          <div className='homepage-img-8'></div>
+          <div className='homepage-img-9'></div>
+          <div className='homepage-img-10'></div>
         </div>
+
+
+
       </div>
     </>
   );
