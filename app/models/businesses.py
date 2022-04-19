@@ -1,3 +1,4 @@
+from app.models.user import User
 from .db import db
 from sqlalchemy import DateTime
 from sqlalchemy.sql import func
@@ -76,3 +77,9 @@ class Business(db.Model):
 
 
     # 'services' : [service.to_dict() for service in self.services],
+
+    # def is_favorited(self, user: User):
+    #     # check if given user favorited business (self)
+    #     if not user:
+    #         return False
+    #     pass
