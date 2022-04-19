@@ -1,5 +1,5 @@
 const CREATE_FAVORITE = 'favorites/CREATE_FAVORITE';
-const GET_FAVORITES_BY_BUSINESS = 'favorites/GET_FAVORITES_BY_BUSINESS';
+const GET_FAVORITES_BY_USER = 'favorites/GET_FAVORITES_BY_USER';
 
 const createdFavorite = (data) => ({
   type: CREATE_FAVORITE,
@@ -7,7 +7,7 @@ const createdFavorite = (data) => ({
 });
 
 const favoritesByUser = (data) => ({
-  type: GET_FAVORITES_BY_BUSINESS,
+  type: GET_FAVORITES_BY_USER,
   data,
 })
 
@@ -80,6 +80,11 @@ export default function reducer(state = initialState, action) {
 
       if (newState['user'][userId]) {
         newState['user'][userId][businessId] = {'businessName': businessName, 'businessCoverPhoto': businessCoverPhoto};
+        if (newState['user'][userId][favorites_list]) {
+          newState['user'][userId][favorites_list].push(newFavorite);
+        } else {
+          newState['user'][userId] = {'favorites_list': [newFavorite]};
+        }
       } else {
         newState['user'][userId] = {businessId: {'businessName': businessName, 'businessCoverPhoto': businessCoverPhoto}};
       }
@@ -90,6 +95,12 @@ export default function reducer(state = initialState, action) {
         newState['business'][businessId] = {userId: newFavorite}
       }
       return newState;
+
+    case GET_FAVORITES_BY_USER:
+      //what if no favorites?
+      let favorites_list = action.data.favorites_list;
+      let favorites_dict = action.data.favorites_dict;
+
 
 
     default:
