@@ -83,7 +83,7 @@ const SignUpForm = () => {
           ))}
         </div>
         <div>
-          <label>First Name:</label>
+          <div>First Name:</div>
           <input
             type='text'
             name='firstName'
@@ -93,7 +93,7 @@ const SignUpForm = () => {
           ></input>
         </div>
         <div>
-          <label>Last Name:</label>
+          <div>Last Name:</div>
           <input
             type='text'
             name='lastName'
@@ -103,7 +103,7 @@ const SignUpForm = () => {
           ></input>
         </div>
         <div>
-          <label>Email:</label>
+          <div>Email:</div>
           <input
             type='text'
             name='email'
@@ -113,7 +113,7 @@ const SignUpForm = () => {
           ></input>
         </div>
         <div>
-          <label>Phone:</label>
+          <div>Phone:</div>
           <input
             type='text'
             name='phone'
@@ -123,16 +123,7 @@ const SignUpForm = () => {
           ></input>
         </div>
         <div>
-          <label>I am a business owner who wants to list my business: </label>
-          <input
-            type='checkbox'
-            name='businessOwner'
-            onChange={updateBusinessOwner}
-            value={businessOwner}
-          ></input>
-        </div>
-        <div>
-          <label>Profile Picture: </label>
+          <div>Profile Picture: </div>
           <input
             type='text'
             name='image_url'
@@ -141,7 +132,7 @@ const SignUpForm = () => {
           ></input>
         </div>
         <div>
-          <label>Password: </label>
+          <div>Password: </div>
           <input
             type='password'
             name='password'
@@ -151,7 +142,7 @@ const SignUpForm = () => {
           ></input>
         </div>
         <div>
-          <label>Repeat Password: </label>
+          <div>Repeat Password: </div>
           <input
             type='password'
             name='repeat_password'
@@ -160,7 +151,19 @@ const SignUpForm = () => {
             required={true}
           ></input>
         </div>
-        <button type='submit'>Sign Up</button>
+        <div>
+          <label>I want to list my business: </label>
+          <input
+            type='checkbox'
+            name='businessOwner'
+            onChange={updateBusinessOwner}
+            value={businessOwner}
+          ></input>
+        </div>
+
+
+
+        <button className='signup-btn' type='submit'>Sign Up</button>
       </form>
     </div>
   );
