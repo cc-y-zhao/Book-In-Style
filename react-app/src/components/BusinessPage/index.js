@@ -10,6 +10,7 @@ import ErrorPage from "../Errors/ErrorPage";
 import Services from "../Services";
 import Reviews from "../Reviews";
 import About from "./About";
+import Favorite from "../Favorites";
 
 import { loadBusiness } from "../../store/businesses";
 import { loadReviewsByBusiness } from "../../store/reviews";
@@ -28,8 +29,6 @@ const BusinessPage = () => {
 
   const [selectedTab, setSelectedTab] = useState(<Services/>)
 
-  const [favorite, setFavorite] = useState(false);
-
   let servicesTab = document?.getElementById("services-tab");
   let reviewsTab = document?.getElementById("reviews-tab");
   let aboutTab = document?.getElementById("about-tab");
@@ -38,26 +37,6 @@ const BusinessPage = () => {
   if (selectedTabTitle) {
     selectedTabTitle.style.fontWeight = 'bold';
     selectedTabTitle.style.borderBottom = 'solid';
-  }
-
-  const addToFavorites = async (e) => {
-    e.preventDefault();
-    let addedFavorite;
-
-    console.log('user id------------------', userId)
-    let payload = {
-      'business_id': businessIdParsed,
-      'user_id': userId,
-    }
-
-    addedFavorite = await dispatch(createFavorite(payload));
-
-    if (addedFavorite) {
-      setFavorite(true);
-      // await dispatch(loadReviewsByBusiness(businessId));
-      return window.alert('Added to favorites!');
-      // return history.push('/');
-    }
   }
 
   const onClickServices = async (e) => {
@@ -155,7 +134,9 @@ const BusinessPage = () => {
               {/* <div className='biz-pics'>------Additional pics will go here------</div> */}
             </div>
 
-            <div className='heart-biz-page'>
+            <Favorite businessId={businessIdParsed} userId={userId}/>
+
+            {/* <div className='heart-biz-page'>
               {favorite ? (
                 <i class="fa-solid fa-heart fa-lg"></i>
               ) : (
@@ -165,7 +146,7 @@ const BusinessPage = () => {
                 ></i>
               )}
               {/* <i class="fa-solid fa-heart fa-lg"></i> */}
-            </div>
+            {/* </div>  */}
 
           </div>
 
