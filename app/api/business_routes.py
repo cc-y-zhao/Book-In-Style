@@ -32,6 +32,8 @@ def get_all_business():
 @business_routes.route('/<int:businessId>', methods=['GET'])
 def get_business(businessId):
     business = Business.query.get(businessId)
+    if not business:
+        return {}
     user = current_user # get currently logged in user
     business_dict = business.to_dict()
     business_dict['is_favorited'] = _is_favorited(user, business)

@@ -19,6 +19,7 @@ import './BusinessPage.css'
 
 const BusinessPage = () => {
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const { businessId } = useParams();
   const businessIdParsed = parseInt(businessId);
@@ -72,10 +73,10 @@ const BusinessPage = () => {
   // TO DO: DISPATCH USER'S FAVORITES UPON EVERY PAGE VISIT
 
   useEffect(() => {
-    dispatch(loadBusiness(businessIdParsed));
-    dispatch(loadReviewsByBusiness(businessIdParsed));
-    setSelectedTab(<Services />);
-    // setSelectedTabTitle(servicesTab);
+    dispatch(loadBusiness(businessIdParsed))
+      .then(() => dispatch(loadReviewsByBusiness(businessIdParsed)))
+      .then(() => setSelectedTab(<Services />))
+      .then(() => setIsLoaded(true));
   }, [dispatch, businessIdParsed]);
 
   // useEffect(() => {
@@ -107,123 +108,129 @@ const BusinessPage = () => {
 
   return (
     <>
-      {showBusiness ? (
-        <div className='biz-page-container'>
-          <div className='edit-biz'>
-            {showEdit && (
-              <div className='edit-listing-btn'>
-                <EditBusinessModal/>
-              </div>
-            )}
-            {showEdit && (
-              <div className='edit-services-btn'>
-                <AddServiceModal businessId={businessIdParsed}/>
-              </div>
-            )}
-          </div>
-          <div className="prof-and-heart">
-            <div className='biz-page-prof'>
-              <div>
-                <img
-                  className='cover-photo'
-                  src={business.cover_photo}
-                  alt={`${business.name}`}
-                  height="180px"
-                  width="180px"
-                />
-              </div>
-              <div className='biz-name'>{business['name']}</div>
-              {/* <div className='biz-pics'>------Additional pics will go here------</div> */}
-            </div>
-
-            <Favorite business={business} businessId={businessIdParsed} userId={userId} businessName={business.name} businessCoverPhoto={business.cover_photo}/>
-
-            {/* <div className='heart-biz-page'>
-              {favorite ? (
-                <i class="fa-solid fa-heart fa-lg"></i>
-              ) : (
-                <i
-                  class="fa-regular fa-heart fa-lg"
-                  onClick={(e) => addToFavorites(e)}
-                ></i>
-              )}
-              {/* <i class="fa-solid fa-heart fa-lg"></i> */}
-            {/* </div>  */}
-
-          </div>
-
-
-          <div className='biz-page-bottom'>
-            <div className="about-reviews-services">
-              <div className='about-reviews-services-nav'>
-                <span
-                  className='services-title-biz-pg'
-                  id='services-tab'
-                  onClick={(e) => onClickServices(e)}
-                >
-                  Services
-                </span>
-                <span
-                  className='reviews-title-biz-pg'
-                  id='reviews-tab'
-                  onClick={(e) => onClickReviews(e)}
-                >
-                  Reviews
-                </span>
-                <span
-                  onClick={(e) => onClickAbout(e)}
-                  id='about-tab'
-                >
-                  About
-                </span>
-              </div>
-              {showSelectedTab && (
-              <div>
-                  {selectedTab}
-              </div>
-              )}
-              {/* -----------------THIS IS WHERE THE SELECTED CONTENT WILL GO--------------- */}
-              {/* <div>{business.description}</div> */}
-              {/* <div><Services services={services} userId={userId} businessId={businessIdParsed} businessName={business.name}/></div> */}
-            </div>
-
-
-
-            {/* BOTTOM RIGHT OF PAGE */}
-            <div className='biz-bottom-right'>
-              <div className='biz-name-bottom'>{business['name']}</div>
-              <div className='street-address'>{business.street_address} {business.unit}</div>
-              <div className='biz-city'>{business.city}, {business.state} {business.zip_code}</div>
-              <div className='biz-hours-title'>Business Hours</div>
-              <div className='biz-hours'>
-                <div className='biz-days'>
-                  <div>Monday:</div>
-                  <div>Tuesday:</div>
-                  <div>Wednesday:</div>
-                  <div>Thursday:</div>
-                  <div>Friday:</div>
-                  <div>Saturday:</div>
-                  <div>Sunday:</div>
-                </div>
-                <div>
-                  <div>{business.hours.monday}</div>
-                  <div>{business.hours.tuesday}</div>
-                  <div>{business.hours.wednesday}</div>
-                  <div>{business.hours.thursday}</div>
-                  <div>{business.hours.friday}</div>
-                  <div>{business.hours.saturday}</div>
-                  <div>{business.hours.sunday}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      ) : (
+      {isLoaded && (
         <>
-          <ErrorPage />
+          {showBusiness ? (
+          <div className='biz-page-container'>
+            <div className='edit-biz'>
+              {showEdit && (
+                <div className='edit-listing-btn'>
+                  <EditBusinessModal/>
+                </div>
+              )}
+              {showEdit && (
+                <div className='edit-services-btn'>
+                  <AddServiceModal businessId={businessIdParsed}/>
+                </div>
+              )}
+            </div>
+            <div className="prof-and-heart">
+              <div className='biz-page-prof'>
+                <div>
+                  <img
+                    className='cover-photo'
+                    src={business.cover_photo}
+                    alt={`${business.name}`}
+                    height="180px"
+                    width="180px"
+                  />
+                </div>
+                <div className='biz-name'>{business['name']}</div>
+                {/* <div className='biz-pics'>------Additional pics will go here------</div> */}
+              </div>
+
+              <Favorite business={business} businessId={businessIdParsed} userId={userId} businessName={business.name} businessCoverPhoto={business.cover_photo}/>
+
+              {/* <div className='heart-biz-page'>
+                {favorite ? (
+                  <i class="fa-solid fa-heart fa-lg"></i>
+                ) : (
+                  <i
+                    class="fa-regular fa-heart fa-lg"
+                    onClick={(e) => addToFavorites(e)}
+                  ></i>
+                )}
+                {/* <i class="fa-solid fa-heart fa-lg"></i> */}
+              {/* </div>  */}
+
+            </div>
+
+
+            <div className='biz-page-bottom'>
+              <div className="about-reviews-services">
+                <div className='about-reviews-services-nav'>
+                  <span
+                    className='services-title-biz-pg'
+                    id='services-tab'
+                    onClick={(e) => onClickServices(e)}
+                  >
+                    Services
+                  </span>
+                  <span
+                    className='reviews-title-biz-pg'
+                    id='reviews-tab'
+                    onClick={(e) => onClickReviews(e)}
+                  >
+                    Reviews
+                  </span>
+                  <span
+                    onClick={(e) => onClickAbout(e)}
+                    id='about-tab'
+                  >
+                    About
+                  </span>
+                </div>
+                {showSelectedTab && (
+                <div>
+                    {selectedTab}
+                </div>
+                )}
+                {/* -----------------THIS IS WHERE THE SELECTED CONTENT WILL GO--------------- */}
+                {/* <div>{business.description}</div> */}
+                {/* <div><Services services={services} userId={userId} businessId={businessIdParsed} businessName={business.name}/></div> */}
+              </div>
+
+
+
+              {/* BOTTOM RIGHT OF PAGE */}
+              <div className='biz-bottom-right'>
+                <div className='biz-name-bottom'>{business['name']}</div>
+                <div className='street-address'>{business.street_address} {business.unit}</div>
+                <div className='biz-city'>{business.city}, {business.state} {business.zip_code}</div>
+                <div className='biz-hours-title'>Business Hours</div>
+                <div className='biz-hours'>
+                  <div className='biz-days'>
+                    <div>Monday:</div>
+                    <div>Tuesday:</div>
+                    <div>Wednesday:</div>
+                    <div>Thursday:</div>
+                    <div>Friday:</div>
+                    <div>Saturday:</div>
+                    <div>Sunday:</div>
+                  </div>
+                  <div>
+                    <div>{business.hours.monday}</div>
+                    <div>{business.hours.tuesday}</div>
+                    <div>{business.hours.wednesday}</div>
+                    <div>{business.hours.thursday}</div>
+                    <div>{business.hours.friday}</div>
+                    <div>{business.hours.saturday}</div>
+                    <div>{business.hours.sunday}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          ) : (
+            <>
+              <ErrorPage />
+            </>
+          )}
         </>
+
       )}
+
     </>
   );
 };
