@@ -40,15 +40,32 @@ def create_favorite():
   return {'favorite': favorite, 'business_name': business_name, 'business_cover_photo': business_cover_photo}
 
 
-@favorite_routes.route('/users/<int:user_id>', methods=['GET'])
-def get_bookings_by_user(user_id):
-  favorites_before_dict = Favorite.query.filter(Favorite.user_id == user_id).order_by(Favorite.updated_at.desc()).all()
+# @favorite_routes.route('/users/<int:user_id>', methods=['GET'])
+# def get_favorites_by_user(user_id):
+#   favorites_before_dict = Favorite.query.filter(Favorite.user_id == user_id).order_by(Favorite.updated_at.desc()).all()
 
-  favorites_dict = {}
-  for favorite in favorites_before_dict:
-    business = Business.query.get(favorite.business_id)
-    favorites_dict[business.id] = {'business_name': business.name, 'business_cover_photo': business.cover_photo}
+#   favorites_dict = {}
+#   for favorite in favorites_before_dict:
+#     business = Business.query.get(favorite.business_id)
+#     favorites_dict[business.id] = {'business_name': business.name, 'business_cover_photo': business.cover_photo}
 
-  favorites_list = [favorite.to_dict() for favorite in favorites_before_dict]
+#   favorites_list = [favorite.to_dict() for favorite in favorites_before_dict]
 
-  return {'favorites_dict': favorites_dict, 'favorites_list': favorites_list}
+#   return {'favorites_dict': favorites_dict, 'favorites_list': favorites_list}
+
+
+@favorite_routes.route('/', methods=["DELETE"])
+# @login_required
+def delete_favorite():
+    body = request.json
+    user_id = body['userId']
+    business_id = body['businessId']
+
+    favorite_before_dict = Favorite.query.get((user_id, business_id))
+
+    deleted_favorite = favorite_before_dict.to_dict()
+
+    db.session.delete(favorite_before_dict)
+    db.session.commit()
+
+    return deleted_favorite

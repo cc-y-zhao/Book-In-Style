@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { createFavorite } from "../../store/favorites";
+import { createFavorite, deleteFavorite } from "../../store/favorites";
 import { loadBusiness } from "../../store/businesses";
 
 import '../BusinessPage/BusinessPage.css';
@@ -52,8 +52,8 @@ const Favorite = ({business, businessId, userId, businessName, businessCoverPhot
     let removedFavorite;
 
     let payload = {
-      businessId,
       userId,
+      businessId,
     }
 
     removedFavorite = await dispatch(deleteFavorite(payload))
