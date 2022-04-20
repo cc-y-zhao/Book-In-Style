@@ -45,7 +45,7 @@ const NavBar = () => {
         <NavLink className='navlink nav-element nav-home' exact to="/">
           <img
             className='logo-in-nav'
-            src='/images/logo.png'
+            src='../../images/logo.png'
             alt='BiS logo'
             height='40px'
             width='150px'
