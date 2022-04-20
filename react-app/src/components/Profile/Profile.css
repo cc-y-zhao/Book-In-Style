@@ -9,10 +9,52 @@
 }
 
 .selected-tab-in-profile {
-  margin-left: 35%;
+  /* margin-left: 35%; */
 }
 
+.appointments-tab-prof-title {
+  /* margin-bottom: 30px; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* border: solid; */
+  height: 60px;
+  width: 200px;
+  font-size: 18px;
+}
+.favorites-tab-prof-title {
+  /* margin-bottom: 30px; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* border: solid; */
+  height: 60px;
+  width: 200px;
+  font-size: 18px;
+}
 
+.reviews-tab-prof-title {
+  /* margin-bottom: 20px; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* border: solid; */
+  height: 60px;
+  font-size: 18px;
+}
+
+.nav-in-profile {
+  height: 1000px;
+}
+
+.selected-tab-in-profile {
+  padding-left: 30%;
+  padding-top: 15px;
+  border-left: solid;
+}
 
 
 

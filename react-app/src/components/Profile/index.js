@@ -20,14 +20,14 @@ const Profile = () => {
   return (
     <>
       <div className='profile-container'>
-        <div>
-          <div>
+        <div className='nav-in-profile'>
+          <div className='appointments-tab-prof-title'>
             Appointments
           </div>
-          <div>
+          <div className='favorites-tab-prof-title'>
             Favorites
           </div>
-          <div>
+          <div className='reviews-tab-prof-title'>
             Reviews
           </div>
         </div>
