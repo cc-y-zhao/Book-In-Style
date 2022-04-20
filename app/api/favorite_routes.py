@@ -42,7 +42,7 @@ def create_favorite():
 
 @favorite_routes.route('/users/<int:user_id>', methods=['GET'])
 def get_favorites_by_user(user_id):
-  favorites_before_dict = Favorite.query.filter(Favorite.user_id == user_id).order_by(Favorite.updated_at.desc()).all()
+  favorites_before_dict = Favorite.query.filter(Favorite.user_id == user_id).order_by(Favorite.created_at.desc()).all()
 
   favorites_dict = {}
   for favorite in favorites_before_dict:

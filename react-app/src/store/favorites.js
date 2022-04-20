@@ -128,9 +128,8 @@ export default function reducer(state = initialState, action) {
       let favorites_dict = action.data.favorites_dict;
       let userId = action.data.user_id
 
-      newState.user['userId'] = {
-        userId: {'favorites_list': favorites_list, 'favorites_dict': favorites_dict}
-      };
+      newState.user[userId] = {'favorites_list': favorites_list, 'favorites_dict': favorites_dict};
+
 
       return newState;
 
