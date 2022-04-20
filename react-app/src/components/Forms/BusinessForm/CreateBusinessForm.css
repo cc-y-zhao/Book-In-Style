@@ -6,7 +6,7 @@
 
 .right-column {
   width: max-content;
-  margin-left: 40px;
+  margin-left: 30px;
   text-align: end;
 }
 
@@ -54,4 +54,12 @@
 .create-biz-btn {
   margin-top: 15px;
   color: #E10984;
+}
+
+.service-right-column {
+  margin-top: 8px;
+}
+
+.left-column-field {
+  margin-bottom: 6px;
 }

@@ -139,7 +139,7 @@ const CreateBusinessForm = ({setShowModal}) => {
           <div className='biz-form-row'>
             <div className="left-column">
               <input type="hidden" value={capacity} />
-              <div>
+              <div className='left-column-field'>
                 <div>
                   <label>Business Name</label>
                 </div>
@@ -151,7 +151,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                   onChange={updateName}
                 />
               </div>
-              <div>
+              <div className='left-column-field'>
                 <div>
                   <label>Description</label>
                 </div>
@@ -163,7 +163,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                 />
               </div>
 
-              <div>
+              <div className='left-column-field'>
                 <div>
                   <label>Phone Number</label>
                 </div>
@@ -175,7 +175,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                   onChange={updatePhone}
                 />
               </div>
-              <div>
+              <div className='left-column-field'>
                 <div>
                   <label>Street Address</label>
                 </div>
@@ -187,7 +187,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                   onChange={updateStreetAddress}
                 />
               </div>
-              <div>
+              <div className='left-column-field'>
                 <div className='reg-font-weight'>
                   <label>Unit</label>
                   <span className='optional'> (optional)</span>
@@ -199,7 +199,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                   onChange={updateUnit}
                 />
               </div>
-              <div>
+              <div className='left-column-field'>
                 <div>
                   <label>City</label>
                 </div>
@@ -211,7 +211,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                   onChange={updateCity}
                 />
               </div>
-              <div>
+              <div className='left-column-field'>
                 <span>State: </span>
                 <select onChange={updateState} value={state}>
                   {states.map(state =>
@@ -219,7 +219,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                   )}
                 </select>
               </div>
-              <div>
+              <div className='left-column-field'>
                 <div>
                   <label>Zipcode</label>
                 </div>
@@ -230,13 +230,13 @@ const CreateBusinessForm = ({setShowModal}) => {
                   onChange={updateZipcode}
                 />
               </div>
-              <div>
+              <div className='left-column-field'>
                 <div>
                   <label>Cover Photo</label>
                 </div>
                 <input
                   type="text"
-                  placeholder="Please provide an image to represent your business!"
+                  placeholder="Please provide an image to represent your business"
                   value={coverPhoto}
                   onChange={updateCoverPhoto}
                 />
@@ -246,7 +246,7 @@ const CreateBusinessForm = ({setShowModal}) => {
 
             <div className='right-column'>
               <div>Service types (check all that may apply):</div>
-              <div>
+              <div className='service-right-column'>
                 <span>Women's Haircut: </span>
                 <input
                   className='checkbox-input'
@@ -257,7 +257,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                 ></input>
               </div>
 
-              <div>
+              <div className='service-right-column'>
                 <span>Men's Haircut: </span>
                 <input
                   className='checkbox-input'
@@ -268,7 +268,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                 ></input>
               </div>
 
-              <div>
+              <div className='service-right-column'>
                 <span>Hair Coloring: </span>
                 <input
                   className='checkbox-input'
@@ -279,7 +279,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                 ></input>
               </div>
 
-              <div>
+              <div className='service-right-column'>
                 <span>Kid's Haircut: </span>
                 <input
                   className='checkbox-input'
@@ -290,7 +290,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                 ></input>
               </div>
 
-              <div>
+              <div className='service-right-column'>
                 <span>Hair Styling: </span>
                 <input
                   className='checkbox-input'
@@ -301,7 +301,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                 ></input>
               </div>
 
-              <div>
+              <div className='service-right-column'>
                 <span>Nail Salon: </span>
                 <input
                   className='checkbox-input'
@@ -312,7 +312,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                 ></input>
               </div>
 
-              <div>
+              <div className='service-right-column'>
                 <span>Makeup: </span>
                 <input
                   className='checkbox-input'
@@ -323,7 +323,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                 ></input>
               </div>
 
-              <div>
+              <div className='service-right-column'>
                 <span>Lashes: </span>
                 <input
                   className='checkbox-input'
@@ -334,7 +334,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                 ></input>
               </div>
 
-              <div>
+              <div className='service-right-column'>
                 <span>Perm: </span>
                 <input
                   className='checkbox-input'
@@ -345,7 +345,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                 ></input>
               </div>
 
-              <div>
+              <div className='service-right-column'>
                 <span>Spa: </span>
                 <input
                   className='checkbox-input'
