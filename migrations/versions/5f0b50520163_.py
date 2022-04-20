@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: e7ddfbbe1cf8
+Revision ID: 5f0b50520163
 Revises: 
-Create Date: 2022-04-19 17:09:56.511392
+Create Date: 2022-04-20 15:25:46.526019
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e7ddfbbe1cf8'
+revision = '5f0b50520163'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -51,6 +51,16 @@ def upgrade():
     sa.Column('zip_code', sa.String(length=10), nullable=True),
     sa.Column('capacity', sa.Integer(), nullable=True),
     sa.Column('cover_photo', sa.String(length=2083), nullable=True),
+    sa.Column('is_women_haircut', sa.Boolean(), nullable=True),
+    sa.Column('is_lashes', sa.Boolean(), nullable=True),
+    sa.Column('is_men_haircut', sa.Boolean(), nullable=True),
+    sa.Column('is_spa', sa.Boolean(), nullable=True),
+    sa.Column('is_nail_salon', sa.Boolean(), nullable=True),
+    sa.Column('is_kid_haircut', sa.Boolean(), nullable=True),
+    sa.Column('is_hair_styling', sa.Boolean(), nullable=True),
+    sa.Column('is_makeup', sa.Boolean(), nullable=True),
+    sa.Column('is_hair_coloring', sa.Boolean(), nullable=True),
+    sa.Column('is_perm', sa.Boolean(), nullable=True),
     sa.Column('monday', sa.String(length=20), nullable=True),
     sa.Column('tuesday', sa.String(length=20), nullable=True),
     sa.Column('wednesday', sa.String(length=20), nullable=True),
