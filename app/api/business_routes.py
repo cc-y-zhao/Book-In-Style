@@ -39,10 +39,10 @@ def get_business(businessId):
 
     # return business.to_dict()
 
-def _is_favorited(user: User, business: Business):
+def _is_favorited(user, business):
     if not (user.is_authenticated and business):
         return False
-    favorite = Favorite.query.filter(Favorite.user_id == user.id).filter(Favorite.business_id == business.id).first()
+    favorite = Favorite.query.get((user.id, business.id))
     return True if favorite else False
 
 

@@ -71,35 +71,35 @@ export default function reducer(state = initialState, action) {
   let businessName;
   let businessCoverPhoto;
   switch (action.type) {
-    case CREATE_FAVORITE:
-      newFavorite = action.data.favorite;
-      userId = newFavorite.user_id;
-      businessId = newFavorite.business_id;
-      businessName = action.data.business_name;
-      businessCoverPhoto = action.data.business_cover_photo
+    // case CREATE_FAVORITE:
+    //   newFavorite = action.data.favorite;
+    //   userId = newFavorite.user_id;
+    //   businessId = newFavorite.business_id;
+    //   businessName = action.data.business_name;
+    //   businessCoverPhoto = action.data.business_cover_photo
 
-      if (newState['user'][userId]) {
-        newState['user'][userId][businessId] = {'businessName': businessName, 'businessCoverPhoto': businessCoverPhoto};
-        if (newState['user'][userId][favorites_list]) {
-          newState['user'][userId][favorites_list].push(newFavorite);
-        } else {
-          newState['user'][userId] = {'favorites_list': [newFavorite]};
-        }
-      } else {
-        newState['user'][userId] = {businessId: {'businessName': businessName, 'businessCoverPhoto': businessCoverPhoto}};
-      }
+    //   if (newState['user'][userId]) {
+    //     newState['user'][userId][businessId] = {'businessName': businessName, 'businessCoverPhoto': businessCoverPhoto};
+    //     if (newState['user'][userId][favorites_list]) {
+    //       newState['user'][userId][favorites_list].push(newFavorite);
+    //     } else {
+    //       newState['user'][userId] = {'favorites_list': [newFavorite]};
+    //     }
+    //   } else {
+    //     newState['user'][userId] = {businessId: {'businessName': businessName, 'businessCoverPhoto': businessCoverPhoto}};
+    //   }
 
-      if (newState['business'][businessId]) {
-        newState['business'][businessId][userId] = newFavorite
-      } else {
-        newState['business'][businessId] = {userId: newFavorite}
-      }
-      return newState;
+    //   if (newState['business'][businessId]) {
+    //     newState['business'][businessId][userId] = newFavorite
+    //   } else {
+    //     newState['business'][businessId] = {userId: newFavorite}
+    //   }
+    //   return newState;
 
-    case GET_FAVORITES_BY_USER:
-      //what if no favorites?
-      let favorites_list = action.data.favorites_list;
-      let favorites_dict = action.data.favorites_dict;
+    // case GET_FAVORITES_BY_USER:
+    //   //what if no favorites?
+    //   let favorites_list = action.data.favorites_list;
+    //   let favorites_dict = action.data.favorites_dict;
 
 
 

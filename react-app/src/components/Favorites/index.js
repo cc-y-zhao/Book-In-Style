@@ -6,13 +6,17 @@ import { loadBusiness } from "../../store/businesses";
 
 import '../BusinessPage/BusinessPage.css';
 
-const Favorite = ({businessId, userId, businessName, businessCoverPhoto}) => {
+const Favorite = ({business, businessId, userId, businessName, businessCoverPhoto}) => {
   const dispatch = useDispatch();
 
   const businesses = useSelector((state) => state?.businesses)
-  const business = useSelector((state) => businesses[businessId])
+  // const business = useSelector((state) => businesses[businessId])
 
-  const [favorite, setFavorite] = useState(false);
+  console.log('business in the favorites comp-------', business);
+  // const [favorite, setFavorite] = useState(false);
+  let favorited;
+  if (business.is_favorited === true) favorited = true;
+  else favorited = false;
 
   const addToFavorites = async (e) => {
     // if (!userId) {
@@ -35,8 +39,8 @@ const Favorite = ({businessId, userId, businessName, businessCoverPhoto}) => {
     addedFavorite = await dispatch(createFavorite(payload));
 
     if (addedFavorite) {
-      setFavorite(true);
-      // await dispatch(loadReviewsByBusiness(businessId));
+      await loadBusiness(businessId);
+      favorited = true;
       return window.alert('Added to favorites!');
       // return history.push('/');
     }
@@ -51,7 +55,7 @@ const Favorite = ({businessId, userId, businessName, businessCoverPhoto}) => {
   return (
     <>
       <div className='heart-biz-page'>
-        {favorite ? (
+        {favorited ? (
           <i class="fa-solid fa-heart fa-lg"></i>
         ) : (
           <i
