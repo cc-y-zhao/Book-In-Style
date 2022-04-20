@@ -46,7 +46,7 @@ export const loadFavoritesByUser = (userId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     // console.log('data in action creator-----------', data)
-    // dispatch(favoritesByUser(data))
+    dispatch(favoritesByUser(data))
     return data;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -123,10 +123,16 @@ export default function reducer(state = initialState, action) {
     //   }
     //   return newState;
 
-    // case GET_FAVORITES_BY_USER:
-    //   //what if no favorites?
-    //   let favorites_list = action.data.favorites_list;
-    //   let favorites_dict = action.data.favorites_dict;
+    case GET_FAVORITES_BY_USER:
+      let favorites_list = action.data.favorites_list;
+      let favorites_dict = action.data.favorites_dict;
+      let userId = action.data.user_id
+
+      newState.user['userId'] = {
+        userId: {'favorites_list': favorites_list, 'favorites_dict': favorites_dict}
+      };
+
+      return newState;
 
 
 

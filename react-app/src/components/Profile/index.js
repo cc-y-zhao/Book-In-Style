@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Redirect, useHistory, NavLink } from "react-router-dom";
 
 import CustomerAppointments from './Customer/Appointments';
+import UserFavorites from "./Customer/Favorites";
 import { loadBookingsByUser } from "../../store/bookings";
 
 import './Profile.css'
@@ -26,11 +27,29 @@ const Profile = () => {
   const onClickAppointments = async (e) => {
     e.preventDefault();
     setSelectedTabTitle(appointmentsTab);
-    favoritesTab.style.fontWeight = 'normal';
-    favoritesTab.style.borderBottom = 'none';
-    reviewsTab.style.fontWeight = 'normal';
-    reviewsTab.style.borderBottom = 'none';
+    if (favoritesTab) {
+      favoritesTab.style.fontWeight = 'normal';
+      favoritesTab.style.borderBottom = 'none';
+    }
+    if (reviewsTab) {
+      reviewsTab.style.fontWeight = 'normal';
+      reviewsTab.style.borderBottom = 'none';
+    }
     setSelectedTab(<CustomerAppointments />)
+  }
+
+  const onClickFavorites = async (e) => {
+    e.preventDefault();
+    setSelectedTabTitle(favoritesTab);
+    if (appointmentsTab) {
+      appointmentsTab.style.fontWeight = 'normal';
+      appointmentsTab.style.borderBottom = 'none';
+    }
+    if (reviewsTab) {
+      reviewsTab.style.fontWeight = 'normal';
+      reviewsTab.style.borderBottom = 'none';
+    }
+    setSelectedTab(<UserFavorites userId={userId}/>)
   }
 
 
@@ -38,6 +57,10 @@ const Profile = () => {
   useEffect(() => {
     dispatch(loadBookingsByUser(userId));
   }, [dispatch, userId]);
+
+
+  let showSelectedTab = false;
+  if (selectedTab) showSelectedTab = true;
 
 
   return (
@@ -50,7 +73,10 @@ const Profile = () => {
             >
             Appointments
           </div>
-          <div id='favorites-tab-prof-title'>
+          <div
+            id='favorites-tab-prof-title'
+            onClick={(e) => onClickFavorites(e)}
+            >
             Favorites
           </div>
           <div id='reviews-tab-prof-title'>
@@ -58,10 +84,12 @@ const Profile = () => {
           </div>
         </div>
 
+        {showSelectedTab && (
+          <div className='selected-tab-in-profile'>
+            {selectedTab}
+          </div>
+        )}
 
-        <div className='selected-tab-in-profile'>
-          {selectedTab}
-        </div>
       </div>
   </>
   );

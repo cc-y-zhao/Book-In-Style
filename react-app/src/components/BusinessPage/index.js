@@ -98,13 +98,6 @@ const BusinessPage = () => {
   let showSelectedTab = false;
   if (selectedTab) showSelectedTab = true;
 
-  // if (!(businessIdParsed in businesses)) {
-  //   return (
-  //     <>
-  //       <ErrorPage />
-  //     </>
-  //   );
-  // }
 
   return (
     <>
