@@ -18,6 +18,9 @@ const NavBar = () => {
     sessionLinks = (
       <>
         <div className='logged-in-div'>
+          <div className='set-up-business'>
+            <NavLink className='prof-modal-navlink' exact to="/profile">My Profile</NavLink>
+          </div>
           <div className='set-up-business'><CreateBusinessModal/></div>
           {/* <NavLink to='/businesses/new' className='set-up-business'>Set Up My Business</NavLink> */}
           <span className='welcome-msg nav-element'>Welcome, {sessionUser.first_name}!</span>

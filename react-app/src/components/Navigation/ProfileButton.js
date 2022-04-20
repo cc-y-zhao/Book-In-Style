@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import {useHistory} from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 // import LogoutButton from "../auth/LogoutButton";
 import './ProfileButton.css'
 
@@ -20,13 +21,13 @@ function ProfileButton({ user, setShowModal }) {
     <>
       <section className='profile-modal'>
         <div className='username-in-profile'>
-          Name: {user.first_name} {user.last_name}
+          {user.first_name} {user.last_name}
         </div>
-        <div className='email-in-profile'>
+        {/* <div className='email-in-profile'>
           Email Address: {user.email}
-        </div>
-        <button className='btn-in-profile logout-in-profile' onClick={logout}>Log Out</button>
-        <button className='btn-in-profile' type="button" onClick={() => setShowModal(false)}>Cancel</button>
+        </div> */}
+        <button className='btn-in-profile logout-in-profile' onClick={logout}>Sign Out</button>
+        {/* <button className='btn-in-profile' type="button" onClick={() => setShowModal(false)}>Cancel</button> */}
       </section>
     </>
   );

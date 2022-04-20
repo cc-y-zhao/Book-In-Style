@@ -6,11 +6,11 @@
   border: medium solid #a43795;
   padding: 55px;
   text-align: end;
+  width: 200px;
 }
 
 .username-in-profile {
   margin-bottom: 15px;
-  ;
 }
 
 .logout-in-profile {
@@ -21,4 +21,8 @@
   margin: 5px;
   background-color: #a43795;
   color: white;
+}
+
+.prof-modal-navlink {
+  text-decoration: none;
 }
