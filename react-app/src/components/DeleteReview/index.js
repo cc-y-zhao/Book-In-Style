@@ -1,23 +1,27 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { deleteReview, loadReviewsByBusiness } from "../../store/reviews";
+import { deleteReview, loadReviewsByBusiness, loadReviewsByUser } from "../../store/reviews";
 
 import './DeleteReview.css';
 
 const DeleteReview = ({businessId, reviewId, setShowModal}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const userId = useSelector((state) => state.session.user?.id);
+
 
   const handleDelete = async (e) => {
     e.preventDefault();
     let deletedReview;
 
+    console.log('user id --------------', userId)
+
     deletedReview = await dispatch(deleteReview(reviewId));
 
     if (deletedReview) {
       await dispatch(loadReviewsByBusiness(businessId));
+      await dispatch(loadReviewsByUser(userId));
       await setShowModal(false);
       return window.alert('Your review has been deleted');
       // return history.push('/');

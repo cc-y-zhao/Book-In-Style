@@ -4,7 +4,7 @@ import DeleteReview from '../DeleteReview';
 
 import '../Forms/EditReviewForm/EditReviewForm.css';
 
-function DeleteReviewModal({setEditReviewModal, businessId, reviewId}) {
+function DeleteReviewModal({setEditReviewModal, businessId, reviewId, userId}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
