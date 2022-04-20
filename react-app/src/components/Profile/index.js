@@ -11,6 +11,7 @@ import './Profile.css'
 
 const Profile = () => {
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
   const userId = useSelector((state) => state.session.user?.id);
 
   const [selectedTab, setSelectedTab] = useState(<CustomerAppointments/>)
@@ -20,9 +21,15 @@ const Profile = () => {
   let reviewsTab = document?.getElementById("reviews-tab-prof-title");
   const [selectedTabTitle, setSelectedTabTitle] = useState(appointmentsTab)
 
+  // const setTabStyles = (selectedTabTitle) => {
+  //   if (selectedTab) {
+  //     selectedTabTitle.style.fontWeight = 'bold';
+  //     selectedTabTitle.style.color = '#E10984';
+  //   }
+  // }
   if (selectedTabTitle) {
+    selectedTabTitle.style.color = '#E10984';
     selectedTabTitle.style.fontWeight = 'bold';
-    selectedTabTitle.style.borderBottom = 'solid';
   }
 
   const onClickAppointments = async (e) => {
@@ -30,11 +37,11 @@ const Profile = () => {
     setSelectedTabTitle(appointmentsTab);
     if (favoritesTab) {
       favoritesTab.style.fontWeight = 'normal';
-      favoritesTab.style.borderBottom = 'none';
+      favoritesTab.style.color = 'black';
     }
     if (reviewsTab) {
       reviewsTab.style.fontWeight = 'normal';
-      reviewsTab.style.borderBottom = 'none';
+      reviewsTab.style.color = 'black';
     }
     setSelectedTab(<CustomerAppointments />)
   }
@@ -44,11 +51,11 @@ const Profile = () => {
     setSelectedTabTitle(favoritesTab);
     if (appointmentsTab) {
       appointmentsTab.style.fontWeight = 'normal';
-      appointmentsTab.style.borderBottom = 'none';
+      appointmentsTab.style.color = 'black';
     }
     if (reviewsTab) {
       reviewsTab.style.fontWeight = 'normal';
-      reviewsTab.style.borderBottom = 'none';
+      reviewsTab.style.color = 'black';
     }
     setSelectedTab(<UserFavorites userId={userId}/>)
   }
@@ -58,11 +65,11 @@ const Profile = () => {
     setSelectedTabTitle(reviewsTab);
     if (appointmentsTab) {
       appointmentsTab.style.fontWeight = 'normal';
-      appointmentsTab.style.borderBottom = 'none';
+      appointmentsTab.style.color = 'black';
     }
     if (favoritesTab) {
       favoritesTab.style.fontWeight = 'normal';
-      favoritesTab.style.borderBottom = 'none';
+      favoritesTab.style.color = 'black';
     }
     setSelectedTab(<UserReviews userId={userId}/>)
   }
@@ -70,45 +77,49 @@ const Profile = () => {
 
 
   useEffect(() => {
-    dispatch(loadBookingsByUser(userId));
+    dispatch(loadBookingsByUser(userId))
+      .then(() => setSelectedTab(<CustomerAppointments/>))
+      .then(() => setSelectedTabTitle(appointmentsTab))
+      .then(() => setIsLoaded(true));
   }, [dispatch, userId]);
 
 
   let showSelectedTab = false;
   if (selectedTab) showSelectedTab = true;
 
-
   return (
     <>
-      <div className='profile-container'>
-        <div className='nav-in-profile'>
-          <div
-            id='appointments-tab-prof-title'
-            onClick={(e) => onClickAppointments(e)}
-            >
-            Appointments
+      {isLoaded && (
+        <div className='profile-container'>
+          <div className='nav-in-profile'>
+            <div
+              id='appointments-tab-prof-title'
+              onClick={(e) => onClickAppointments(e)}
+              >
+              Appointments
+            </div>
+            <div
+              id='favorites-tab-prof-title'
+              onClick={(e) => onClickFavorites(e)}
+              >
+              Favorites
+            </div>
+            <div
+              id='reviews-tab-prof-title'
+              onClick={(e) => onClickReviews(e)}
+              >
+              Reviews
+            </div>
           </div>
-          <div
-            id='favorites-tab-prof-title'
-            onClick={(e) => onClickFavorites(e)}
-            >
-            Favorites
-          </div>
-          <div
-            id='reviews-tab-prof-title'
-            onClick={(e) => onClickReviews(e)}
-            >
-            Reviews
-          </div>
+
+          {showSelectedTab && (
+            <div className='selected-tab-in-profile'>
+              {selectedTab}
+            </div>
+          )}
+
         </div>
-
-        {showSelectedTab && (
-          <div className='selected-tab-in-profile'>
-            {selectedTab}
-          </div>
-        )}
-
-      </div>
+      )}
   </>
   );
 };

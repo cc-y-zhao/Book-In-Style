@@ -1,0 +1,19 @@
+/* .each-review {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px ridge rgb(242, 242, 242);
+  padding: 25px;
+  height: max-content;
+} */
+
+.biz-name-in-prof {
+  color: #E10984;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.reviews-in-prof {
+  width: 100%;
+  /* margin-right: 100px; */
+  /* color: rgb(87, 84, 84); */
+}

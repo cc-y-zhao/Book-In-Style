@@ -8,6 +8,7 @@ import { loadReviewsByUser } from "../../../../store/reviews";
 
 import '../../../Reviews/Reviews.css';
 import ratingStars from "../../../Reviews/stars";
+import './Reviews.css';
 
 const UserReviews = ({userId}) => {
   const dispatch = useDispatch();
@@ -45,7 +46,8 @@ const UserReviews = ({userId}) => {
       <div>
         {reviewsList && reviewsList.map((review) =>
         <>
-          <div className='each-review'>
+          <div className='each-review reviews-in-prof'>
+            <div className='biz-name-in-prof'>{review.business_name}</div>
             <div className='stars-and-service'>
               <div className='stars'>
                 {ratingStars(review.rating)}
