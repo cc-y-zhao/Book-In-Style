@@ -79,7 +79,8 @@ flask seed all
 
 
 
-
 ********
 git reset --hard
 git pull
+
+pushing to heroku
