@@ -44,6 +44,24 @@
   margin-top: 35px;
 }
 
+.service-pic-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-label {
+  box-sizing: border-box;
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu;
+  font-size: 18px;
+  font-weight: 500;
+  border: solid;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .homepage-img-1 {
   box-sizing: border-box;
   background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/haircut_2021_hp_tile.429a033a2e17a9e06644.png);

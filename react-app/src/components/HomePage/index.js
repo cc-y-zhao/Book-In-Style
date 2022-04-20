@@ -42,7 +42,10 @@ const HomePage = () => {
       </div>
       <div>
         <div className='services-homepage-top'>
-          <div className='homepage-img-1'></div>
+          <div className='service-pic-label'>
+            <div className='homepage-img-1'></div>
+            <div className='service-label'>WOMEN'S HAIRCUT</div>
+          </div>
           <div className='homepage-img-2'></div>
           <div className='homepage-img-3'></div>
           <div className='homepage-img-4'></div>
