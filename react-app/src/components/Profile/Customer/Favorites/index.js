@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 // import { Redirect, useHistory, NavLink } from "react-router-dom";
 
 import { loadFavoritesByUser } from "../../../../store/favorites";
@@ -43,7 +44,7 @@ const UserFavorites = ({userId}) => {
                 {/* <div>{bookings && bookings[0][0].toString()}</div> */}
                 {favoritesArr && favoritesArr.map((favorite) =>
                 <div className='each-booking' key={favorite.business_id}>
-                  <div>
+                  <NavLink key={favorite.business_id} to={'/businesses/' + favorite.business_id}>
                     <img
                       className='cover-photo'
                       src={favoritesDict[favorite.business_id]['business_cover_photo']}
@@ -51,8 +52,8 @@ const UserFavorites = ({userId}) => {
                       height="180px"
                       width="180px"
                     />
-                  </div>
-                  <div className='biz-name-bookings'>{favoritesDict[favorite.business_id]['business_name']}</div>
+                  </NavLink>
+                  <NavLink key={favorite.business_id} to={'/businesses/' + favorite.business_id} className='biz-name-bookings'>{favoritesDict[favorite.business_id]['business_name']}</NavLink>
                   {/* <div className='service-name-bookings'>{favorite.service_name}</div>
                   <div className='time-in-bookings'>{favorite.time}</div>
                   <div className='calendar-icon'>
