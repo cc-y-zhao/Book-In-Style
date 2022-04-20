@@ -54,33 +54,33 @@ const HomePage = () => {
             <div className='homepage-img-3'></div>
             <div className='service-label'>MEN'S HAIRCUT</div>
           </div>
-          <div>
+          <div className='service-pic-label'>
             <div className='homepage-img-4'></div>
             <div className='service-label'>SPA TREATMENT</div>
           </div>
-          <div>
+          <div className='service-pic-label'>
             <div className='homepage-img-5'></div>
             <div className='service-label'>NAILS</div>
           </div>
         </div>
         <div className='services-homepage-top'>
-          <div>
+          <div className='service-pic-label'>
             <div className='homepage-img-6'></div>
             <div className='service-label'>KID'S HAIRCUT</div>
           </div>
-          <div>
+          <div className='service-pic-label'>
             <div className='homepage-img-7'></div>
             <div className='service-label'>HAIR STYLING</div>
           </div>
-          <div>
+          <div className='service-pic-label'>
             <div className='homepage-img-8'></div>
             <div className='service-label'>MAKEUP</div>
           </div>
-          <div>
+          <div className='service-pic-label'>
             <div className='homepage-img-9'></div>
             <div className='service-label'>HAIR COLORING</div>
           </div>
-          <div>
+          <div className='service-pic-label'>
             <div className='homepage-img-10'></div>
             <div className='service-label'>PERM</div>
           </div>
