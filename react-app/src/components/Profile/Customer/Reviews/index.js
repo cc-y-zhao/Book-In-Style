@@ -2,30 +2,31 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import EditReviewModal from "../../Modals/EditReviewModal";
-import DeleteReviewModal from "../../Modals/DeleteReviewModal";
+import EditReviewModal from "../../../Modals/EditReviewModal";
+import DeleteReviewModal from "../../../Modals/DeleteReviewModal";
+import { loadReviewsByUser } from "../../../../store/reviews";
 
-import '../../Reviews/Reviews.css';
-import ratingStars from "../../Reviews/stars";
+import '../../../Reviews/Reviews.css';
+import ratingStars from "../../../Reviews/stars";
 
 const UserReviews = ({userId}) => {
   const dispatch = useDispatch();
 
   const reviewsState = useSelector((state) => state?.reviews);
 
-  let reviews;
+  let reviewsList;
 
   if (reviewsState) {
   // console.log('IN first IF STATEMENT----------',reviewsState);
-    if (reviewsState.reviews_by_business_list) {
-      reviews = reviewsState.reviews_by_business_list;
+    if (reviewsState.reviews_by_user_list) {
+      reviewsList = reviewsState.reviews_by_user_list;
     }
   }
 
 
   useEffect(() => {
-    dispatch(loadReviewsByBusiness(businessIdParsed));
-  }, [dispatch, businessIdParsed]);
+    dispatch(loadReviewsByUser(userId));
+  }, [dispatch, userId]);
 
   const createdAt = (date) => {
     let array = date.split(" ");
@@ -33,13 +34,15 @@ const UserReviews = ({userId}) => {
     return newDate;
   }
 
+  console.log('reviews from userReviews-------------', reviewsList)
+
 
   return (
     <>
     <div className='reviews-container'>
 
       <div>
-        {reviews && reviews.map((review) =>
+        {reviewsList && reviewsList.map((review) =>
         <>
           <div className='each-review'>
             <div className='stars-and-service'>
@@ -52,7 +55,7 @@ const UserReviews = ({userId}) => {
                   <div>
                     <span><EditReviewModal review={review}/></span>
                     <span className='space-after-pencil'></span>
-                    <span><DeleteReviewModal businessId={businessIdParsed} reviewId={review.id}/></span>
+                    <span><DeleteReviewModal businessId={review.business_id} reviewId={review.id}/></span>
                   </div>
                 ) : (
                   <></>
