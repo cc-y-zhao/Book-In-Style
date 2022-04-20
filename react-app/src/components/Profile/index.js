@@ -9,54 +9,32 @@ import './Profile.css'
 
 const Profile = () => {
   const dispatch = useDispatch();
-  // const history = useHistory();
 
-  const bookingsObj = useSelector((state) => state?.bookings?.bookings_by_user);
-
-  console.log('bookingsOBJ in profile-------------', bookingsObj)
-
-  let bookings;
-  if (bookingsObj) {
-    bookings = Object.values(bookingsObj);
-  }
-  console.log('bookings in profile-------------', bookings)
   const userId = useSelector((state) => state.session.user?.id);
 
   useEffect(() => {
     dispatch(loadBookingsByUser(userId));
   }, [dispatch, userId]);
 
-  // const prevDate = "Tue, 26 Apr 2022 00:00:00 GMT";
-  // const prevDateArr = prevDate.split(' ');
-  // console.log('prev data array-----------', prevDateArr);
-
-  const formatDate = (date) => {
-    let dateArr = date.split(" ");
-    let newDate = dateArr[0] + " " + dateArr[2] + " " + dateArr[1] + ", " + dateArr[3];
-    return newDate;
-  }
-
-  // console.log('formatted date----------', formatDate(prevDate));
-
 
   return (
     <>
-      <div className='bookings-in-profile'>
-        <h2>Upcoming Appointments</h2>
-        <div className='bookings-container'>
-          {/* <div>{bookings && bookings[0][0].toString()}</div> */}
-          {bookings && bookings.map((booking) =>
-          <div className='each-booking' key={booking.id}>
-            <div className='biz-name-bookings'>{booking.business_name}</div>
-            <div className='service-name-bookings'>{booking.service_name}</div>
-            <div className='time-in-bookings'>{booking.time}</div>
-            <div className='calendar-icon'>
-              <i class="far fa-calendar-alt"></i>
-              <div className='date-calendar'>{formatDate(booking.date)}</div>
-            </div>
-            <EditBookingModal booking={booking}/>
+      <div className='profile-container'>
+        <div>
+          <div>
+            Appointments
           </div>
-          )}
+          <div>
+            Favorites
+          </div>
+          <div>
+            Reviews
+          </div>
+        </div>
+
+
+        <div className='selected-tab-in-profile'>
+          Selected Tab
         </div>
       </div>
   </>
