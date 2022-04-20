@@ -44,8 +44,22 @@ def get_reviews_by_user(user_id):
     reviews_before_dict = Review.query.filter(Review.user_id == user_id).order_by(Review.updated_at.desc()).all()
 
     # print ('\n\n\n REVIEWS FROM BACKEND:', reviews_before_dict, '\n\n\n')
-    reviews_list = [review.to_dict() for review in reviews_before_dict]
+    # reviews_list = [review.to_dict() for review in reviews_before_dict]
     reviews_dict = {review.id: review.to_dict() for review in reviews_before_dict}
+    reviews_list = []
+    for review in reviews_before_dict:
+        business_before_dict = Business.query.get(review.business_id)
+        business = business_before_dict.to_dict()
+        services = business['services']
+        business_name = business['name']
+
+        review_dict = review.to_dict()
+        review_dict['services'] = services
+        review_dict['business_name'] = business_name
+
+        reviews_list.append(review_dict)
+
+
 
     # print ('\n\n\n REVIEWS DICT FROM BACKEND:', reviews_dict, '\n\n\n')
 

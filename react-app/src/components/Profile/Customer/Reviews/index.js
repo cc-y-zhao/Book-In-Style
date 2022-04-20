@@ -23,10 +23,9 @@ const UserReviews = ({userId}) => {
     }
   }
 
-
   useEffect(() => {
     dispatch(loadReviewsByUser(userId));
-  }, [dispatch, userId]);
+  }, [dispatch, userId, reviewsList.toString()]);
 
   const createdAt = (date) => {
     let array = date.split(" ");
@@ -35,6 +34,8 @@ const UserReviews = ({userId}) => {
   }
 
   console.log('reviews from userReviews-------------', reviewsList)
+  console.log('reviews to string from userReviews-------------', reviewsList.toString())
+
 
 
   return (
@@ -53,7 +54,7 @@ const UserReviews = ({userId}) => {
               <div>
                 {userId === review.user_id ? (
                   <div>
-                    <span><EditReviewModal review={review}/></span>
+                    <span><EditReviewModal review={review} services={review.services} businessName={review.business_name}/></span>
                     <span className='space-after-pencil'></span>
                     <span><DeleteReviewModal businessId={review.business_id} reviewId={review.id}/></span>
                   </div>
