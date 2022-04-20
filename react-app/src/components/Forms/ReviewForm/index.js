@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import './ReviewForm.css';
 import { createReview, loadReviewsByBusiness } from "../../../store/reviews";
 
-const CreateReviewForm = ({setShowModal, businessId}) => {
+const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -89,8 +89,9 @@ const CreateReviewForm = ({setShowModal, businessId}) => {
       setErrors([]);
 
       await dispatch(loadReviewsByBusiness(businessId))
-      await setShowModal(false)
-      return window.alert('Thanks for submitting your review!')
+      // const showModalFalse = await setShowModal(false)
+      await setShowModal(false);
+      return window.alert('Thanks for submitting your review!');
       // return history.push(`/profile`);
       // return <Redirect to={`/businesses/${data.id}`}/>
     } else {

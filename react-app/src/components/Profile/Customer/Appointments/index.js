@@ -43,7 +43,7 @@ const CustomerAppointments = () => {
   return (
     <>
       <div className='bookings-in-profile'>
-        <h2>Upcoming Appointments</h2>
+        {/* <h2>Upcoming Appointments</h2> */}
         <div className='bookings-container'>
           {/* <div>{bookings && bookings[0][0].toString()}</div> */}
           {bookings && bookings.map((booking) =>
