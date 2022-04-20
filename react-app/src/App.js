@@ -34,45 +34,47 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path='/' exact={true}>
-          <HomePage />
-        </Route>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <Route path='/businesses' exact={true}>
-          <BusinessesPage />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/businesses/new' exact={true} >
-          <CreateBusinessForm/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/businesses/:businessId/edit' exact={true} >
-          <EditBusinessForm/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/profile' exact={true} >
-          <Profile/>
-        </ProtectedRoute>
-        <Route path='/businesses/:businessId' exact={true}>
-          <BusinessPage />
-        </Route>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-        <Route path="*">
-          <ErrorPage />
-        </Route>
-      </Switch>
+      <div className='app-container'>
+        <NavBar />
+        <Switch>
+          <Route path='/' exact={true}>
+            <HomePage />
+          </Route>
+          <Route path='/login' exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path='/sign-up' exact={true}>
+            <SignUpForm />
+          </Route>
+          <Route path='/businesses' exact={true}>
+            <BusinessesPage />
+          </Route>
+          <ProtectedRoute path='/users' exact={true} >
+            <UsersList/>
+          </ProtectedRoute>
+          <ProtectedRoute path='/businesses/new' exact={true} >
+            <CreateBusinessForm/>
+          </ProtectedRoute>
+          <ProtectedRoute path='/businesses/:businessId/edit' exact={true} >
+            <EditBusinessForm/>
+          </ProtectedRoute>
+          <ProtectedRoute path='/profile' exact={true} >
+            <Profile/>
+          </ProtectedRoute>
+          <Route path='/businesses/:businessId' exact={true}>
+            <BusinessPage />
+          </Route>
+          <ProtectedRoute path='/users/:userId' exact={true} >
+            <User />
+          </ProtectedRoute>
+          <ProtectedRoute path='/' exact={true} >
+            <h1>My Home Page</h1>
+          </ProtectedRoute>
+          <Route path="*">
+            <ErrorPage />
+          </Route>
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }

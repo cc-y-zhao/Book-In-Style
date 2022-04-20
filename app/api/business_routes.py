@@ -3,6 +3,8 @@ from app.models import User, db, Business
 from app.forms import BusinessForm
 from flask_login import current_user, login_user, logout_user, login_required
 
+from app.models.favorites import Favorite
+
 
 business_routes = Blueprint('businesses', __name__)
 
@@ -30,8 +32,20 @@ def get_all_business():
 @business_routes.route('/<int:businessId>', methods=['GET'])
 def get_business(businessId):
     business = Business.query.get(businessId)
+    if not business:
+        return {}
+    user = current_user # get currently logged in user
+    business_dict = business.to_dict()
+    business_dict['is_favorited'] = _is_favorited(user, business)
+    return business_dict
 
-    return business.to_dict()
+    # return business.to_dict()
+
+def _is_favorited(user, business):
+    if not (user.is_authenticated and business):
+        return False
+    favorite = Favorite.query.get((user.id, business.id))
+    return True if favorite else False
 
 
 @business_routes.route('/', methods=['POST'])

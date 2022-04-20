@@ -4,7 +4,7 @@ import EditReviewForm from '../Forms/EditReviewForm';
 
 import '../Navigation/NavBar.css'
 
-function EditReviewModal({review}) {
+function EditReviewModal({review, services, businessName}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -16,7 +16,7 @@ function EditReviewModal({review}) {
       </i>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditReviewForm setShowModal={setShowModal} origReview={review}/>
+          <EditReviewForm setShowModal={setShowModal} origReview={review} services={services} businessName={businessName}/>
         </Modal>
       )}
     </>

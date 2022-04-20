@@ -1,5 +1,6 @@
 const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
 const GET_REVIEWS_BY_BUSINESS = 'reviews/GET_REVIEWS_BY_BUSINESS';
+const GET_REVIEWS_BY_USER = 'reviews/GET_REVIEWS_BY_USER';
 const EDIT_REVIEW = 'reviews/EDIT_REVIEW';
 const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
 
@@ -12,6 +13,11 @@ const loadAllReviewsByBusiness = (payload, businessId) => ({
   type: GET_REVIEWS_BY_BUSINESS,
   payload,
   businessId,
+});
+
+const loadAllReviewsByUser = (payload) => ({
+  type: GET_REVIEWS_BY_USER,
+  payload,
 });
 
 const editedReview = (review) => ({
@@ -56,6 +62,20 @@ export const loadReviewsByBusiness = (businessId) => async (dispatch) => {
   if (response.ok) {
     const payload = await response.json();
     dispatch(loadAllReviewsByBusiness(payload, businessId));
+    return payload;
+  } else {
+    const errors = await response.json();
+    return errors;
+  }
+};
+
+export const loadReviewsByUser = (userId) => async (dispatch) => {
+
+  const response = await fetch(`/api/reviews/users/${userId}`);
+
+  if (response.ok) {
+    const payload = await response.json();
+    dispatch(loadAllReviewsByUser(payload));
     return payload;
   } else {
     const errors = await response.json();
@@ -152,6 +172,15 @@ export default function reducer(state = initialState, action) {
       // newState['reviews_by_business'][action.businessId] = action.reviews.reviews;
       newState['reviews_by_business_dict'] = action.payload.reviews_dict;
       newState['reviews_by_business_list'] = action.payload.reviews_list;
+
+      return newState;
+
+    case GET_REVIEWS_BY_USER:
+      // console.log('action.reviews from reducer ----------', action.reviews);
+      // newState['reviews_by_business'] = {};
+      // newState['reviews_by_business'][action.businessId] = action.reviews.reviews;
+      newState['reviews_by_user_dict'] = action.payload.reviews_dict;
+      newState['reviews_by_user_list'] = action.payload.reviews_list;
 
       return newState;
 

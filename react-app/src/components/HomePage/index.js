@@ -36,6 +36,7 @@ const HomePage = () => {
           height='400'
         /> */}
       </div>
+      <h1 className='discover'>Discover & book local beauty professionals</h1>
       <div className='find-pros'>
         <h2>Find top pros by service</h2>
       </div>

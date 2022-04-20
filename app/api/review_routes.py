@@ -18,14 +18,50 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 @review_routes.route('/businesses/<int:business_id>', methods=['GET'])
-def get_business(business_id):
+def get_reviews_by_business(business_id):
     reviews_before_dict = Review.query.filter(Review.business_id == business_id).order_by(Review.updated_at.desc()).all()
 
-    print ('\n\n\n REVIEWS FROM BACKEND:', reviews_before_dict, '\n\n\n')
+    # print ('\n\n\n REVIEWS FROM BACKEND:', reviews_before_dict, '\n\n\n')
     reviews_list = [review.to_dict() for review in reviews_before_dict]
     reviews_dict = {review.id: review.to_dict() for review in reviews_before_dict}
 
-    print ('\n\n\n REVIEWS DICT FROM BACKEND:', reviews_dict, '\n\n\n')
+    # print ('\n\n\n REVIEWS DICT FROM BACKEND:', reviews_dict, '\n\n\n')
+
+    # reviews = {review.id: review.to_dict() for review in reviews_before_dict}
+    # business_before_dict = Business.query.get(business_id)
+
+    # print ('\n\n\n REVIEWS FROM BACKEND:', business_before_dict.reviews, '\n\n\n')
+
+    # business = business_before_dict.to_dict()
+
+    # reviews = business['reviews']
+    # print ('\n\n\n REVIEWS FROM BACKEND:', reviews, '\n\n\n')
+
+    return {'reviews_list': reviews_list, 'reviews_dict': reviews_dict}
+
+@review_routes.route('/users/<int:user_id>', methods=['GET'])
+def get_reviews_by_user(user_id):
+    reviews_before_dict = Review.query.filter(Review.user_id == user_id).order_by(Review.updated_at.desc()).all()
+
+    # print ('\n\n\n REVIEWS FROM BACKEND:', reviews_before_dict, '\n\n\n')
+    # reviews_list = [review.to_dict() for review in reviews_before_dict]
+    reviews_dict = {review.id: review.to_dict() for review in reviews_before_dict}
+    reviews_list = []
+    for review in reviews_before_dict:
+        business_before_dict = Business.query.get(review.business_id)
+        business = business_before_dict.to_dict()
+        services = business['services']
+        business_name = business['name']
+
+        review_dict = review.to_dict()
+        review_dict['services'] = services
+        review_dict['business_name'] = business_name
+
+        reviews_list.append(review_dict)
+
+
+
+    # print ('\n\n\n REVIEWS DICT FROM BACKEND:', reviews_dict, '\n\n\n')
 
     # reviews = {review.id: review.to_dict() for review in reviews_before_dict}
     # business_before_dict = Business.query.get(business_id)

@@ -23,6 +23,9 @@ const Reviews = () => {
   let business;
   if (businesses) business = businesses[business_id];
   let reviews;
+
+
+  console.log('business in reviews ----------------------', business);
   // if (reviewsState) {
   //   // console.log('IN first IF STATEMENT----------',reviewsState);
   //   if (reviewsState.reviews_by_business_list) {
@@ -86,7 +89,7 @@ const Reviews = () => {
               <div>
                 {userId === review.user_id ? (
                   <div>
-                    <span><EditReviewModal review={review}/></span>
+                    <span><EditReviewModal review={review} services={business?.services} businessName={business?.name}/></span>
                     <span className='space-after-pencil'></span>
                     <span><DeleteReviewModal businessId={businessIdParsed} reviewId={review.id}/></span>
                   </div>

@@ -51,6 +51,6 @@ class User(db.Model, UserMixin):
             'businesses': {business.id: business.to_dict() for business in self.businesses},
             'bookings': {booking.id: booking.to_dict() for booking in self.bookings},
             'reviews': {review.id: review.to_dict() for review in self.reviews},
-            'favorites': {favorite.restaurant_id: favorite.to_dict() for favorite in self.favorites},
+            'favorites': {favorite.business_id: favorite.to_dict() for favorite in self.favorites},
             'created_at': self.created_at
         }

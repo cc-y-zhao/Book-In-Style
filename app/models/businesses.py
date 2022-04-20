@@ -1,3 +1,4 @@
+from app.models.user import User
 from .db import db
 from sqlalchemy import DateTime
 from sqlalchemy.sql import func
