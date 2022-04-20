@@ -5,14 +5,13 @@
   margin-right: 10%;
   margin-top: 5%;
   margin-top: 5%;
-  border: solid;
+  border: 1px ridge rgb(242, 242, 242);
+  /* border: solid; */
 }
 
-.selected-tab-in-profile {
-  /* margin-left: 35%; */
-}
 
-.appointments-tab-prof-title {
+
+#appointments-tab-prof-title {
   /* margin-bottom: 30px; */
   display: flex;
   flex-direction: row;
@@ -23,7 +22,7 @@
   width: 200px;
   font-size: 18px;
 }
-.favorites-tab-prof-title {
+#favorites-tab-prof-title {
   /* margin-bottom: 30px; */
   display: flex;
   flex-direction: row;
@@ -35,7 +34,7 @@
   font-size: 18px;
 }
 
-.reviews-tab-prof-title {
+#reviews-tab-prof-title {
   /* margin-bottom: 20px; */
   display: flex;
   flex-direction: row;
@@ -53,7 +52,8 @@
 .selected-tab-in-profile {
   padding-left: 30%;
   padding-top: 15px;
-  border-left: solid;
+  border-left: 1px ridge rgb(242, 242, 242);
+  /* border-left: solid; */
 }
 
 

@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { Redirect, useHistory, NavLink } from "react-router-dom";
 
-import EditBookingModal from "../Modals/EditBookingModal";
-import { loadBookingsByUser } from "../../store/bookings";
+
+import EditBookingModal from '../../../Modals/EditBookingModal';
+import { loadBookingsByUser } from "../../../../store/bookings";
 
 import './CustomerAppointments.css'
 
