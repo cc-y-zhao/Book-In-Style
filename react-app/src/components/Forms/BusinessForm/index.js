@@ -251,11 +251,112 @@ const CreateBusinessForm = ({setShowModal}) => {
                 <input
                   className='checkbox-input'
                   type='checkbox'
-                  name='businessOwner'
+                  name='isWomenHaircut'
                   onChange={updateIsWomenHaircut}
                   value={isWomenHaircut}
                 ></input>
               </div>
+
+              <div>
+                <span>Men's Haircut: </span>
+                <input
+                  className='checkbox-input'
+                  type='checkbox'
+                  name='isMenHaircut'
+                  onChange={updateIsMenHaircut}
+                  value={isMenHaircut}
+                ></input>
+              </div>
+
+              <div>
+                <span>Hair Coloring: </span>
+                <input
+                  className='checkbox-input'
+                  type='checkbox'
+                  name='businessOwner'
+                  onChange={updateIsHairColoring}
+                  value={isHairColoring}
+                ></input>
+              </div>
+
+              <div>
+                <span>Kid's Haircut: </span>
+                <input
+                  className='checkbox-input'
+                  type='checkbox'
+                  name='businessOwner'
+                  onChange={updateIsKidHaircut}
+                  value={isKidHaircut}
+                ></input>
+              </div>
+
+              <div>
+                <span>Hair Styling: </span>
+                <input
+                  className='checkbox-input'
+                  type='checkbox'
+                  name='businessOwner'
+                  onChange={updateHairStyling}
+                  value={isHairStyling}
+                ></input>
+              </div>
+
+              <div>
+                <span>Nail Salon: </span>
+                <input
+                  className='checkbox-input'
+                  type='checkbox'
+                  name='businessOwner'
+                  onChange={updateIsNailSalon}
+                  value={isNailSalon}
+                ></input>
+              </div>
+
+              <div>
+                <span>Makeup: </span>
+                <input
+                  className='checkbox-input'
+                  type='checkbox'
+                  name='businessOwner'
+                  onChange={updateIsMakeup}
+                  value={isMakeup}
+                ></input>
+              </div>
+
+              <div>
+                <span>Lashes: </span>
+                <input
+                  className='checkbox-input'
+                  type='checkbox'
+                  name='isLashes'
+                  onChange={updateIsLashes}
+                  value={isLashes}
+                ></input>
+              </div>
+
+              <div>
+                <span>Perm: </span>
+                <input
+                  className='checkbox-input'
+                  type='checkbox'
+                  name='businessOwner'
+                  onChange={updateIsPerm}
+                  value={isPerm}
+                ></input>
+              </div>
+
+              <div>
+                <span>Spa: </span>
+                <input
+                  className='checkbox-input'
+                  type='checkbox'
+                  name='businessOwner'
+                  onChange={updateIsSpa}
+                  value={isSpa}
+                ></input>
+              </div>
+
+
 
             </div>
 
