@@ -163,16 +163,6 @@ const CreateBusinessForm = ({setShowModal}) => {
                 />
               </div>
 
-              {/* <div>
-                <label>Women's Haircut: </label>
-                <input
-                  type='checkbox'
-                  name='businessOwner'
-                  onChange={updateIsWomenHaircut}
-                  value={isWomenHaircut}
-                ></input>
-              </div> */}
-
               <div>
                 <div>
                   <label>Phone Number</label>
@@ -255,13 +245,16 @@ const CreateBusinessForm = ({setShowModal}) => {
 {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////           */}
 
             <div className='right-column'>
+              <div>Service types (check all that may apply):</div>
               <div>
-                <div>Business Type (select all that apply): </div>
-                <select multiple>
-                  <option key={1}>--Select at least one type--</option>
-                  <option key={2} onChange={updateIsWomenHaircut} value={isWomenHaircut}>Women's Haircut</option>
-                  <option key={3} onChange={updateIsLashes} value={isLashes}>Lashes</option>
-                </select>
+                <span>Women's Haircut: </span>
+                <input
+                  className='checkbox-input'
+                  type='checkbox'
+                  name='businessOwner'
+                  onChange={updateIsWomenHaircut}
+                  value={isWomenHaircut}
+                ></input>
               </div>
 
             </div>
