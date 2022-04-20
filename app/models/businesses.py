@@ -33,6 +33,17 @@ class Business(db.Model):
     capacity = db.Column(db.Integer)
     cover_photo = db.Column(db.String(2083))
 
+    is_women_haircut = db.Column(db.Boolean)
+    is_lashes = db.Column(db.Boolean)
+    is_men_haircut = db.Column(db.Boolean)
+    is_spa = db.Column(db.Boolean)
+    is_nail_salon = db.Column(db.Boolean)
+    is_kid_haircut = db.Column(db.Boolean)
+    is_hair_styling = db.Column(db.Boolean)
+    is_makeup = db.Column(db.Boolean)
+    is_hair_coloring = db.Column(db.Boolean)
+    is_perm = db.Column(db.Boolean)
+
     monday = db.Column(db.String(20))
     tuesday = db.Column(db.String(20))
     wednesday = db.Column(db.String(20))

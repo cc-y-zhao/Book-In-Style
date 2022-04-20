@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import states from './states'
+import states from './states';
+import types from './businessTypes';
 
 import { createBusiness, loadBusiness } from "../../../store/businesses";
 
@@ -123,6 +124,23 @@ const CreateBusinessForm = ({setShowModal}) => {
               onChange={updateDescription}
             />
           </div>
+
+          <div>
+            <span>State: </span>
+            <select onChange={updateState} value={state} multiple>
+              {states.map(state =>
+                <option key={state}>{state}</option>
+              )}
+            </select>
+          </div>
+
+
+
+
+
+
+
+
           <div>
             <div>
               <label>Phone Number</label>
