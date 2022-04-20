@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import CustomerAppointments from './Customer/Appointments';
 import UserFavorites from "./Customer/Favorites";
+import UserReviews from "./Customer/Reviews";
 import { loadBookingsByUser } from "../../store/bookings";
 
 import './Profile.css'
@@ -52,6 +53,20 @@ const Profile = () => {
     setSelectedTab(<UserFavorites userId={userId}/>)
   }
 
+  const onClickReviews = async (e) => {
+    e.preventDefault();
+    setSelectedTabTitle(reviewsTab);
+    if (appointmentsTab) {
+      appointmentsTab.style.fontWeight = 'normal';
+      appointmentsTab.style.borderBottom = 'none';
+    }
+    if (favoritesTab) {
+      favoritesTab.style.fontWeight = 'normal';
+      favoritesTab.style.borderBottom = 'none';
+    }
+    setSelectedTab(<UserReviews userId={userId}/>)
+  }
+
 
 
   useEffect(() => {
@@ -79,7 +94,10 @@ const Profile = () => {
             >
             Favorites
           </div>
-          <div id='reviews-tab-prof-title'>
+          <div
+            id='reviews-tab-prof-title'
+            onClick={(e) => onClickReviews(e)}
+            >
             Reviews
           </div>
         </div>
