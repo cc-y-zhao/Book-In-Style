@@ -93,21 +93,21 @@ const BusinessPage = () => {
     if (business.owner_id === userId) showEdit = true;
   }
 
-  if (!(businessIdParsed in businesses)) {
-    return (
-      <>
-        <ErrorPage />
-      </>
-    );
-  }
 
   let showSelectedTab = false;
   if (selectedTab) showSelectedTab = true;
 
+  // if (!(businessIdParsed in businesses)) {
+  //   return (
+  //     <>
+  //       <ErrorPage />
+  //     </>
+  //   );
+  // }
 
   return (
     <>
-      {showBusiness && (
+      {showBusiness ? (
         <div className='biz-page-container'>
           <div className='edit-biz'>
             {showEdit && (
@@ -219,6 +219,10 @@ const BusinessPage = () => {
           </div>
 
         </div>
+      ) : (
+        <>
+          <ErrorPage />
+        </>
       )}
     </>
   );

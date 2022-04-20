@@ -46,6 +46,25 @@ const Favorite = ({business, businessId, userId, businessName, businessCoverPhot
     }
   }
 
+  const removeFromFavorites = async (e) => {
+    e.preventDefault()
+
+    let removedFavorite;
+
+    let payload = {
+      businessId,
+      userId,
+    }
+
+    removedFavorite = await dispatch(deleteFavorite(payload))
+
+    if (removedFavorite) {
+      await loadBusiness(businessId)
+      favorited = false;
+      return window.alert('Removed from favorites');
+    }
+  }
+
   useEffect(() => {
     dispatch(loadBusiness(businessId));
     // setSelectedTab(<Services />);
@@ -56,7 +75,11 @@ const Favorite = ({business, businessId, userId, businessName, businessCoverPhot
     <>
       <div className='heart-biz-page'>
         {favorited ? (
-          <i class="fa-solid fa-heart fa-lg"></i>
+          <i
+            class="fa-solid fa-heart fa-lg"
+            onClick={(e) => removeFromFavorites(e)}
+          ></i>
+
         ) : (
           <i
             class="fa-regular fa-heart fa-lg"
