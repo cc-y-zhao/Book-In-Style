@@ -39,12 +39,14 @@ const Favorite = ({business, businessId, userId, businessName, businessCoverPhot
     addedFavorite = await dispatch(createFavorite(payload));
 
     if (addedFavorite) {
-      await loadBusiness(businessId);
       favorited = true;
+      await dispatch(loadBusiness(businessId));
       return window.alert('Added to favorites!');
       // return history.push('/');
     }
   }
+
+  const deletedFavoriteAlert = () => window.alert('Removed from favorites');
 
   const removeFromFavorites = async (e) => {
     e.preventDefault()
@@ -59,9 +61,10 @@ const Favorite = ({business, businessId, userId, businessName, businessCoverPhot
     removedFavorite = await dispatch(deleteFavorite(payload))
 
     if (removedFavorite) {
-      await loadBusiness(businessId)
       favorited = false;
-      return window.alert('Removed from favorites');
+      await dispatch(loadBusiness(businessId))
+        .then(() => deletedFavoriteAlert())
+      // return window.alert('Removed from favorites');
     }
   }
 
