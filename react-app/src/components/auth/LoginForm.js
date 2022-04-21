@@ -12,6 +12,13 @@ const LoginForm = ({setShowModal}) => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+
+  const handleDemoLogin = async (e) => {
+    e.preventDefault()
+
+    const data = await dispatch(login('demo@aa.io', 'password'));
+  }
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -88,6 +95,14 @@ const LoginForm = ({setShowModal}) => {
           </div>
         </div>
       </form>
+      <div>
+        <button
+          className='demo-btn'
+          type='submit'
+          onClick={(e) => handleDemoLogin(e)}
+        >Demo Login
+        </button>
+      </div>
       <NavLink className='no-underline no-account' key={1} to={'/sign-up'}>
         <div>Don't have an account? Join here!</div>
       </NavLink>
