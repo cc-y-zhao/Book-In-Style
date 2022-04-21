@@ -132,3 +132,49 @@ def delete_business(business_id):
     db.session.commit()
 
     return deleted_business
+
+
+@business_routes.route('/categories/<category_name>', methods=['GET'])
+def get_businesses_by_category(category_name):
+
+    if category_name == 'womens-haircut':
+        businesses_no_dict = Business.query.filter(Business.is_women_haircut == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'lashes':
+        businesses_no_dict = Business.query.filter(Business.is_lashes == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'mens-haircut':
+        businesses_no_dict = Business.query.filter(Business.is_men_haircut == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'spa':
+        businesses_no_dict = Business.query.filter(Business.is_spa == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'nail-salon':
+        businesses_no_dict = Business.query.filter(Business.is_nail_salon == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'kids-haircut':
+        businesses_no_dict = Business.query.filter(Business.is_kid_haircut == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'hair-styling':
+        businesses_no_dict = Business.query.filter(Business.is_hair_styling == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'makeup':
+        businesses_no_dict = Business.query.filter(Business.is_makeup == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'hair-coloring':
+        businesses_no_dict = Business.query.filter(Business.is_hair_coloring == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'perm':
+        businesses_no_dict = Business.query.filter(Business.is_perm == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    return {'businesses': businesses_list}
