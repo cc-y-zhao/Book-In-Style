@@ -90,9 +90,6 @@ def create_review():
             user_id = form.data['userId'],
             rating = form.data['rating'],
             review = form.data['review'],
-            img_url_1 = form.data['img1'],
-            img_url_2 = form.data['img2'],
-            img_url_3 = form.data['img3'],
         )
 
         db.session.add(review_before_dict)
@@ -101,6 +98,10 @@ def create_review():
         review = review_before_dict.to_dict()
         # review['reviewer_name'] = form.data['userName']
         # review['service_name'] = form.data['serviceName']
+
+        # img_url_1 = form.data['img1'],
+        # img_url_2 = form.data['img2'],
+        # img_url_3 = form.data['img3'],
 
         return review
     # print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
@@ -119,9 +120,9 @@ def edit_review(review_id):
         review.service_id = data['serviceId'],
         review.rating = data['rating'],
         review.review = data['review'],
-        review.img_url_1 = data['img1'],
-        review.img_url_2 = data['img2'],
-        review.img_url_3 = data['img3'],
+        # review.img_url_1 = data['img1'],
+        # review.img_url_2 = data['img2'],
+        # review.img_url_3 = data['img3'],
 
         db.session.commit()
 
