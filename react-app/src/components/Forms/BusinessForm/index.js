@@ -48,16 +48,46 @@ const CreateBusinessForm = ({setShowModal}) => {
   const updateCoverPhoto = (e) => setCoverPhoto(e.target.value);
 
 
-  const updateIsWomenHaircut = (e) => setIsWomenHaircut(e.target.value);
-  const updateIsLashes = (e) => setIsLashes(e.target.value);
-  const updateIsMenHaircut = (e) => setIsMenHaircut(e.target.value);
-  const updateIsSpa = (e) => setIsSpa(e.target.value);
-  const updateIsNailSalon = (e) => setIsNailSalon(e.target.value);
-  const updateIsKidHaircut = (e) => setIsKidHaircut(e.target.value);
-  const updateHairStyling = (e) => setIsHairStyling(e.target.value);
-  const updateIsMakeup = (e) => setIsMakeup(e.target.value);
-  const updateIsHairColoring = (e) => setIsHairColoring(e.target.value);
-  const updateIsPerm = (e) => setIsPerm(e.target.value);
+  const updateIsWomenHaircut = (e) => {
+    if (isWomenHaircut) setIsWomenHaircut(false);
+    else (setIsWomenHaircut(true));
+  }
+  const updateIsLashes = (e) => {
+    if (isLashes) setIsLashes(false);
+    else (setIsLashes(true));
+  }
+  const updateIsMenHaircut = (e) => {
+    if (isMenHaircut) setIsMenHaircut(false);
+    else (setIsMenHaircut(true));
+  }
+  const updateIsSpa = (e) => {
+    if (isSpa) setIsSpa(false);
+    else (setIsSpa(true));
+  }
+  const updateIsNailSalon = (e) => {
+    if (isNailSalon) setIsNailSalon(false);
+    else (setIsNailSalon(true));
+  }
+  const updateIsKidHaircut = (e) => {
+    if (isKidHaircut) setIsKidHaircut(false);
+    else (setIsKidHaircut(true));
+  }
+  const updateHairStyling = (e) => {
+    if (isHairStyling) setIsHairStyling(false);
+    else (setIsHairStyling(true));
+  }
+  const updateIsMakeup = (e) => {
+    if (isMakeup) setIsMakeup(false);
+    else (setIsMakeup(true));
+  }
+  const updateIsHairColoring = (e) => {
+    if (isHairColoring) setIsHairColoring(false);
+    else (setIsHairColoring(true));
+  }
+  const updateIsPerm = (e) => {
+    if (isPerm) setIsPerm(false);
+    else (setIsPerm(true));
+  }
 
 
   const handleSubmit = async (e) => {
@@ -86,7 +116,7 @@ const CreateBusinessForm = ({setShowModal}) => {
       isPerm,
     };
 
-    // console.log('payload-------------', payload)
+    console.log('payload-------------', payload)
 
     let data;
 
@@ -117,7 +147,7 @@ const CreateBusinessForm = ({setShowModal}) => {
 
   let disabled;
 
-  if (name.length === 0 || description.length === 0 || phone.length < 10 || streetAddress.length === 0 || state.length === 0 || zipcode.length < 5 || coverPhoto.length < 10 || city.length < 3) {
+  if (name.length === 0 || description.length === 0 || phone.length === 0 || streetAddress.length === 0 || state.length === 0 || zipcode.length === 0 || coverPhoto.length === 0 || city.length === 0) {
     disabled = true;
   } else {
     disabled = false;
