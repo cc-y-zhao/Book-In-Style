@@ -56,7 +56,7 @@ def seed_all():
         state = 'CA',
         zip_code = '91001',
         capacity = 1,
-        cover_photo = 'https://cdn.vox-cdn.com/thumbor/WenHe_SMDEmFp6FwNVc8Vkltn7A=/0x93:750x656/1200x900/filters:focal(0x93:750x656)/cdn.vox-cdn.com/uploads/chorus_image/image/49198829/stacks_image_468.0.0.0.0.0.jpg',
+        cover_photo = 'nails by jane',
         monday = '9:00AM - 6:00PM',
         tuesday = '9:00AM - 6:00PM',
         wednesday = '9:00AM - 6:00PM',
@@ -89,7 +89,7 @@ def seed_all():
 
     business3 = Business(
         owner_id = '3',
-        name = 'Beautiful Hair',
+        name = "Jeffrey's Salon",
         description = 'A hairstyle, hairdo, haircut or coiffure refers to the styling of hair, usually on the human scalp. Sometimes, this could also mean an editing of facial or body hair. The fashioning of hair can be considered an aspect of personal grooming, fashion, and cosmetics, although practical, cultural, and popular considerations also influence some hairstyles.',
         phone = '8881231234',
         street_address = '123 Apple Ave',
@@ -98,7 +98,7 @@ def seed_all():
         state = 'CA',
         zip_code = '91001',
         capacity = 1,
-        cover_photo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAcPoq0Gu_rst-vTwICDk7fsF-LWNkwtjp7g&usqp=CAU',
+        cover_photo = 'ghn',
         monday = '9:00AM - 6:00PM',
         tuesday = '9:00AM - 6:00PM',
         wednesday = '9:00AM - 6:00PM',
@@ -119,7 +119,7 @@ def seed_all():
         state = 'CA',
         zip_code = '91001',
         capacity = 1,
-        cover_photo = 'https://media.istockphoto.com/photos/curls-of-hair-is-freely-flying-in-front-of-the-face-of-young-woman-picture-id1267002400?k=20&m=1267002400&s=612x612&w=0&h=H3NjFxmGwdt155DQkDGqmPQEWuDzpVdf5DlVlJJpsyA=',
+        cover_photo = 'jen hair',
         monday = '9:00AM - 6:00PM',
         tuesday = '9:00AM - 6:00PM',
         wednesday = '9:00AM - 6:00PM',
@@ -140,7 +140,7 @@ def seed_all():
         state = 'CA',
         zip_code = '91001',
         capacity = 1,
-        cover_photo = 'https://www.longisland.com/site_media/images/article/subarticle_image/shutterstock_626152427.jpg.644x0_q85.jpg',
+        cover_photo = 'spa heaven',
         monday = '9:00AM - 6:00PM',
         tuesday = '9:00AM - 6:00PM',
         wednesday = '9:00AM - 6:00PM',
@@ -161,7 +161,134 @@ def seed_all():
         state = 'CA',
         zip_code = '91001',
         capacity = 1,
-        cover_photo = 'https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/mens_haircut_2021_hp_tile.ec1c6afffd0129b6951b.png',
+        cover_photo = '',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
+    )
+
+    business7 = Business(
+        owner_id = '7',
+        name = "Perfect Nails",
+        description = 'A nail salon or nail bar is a specialty beauty salon establishment that primarily offers nail care services such as manicures, pedicures, and nail enhancements. Often, nail salons also offer skin care services. Manicures are also offered by general beauty salons, spas, and hotels.',
+        phone = '8381231234',
+        street_address = '123 Water Ave',
+        unit = '478',
+        city = 'Pasadena',
+        state = 'CA',
+        zip_code = '91001',
+        capacity = 1,
+        cover_photo = '',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
+    )
+
+    business8 = Business(
+        owner_id = '8',
+        name = "Spa Therapy",
+        description = 'The word “spa” may be derived from the Walloon word “espa” meaning fountain. This, in turn, came from the name of the Belgian town Spa, where in the 14th century a curative, thermal spring was discovered.',
+        phone = '8381231234',
+        street_address = '123 Apple Ave',
+        unit = '',
+        city = 'Pasadena',
+        state = 'CA',
+        zip_code = '91001',
+        capacity = 1,
+        cover_photo = '',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
+    )
+
+    business9 = Business(
+        owner_id = '9',
+        name = "Makeup By Renee",
+        description = "A makeup artist is someone who uses cosmetic techniques and processes to create beauty upon the human body. In its simplest form, it enhances a person's appearance, bringing out color and features and hiding or smoothing out flaws, using cosmetic products. At its most extreme, makeup artistry creates imaginative characters and special effects for films, television, photography and theatre. There are two main categories of makeup artist. Cosmetic or fashion artists range from the clerk at the store makeup counter to the artist who prepares fashion models for photo shoots. All sorts understand not only how to make their subjects look their best, but they also usually understand how makeup works in relation to lighting and photography, as they are increasingly in demand for weddings, fashion shoots, corporate headshot photography, and other special events that will be photographed or recorded.",
+        phone = '8381231234',
+        street_address = '123 Rancho Ave',
+        unit = '',
+        city = 'Pasadena',
+        state = 'CA',
+        zip_code = '91001',
+        capacity = 1,
+        cover_photo = '',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
+    )
+
+    business10 = Business(
+        owner_id = '10',
+        name = "Perfect Lashes",
+        description = "Eyelash extensions naturally define your eyes and automatically make them look bolder and fluffier without eyeliner or mascara. Moreover, when you don't need to do eye makeup with perfect lines and shapes anymore, you end up saving a huge chunk of time every day",
+        phone = '8381231234',
+        street_address = '123 Diamond Ave',
+        unit = '',
+        city = 'Pasadena',
+        state = 'CA',
+        zip_code = '91001',
+        capacity = 1,
+        cover_photo = '',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
+    )
+
+    business11 = Business(
+        owner_id = '10',
+        name = "Lash Pros",
+        description = "Eyelash extensions naturally define your eyes and automatically make them look bolder and fluffier without eyeliner or mascara. Moreover, when you don't need to do eye makeup with perfect lines and shapes anymore, you end up saving a huge chunk of time every day",
+        phone = '8381231234',
+        street_address = '123 Diamond Ave',
+        unit = '',
+        city = 'Pasadena',
+        state = 'CA',
+        zip_code = '91001',
+        capacity = 1,
+        cover_photo = '',
+        monday = '9:00AM - 6:00PM',
+        tuesday = '9:00AM - 6:00PM',
+        wednesday = '9:00AM - 6:00PM',
+        thursday = '9:00AM - 6:00PM',
+        friday = '9:00AM - 6:00PM',
+        saturday = '9:00AM - 6:00PM',
+        sunday = '9:00AM - 6:00PM',
+    )
+
+
+    business12 = Business(
+        owner_id = '11',
+        name = "The Makeup Pros",
+        description = "A makeup artist is someone who uses cosmetic techniques and processes to create beauty upon the human body. In its simplest form, it enhances a person's appearance, bringing out color and features and hiding or smoothing out flaws, using cosmetic products. At its most extreme, makeup artistry creates imaginative characters and special effects for films, television, photography and theatre. There are two main categories of makeup artist. Cosmetic or fashion artists range from the clerk at the store makeup counter to the artist who prepares fashion models for photo shoots. All sorts understand not only how to make their subjects look their best, but they also usually understand how makeup works in relation to lighting and photography, as they are increasingly in demand for weddings, fashion shoots, corporate headshot photography, and other special events that will be photographed or recorded.",
+        phone = '8381231234',
+        street_address = '123 Doeskin Ave',
+        unit = '',
+        city = 'Pasadena',
+        state = 'CA',
+        zip_code = '91001',
+        capacity = 1,
+        cover_photo = '',
         monday = '9:00AM - 6:00PM',
         tuesday = '9:00AM - 6:00PM',
         wednesday = '9:00AM - 6:00PM',
@@ -180,6 +307,15 @@ def seed_all():
     db.session.add(business4)
     db.session.add(business5)
     db.session.add(business6)
+
+    db.session.add(business7)
+    db.session.add(business8)
+    db.session.add(business9)
+    db.session.add(business10)
+    db.session.add(business11)
+    db.session.add(business12)
+
+
 
     db.session.flush()
 
@@ -206,7 +342,7 @@ def seed_all():
 
     service4 = Service (
         business_id = '2',
-        name = "Women's Hair Coloring",
+        name = "Hair Coloring",
         price = 80,
     )
 
@@ -216,6 +352,177 @@ def seed_all():
     db.session.add(service4)
 
     db.session.flush()
+    # //////////////////////////////////////////////
+
+    service5 = Service (
+        business_id = '1',
+        name = "Manicure",
+        price = 40,
+    )
+
+
+    service6 = Service (
+        business_id = '1',
+        name = "Pedicure",
+        price = 50,
+    )
+
+
+    service7 = Service (
+        business_id = '1',
+        name = "Foot Massage",
+        price = 60,
+    )
+
+
+    service8 = Service (
+        business_id = '1',
+        name = "Gel Manicure",
+        price = 55,
+    )
+
+    db.session.add(service5)
+    db.session.add(service6)
+    db.session.add(service7)
+    db.session.add(service8)
+
+    db.session.flush()
+
+    # //////////////////////////////////////////////
+
+    service9 = Service (
+        business_id = '3',
+        name = "Men's Haircut",
+        price = 30,
+    )
+
+
+    service10 = Service (
+        business_id = '3',
+        name = "Fade",
+        price = 40,
+    )
+
+
+    service11 = Service (
+        business_id = '3',
+        name = "Beard Shaping",
+        price = 30,
+    )
+
+
+    service12 = Service (
+        business_id = '3',
+        name = "Hair Coloring",
+        price = 55,
+    )
+
+    db.session.add(service9)
+    db.session.add(service10)
+    db.session.add(service11)
+    db.session.add(service12)
+
+    db.session.flush()
+
+    # //////////////////////////////////////////////
+
+    service13 = Service (
+        business_id = '4',
+        name = "Women's Haircut",
+        price = 40,
+    )
+
+
+    service14 = Service (
+        business_id = '4',
+        name = "Men's Haircut",
+        price = 20,
+    )
+
+
+    service15 = Service (
+        business_id = '4',
+        name = "Kid's Haircut",
+        price = 15,
+    )
+
+
+    service16 = Service (
+        business_id = '4',
+        name = "Hair Coloring",
+        price = 80,
+    )
+
+    service17 = Service (
+        business_id = '4',
+        name = "Blowout",
+        price = 60,
+    )
+
+    service18 = Service (
+        business_id = '4',
+        name = "Updo Style",
+        price = 80,
+    )
+
+    service19 = Service (
+        business_id = '4',
+        name = "Curly Perm",
+        price = 120,
+    )
+
+    db.session.add(service13)
+    db.session.add(service14)
+    db.session.add(service15)
+    db.session.add(service16)
+    db.session.add(service17)
+    db.session.add(service18)
+    db.session.add(service19)
+
+
+    db.session.flush()
+
+    # //////////////////////////////////////////////
+
+    service20 = Service (
+        business_id = '5',
+        name = "30 Minute Full Body Massage",
+        price = 60,
+    )
+
+
+    service21 = Service (
+        business_id = '5',
+        name = "60 Minute Full Body Massage",
+        price = 100,
+    )
+
+
+    service22 = Service (
+        business_id = '5',
+        name = "Facial",
+        price = 40,
+    )
+
+
+    service23 = Service (
+        business_id = '5',
+        name = "Sauna",
+        price = 25,
+    )
+
+    db.session.add(service20)
+    db.session.add(service21)
+    db.session.add(service22)
+    db.session.add(service23)
+
+    db.session.flush()
+
+
+
+
+
+
 
 
 
