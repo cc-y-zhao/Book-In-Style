@@ -86,11 +86,11 @@ const LoginForm = ({setShowModal}) => {
             <button className='sign-in-btn' type='submit'>Sign In</button>
           </div>
           </div>
-          <NavLink className='no-underline no-account' key={1} to={'/sign-up'}>
-            <div>Don't have an account? Join here!</div>
-          </NavLink>
         </div>
       </form>
+      <NavLink className='no-underline no-account' key={1} to={'/sign-up'}>
+        <div>Don't have an account? Join here!</div>
+      </NavLink>
     </div>
     </>
   );

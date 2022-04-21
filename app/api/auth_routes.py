@@ -70,7 +70,6 @@ def sign_up():
             email=form.data['email'],
             phone=form.data['phone'],
             is_business_owner=form.data['businessOwner'],
-            image_url=form.data['imageURL'],
             password=form.data['password']
         )
         db.session.add(user)

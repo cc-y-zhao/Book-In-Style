@@ -32,8 +32,13 @@ const NavBar = () => {
     sessionLinks = (
       <>
         <div className='logged-out-div'>
-          <div className='login-nav'><LoginModal /></div>
-          <div className='signup-nav'><SignUpModal /></div>
+          <NavLink className='login-nav no-underline' exact to="/login">
+            Log In
+          </NavLink>
+          <NavLink className='signup-nav no-underline' exact to="/sign-up">
+            Sign Up
+          </NavLink>
+          {/* <div className='signup-nav'><SignUpModal /></div> */}
         </div>
       </>
     );
