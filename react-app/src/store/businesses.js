@@ -2,6 +2,7 @@
 const CREATE_BUSINESS = 'businesses/CREATE_BUSINESS';
 const GET_ONE_BUSINESS = 'businesses/GET_ONE_BUSINESS';
 const GET_ALL_BUSINESSES = 'businesses/GET_ALL_BUSINESSES';
+const GET_ALL_BUSINESSES_BY_CATEGORY = 'businesses/GET_ALL_BUSINESSES_BY_CATEGORY';
 const EDIT_ONE_BUSINESS = 'businesses/EDIT_ONE_BUSINESS';
 const DELETE_ONE_BUSINESS = 'businesses/DELETE_ONE_BUSINESS';
 
@@ -17,6 +18,11 @@ const loadOneBusiness = (business) => ({
 
 const loadBusinesses = (businesses) => ({
   type: GET_ALL_BUSINESSES,
+  businesses
+});
+
+const loadAllBusinessesByCategory = (businesses) => ({
+  type: GET_ALL_BUSINESSES_BY_CATEGORY,
   businesses
 });
 
@@ -64,6 +70,21 @@ export const loadBusiness = (businessId) => async (dispatch) => {
     const business = await response.json();
     dispatch(loadOneBusiness(business));
     return business;
+  } else {
+    const errors = await response.json();
+    return errors;
+  }
+};
+
+export const loadBusinessesByCategory = (category) => async (dispatch) => {
+
+  // console.log('business id before fetch------------', categoryName)
+  const response = await fetch(`/api/businesses/categories/${category}`);
+
+  if (response.ok) {
+    const businesses = await response.json();
+    dispatch(loadAllBusinessesByCategory(businesses));
+    return businesses;
   } else {
     const errors = await response.json();
     return errors;
@@ -183,6 +204,9 @@ export default function reducer(state = initialState, action) {
       });
 
       return newState;
+
+    case GET_ALL_BUSINESSES_BY_CATEGORY:
+      newState['businesses_list'] = action.businesses.businesses
 
     case EDIT_ONE_BUSINESS:
       const updatedBusiness = action.business;
