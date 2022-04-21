@@ -18,3 +18,9 @@ body {
 body {
   background-color: white;
 } */
+
+.footer {
+  margin-left: 5%;
+  margin-right: 5%;
+  border: solid;
+}

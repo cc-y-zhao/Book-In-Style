@@ -1,0 +1,32 @@
+.footer {
+  box-sizing: border-box;
+  margin-top: 40px;
+  background-color: rgb(36, 38, 38);
+  color: rgb(205, 207, 206);
+  height: 170px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: flex-start; */
+}
+
+.footer-left {
+  width: 60%;
+}
+
+.about-bis {
+  padding: 10px;
+}
+
+.bis-description {
+  /* width: 55%; */
+  font-size: 14px;
+  padding: 10px;
+}
+
+.footer-right {
+  padding: 10px;
+  margin-left: 29px;
+
+  /* margin-left: 5%; */
+}
