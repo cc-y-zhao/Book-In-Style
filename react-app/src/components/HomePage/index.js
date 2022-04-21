@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 // import { useDispatch } from "react-redux";
 // import { useHistory } from "react-router-dom";
 
@@ -25,6 +26,7 @@ const HomePage = () => {
   //   return history.push(`/businesses/${businessIdParsed}/edit`)
   //   // return <Redirect to={`/businesses/${businessIdParsed}/edit`}/>
   // }
+  let params1 = "Women's-Haircuts";
 
   return (
     <>
@@ -42,10 +44,14 @@ const HomePage = () => {
       </div>
       <div>
         <div className='services-homepage-top'>
-          <div className='service-pic-label'>
-            <div className='homepage-img-1'></div>
-            <div className='service-label'>WOMEN'S HAIRCUT</div>
-          </div>
+          <NavLink key={1} exact to={`/businesses/categories/${params1}`}>
+            <div className='service-pic-label'>
+              <div className='homepage-img-1'>
+              </div>
+              <div className='service-label'>WOMEN'S HAIRCUT
+              </div>
+            </div>
+          </NavLink>
           <div className='service-pic-label'>
             <div className='homepage-img-2'></div>
             <div className='service-label'>LASHES</div>

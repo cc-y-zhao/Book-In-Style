@@ -1,24 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
-import { loadAllBusinesses } from "../../store/businesses";
+import { loadBusinessesByCategory } from "../../store/businesses";
 
 const CategoryPage = () => {
   const dispatch = useDispatch();
-  // const history = useHistory();
+  const [isLoaded, setIsLoaded] = useState(false);
+  const { category } = useParams();
+
+  console.log('category-------------------', category);
 
   const businesses = useSelector((state) => state?.businesses?.businesses_list)
   // console.log('businesses om businesses page-------------', businesses)
-  // const userId = useSelector((state) => state.session.user?.id);
 
 
   let showBusinesses = false;
-  if (businesses) showBusinesses = true;
+  if (businesses && isLoaded) showBusinesses = true;
 
   useEffect(() => {
-    dispatch(loadAllBusinesses());
-  }, [dispatch]);
+    dispatch(loadBusinessesByCategory(category))
+      .then(() => setIsLoaded(true));
+  }, [dispatch, category]);
 
   // const handleEditRedirect = (e) => {
   //   e.preventDefault();

@@ -208,6 +208,9 @@ export default function reducer(state = initialState, action) {
     case GET_ALL_BUSINESSES_BY_CATEGORY:
       newState['businesses_list'] = action.businesses.businesses
 
+      return newState;
+
+
     case EDIT_ONE_BUSINESS:
       const updatedBusiness = action.business;
       newState[updatedBusiness.id] = updatedBusiness;
