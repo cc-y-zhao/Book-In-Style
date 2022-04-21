@@ -64,6 +64,16 @@ def seed_all():
         friday = '9:00AM - 6:00PM',
         saturday = '9:00AM - 6:00PM',
         sunday = '9:00AM - 6:00PM',
+        is_women_haircut = False,
+        is_lashes = False,
+        is_men_haircut = False,
+        is_spa = False,
+        is_nail_salon = True,
+        is_kid_haircut = False,
+        is_hair_styling = False,
+        is_makeup = False,
+        is_hair_coloring = False,
+        is_perm = False,
     )
 
     business2 = Business(
@@ -85,6 +95,16 @@ def seed_all():
         friday = '9:00AM - 6:00PM',
         saturday = '9:00AM - 6:00PM',
         sunday = '9:00AM - 6:00PM',
+        is_women_haircut = True,
+        is_lashes = False,
+        is_men_haircut = True,
+        is_spa = False,
+        is_nail_salon = False,
+        is_kid_haircut = True,
+        is_hair_styling = True,
+        is_makeup = False,
+        is_hair_coloring = True,
+        is_perm = False,
     )
 
     business3 = Business(
@@ -106,6 +126,16 @@ def seed_all():
         friday = '9:00AM - 6:00PM',
         saturday = '9:00AM - 6:00PM',
         sunday = '9:00AM - 6:00PM',
+        is_women_haircut = False,
+        is_lashes = False,
+        is_men_haircut = True,
+        is_spa = False,
+        is_nail_salon = False,
+        is_kid_haircut = False,
+        is_hair_styling = False,
+        is_makeup = False,
+        is_hair_coloring = True,
+        is_perm = False,
     )
 
     business4 = Business(
@@ -127,6 +157,16 @@ def seed_all():
         friday = '9:00AM - 6:00PM',
         saturday = '9:00AM - 6:00PM',
         sunday = '9:00AM - 6:00PM',
+        is_women_haircut = True,
+        is_lashes = False,
+        is_men_haircut = True,
+        is_spa = False,
+        is_nail_salon = False,
+        is_kid_haircut = True,
+        is_hair_styling = True,
+        is_makeup = False,
+        is_hair_coloring = True,
+        is_perm = True,
     )
 
     business5 = Business(
@@ -148,6 +188,16 @@ def seed_all():
         friday = '9:00AM - 6:00PM',
         saturday = '9:00AM - 6:00PM',
         sunday = '9:00AM - 6:00PM',
+        is_women_haircut = False,
+        is_lashes = False,
+        is_men_haircut = False,
+        is_spa = True,
+        is_nail_salon = False,
+        is_kid_haircut = False,
+        is_hair_styling = False,
+        is_makeup = False,
+        is_hair_coloring = False,
+        is_perm = False,
     )
 
     business6 = Business(
@@ -169,6 +219,16 @@ def seed_all():
         friday = '9:00AM - 6:00PM',
         saturday = '9:00AM - 6:00PM',
         sunday = '9:00AM - 6:00PM',
+        is_women_haircut = False,
+        is_lashes = False,
+        is_men_haircut = True,
+        is_spa = False,
+        is_nail_salon = False,
+        is_kid_haircut = False,
+        is_hair_styling = False,
+        is_makeup = False,
+        is_hair_coloring = False,
+        is_perm = False,
     )
 
     business7 = Business(
@@ -211,6 +271,16 @@ def seed_all():
         friday = '9:00AM - 6:00PM',
         saturday = '9:00AM - 6:00PM',
         sunday = '9:00AM - 6:00PM',
+        is_women_haircut = False,
+        is_lashes = False,
+        is_men_haircut = False,
+        is_spa = True,
+        is_nail_salon = False,
+        is_kid_haircut = False,
+        is_hair_styling = False,
+        is_makeup = False,
+        is_hair_coloring = True,
+        is_perm = False,
     )
 
     business9 = Business(
@@ -232,6 +302,16 @@ def seed_all():
         friday = '9:00AM - 6:00PM',
         saturday = '9:00AM - 6:00PM',
         sunday = '9:00AM - 6:00PM',
+        is_women_haircut = False,
+        is_lashes = False,
+        is_men_haircut = False,
+        is_spa = False,
+        is_nail_salon = False,
+        is_kid_haircut = False,
+        is_hair_styling = False,
+        is_makeup = True,
+        is_hair_coloring = False,
+        is_perm = False,
     )
 
     business10 = Business(
@@ -253,6 +333,16 @@ def seed_all():
         friday = '9:00AM - 6:00PM',
         saturday = '9:00AM - 6:00PM',
         sunday = '9:00AM - 6:00PM',
+        is_women_haircut = False,
+        is_lashes = True,
+        is_men_haircut = False,
+        is_spa = False,
+        is_nail_salon = False,
+        is_kid_haircut = False,
+        is_hair_styling = False,
+        is_makeup = False,
+        is_hair_coloring = False,
+        is_perm = False,
     )
 
     business11 = Business(
@@ -274,6 +364,16 @@ def seed_all():
         friday = '9:00AM - 6:00PM',
         saturday = '9:00AM - 6:00PM',
         sunday = '9:00AM - 6:00PM',
+        is_women_haircut = False,
+        is_lashes = True,
+        is_men_haircut = False,
+        is_spa = False,
+        is_nail_salon = False,
+        is_kid_haircut = False,
+        is_hair_styling = False,
+        is_makeup = False,
+        is_hair_coloring = False,
+        is_perm = False,
     )
 
 
@@ -296,9 +396,17 @@ def seed_all():
         friday = '9:00AM - 6:00PM',
         saturday = '9:00AM - 6:00PM',
         sunday = '9:00AM - 6:00PM',
+        is_women_haircut = False,
+        is_lashes = False,
+        is_men_haircut = False,
+        is_spa = False,
+        is_nail_salon = False,
+        is_kid_haircut = False,
+        is_hair_styling = False,
+        is_makeup = True,
+        is_hair_coloring = False,
+        is_perm = False,
     )
-
-
 
 
     db.session.add(business1)
@@ -517,6 +625,232 @@ def seed_all():
     db.session.add(service23)
 
     db.session.flush()
+
+    # //////////////////////////////////////////////
+
+    service24 = Service (
+        business_id = '6',
+        name = "Men's Haircut",
+        price = 30,
+    )
+
+
+    service25 = Service (
+        business_id = '6',
+        name = "Fade",
+        price = 40,
+    )
+
+
+    service26 = Service (
+        business_id = '6',
+        name = "Beard Shaping",
+        price = 30,
+    )
+
+
+    service27 = Service (
+        business_id = '6',
+        name = "Hair Coloring",
+        price = 55,
+    )
+
+    db.session.add(service24)
+    db.session.add(service25)
+    db.session.add(service26)
+    db.session.add(service27)
+
+    db.session.flush()
+
+    # //////////////////////////////////////////////
+
+    service28 = Service (
+        business_id = '7',
+        name = "Manicure",
+        price = 40,
+    )
+
+
+    service29 = Service (
+        business_id = '7',
+        name = "Pedicure",
+        price = 50,
+    )
+
+
+    service30 = Service (
+        business_id = '7',
+        name = "Foot Massage",
+        price = 60,
+    )
+
+
+    service31 = Service (
+        business_id = '7',
+        name = "Gel Manicure",
+        price = 55,
+    )
+
+    db.session.add(service28)
+    db.session.add(service29)
+    db.session.add(service30)
+    db.session.add(service31)
+
+    db.session.flush()
+
+    # //////////////////////////////////////////////
+
+
+    service32 = Service (
+        business_id = '8',
+        name = "30 Minute Full Body Massage",
+        price = 60,
+    )
+
+
+    service33 = Service (
+        business_id = '8',
+        name = "60 Minute Full Body Massage",
+        price = 100,
+    )
+
+
+    service34 = Service (
+        business_id = '8',
+        name = "Facial",
+        price = 40,
+    )
+
+
+    service35 = Service (
+        business_id = '8',
+        name = "Sauna",
+        price = 25,
+    )
+
+    db.session.add(service32)
+    db.session.add(service33)
+    db.session.add(service34)
+    db.session.add(service35)
+
+    db.session.flush()
+
+    # //////////////////////////////////////////////
+
+    service36 = Service (
+        business_id = '9',
+        name = "Natural",
+        price = 50,
+    )
+
+
+    service37 = Service (
+        business_id = '9',
+        name = "Glam",
+        price = 70,
+    )
+
+    db.session.add(service36)
+    db.session.add(service37)
+
+
+    db.session.flush()
+
+    # //////////////////////////////////////////////
+
+    service38 = Service (
+        business_id = '10',
+        name = "Natural Look - Regular Lashes",
+        price = 50,
+    )
+
+
+    service39 = Service (
+        business_id = '10',
+        name = "Glam Look - Regular Lashes",
+        price = 70,
+    )
+
+    service40 = Service (
+        business_id = '10',
+        name = "Natural Look - Mink Lashes",
+        price = 100,
+    )
+
+    service41 = Service (
+        business_id = '10',
+        name = "Glam Look - Mink Lashes",
+        price = 120,
+    )
+
+    db.session.add(service38)
+    db.session.add(service39)
+    db.session.add(service40)
+    db.session.add(service41)
+
+
+
+    db.session.flush()
+
+    # //////////////////////////////////////////////
+
+    service42 = Service (
+        business_id = '11',
+        name = "Natural Look - Regular Lashes",
+        price = 50,
+    )
+
+
+    service43 = Service (
+        business_id = '11',
+        name = "Glam Look - Regular Lashes",
+        price = 70,
+    )
+
+    service44 = Service (
+        business_id = '11',
+        name = "Natural Look - Mink Lashes",
+        price = 100,
+    )
+
+    service45 = Service (
+        business_id = '11',
+        name = "Glam Look - Mink Lashes",
+        price = 120,
+    )
+
+    db.session.add(service42)
+    db.session.add(service43)
+    db.session.add(service44)
+    db.session.add(service45)
+
+
+
+    db.session.flush()
+
+    # //////////////////////////////////////////////
+
+    service46 = Service (
+        business_id = '12',
+        name = "Natural",
+        price = 50,
+    )
+
+
+    service47 = Service (
+        business_id = '12',
+        name = "Glam",
+        price = 70,
+    )
+
+    db.session.add(service46)
+    db.session.add(service47)
+
+
+    db.session.flush()
+
+
+
 
 
 
