@@ -20,8 +20,8 @@ const DeleteBooking = ({booking, setShowModal, setEditBookingModal}) => {
     if (deletedBooking) {
       await dispatch(loadBookingsByUser(deletedBooking.user_id))
       await setShowModal(false);
-      await setEditBookingModal(false);
-      return window.alert('Your appointment has been cancelled');
+      return setEditBookingModal(false);
+      // return window.alert('Your appointment has been cancelled');
       //TO DO: DISPATCH PROFILE TO SHOW ALL USER'S UPCOMING APPOINTMENTS----------
       // return history.push('/profile');
     }
