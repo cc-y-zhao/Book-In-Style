@@ -17,12 +17,15 @@ const AboutMe = () => {
             Clients can discover new services and providers, book appointments online, and get inspired.
           </div>
         </div>
-        <div>
-          <div className='footer-right'>
+        <div className='footer-right'>
+          <div className="contact-cecilia">
             For more inquiries, contact Cecilia Zhao:
           </div>
-          <div>
-            <a>LinkedIn</a>
+          <div className='linkedin-github'>
+            <a className='linkedin-github' href="https://www.linkedin.com/in/ceciliazh/">LinkedIn</a>
+          </div>
+          <div className='linkedin-github'>
+            <a className='linkedin-github' href="https://github.com/cc-y-zhao">GitHub</a>
           </div>
         </div>
       </div>
