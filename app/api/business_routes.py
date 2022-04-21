@@ -49,7 +49,7 @@ def _is_favorited(user, business):
 
 
 @business_routes.route('/', methods=['POST'])
-# @login_required
+@login_required
 def create_business():
 
     form = BusinessForm()
@@ -95,7 +95,7 @@ def create_business():
 
 
 @business_routes.route('/<int:business_id>', methods=['PUT'])
-# @login_required
+@login_required
 def edit_business(business_id):
     form = BusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -122,7 +122,7 @@ def edit_business(business_id):
 
 
 @business_routes.route('/<int:business_id>', methods=["DELETE"])
-# @login_required
+@login_required
 def delete_business(business_id):
 
     business = Business.query.get(business_id)

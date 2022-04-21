@@ -40,6 +40,7 @@ def get_reviews_by_business(business_id):
     return {'reviews_list': reviews_list, 'reviews_dict': reviews_dict}
 
 @review_routes.route('/users/<int:user_id>', methods=['GET'])
+@login_required
 def get_reviews_by_user(user_id):
     reviews_before_dict = Review.query.filter(Review.user_id == user_id).order_by(Review.updated_at.desc()).all()
 
@@ -77,7 +78,7 @@ def get_reviews_by_user(user_id):
 
 
 @review_routes.route('/', methods=['POST'])
-# @login_required
+@login_required
 def create_review():
 
     form = ReviewForm()
@@ -109,7 +110,7 @@ def create_review():
 
 
 @review_routes.route('/<int:review_id>', methods=['PUT'])
-# @login_required
+@login_required
 def edit_review(review_id):
     form = EditReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -132,7 +133,7 @@ def edit_review(review_id):
 
 
 @review_routes.route('/<int:review_id>', methods=["DELETE"])
-# @login_required
+@login_required
 def delete_review(review_id):
 
     review = Review.query.get(review_id)
