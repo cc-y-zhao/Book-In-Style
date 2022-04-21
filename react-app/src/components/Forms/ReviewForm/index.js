@@ -91,8 +91,8 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
 
       await dispatch(loadReviewsByBusiness(businessId))
       // const showModalFalse = await setShowModal(false)
-      await setShowModal(false);
-      return window.alert('Thanks for submitting your review!');
+      return setShowModal(false);
+      // return window.alert('Thanks for submitting your review!');
       // return history.push(`/profile`);
       // return <Redirect to={`/businesses/${data.id}`}/>
     } else {

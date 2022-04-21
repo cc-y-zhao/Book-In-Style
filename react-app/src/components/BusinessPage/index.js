@@ -15,6 +15,8 @@ import Favorite from "../Favorites";
 import { loadBusiness } from "../../store/businesses";
 import { loadReviewsByBusiness } from "../../store/reviews";
 
+import defaultImage from "../../images/favicon.png";
+
 import './BusinessPage.css'
 
 const BusinessPage = () => {
@@ -98,6 +100,16 @@ const BusinessPage = () => {
   let showSelectedTab = false;
   if (selectedTab) showSelectedTab = true;
 
+  function checkImage(url) {
+    let image = new Image();
+    image.onload = function() {
+      if (this.width > 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+
 
   return (
     <>
@@ -120,13 +132,26 @@ const BusinessPage = () => {
             <div className="prof-and-heart">
               <div className='biz-page-prof'>
                 <div>
-                  <img
-                    className='cover-photo'
-                    src={business.cover_photo}
-                    alt={`${business.name}`}
-                    height="180px"
-                    width="180px"
-                  />
+                  {business?.cover_photo ? (
+                    <img
+                      className='cover-photo'
+                      src={business.cover_photo}
+                      onError={(e) => {
+                        e.target.setAttribute("src", defaultImage);
+                      }}
+                      alt={`${business.name}`}
+                      height="180px"
+                      width="180px"
+                    />
+                  ) : (
+                    <img
+                      className='cover-photo'
+                      src={defaultImage}
+                      alt={`${business.name}`}
+                      height="180px"
+                      width="180px"
+                    />
+                  )}
                 </div>
                 <div className='biz-name'>{business['name']}</div>
                 {/* <div className='biz-pics'>------Additional pics will go here------</div> */}

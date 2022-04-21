@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import ErrorPage from "../Errors/ErrorPage";
 import './CategoryPage.css';
+import defaultImage from "../../images/favicon.png";
 
 import { loadBusinessesByCategory } from "../../store/businesses";
 
@@ -51,6 +52,9 @@ const CategoryPage = () => {
                   <NavLink key={business.id} to={'/businesses/' + business.id}>
                     <img
                       src={business.cover_photo}
+                      onError={(e) => {
+                        e.target.setAttribute("src", defaultImage);
+                      }}
                       alt={`${business.name}`}
                       height="370px"
                       width="360px"
