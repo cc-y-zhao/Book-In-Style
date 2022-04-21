@@ -235,7 +235,7 @@ def seed_all():
         owner_id = '7',
         name = "Perfect Nails",
         description = 'A nail salon or nail bar is a specialty beauty salon establishment that primarily offers nail care services such as manicures, pedicures, and nail enhancements. Often, nail salons also offer skin care services. Manicures are also offered by general beauty salons, spas, and hotels.',
-        phone = '8381231234',
+        phone = '8381231230',
         street_address = '123 Water Ave',
         unit = '478',
         city = 'Pasadena',
@@ -256,7 +256,7 @@ def seed_all():
         owner_id = '8',
         name = "Spa Therapy",
         description = 'The word “spa” may be derived from the Walloon word “espa” meaning fountain. This, in turn, came from the name of the Belgian town Spa, where in the 14th century a curative, thermal spring was discovered.',
-        phone = '8381231234',
+        phone = '8381231231',
         street_address = '123 Apple Ave',
         unit = '',
         city = 'Pasadena',
@@ -287,7 +287,7 @@ def seed_all():
         owner_id = '9',
         name = "Makeup By Renee",
         description = "A makeup artist is someone who uses cosmetic techniques and processes to create beauty upon the human body. In its simplest form, it enhances a person's appearance, bringing out color and features and hiding or smoothing out flaws, using cosmetic products. At its most extreme, makeup artistry creates imaginative characters and special effects for films, television, photography and theatre. There are two main categories of makeup artist. Cosmetic or fashion artists range from the clerk at the store makeup counter to the artist who prepares fashion models for photo shoots. All sorts understand not only how to make their subjects look their best, but they also usually understand how makeup works in relation to lighting and photography, as they are increasingly in demand for weddings, fashion shoots, corporate headshot photography, and other special events that will be photographed or recorded.",
-        phone = '8381231234',
+        phone = '8381231232',
         street_address = '123 Rancho Ave',
         unit = '',
         city = 'Pasadena',
@@ -318,7 +318,7 @@ def seed_all():
         owner_id = '10',
         name = "Perfect Lashes",
         description = "Eyelash extensions naturally define your eyes and automatically make them look bolder and fluffier without eyeliner or mascara. Moreover, when you don't need to do eye makeup with perfect lines and shapes anymore, you end up saving a huge chunk of time every day",
-        phone = '8381231234',
+        phone = '8381231233',
         street_address = '123 Diamond Ave',
         unit = '',
         city = 'Pasadena',
@@ -349,7 +349,7 @@ def seed_all():
         owner_id = '10',
         name = "Lash Pros",
         description = "Eyelash extensions naturally define your eyes and automatically make them look bolder and fluffier without eyeliner or mascara. Moreover, when you don't need to do eye makeup with perfect lines and shapes anymore, you end up saving a huge chunk of time every day",
-        phone = '8381231234',
+        phone = '8381231254',
         street_address = '123 Diamond Ave',
         unit = '',
         city = 'Pasadena',
@@ -381,7 +381,7 @@ def seed_all():
         owner_id = '11',
         name = "The Makeup Pros",
         description = "A makeup artist is someone who uses cosmetic techniques and processes to create beauty upon the human body. In its simplest form, it enhances a person's appearance, bringing out color and features and hiding or smoothing out flaws, using cosmetic products. At its most extreme, makeup artistry creates imaginative characters and special effects for films, television, photography and theatre. There are two main categories of makeup artist. Cosmetic or fashion artists range from the clerk at the store makeup counter to the artist who prepares fashion models for photo shoots. All sorts understand not only how to make their subjects look their best, but they also usually understand how makeup works in relation to lighting and photography, as they are increasingly in demand for weddings, fashion shoots, corporate headshot photography, and other special events that will be photographed or recorded.",
-        phone = '8381231234',
+        phone = '8381231204',
         street_address = '123 Doeskin Ave',
         unit = '',
         city = 'Pasadena',
@@ -459,7 +459,7 @@ def seed_all():
     db.session.add(service3)
     db.session.add(service4)
 
-    db.session.flush()
+    # db.session.flush()
     # //////////////////////////////////////////////
 
     service5 = Service (
@@ -494,7 +494,7 @@ def seed_all():
     db.session.add(service7)
     db.session.add(service8)
 
-    db.session.flush()
+    # db.session.flush()
 
     # //////////////////////////////////////////////
 
@@ -530,7 +530,7 @@ def seed_all():
     db.session.add(service11)
     db.session.add(service12)
 
-    db.session.flush()
+    # db.session.flush()
 
     # //////////////////////////////////////////////
 
@@ -588,7 +588,7 @@ def seed_all():
     db.session.add(service19)
 
 
-    db.session.flush()
+    # db.session.flush()
 
     # //////////////////////////////////////////////
 
@@ -624,7 +624,7 @@ def seed_all():
     db.session.add(service22)
     db.session.add(service23)
 
-    db.session.flush()
+    # db.session.flush()
 
     # //////////////////////////////////////////////
 
@@ -660,7 +660,7 @@ def seed_all():
     db.session.add(service26)
     db.session.add(service27)
 
-    db.session.flush()
+    # db.session.flush()
 
     # //////////////////////////////////////////////
 
@@ -696,7 +696,7 @@ def seed_all():
     db.session.add(service30)
     db.session.add(service31)
 
-    db.session.flush()
+    # db.session.flush()
 
     # //////////////////////////////////////////////
 
@@ -733,7 +733,7 @@ def seed_all():
     db.session.add(service34)
     db.session.add(service35)
 
-    db.session.flush()
+    # db.session.flush()
 
     # //////////////////////////////////////////////
 
@@ -754,7 +754,7 @@ def seed_all():
     db.session.add(service37)
 
 
-    db.session.flush()
+    # db.session.flush()
 
     # //////////////////////////////////////////////
 
@@ -790,7 +790,7 @@ def seed_all():
 
 
 
-    db.session.flush()
+    # db.session.flush()
 
     # //////////////////////////////////////////////
 
@@ -826,7 +826,7 @@ def seed_all():
 
 
 
-    db.session.flush()
+    # db.session.flush()
 
     # //////////////////////////////////////////////
 
@@ -847,7 +847,7 @@ def seed_all():
     db.session.add(service47)
 
 
-    db.session.flush()
+    # db.session.flush()
 
 
 
