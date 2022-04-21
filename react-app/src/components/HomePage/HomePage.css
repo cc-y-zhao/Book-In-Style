@@ -39,16 +39,44 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  /* max-width: fit-content; */
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 35px;
 }
 
+.service-pic-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 380px;
+  width: 230px;
+  max-height: 380px;
+  max-width: 230px;
+}
+
+.no-underline {
+  text-decoration: none;
+  color: black;
+}
+
+.service-label {
+  box-sizing: border-box;
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu;
+  font-size: 18px;
+  font-weight: 500;
+  border: solid;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .homepage-img-1 {
   box-sizing: border-box;
   background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/haircut_2021_hp_tile.429a033a2e17a9e06644.png);
-  height: 340px;
-  width: 256px;
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   /* margin-right: 35px; */
@@ -56,8 +84,8 @@
 
 .homepage-img-2 {
   background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/eyelashes_2021_hp_tile.968a9a77d3e861882b87.png);
-  height: 340px;
-  width: 256px;
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   /* margin-right: 35px; */
@@ -65,8 +93,8 @@
 
 .homepage-img-3 {
   background-image: url(https://dsifg2gm0y83d.cloudfront.net/bundles/assets/images/mens_haircut_2021_hp_tile.ec1c6afffd0129b6951b.png);
-  height: 340px;
-  width: 256px;
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   /* margin-right: 35px; */
@@ -74,8 +102,8 @@
 
 .homepage-img-4 {
   background-image: url(https://mayersonjcc.org/app/uploads/2022/02/j-spa-stock-image-square-634x646.jpg);
-  height: 340px;
-  width: 256px;
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   /* margin-right: 35px; */
@@ -84,8 +112,8 @@
 
 .homepage-img-5 {
   background-image: url(https://raw.githubusercontent.com/cc-y-zhao/Book-In-Style/profile_v1/react-app/public/images/homepage/img5.png);
-  height: 340px;
-  width: 256px;
+  height: 100%;
+  width: 100%;
   max-width: 256px;
   /* background-size: contain; */
   background-size: cover;
@@ -96,8 +124,8 @@
 
 .homepage-img-6 {
   background-image: url(https://merakihairsuite.com.au/wp-content/uploads/2020/03/services_kidscuts-home-min.jpg);
-  height: 340px;
-  width: 256px;
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 43%;
@@ -106,8 +134,8 @@
 
 .homepage-img-7 {
   background-image: url(https://i.pinimg.com/originals/b7/8a/7d/b78a7d867ae5c80e8d8443b5030498c3.jpg);
-  height: 340px;
-  width: 256px;
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 43%;
@@ -117,8 +145,8 @@
 
 .homepage-img-8 {
   background-image: url(https://raw.githubusercontent.com/cc-y-zhao/Book-In-Style/profile_v1/react-app/public/images/homepage/img8.png);
-  height: 340px;
-  width: 256px;
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 25%;
@@ -128,17 +156,17 @@
 
 .homepage-img-9 {
   background-image: url(https://images.squarespace-cdn.com/content/v1/58ceea0c2994ca05c6f5405b/1522859590487-MZ7BWK0FCMP5NF06S2OP/les-couleurs-de-cheveux-tendance_peach2_wp2.jpg);
-  height: 340px;
-  width: 256px;
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-    background-position: 35%;
+  background-position: 35%;
 }
 
 .homepage-img-10 {
   background-image: url(https://thedrawingroomny.com/wp-content/uploads/2019/11/beach-wave-perm.jpg);
-  height: 340px;
-  width: 256px;
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: left 10%;

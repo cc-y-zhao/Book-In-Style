@@ -12,7 +12,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [businessOwner, setBusinessOwner] = useState(false);
-  const [imageURL, setImageURL] = useState('');
+  // const [imageURL, setImageURL] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -28,13 +28,16 @@ const SignUpForm = () => {
         email,
         phone,
         businessOwner,
-        imageURL,
         password,
       }
+
+      console.log('payload-------------', payload)
       const data = await dispatch(signUp(payload));
       if (data) {
         return setErrors(data)
       }
+    } else {
+      return setErrors(['Passwords do not match'])
     }
   };
 
@@ -58,9 +61,9 @@ const SignUpForm = () => {
     setBusinessOwner(true);
   };
 
-  const updateImageURL = (e) => {
-    setImageURL(e.target.value);
-  };
+  // const updateImageURL = (e) => {
+  //   setImageURL(e.target.value);
+  // };
 
   const updatePassword = (e) => {
     setPassword(e.target.value);
@@ -75,7 +78,7 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className>
+    <div>
       <form className='signup-form-wrapper' onSubmit={onSignUp}>
         <h3 className='welcome-signup'>Welcome to Book-In-Style!</h3>
         <div>
@@ -128,16 +131,6 @@ const SignUpForm = () => {
           ></input>
         </div>
         <div className='signup-label-and-input'>
-          <div>Profile Picture: </div>
-          <input
-            className='signup-input'
-            type='text'
-            name='image_url'
-            onChange={updateImageURL}
-            value={imageURL}
-          ></input>
-        </div>
-        <div className='signup-label-and-input'>
           <div>Password: </div>
           <input
             className='signup-input'
@@ -149,7 +142,7 @@ const SignUpForm = () => {
           ></input>
         </div>
         <div className='signup-label-and-input'>
-          <div>Repeat Password: </div>
+          <div>Confirm Password: </div>
           <input
             className='signup-input'
             type='password'
@@ -168,9 +161,6 @@ const SignUpForm = () => {
             value={businessOwner}
           ></input>
         </div>
-
-
-
         <button className='signup-btn' type='submit'>Sign Up</button>
       </form>
     </div>
@@ -178,3 +168,15 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
+
+
+        // {/* <div className='signup-label-and-input'>
+        //   <div>Profile Picture: </div>
+        //   <input
+        //     className='signup-input'
+        //     type='text'
+        //     name='image_url'
+        //     onChange={updateImageURL}
+        //     value={imageURL}
+        //   ></input>
+        // </div> */}

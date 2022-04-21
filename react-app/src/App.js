@@ -11,9 +11,11 @@ import CreateBusinessForm from './components/Forms/BusinessForm';
 import EditBusinessForm from './components/Forms/EditBusinessForm';
 import BusinessPage from './components/BusinessPage';
 import BusinessesPage from './components/Businesses';
+import CategoryPage from './components/CategoryPage';
 import HomePage from './components/HomePage';
 import ErrorPage from './components/Errors/ErrorPage';
 import Profile from './components/Profile';
+import AboutMe from './components/AboutMe';
 
 import { authenticate } from './store/session';
 
@@ -46,8 +48,11 @@ function App() {
           <Route path='/sign-up' exact={true}>
             <SignUpForm />
           </Route>
-          <Route path='/businesses' exact={true}>
+          {/* <Route path='/businesses' exact={true}>
             <BusinessesPage />
+          </Route> */}
+          <Route path='/businesses/categories/:category'>
+            <CategoryPage />
           </Route>
           <ProtectedRoute path='/users' exact={true} >
             <UsersList/>
@@ -75,6 +80,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      <AboutMe/>
     </BrowserRouter>
   );
 }

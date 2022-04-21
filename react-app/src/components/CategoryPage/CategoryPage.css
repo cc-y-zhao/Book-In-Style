@@ -1,0 +1,34 @@
+.category-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.businesses-in-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.each-business-in-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.each-business-in-category:hover {
+  border: solid;
+  border-color: rgb(85, 81, 81);
+}
+
+.business-name-category-pg {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
+.category-pg-title {
+  margin-bottom: 40px;
+}

@@ -18,7 +18,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 @service_routes.route('/', methods=['POST'])
-# @login_required
+@login_required
 def create_service():
 
     form = ServiceForm()

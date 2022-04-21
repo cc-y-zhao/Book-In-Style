@@ -15,8 +15,8 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(error)
-            # errorMessages.append([field, ':', error])
+            # errorMessages.append(error)
+            errorMessages.append([field, ':', error])
     return errorMessages
 
 @business_routes.route('/', methods=['GET'])
@@ -75,6 +75,16 @@ def create_business():
             friday = '9:00AM - 6:00PM',
             saturday = '9:00AM - 6:00PM',
             sunday = '9:00AM - 6:00PM',
+            is_women_haircut = form.data['isWomenHaircut'],
+            is_lashes = form.data['isLashes'],
+            is_men_haircut = form.data['isMenHaircut'],
+            is_spa = form.data['isSpa'],
+            is_nail_salon = form.data['isNailSalon'],
+            is_kid_haircut = form.data['isKidHaircut'],
+            is_hair_styling = form.data['isHairStyling'],
+            is_makeup = form.data['isMakeup'],
+            is_hair_coloring = form.data['isHairColoring'],
+            is_perm = form.data['isPerm'],
         )
         db.session.add(business)
         db.session.commit()
@@ -122,3 +132,49 @@ def delete_business(business_id):
     db.session.commit()
 
     return deleted_business
+
+
+@business_routes.route('/categories/<category_name>', methods=['GET'])
+def get_businesses_by_category(category_name):
+
+    if category_name == "Women's-Haircuts":
+        businesses_no_dict = Business.query.filter(Business.is_women_haircut == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'Lashes':
+        businesses_no_dict = Business.query.filter(Business.is_lashes == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == "Men's-Haircuts":
+        businesses_no_dict = Business.query.filter(Business.is_men_haircut == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'Spas':
+        businesses_no_dict = Business.query.filter(Business.is_spa == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'Nail-Salons':
+        businesses_no_dict = Business.query.filter(Business.is_nail_salon == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == "Kid's-Haircuts":
+        businesses_no_dict = Business.query.filter(Business.is_kid_haircut == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == "Hair-Styling":
+        businesses_no_dict = Business.query.filter(Business.is_hair_styling == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'Makeup':
+        businesses_no_dict = Business.query.filter(Business.is_makeup == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'Hair-Coloring':
+        businesses_no_dict = Business.query.filter(Business.is_hair_coloring == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    if category_name == 'Perms':
+        businesses_no_dict = Business.query.filter(Business.is_perm == True).all()
+        businesses_list = [business.to_dict() for business in businesses_no_dict]
+
+    return {'businesses': businesses_list}

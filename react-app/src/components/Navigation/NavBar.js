@@ -32,8 +32,13 @@ const NavBar = () => {
     sessionLinks = (
       <>
         <div className='logged-out-div'>
-          <div className='login-nav'><LoginModal /></div>
-          <div className='signup-nav'><SignUpModal /></div>
+          <NavLink className='login-nav no-underline' exact to="/login">
+            Log In
+          </NavLink>
+          <NavLink className='signup-nav no-underline' exact to="/sign-up">
+            Sign Up
+          </NavLink>
+          {/* <div className='signup-nav'><SignUpModal /></div> */}
         </div>
       </>
     );
@@ -45,7 +50,7 @@ const NavBar = () => {
         <NavLink className='navlink nav-element nav-home' exact to="/">
           <img
             className='logo-in-nav'
-            src='/images/logo.png'
+            src='../../images/logo.png'
             alt='BiS logo'
             height='40px'
             width='150px'
