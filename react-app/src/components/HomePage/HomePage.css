@@ -55,6 +55,11 @@
   max-width: 230px;
 }
 
+.no-underline {
+  text-decoration: none;
+  color: black;
+}
+
 .service-label {
   box-sizing: border-box;
   font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu;
@@ -65,7 +70,6 @@
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  text-decoration: none;
 }
 
 .homepage-img-1 {

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
+import ErrorPage from "../Errors/ErrorPage";
+import './CategoryPage.css';
 
 import { loadBusinessesByCategory } from "../../store/businesses";
 
@@ -39,13 +41,13 @@ const CategoryPage = () => {
 
   return (
     <>
-      {showBusinesses && (
-        <div>
-          <h3>{categoryName}</h3>
-          <div className='all-businesses-container'>
+      {showBusinesses ? (
+        <div className='category-page'>
+          <h1 className='category-pg-title'>{categoryName}</h1>
+          <div className='businesses-in-category'>
             {businesses?.map((business) => {
               return (
-                <div className='each-business-in-businesses'>
+                <div className='each-business-in-category'>
                   <NavLink key={business.id} to={'/businesses/' + business.id}>
                     <img
                       src={business.cover_photo}
@@ -54,12 +56,16 @@ const CategoryPage = () => {
                       width="360px"
                     />
                   </NavLink>
-                  <NavLink key={business.id} to={'/businesses/' + business.id}>{business.name}</NavLink>
+                  <NavLink className='business-name-category-pg' key={business.id} to={'/businesses/' + business.id}>{business.name}</NavLink>
                 </div>
               );
             })}
           </div>
         </div>
+      ) : (
+        <>
+          <ErrorPage />
+        </>
       )}
     </>
   );
