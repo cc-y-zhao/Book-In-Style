@@ -90,3 +90,8 @@ nav {
 .space-in-edit-listing-modal {
   margin-right: 10px;
 }
+
+.prof-modal-navlink {
+  text-decoration: none;
+  color: black;
+}

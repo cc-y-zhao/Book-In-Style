@@ -48,37 +48,49 @@ const LoginForm = ({setShowModal}) => {
 
   return (
     <>
-      <form className='login-modal' onSubmit={onLogin}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+    <div className='login-modal'>
+      <h3 className='sign-in-title'>Sign in for a better experience</h3>
+      <form onSubmit={onLogin}>
+        <div className='login-form-container'>
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div>
+            <div>
+              {/* <label htmlFor='email'>Email: </label> */}
+            </div>
+            <input
+              className='input-sign-in email-field'
+              name='email'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div>
+            <div>
+              {/* <label htmlFor='password'>Password: </label> */}
+            </div>
+            <input
+              className='input-sign-in'
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+            />
+          <div>
+            <button className='sign-in-btn' type='submit'>Sign In</button>
+          </div>
+          </div>
+          <div>Don't have an account? Join here!</div>
+
         </div>
-        <div>
-          <label htmlFor='email'>Email: </label>
-          <input
-            name='email'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={updateEmail}
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Password: </label>
-          <input
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={updatePassword}
-          />
-        <div>
-          <button type='submit'>Login</button>
-        </div>
-        </div>
-        <div>Don't have an account?</div>
       </form>
+    </div>
     </>
   );
 };
