@@ -7,6 +7,7 @@ import SignUpModal from '../Modals/SignUpModal';
 import ProfileButtonModal from './ProfileButtonModal';
 import CreateBusinessModal from '../Modals/CreateBusinessModal';
 import './NavBar.css'
+import logo from '../../images/logo.png';
 
 
 const NavBar = () => {
@@ -50,7 +51,7 @@ const NavBar = () => {
         <NavLink className='navlink nav-element nav-home' exact to="/">
           <img
             className='logo-in-nav'
-            src='../../images/logo.png'
+            src={logo}
             alt='BiS logo'
             height='40px'
             width='150px'
