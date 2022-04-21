@@ -17,27 +17,27 @@ const CategoryPage = () => {
   // console.log('businesses om businesses page-------------', businesses)
 
 
-  let showBusinesses = false;
-  if (businesses && isLoaded) showBusinesses = true;
 
   useEffect(() => {
     dispatch(loadBusinessesByCategory(category))
-      .then(() => setIsLoaded(true));
+    .then(() => setIsLoaded(true));
   }, [dispatch, category]);
 
   // const handleEditRedirect = (e) => {
-  //   e.preventDefault();
-  //   return history.push(`/businesses/${businessIdParsed}/edit`)
-  //   // return <Redirect to={`/businesses/${businessIdParsed}/edit`}/>
-  // }
-  let categoryName;
-  if (category.includes("-")) {
-    let arr = category.split("-");
-    categoryName = arr[0] + " " + arr[1];
+    //   e.preventDefault();
+    //   return history.push(`/businesses/${businessIdParsed}/edit`)
+    //   // return <Redirect to={`/businesses/${businessIdParsed}/edit`}/>
+    // }
+    let categoryName;
+    if (category.includes("-")) {
+      let arr = category.split("-");
+      categoryName = arr[0] + " " + arr[1];
 
-  } else {
-    categoryName = category
-  }
+    } else {
+      categoryName = category
+    }
+    let showBusinesses = false;
+    if (businesses && isLoaded) showBusinesses = true;
 
   return (
     <>

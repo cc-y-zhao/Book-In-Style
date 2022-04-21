@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
 
 import './LoginForm.css';
@@ -86,8 +86,9 @@ const LoginForm = ({setShowModal}) => {
             <button className='sign-in-btn' type='submit'>Sign In</button>
           </div>
           </div>
-          <div>Don't have an account? Join here!</div>
-
+          <NavLink className='no-underline no-account' key={1} to={'/sign-up'}>
+            <div>Don't have an account? Join here!</div>
+          </NavLink>
         </div>
       </form>
     </div>

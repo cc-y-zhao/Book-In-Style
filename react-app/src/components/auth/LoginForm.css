@@ -43,3 +43,8 @@
 .sign-in-title {
   margin-bottom: 15px;
 }
+
+.no-account:hover {
+  font-weight: 300;
+  color: black;
+}
