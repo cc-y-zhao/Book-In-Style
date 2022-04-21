@@ -867,13 +867,13 @@ def undo_seed_all():
     db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
     db.session.commit()
 
+    db.session.execute('TRUNCATE businesses RESTART IDENTITY CASCADE;')
+    db.session.commit()
     # undo_services():
     db.session.execute('TRUNCATE services RESTART IDENTITY CASCADE;')
     db.session.commit()
 
     # undo_messages():
-    # db.session.execute('TRUNCATE messages RESTART IDENTITY CASCADE;')
-    # db.session.commit()
 
     # undo_channel_users():
     # db.session.execute('TRUNCATE channel_users RESTART IDENTITY CASCADE;')
