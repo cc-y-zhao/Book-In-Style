@@ -53,6 +53,8 @@ def valid_zipcode(form, field):
   zipcode = field.data
   if not zipcode.isnumeric():
     raise ValidationError('Zipcode must contain only digits')
+  if len(zipcode) > 6 or len(zipcode) < 5:
+    raise ValidationError('Zipcode must contain at least 5 numbers and no more than 6 numbers')
 
 def valid_image(form, field):
   image_url = field.data
