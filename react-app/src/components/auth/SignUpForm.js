@@ -30,10 +30,14 @@ const SignUpForm = () => {
         businessOwner,
         password,
       }
+
+      console.log('payload-------------', payload)
       const data = await dispatch(signUp(payload));
       if (data) {
         return setErrors(data)
       }
+    } else {
+      return setErrors(['Passwords do not match'])
     }
   };
 
@@ -74,7 +78,7 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className>
+    <div>
       <form className='signup-form-wrapper' onSubmit={onSignUp}>
         <h3 className='welcome-signup'>Welcome to Book-In-Style!</h3>
         <div>
@@ -126,16 +130,6 @@ const SignUpForm = () => {
             required={true}
           ></input>
         </div>
-        {/* <div className='signup-label-and-input'>
-          <div>Profile Picture: </div>
-          <input
-            className='signup-input'
-            type='text'
-            name='image_url'
-            onChange={updateImageURL}
-            value={imageURL}
-          ></input>
-        </div> */}
         <div className='signup-label-and-input'>
           <div>Password: </div>
           <input
@@ -174,3 +168,15 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
+
+
+        // {/* <div className='signup-label-and-input'>
+        //   <div>Profile Picture: </div>
+        //   <input
+        //     className='signup-input'
+        //     type='text'
+        //     name='image_url'
+        //     onChange={updateImageURL}
+        //     value={imageURL}
+        //   ></input>
+        // </div> */}
