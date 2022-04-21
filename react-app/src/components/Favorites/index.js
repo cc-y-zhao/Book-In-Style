@@ -10,6 +10,9 @@ const Favorite = ({business, businessId, userId, businessName, businessCoverPhot
   const dispatch = useDispatch();
 
   const businesses = useSelector((state) => state?.businesses)
+  const user = useSelector((state) => state?.session?.user);
+
+
   // const business = useSelector((state) => businesses[businessId])
 
   console.log('business in the favorites comp-------', business);
@@ -26,6 +29,9 @@ const Favorite = ({business, businessId, userId, businessName, businessCoverPhot
     //   )
     // }
     e.preventDefault();
+
+    if (!user) return window.alert('Please log in to start adding to favorites');
+
     let addedFavorite;
 
     console.log('user id------------------', userId)
@@ -41,7 +47,7 @@ const Favorite = ({business, businessId, userId, businessName, businessCoverPhot
     if (addedFavorite) {
       favorited = true;
       await dispatch(loadBusiness(businessId));
-      return window.alert('Added to favorites!');
+      return;
       // return history.push('/');
     }
   }

@@ -40,6 +40,7 @@ def get_reviews_by_business(business_id):
     return {'reviews_list': reviews_list, 'reviews_dict': reviews_dict}
 
 @review_routes.route('/users/<int:user_id>', methods=['GET'])
+@login_required
 def get_reviews_by_user(user_id):
     reviews_before_dict = Review.query.filter(Review.user_id == user_id).order_by(Review.updated_at.desc()).all()
 
@@ -77,7 +78,7 @@ def get_reviews_by_user(user_id):
 
 
 @review_routes.route('/', methods=['POST'])
-# @login_required
+@login_required
 def create_review():
 
     form = ReviewForm()
@@ -90,9 +91,6 @@ def create_review():
             user_id = form.data['userId'],
             rating = form.data['rating'],
             review = form.data['review'],
-            img_url_1 = form.data['img1'],
-            img_url_2 = form.data['img2'],
-            img_url_3 = form.data['img3'],
         )
 
         db.session.add(review_before_dict)
@@ -102,13 +100,17 @@ def create_review():
         # review['reviewer_name'] = form.data['userName']
         # review['service_name'] = form.data['serviceName']
 
+        # img_url_1 = form.data['img1'],
+        # img_url_2 = form.data['img2'],
+        # img_url_3 = form.data['img3'],
+
         return review
     # print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @review_routes.route('/<int:review_id>', methods=['PUT'])
-# @login_required
+@login_required
 def edit_review(review_id):
     form = EditReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -119,9 +121,9 @@ def edit_review(review_id):
         review.service_id = data['serviceId'],
         review.rating = data['rating'],
         review.review = data['review'],
-        review.img_url_1 = data['img1'],
-        review.img_url_2 = data['img2'],
-        review.img_url_3 = data['img3'],
+        # review.img_url_1 = data['img1'],
+        # review.img_url_2 = data['img2'],
+        # review.img_url_3 = data['img3'],
 
         db.session.commit()
 
@@ -131,7 +133,7 @@ def edit_review(review_id):
 
 
 @review_routes.route('/<int:review_id>', methods=["DELETE"])
-# @login_required
+@login_required
 def delete_review(review_id):
 
     review = Review.query.get(review_id)

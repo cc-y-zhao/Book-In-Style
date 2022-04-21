@@ -1,0 +1,22 @@
+.CreateListingFormWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  height: 350px;
+}
+
+.list-biz-title-modal {
+  text-align: center;
+  color: #E10984;
+}
+
+.list-biz-servicename-modal {
+  color: black;
+}
+
+.CreatbookingFormBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -40,3 +40,7 @@
 .see-times-btn:hover {
   background-color: rgb(66, 64, 64);
 }
+
+.plz-login {
+  margin: 30px;
+}

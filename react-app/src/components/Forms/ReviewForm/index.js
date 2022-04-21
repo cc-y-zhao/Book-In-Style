@@ -48,17 +48,17 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
   const [errors, setErrors] = useState([]);
   const [rating, setRating] = useState('--Select Rating--');
   const [review, setReview] = useState('');
-  const [img1, setImg1] = useState('');
-  const [img2, setImg2] = useState('');
-  const [img3, setImg3] = useState('');
+  // const [img1, setImg1] = useState('');
+  // const [img2, setImg2] = useState('');
+  // const [img3, setImg3] = useState('');
   const [serviceName, setServiceName] = useState('');
 
   const updateRating = (e) => setRating(e.target.value);
   const updateReview = (e) => setReview(e.target.value);
   const updateServiceName = (e) => setServiceName(e.target.value);
-  const updateImg1 = (e) => setImg1(e.target.value);
-  const updateImg2 = (e) => setImg2(e.target.value);
-  const updateImg3 = (e) => setImg3(e.target.value);
+  // const updateImg1 = (e) => setImg1(e.target.value);
+  // const updateImg2 = (e) => setImg2(e.target.value);
+  // const updateImg3 = (e) => setImg3(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,11 +71,12 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
       serviceId,
       businessId,
       serviceId,
-      img1,
-      img2,
-      img3,
       userId,
     };
+
+      // img1,
+      // img2,
+      // img3,
 
     // console.log('payload-------------', payload)
 
@@ -90,8 +91,8 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
 
       await dispatch(loadReviewsByBusiness(businessId))
       // const showModalFalse = await setShowModal(false)
-      await setShowModal(false);
-      return window.alert('Thanks for submitting your review!');
+      return setShowModal(false);
+      // return window.alert('Thanks for submitting your review!');
       // return history.push(`/profile`);
       // return <Redirect to={`/businesses/${data.id}`}/>
     } else {
@@ -143,39 +144,7 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
               )}
             </select>
           </div>
-          <div>
-            <div>Photo:
-              <span className='optional-service'>(optional) </span>
-            </div>
-            <input
-              type="text"
-              placeholder="Image URL"
-              value={img1}
-              onChange={updateImg1}
-            />
-          </div>
-          <div>
-            <div>Photo:
-              <span className='optional-service'>(optional) </span>
-            </div>
-            <input
-              type="text"
-              placeholder="Image URL"
-              value={img2}
-              onChange={updateImg2}
-            />
-          </div>
-          <div>
-            <div>Photo:
-              <span className='optional-service'>(optional) </span>
-            </div>
-            <input
-              type="text"
-              placeholder="Image URL"
-              value={img3}
-              onChange={updateImg3}
-            />
-          </div>
+
 
           <div className="create-biz-btn">
             <button type="submit" disabled={disabled}>
@@ -189,3 +158,38 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
 };
 
 export default CreateReviewForm;
+
+
+          // <div>
+          //   <div>Photo:
+          //     <span className='optional-service'>(optional) </span>
+          //   </div>
+          //   <input
+          //     type="text"
+          //     placeholder="Image URL"
+          //     value={img1}
+          //     onChange={updateImg1}
+          //   />
+          // </div>
+          // <div>
+          //   <div>Photo:
+          //     <span className='optional-service'>(optional) </span>
+          //   </div>
+          //   <input
+          //     type="text"
+          //     placeholder="Image URL"
+          //     value={img2}
+          //     onChange={updateImg2}
+          //   />
+          // </div>
+          // <div>
+          //   <div>Photo:
+          //     <span className='optional-service'>(optional) </span>
+          //   </div>
+          //   <input
+          //     type="text"
+          //     placeholder="Image URL"
+          //     value={img3}
+          //     onChange={updateImg3}
+          //   />
+          // </div>

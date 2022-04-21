@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
@@ -12,6 +12,7 @@ import './Reviews.css';
 
 const UserReviews = ({userId}) => {
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const reviewsState = useSelector((state) => state?.reviews);
 
@@ -25,7 +26,8 @@ const UserReviews = ({userId}) => {
   }
 
   useEffect(() => {
-    dispatch(loadReviewsByUser(userId));
+    dispatch(loadReviewsByUser(userId))
+      .then(() => setIsLoaded(true));
   }, [dispatch, userId, reviewsList.toString()]);
 
   const createdAt = (date) => {
@@ -34,48 +36,59 @@ const UserReviews = ({userId}) => {
     return newDate;
   }
 
-  console.log('reviews from userReviews-------------', reviewsList)
-  console.log('reviews to string from userReviews-------------', reviewsList.toString())
-
-
+  // console.log('reviews from userReviews-------------', reviewsList)
+  // console.log('reviews to string from userReviews-------------', reviewsList.toString())
+  let hasReviews = false;
+  if (reviewsList?.length > 0) hasReviews = true;
 
   return (
     <>
-    <div className='reviews-container'>
-
-      <div>
-        {reviewsList && reviewsList.map((review) =>
-        <>
-          <div className='each-review reviews-in-prof'>
-            <div className='biz-name-in-prof'>{review.business_name}</div>
-            <div className='stars-and-service'>
-              <div className='stars'>
-                {ratingStars(review.rating)}
-              </div>
-              <div className='service-name-in-review'>{review.service_name}</div>
-              <div>
-                {userId === review.user_id ? (
-                  <div>
-                    <span><EditReviewModal review={review} services={review.services} businessName={review.business_name}/></span>
-                    <span className='space-after-pencil'></span>
-                    <span><DeleteReviewModal businessId={review.business_id} reviewId={review.id}/></span>
+    {isLoaded && (
+      <>
+        {hasReviews ? (
+          <div className='reviews-container'>
+            <div>
+              {reviewsList && reviewsList.map((review) =>
+              <>
+                <div className='each-review reviews-in-prof'>
+                  <div className='biz-name-in-prof'>{review.business_name}</div>
+                  <div className='stars-and-service'>
+                    <div className='stars'>
+                      {ratingStars(review.rating)}
+                    </div>
+                    <div className='service-name-in-review'>{review.service_name}</div>
+                    <div>
+                      {userId === review.user_id ? (
+                        <div>
+                          <span><EditReviewModal review={review} services={review.services} businessName={review.business_name}/></span>
+                          <span className='space-after-pencil'></span>
+                          <span><DeleteReviewModal businessId={review.business_id} reviewId={review.id}/></span>
+                        </div>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
                   </div>
-                ) : (
-                  <></>
-                )}
-              </div>
+                  <div className='reviewer-name-and-date'>
+                    <div className='reviewer-name'>{review.reviewer_name}</div>
+                    <div className='review-divider'> | </div>
+                    <div className='review-date'>{createdAt(review.created_at)}</div>
+                  </div>
+                  <div className='review-content'>"{review.review}"</div>
+                </div>
+              </>
+              )}
             </div>
-            <div className='reviewer-name-and-date'>
-              <div className='reviewer-name'>{review.reviewer_name}</div>
-              <div className='review-divider'> | </div>
-              <div className='review-date'>{createdAt(review.created_at)}</div>
-            </div>
-            <div className='review-content'>"{review.review}"</div>
           </div>
-        </>
+
+        ) : (
+            <div className='bookings-in-profile'>
+              <h4>No Reviews</h4>
+            </div>
         )}
-      </div>
-    </div>
+      </>
+
+    )}
     </>
   );
 };

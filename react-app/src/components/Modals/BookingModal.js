@@ -28,7 +28,7 @@ function BookingModal({service, userId, businessId, businessName}) {
           <button className='see-times-btn' onClick={() => setShowModal(true)}>See Times</button>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-              <h3>Please log in to start booking appointments {smiley}</h3>
+              <h3 className='plz-login'>Please log in to start booking appointments {smiley}</h3>
             </Modal>
           )}
         </>

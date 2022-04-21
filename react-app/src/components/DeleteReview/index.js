@@ -22,8 +22,8 @@ const DeleteReview = ({businessId, reviewId, setShowModal}) => {
     if (deletedReview) {
       await dispatch(loadReviewsByBusiness(businessId));
       await dispatch(loadReviewsByUser(userId));
-      await setShowModal(false);
-      return window.alert('Your review has been deleted');
+      return setShowModal(false);
+      // return window.alert('Your review has been deleted');
       // return history.push('/');
     }
   }

@@ -18,6 +18,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 @booking_routes.route('/users/<int:user_id>', methods=['GET'])
+@login_required
 def get_bookings_by_user(user_id):
     bookings_pre_dict = Booking.query.filter(Booking.user_id == user_id).order_by(Booking.date).all()
     bookings = []
@@ -39,7 +40,7 @@ def get_bookings_by_user(user_id):
 
 
 @booking_routes.route('/', methods=['POST'])
-# @login_required
+@login_required
 def create_booking():
 
     form = BookingForm()
@@ -70,7 +71,7 @@ def create_booking():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @booking_routes.route('/<int:booking_id>', methods=['PUT'])
-# @login_required
+@login_required
 def edit_booking(booking_id):
 
     form = EditBookingForm()
@@ -100,7 +101,7 @@ def edit_booking(booking_id):
 
 
 @booking_routes.route('/<int:booking_id>', methods=["DELETE"])
-# @login_required
+@login_required
 def delete_booking(booking_id):
 
     booking = Booking.query.get(booking_id)

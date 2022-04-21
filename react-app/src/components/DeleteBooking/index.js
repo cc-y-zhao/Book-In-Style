@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 // import { useHistory } from "react-router-dom";
+import './DeleteBooking.css';
 
 import { deleteBooking, loadBookingsByUser } from "../../store/bookings";
 
@@ -19,8 +20,8 @@ const DeleteBooking = ({booking, setShowModal, setEditBookingModal}) => {
     if (deletedBooking) {
       await dispatch(loadBookingsByUser(deletedBooking.user_id))
       await setShowModal(false);
-      await setEditBookingModal(false);
-      return window.alert('Your appointment has been cancelled');
+      return setEditBookingModal(false);
+      // return window.alert('Your appointment has been cancelled');
       //TO DO: DISPATCH PROFILE TO SHOW ALL USER'S UPCOMING APPOINTMENTS----------
       // return history.push('/profile');
     }
@@ -28,10 +29,10 @@ const DeleteBooking = ({booking, setShowModal, setEditBookingModal}) => {
 
   return (
     <>
-      <div>
-        <h3>Are you sure you want to cancel your appointment with {booking?.business_name}?</h3>
-        <div>
-          <button onClick={(e) => handleDelete(e)}>Yes</button>
+      <div className='delete-booking-modal'>
+        <h3 className='h3-delete-booking'>Are you sure you want to cancel your appointment with {booking?.business_name}?</h3>
+        <div className='buttons-delete-booking'>
+          <button className='yes-delete-booking' onClick={(e) => handleDelete(e)}>Yes</button>
           <button onClick={() => setShowModal(false)}>No, nevermind</button>
         </div>
       </div>

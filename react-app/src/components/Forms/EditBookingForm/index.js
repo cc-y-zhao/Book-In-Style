@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 // import { useHistory } from "react-router-dom";
 import hours from "../BookingForm/hours";
-import "../BusinessForm/CreateBusinessForm.css";
+// import "../BusinessForm/CreateBusinessForm.css";
+import './EditBookingForm.css';
 import DeleteBookingModal from "../../Modals/DeleteBookingModal";
 import convertedDate from "./DateConversion";
 
@@ -91,13 +92,13 @@ const EditBookingForm = ({setShowModal, booking}) => {
   max = yyyy + '-' + mmMax + '-' + ddMax;
 
   return (
-    <div className="CreateBusinessFormWrapper">
+    <div className="CreateListingFormWrapper">
       <div className="CreateBusinessFormHeader">
-        <h2 className='list-biz-title'>{businessName}</h2>
-        <h3 className='list-biz-title'>{serviceName}</h3>
+        <h2 className='list-biz-title-modal'>{businessName}</h2>
+        <h3 className='list-biz-servicename-modal'>{serviceName}</h3>
         <div>You can book up to 3 months in advance</div>
       </div>
-      <div className="CreatChannelFormBody">
+      <div className="CreatbookingFormBody">
         <form className='create-biz-form' onSubmit={handleSubmit}>
           <div className="CreateBusinessFormErrors">
             <ul>
@@ -120,7 +121,7 @@ const EditBookingForm = ({setShowModal, booking}) => {
             />
           </div>
           <div>
-            <span>Time: </span>
+            <div>Time: </div>
             <select onChange={updateTime} value={time}>
               {hours.map(hour =>
                 <option key={hour}>{hour}</option>

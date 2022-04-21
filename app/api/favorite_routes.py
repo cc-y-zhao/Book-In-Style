@@ -18,7 +18,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 @favorite_routes.route('/', methods=['POST'])
-# @login_required
+@login_required
 def create_favorite():
   body = request.json
 
@@ -41,6 +41,7 @@ def create_favorite():
 
 
 @favorite_routes.route('/users/<int:user_id>', methods=['GET'])
+@login_required
 def get_favorites_by_user(user_id):
   favorites_before_dict = Favorite.query.filter(Favorite.user_id == user_id).order_by(Favorite.created_at.desc()).all()
 
@@ -55,7 +56,7 @@ def get_favorites_by_user(user_id):
 
 
 @favorite_routes.route('/', methods=["DELETE"])
-# @login_required
+@login_required
 def delete_favorite():
     body = request.json
     user_id = body['userId']

@@ -9,7 +9,7 @@ def user_exists(form, field):
     email = field.data
     user = User.query.filter(User.email == email).first()
     if user:
-        raise ValidationError('Email address is already registered.')
+        raise ValidationError('Email address is already registered')
 
 
 def phone_exists(form, field):
@@ -17,7 +17,15 @@ def phone_exists(form, field):
     phone = field.data
     user = User.query.filter(User.phone == phone).first()
     if user:
-        raise ValidationError('Phone number is already registered.')
+        raise ValidationError('Phone number is already registered')
+    if not phone.isnumeric():
+        raise ValidationError('Phone number must contain only digits')
+    if not len(phone) == 10:
+        raise ValidationError('Phone number must include 10 digits')
+
+def valid_phone(form, field):
+    phone = field.data
+
     if not phone.isnumeric():
         raise ValidationError('Phone number must contain only digits')
     if not len(phone) == 10:
@@ -45,7 +53,7 @@ class SignUpForm(FlaskForm):
     firstName = StringField('First Name', validators=[DataRequired()])
     lastName = StringField('Last Name', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), user_exists, Email()])
-    phone = StringField('Phone', validators=[DataRequired()])
+    phone = StringField('Phone', validators=[DataRequired(), valid_phone])
     password = PasswordField('Password', validators=[DataRequired()])
     businessOwner = BooleanField('Business Owner')
     # imageURL = StringField('Image URL', validators=[valid_image])

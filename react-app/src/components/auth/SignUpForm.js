@@ -86,7 +86,7 @@ const SignUpForm = () => {
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div className='signup-label-and-input'>
+        <div className='signup-label-and-input firstname-field'>
           <div>First Name:</div>
           <input
             className='signup-input'
