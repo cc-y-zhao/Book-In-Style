@@ -28,12 +28,20 @@ const CategoryPage = () => {
   //   return history.push(`/businesses/${businessIdParsed}/edit`)
   //   // return <Redirect to={`/businesses/${businessIdParsed}/edit`}/>
   // }
+  let categoryName;
+  if (category.includes("-")) {
+    let arr = category.split("-");
+    categoryName = arr[0] + " " + arr[1];
+
+  } else {
+    categoryName = category
+  }
 
   return (
     <>
       {showBusinesses && (
         <div>
-          <h3>Browse Businesses</h3>
+          <h3>{categoryName}</h3>
           <div className='all-businesses-container'>
             {businesses?.map((business) => {
               return (

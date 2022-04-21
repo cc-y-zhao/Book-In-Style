@@ -157,7 +157,7 @@ def get_businesses_by_category(category_name):
         businesses_no_dict = Business.query.filter(Business.is_nail_salon == True).all()
         businesses_list = [business.to_dict() for business in businesses_no_dict]
 
-    if category_name == "Kid's-Haircut":
+    if category_name == "Kid's-Haircuts":
         businesses_no_dict = Business.query.filter(Business.is_kid_haircut == True).all()
         businesses_list = [business.to_dict() for business in businesses_no_dict]
 
@@ -173,7 +173,7 @@ def get_businesses_by_category(category_name):
         businesses_no_dict = Business.query.filter(Business.is_hair_coloring == True).all()
         businesses_list = [business.to_dict() for business in businesses_no_dict]
 
-    if category_name == 'Perm':
+    if category_name == 'Perms':
         businesses_no_dict = Business.query.filter(Business.is_perm == True).all()
         businesses_list = [business.to_dict() for business in businesses_no_dict]
 

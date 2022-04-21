@@ -279,7 +279,7 @@ def seed_all():
         is_kid_haircut = False,
         is_hair_styling = False,
         is_makeup = False,
-        is_hair_coloring = True,
+        is_hair_coloring = False,
         is_perm = False,
     )
 
