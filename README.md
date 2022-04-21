@@ -1,65 +1,89 @@
-# Flask React Project
+# Book-In-Style
 
-This is the starter for the Flask React project.
+[Book-In-Style](https://book-in-style.herokuapp.com/) is inspired by StyleSeat(https://www.styleseat.com/), an online destination for beauty & wellness where clients can discover new services and providers, book appointments, leave reviews, and more. 
 
-## Getting started
-### Dev Containers (M1 Users, follow this guide)
+## Meet the developer behind Book-In-Style~
 
-1. Make sure you have the [Microsoft Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed. 
-2. Make sure you have [Docker](https://www.docker.com/products/docker-desktop/) installed on your computer. 
-3. Clone the repository (only this branch)
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
-4. Open the repo in VS Code. 
-5. Click "Open in Container" when VS Code prompts to open container in the bottom right hand corner. 
-6. **Be Patient!** The initial install will take a LONG time, it's building a container that has postgres preconfigured and even installing all your project dependencies. (For both flask and react!)
+Book-In-Style is brought to you by [Cecilia Zhao](https://www.linkedin.com/in/ceciliazh/). Thank you for visiting!
 
-   **Note:** This will take much less time on future starts because everything will be cached.
+---
 
-7. Once everything is up, be sure to make a `.env` file based on `.env.example` in both the root directory and the *react-app* directory before running your app. 
+# Index
 
-8. Get into your pipenv, migrate your database, seed your database, and run your flask app
+### GitHub Documentation
 
-   ```bash
-   pipenv shell
-   ```
+| [MVP Feature List](https://github.com/cc-y-zhao/Book-In-Style/wiki/Feature-List) | [Database Schema](https://github.com/cc-y-zhao/Book-In-Style/wiki/Database-Schema) | [Redux State Shape](https://github.com/cc-y-zhao/Book-In-Style/wiki/Redux-State-Shape--(in-progress)) | [User Stories](https://github.com/cc-y-zhao/Book-In-Style/wiki/User-Stories) |
+<br>
 
-   ```bash
-   flask db upgrade
-   ```
+### Navigating this ReadMe
 
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-9. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Features](#features)
+- [Technical Implementation Details](#technical-implementation-details)
+- [Helpful Commands](#helpful-commands)
 
 <br>
 
-### Standard (Traditional)
+# Technologies Used
 
-1. Clone this repository (only this branch)
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" alt="python" width="60" /><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="javascript" width="60" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="react" width="60" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" alt="redux" width="60" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-original.svg" alt="sqlalchemy" width="60" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" width="60" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" alt="html5" width="60" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" alt="css3" width="60" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="60" />
+
+<br>
+
+# Getting Started
+
+<details>
+<summary>How do I run this project?</summary>
+
+1. Clone this repo.
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone git@github.com:cc-y-zhao/Book-In-Style.git
    ```
 
-2. Install dependencies
+2. Install dependencies from the root directory
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+   ```bash
+   pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+   ```
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+   ```bash
+   pipenv install psycopg2-binary
+   ```
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+3. Install dependencies from the `react-app` directory
+
+   ```bash
+   npm install
+   ```
+
+4. In the `react-app` directory, create a `.env` file using the `.env.example` that will be used to define your desired `PORT` (preferably 5000).
+
+5. In the root directory, create a `.env` file that will be used to define your environment variables.
+
+   > Use the `.env.example` found in the root directory as a template. Use a secured combination of characters for your `SECRET_KEY`. The `DATABASE_URL` should be in the format of `postgresql://<database_user>:<password>@localhost/<database_name>`
+
+6. Create a **user** using the same credentials in the `.env` file of the root directory with the ability to create databases
+
+   ```bash
+    psql -c "CREATE USER <database_username> PASSWORD '<password>' CREATEDB"
+   ```
+
+7. Create a **database** using the same credentials in the `.env` file of the root directory
+
+   ```bash
+    psql -c "CREATE DATABASE <database_name> WITH OWNER <database_username>"
+   ```
+
+8. Enter `pipenv` to migrate and seed your database
 
    ```bash
    pipenv shell
@@ -73,57 +97,48 @@ This is the starter for the Flask React project.
    flask seed all
    ```
 
+9. Inside of the `pipenv` shell, start the services in the root directory
+
    ```bash
    flask run
    ```
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+10. In a separate terminal, start the services in the `react-app` directory
 
-***
+    ```bash
+    npm start
+    ```
+
+</details>
+
+<details>
+<summary>How do I log in as a Demo User?</summary>
+On the log in page, click "Demo Login".
+   
+   
+</details>
+
+<br>
+
+# Features
+
+Logged in users can perform the following actions.
+
+- View all businesses listed and information pertaining to them (services, reviews, business description)
+- Create, read, edit, and delete appointments with businesses 
+- Create, read, edit, and business listings 
+- Create, read, edit, and delete reviews 
+- Create, read, and delete favorites
+
+<br>
 
 
-*IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
+# Helpful commands
 
-## Helpful commands
-|    Command            |    Purpose    |
-| -------------         | ------------- |
-| `pipenv shell`        | Open your terminal in the virtual environment and be able to run flask commands without a prefix |
-| `pipenv run`          | Run a command from the context of the virtual environment without actually entering into it. You can use this as a prefix for flask commands  |
-| `flask db upgrade`    | Check in with the database and run any needed migrations  |
-| `flask db downgrade`  | Check in with the database and revert any needed migrations  |
-| `flask seed all`      | Just a helpful syntax to run queries against the db to seed data. See the **app/seeds** folder for reference and more details |
-| `heroku login -i`      | Authenticate your heroku-cli using the command line. Drop the -i to authenticate via the browser |
-| `heroku authorizations:create` | Once authenticated, use this to generate an Oauth token |
-| `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
-
-## Deploy to Heroku
-
-### Abstract
-This repo comes configured with Github Actions. When you push to your main branch, Github will automatically pull your code, package and push it to Heroku, and then release the new image and run db migrations. 
-
-### Writing your Dockerfile
-In order for the Github action to work effectively, it must have a configured docker file. In order to effectively deploy your site you need to code out the notes found in this [docker file](./Dockerfile)
-
-### Configuring Production Environment Variables 
-
-1. In your Heroku app settings you should have two environment variables set. 
-
-   |    Key          |    Value    |
-   | -------------   | ----------- |
-   | `DATABASE_URL`  | Autogenerated when adding postgres to Heroku app |
-   | `SECRET_KEY`    | Random string full of entropy |
-
-2. In your Github Actions Secrets you should have two environment variables set. You can find this webpage at the following address: *github.com/userID/repoName/settings/secrets/actions*
-
-   |    Key            |    Value    |
-   | -------------     | ----------- |
-   | `HEROKU_API_KEY`  | Heroku Oauth Token |
-   | `HEROKU_APP_NAME` | Heroku app name    |
-
-3. To get an Oauth token for Heroku, run the following command in your terminal already authenticated to the Heroku CLI and pull out the string on the Token key. 
-   ```bash
-   heroku authorizations:create 
-   ```
+| Command              | Purpose                                                                                                                                      |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pipenv shell`       | Open your terminal in the virtual environment and be able to run flask commands without a prefix                                             |
+| `pipenv run`         | Run a command from the context of the virtual environment without actually entering into it. You can use this as a prefix for flask commands |
+| `flask db upgrade`   | Check in with the database and run any needed migrations                                                                                     |
+| `flask db downgrade` | Check in with the database and revert any needed migrations                                                                                  |
+| `flask seed all`     | Just a helpful syntax to run queries against the db to seed data. See the **app/seeds** folder for reference and more details                |
