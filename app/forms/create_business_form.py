@@ -9,14 +9,16 @@ def valid_name(form, field):
   name = field.data
   if len(name) == 0:
     raise ValidationError('Please provide the name of your business.')
+  if len(name) > 40:
+    raise ValidationError('Business name is too long - max 40 characters')
 
 
 def valid_description(form, field):
   description = field.data
   if len(description) < 15:
-    raise ValidationError('Please tell us a litte more about your business.')
-  if len(description) > (2000):
-    raise ValidationError('Descriptions cannot be longer than 2000 characters.')
+    raise ValidationError('Please tell us a litte more about your business')
+  if len(description) > (300):
+    raise ValidationError('Descriptions is too long - max 300 characters')
 
 def valid_phone(form, field):
   phone = field.data

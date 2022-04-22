@@ -24,12 +24,19 @@ def phone_exists(form, field):
         raise ValidationError('Phone number must include 10 digits')
 
 def valid_phone(form, field):
-    phone = field.data
+  phone = field.data
 
-    if not phone.isnumeric():
-        raise ValidationError('Phone number must contain only digits')
-    if not len(phone) == 10:
-        raise ValidationError('Phone number must include 10 digits')
+  if not phone.isnumeric():
+    raise ValidationError('Phone number must contain only digits')
+  if not len(phone) == 10:
+    raise ValidationError('Phone number must include 10 digits')
+
+  # print('\n\n\n phone of current user\n\n\n', phone, '\n\n\n')
+
+  existing_user = User.query.filter(User.phone == phone).first()
+
+  if existing_user:
+      raise ValidationError('Phone number is already registered')
 
 # def valid_image(form, field):
 #     image_url = field.data

@@ -78,6 +78,7 @@ const BusinessPage = () => {
     dispatch(loadBusiness(businessIdParsed))
       .then(() => dispatch(loadReviewsByBusiness(businessIdParsed)))
       .then(() => setSelectedTab(<Services />))
+      .then(() => setSelectedTabTitle(servicesTab))
       .then(() => setIsLoaded(true));
   }, [dispatch, businessIdParsed]);
 
