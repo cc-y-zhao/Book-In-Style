@@ -47,14 +47,23 @@
   height: 1000px;
 }
 
-.selected-tab-in-profile {
+/* .selected-tab-in-profile {
   padding-left: 30%;
   padding-top: 15px;
   border-left: 1px ridge rgb(242, 242, 242);
+} */
+
+.selected-tab-in-profile {
+  width: 100%;
+  /* padding-left: 10%;
+  padding-right: 10%; */
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-left: 1px ridge rgb(242, 242, 242);
   /* border-left: solid; */
 }
-
-
 
 
 

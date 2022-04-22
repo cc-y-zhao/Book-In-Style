@@ -127,6 +127,9 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
           <div>
             <div>Review: </div>
             <textarea
+              className='textarea-review'
+              rows="10"
+              col="33"
               type="textArea"
               required
               placeholder="Please describe your experience"

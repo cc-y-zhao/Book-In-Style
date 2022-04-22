@@ -4,30 +4,30 @@ from wtforms.validators import DataRequired, ValidationError, EqualTo, Length
 
 from app.models import Booking
 
-def valid_image(form, field):
-  image_url = field.data
-  if image_url != '':
-    if '?' in image_url:
-      split_image_url = image_url.split('?')
-      new_image_url = split_image_url[0]
+# def valid_image(form, field):
+#   image_url = field.data
+#   if image_url != '':
+#     if '?' in image_url:
+#       split_image_url = image_url.split('?')
+#       new_image_url = split_image_url[0]
 
-      if not (new_image_url.endswith('.jpg') or new_image_url.endswith('.jpeg') or new_image_url.endswith('.png')):
-        raise ValidationError('Image format must be .jpg, .jpeg, or .png')
-    else:
-      if not (image_url.endswith('.jpg') or image_url.endswith('.jpeg') or image_url.endswith('.png')):
-        raise ValidationError('Image format must be .jpg, .jpeg, or .png')
-    if not(image_url.startswith('https://') or image_url.startswith('http://')):
-      raise ValidationError('Image URL must start with "https://" or "http://"')
-    if len(image_url) > 2048:
-      raise ValidationError('Image URL is too long')
+#       if not (new_image_url.endswith('.jpg') or new_image_url.endswith('.jpeg') or new_image_url.endswith('.png')):
+#         raise ValidationError('Image format must be .jpg, .jpeg, or .png')
+#     else:
+#       if not (image_url.endswith('.jpg') or image_url.endswith('.jpeg') or image_url.endswith('.png')):
+#         raise ValidationError('Image format must be .jpg, .jpeg, or .png')
+#     if not(image_url.startswith('https://') or image_url.startswith('http://')):
+#       raise ValidationError('Image URL must start with "https://" or "http://"')
+#     if len(image_url) > 2048:
+#       raise ValidationError('Image URL is too long')
 
 def valid_review(form, field):
   review = field.data
 
   if len(review) < 10:
     raise ValidationError('Please tell us a little more about your experience')
-  if len(review) > 3000:
-    raise ValidationError('Reviews cannot be more than 3,000 characters in length')
+  if len(review) > 2000:
+    raise ValidationError('Review is too long - max 2,000 characters')
 
 class ReviewForm(FlaskForm):
   businessId = IntegerField('Business Id')

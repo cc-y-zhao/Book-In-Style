@@ -16,3 +16,12 @@
 .list-biz-title {
   margin-top: 20px;
 }
+
+textarea {
+  resize: none;
+}
+
+/* .textarea-review {
+  width: 300px;
+  height: 300px;
+} */
