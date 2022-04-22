@@ -95,3 +95,11 @@ nav {
   text-decoration: none;
   color: black;
 }
+
+.setup-biz-link {
+  cursor: pointer;
+}
+
+.add-review-modal {
+  width: max-content;
+}

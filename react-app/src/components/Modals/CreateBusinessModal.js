@@ -9,7 +9,7 @@ function CreateBusinessModal() {
 
   return (
     <>
-      <div onClick={() => setShowModal(true)}>Set Up My Business</div>
+      <div className='setup-biz-link' onClick={() => setShowModal(true)}>Set Up My Business</div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <CreateBusinessForm setShowModal={setShowModal}/>
