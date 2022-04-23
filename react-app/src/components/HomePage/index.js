@@ -83,7 +83,7 @@ const HomePage = () => {
           </NavLink>
         </div>
 
-        <div className='services-homepage-top'>
+        <div className='services-homepage-bottom'>
 
           <NavLink className='no-underline' key={6} exact to={`/businesses/categories/Kid's-Haircuts`}>
             <div className='service-pic-label'>
