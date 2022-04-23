@@ -189,11 +189,23 @@
   margin-left: 5px;
 }
 
+.github-logo {
+  height: 21px;
+  width: 21px;
+  margin-left: 5px;
+}
+
 .linkedin {
   display: flex;
   flex-direction: row;
   align-items: center;
   /* align-items: flex-end; */
+}
+
+.github {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
  /* font for services: BentonSans */

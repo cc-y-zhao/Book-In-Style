@@ -32,7 +32,7 @@ const AboutMe = () => {
                     className='linkedin-logo'
                     src='https://content.linkedin.com/content/dam/me/news/en-us/icons/Social_Icons_linkedin.svg.original.svg'
                     onError={(e) => {
-                      e.target.setAttribute("src", "");
+                      e.target.setAttribute("src", "https://raw.githubusercontent.com/cc-y-zhao/Book-In-Style/misc_v3/react-app/src/images/linkedin_logo.png");
                     }}
                   />
                 </a>
@@ -40,7 +40,20 @@ const AboutMe = () => {
             </div>
           </div>
           <div className='linkedin-github'>
-            <a className='linkedin-github' href="https://github.com/cc-y-zhao">GitHub</a>
+            <div className='github'>
+              <div>
+                <a className='linkedin-github' href="https://github.com/cc-y-zhao">GitHub</a>
+              </div>
+              <div>
+                <img
+                  className='github-logo'
+                  src='https://bitzyon.com/img/wallets/github.png'
+                  onError={(e) => {
+                    e.target.setAttribute("src", "https://raw.githubusercontent.com/cc-y-zhao/Book-In-Style/misc_v3/react-app/src/images/linkedin_logo.png");
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
