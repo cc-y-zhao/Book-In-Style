@@ -45,13 +45,15 @@ const AboutMe = () => {
                 <a className='linkedin-github' href="https://github.com/cc-y-zhao">GitHub</a>
               </div>
               <div>
-                <img
-                  className='github-logo'
-                  src='https://bitzyon.com/img/wallets/github.png'
-                  onError={(e) => {
-                    e.target.setAttribute("src", "https://raw.githubusercontent.com/cc-y-zhao/Book-In-Style/misc_v3/react-app/src/images/linkedin_logo.png");
-                  }}
-                />
+                <a href="https://github.com/cc-y-zhao">
+                  <img
+                    className='github-logo'
+                    src='https://bitzyon.com/img/wallets/github.png'
+                    onError={(e) => {
+                      e.target.setAttribute("src", "https://raw.githubusercontent.com/cc-y-zhao/Book-In-Style/misc_v3/react-app/src/images/github_logo.png");
+                    }}
+                  />
+                </a>
               </div>
             </div>
           </div>

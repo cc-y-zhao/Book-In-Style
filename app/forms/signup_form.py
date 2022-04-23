@@ -38,6 +38,22 @@ def valid_phone(form, field):
   if existing_user:
       raise ValidationError('Phone number is already registered')
 
+def valid_first_name(form, field):
+  first_name = field.data
+
+  if len(first_name) < 1:
+    raise ValidationError('Please provide your first name')
+  if len(first_name) > 100:
+    raise ValidationError('First name is too long')
+
+def valid_last_name(form, field):
+  last_name = field.data
+
+  if len(last_name) < 1:
+    raise ValidationError('Please provide your last name')
+  if len(last_name) > 100:
+    raise ValidationError('Last name is too long')
+
 # def valid_image(form, field):
 #     image_url = field.data
 #     if image_url != '':
@@ -57,8 +73,8 @@ def valid_phone(form, field):
 
 
 class SignUpForm(FlaskForm):
-    firstName = StringField('First Name', validators=[DataRequired()])
-    lastName = StringField('Last Name', validators=[DataRequired()])
+    firstName = StringField('First Name', validators=[DataRequired(), valid_first_name])
+    lastName = StringField('Last Name', validators=[DataRequired(), valid_last_name])
     email = StringField('Email', validators=[DataRequired(), user_exists, Email()])
     phone = StringField('Phone', validators=[DataRequired(), valid_phone])
     password = PasswordField('Password', validators=[DataRequired()])
