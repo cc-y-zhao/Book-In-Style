@@ -7,6 +7,8 @@ def valid_name(form, field):
   name = field.data
   if len(name) < 4:
     raise ValidationError('Please provide a valid name for the service you are providing')
+  if len(name) > 30:
+    raise ValidationError('Service name is too long - max 30 characters')
 
 def valid_price(form, field):
   price = field.data
