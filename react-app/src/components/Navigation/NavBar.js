@@ -2,8 +2,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import LoginModal from '../Modals/LoginModal';
-import SignUpModal from '../Modals/SignUpModal';
+// import LoginModal from '../Modals/LoginModal';
+// import SignUpModal from '../Modals/SignUpModal';
 import ProfileButtonModal from './ProfileButtonModal';
 import CreateBusinessModal from '../Modals/CreateBusinessModal';
 import './NavBar.css'

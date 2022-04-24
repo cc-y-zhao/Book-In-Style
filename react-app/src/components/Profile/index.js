@@ -81,7 +81,7 @@ const Profile = () => {
       .then(() => setSelectedTab(<CustomerAppointments/>))
       .then(() => setSelectedTabTitle(appointmentsTab))
       .then(() => setIsLoaded(true));
-  }, [dispatch, userId]);
+  }, [dispatch, userId, appointmentsTab]);
 
 
   let showSelectedTab = false;

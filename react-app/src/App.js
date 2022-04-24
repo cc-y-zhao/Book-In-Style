@@ -10,7 +10,7 @@ import User from './components/User';
 import CreateBusinessForm from './components/Forms/BusinessForm';
 import EditBusinessForm from './components/Forms/EditBusinessForm';
 import BusinessPage from './components/BusinessPage';
-import BusinessesPage from './components/Businesses';
+// import BusinessesPage from './components/Businesses';
 import CategoryPage from './components/CategoryPage';
 import HomePage from './components/HomePage';
 import ErrorPage from './components/Errors/ErrorPage';

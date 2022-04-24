@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import EditBusinessModal from "../Modals/EditBusinessModal";
 import AddServiceModal from "../Modals/AddServiceModal";
-import { createFavorite } from "../../store/favorites";
+// import { createFavorite } from "../../store/favorites";
 import ErrorPage from "../Errors/ErrorPage";
 
 import Services from "../Services";
@@ -27,16 +27,16 @@ const BusinessPage = () => {
   const businessIdParsed = parseInt(businessId);
 
   const userId = useSelector((state) => state.session.user?.id);
-  const businesses = useSelector((state) => state?.businesses)
-  const business = useSelector((state) => businesses[businessIdParsed])
-  const favorites = useSelector((state) => state?.favorites?.user)
+  const businesses = useSelector((state) => state?.businesses);
+  const business = useSelector((state) => businesses[businessIdParsed]);
+  // const favorites = useSelector((state) => state?.favorites?.user)
 
   const [selectedTab, setSelectedTab] = useState(<Services/>)
 
   let servicesTab = document?.getElementById("services-tab");
   let reviewsTab = document?.getElementById("reviews-tab");
   let aboutTab = document?.getElementById("about-tab");
-  const [selectedTabTitle, setSelectedTabTitle] = useState(servicesTab)
+  const [selectedTabTitle, setSelectedTabTitle] = useState(servicesTab);
 
   if (selectedTabTitle) {
     selectedTabTitle.style.fontWeight = 'bold';

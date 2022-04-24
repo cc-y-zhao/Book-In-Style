@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { createFavorite, deleteFavorite } from "../../store/favorites";
@@ -9,13 +9,13 @@ import '../BusinessPage/BusinessPage.css';
 const Favorite = ({business, businessId, userId, businessName, businessCoverPhoto}) => {
   const dispatch = useDispatch();
 
-  const businesses = useSelector((state) => state?.businesses)
+  // const businesses = useSelector((state) => state?.businesses)
   const user = useSelector((state) => state?.session?.user);
 
 
   // const business = useSelector((state) => businesses[businessId])
 
-  console.log('business in the favorites comp-------', business);
+  // console.log('business in the favorites comp-------', business);
   // const [favorite, setFavorite] = useState(false);
   let favorited;
   if (business.is_favorited === true) favorited = true;

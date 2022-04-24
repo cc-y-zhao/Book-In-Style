@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import states from './states';
-import types from './businessTypes';
+// import types from './businessTypes';
 
 import { createBusiness, loadBusiness } from "../../../store/businesses";
 

@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import React from "react";
 
 import './AboutMe.css'
 
@@ -34,6 +32,7 @@ const AboutMe = () => {
                     onError={(e) => {
                       e.target.setAttribute("src", "https://raw.githubusercontent.com/cc-y-zhao/Book-In-Style/misc_v3/react-app/src/images/linkedin_logo.png");
                     }}
+                    alt='LinkedIn'
                   />
                 </a>
               </div>
@@ -52,6 +51,7 @@ const AboutMe = () => {
                     onError={(e) => {
                       e.target.setAttribute("src", "https://raw.githubusercontent.com/cc-y-zhao/Book-In-Style/misc_v3/react-app/src/images/github_logo.png");
                     }}
+                    alt='Github'
                   />
                 </a>
               </div>
