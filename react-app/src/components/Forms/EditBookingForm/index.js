@@ -59,7 +59,7 @@ const EditBookingForm = ({setShowModal, booking}) => {
 
       await dispatch(loadBookingsByUser(userId))
         .then(() => setShowModal(false))
-        .then(() => window.alert('Your appointment was successfully updated!'));
+        // .then(() => window.alert('Your appointment was successfully updated!'));
       // await setShowModal(false)
       // return window.alert('Your appointment was successfully updated!')
       // return history.push(`/profile`);
