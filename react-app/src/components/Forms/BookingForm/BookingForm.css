@@ -29,3 +29,13 @@
 .create-booking-btn {
   margin-top: 50px;
 }
+
+.booking-btn-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-appt-btn {
+  width: 50px;
+}

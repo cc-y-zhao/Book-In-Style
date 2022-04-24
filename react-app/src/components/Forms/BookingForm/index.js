@@ -132,10 +132,12 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
               )}
             </select>
           </div>
-          <div className="create-biz-btn create-booking-btn">
-            <button type="submit" disabled={disabled}>
-              Book
-            </button>
+          <div className="create-booking-btn">
+            <div className='booking-btn-div'>
+              <button className='book-appt-btn' type="submit" disabled={disabled}>
+                Book
+              </button>
+            </div>
           </div>
         </form>
       </div>
