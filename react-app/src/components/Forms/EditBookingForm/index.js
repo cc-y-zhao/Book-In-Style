@@ -93,12 +93,12 @@ const EditBookingForm = ({setShowModal, booking}) => {
 
   return (
     <div className="CreateListingFormWrapper">
-      <div className="CreateBusinessFormHeader">
+      <div className="EditBookingFormHeader">
         <h2 className='list-biz-title-modal'>{businessName}</h2>
         <h3 className='list-biz-servicename-modal'>{serviceName}</h3>
         <div>You can book up to 3 months in advance</div>
       </div>
-      <div className="CreatbookingFormBody">
+      <div className="EditBookingFormBody">
         <form className='create-biz-form' onSubmit={handleSubmit}>
           <div className="CreateBusinessFormErrors">
             <ul>
@@ -128,13 +128,13 @@ const EditBookingForm = ({setShowModal, booking}) => {
               )}
             </select>
           </div>
-          <div className="create-biz-btn">
+          <div className="update-booking-div">
             <button type="submit" disabled={disabled}>
               Update
             </button>
           </div>
         </form>
-        <div className='delete-biz-btn'>
+        <div className='cancel-appt-modal'>
           <DeleteBookingModal booking={booking} setEditBookingModal={setShowModal}/>
         </div>
       </div>
