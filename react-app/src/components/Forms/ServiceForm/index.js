@@ -83,6 +83,7 @@ const ServiceForm = ({setShowModal, businessId}) => {
                 <label>Service Price</label>
               </div>
               <input
+                min="1"
                 type="number"
                 required
                 placeholder="Integers only; e.g. '40'"
