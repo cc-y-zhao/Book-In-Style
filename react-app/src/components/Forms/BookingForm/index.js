@@ -64,7 +64,7 @@ const CreateBookingForm = ({setShowModal, businessId, userId, service, businessN
       // setDate('');
 
       await setShowModal(false)
-      window.alert('Your booking has been confirmed!')
+      // window.alert('Your booking has been confirmed!')
       return history.push(`/profile`);
       // return <Redirect to={`/businesses/${data.id}`}/>
     } else {

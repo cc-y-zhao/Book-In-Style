@@ -135,7 +135,9 @@ const BusinessPage = () => {
 
   return (
     <>
-      {showPage ? (
+      {isLoaded && (
+        <>
+        {showPage ? (
         <>
           {showBusiness ? (
           <div className='biz-page-container'>
@@ -275,6 +277,8 @@ const BusinessPage = () => {
         <>
           <ErrorPage />
         </>
+      )}
+      </>
       )}
 
     </>

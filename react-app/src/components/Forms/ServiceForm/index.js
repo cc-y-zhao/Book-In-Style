@@ -36,9 +36,9 @@ const ServiceForm = ({setShowModal, businessId}) => {
     if (data?.id) {
       setErrors([]);
 
-      await dispatch(loadBusiness(businessId))
-      setShowModal(false)
-      return window.alert('This service was sucessfully added!')
+      await dispatch(loadBusiness(businessId));
+      return setShowModal(false);
+      // return window.alert('This service was sucessfully added!')
       // return history.push(`/businesses/${data.id}`);
       // return <Redirect to={`/businesses/${data.id}`}/>
     } else {

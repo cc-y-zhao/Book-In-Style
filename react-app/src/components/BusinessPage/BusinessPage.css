@@ -90,10 +90,6 @@
   margin-right: 8px;
 }
 
-.biz-city {
-  /* padding-bottom: 20px; */
-  /* border-bottom: 1px ridge rgb(242, 242, 242); */
-}
 
 .biz-name {
   /* margin-left: 15px;
@@ -134,10 +130,16 @@
 
 .services-title-biz-pg {
   margin-right: 40px;
+  cursor: pointer;
 }
 
 .reviews-title-biz-pg {
   margin-right: 40px;
+  cursor: pointer;
+}
+
+#about-tab {
+  cursor: pointer;
 }
 
 .edit-biz {
@@ -157,6 +159,7 @@
 
 .edit-listing-modal {
   margin-right: 8px;
+  cursor: pointer;
 }
 
 .edit-services-btn {
@@ -164,6 +167,7 @@
   flex-direction: row;
   margin-top: 20px;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .add-service-modal {
