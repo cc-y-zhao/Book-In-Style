@@ -32,6 +32,13 @@ const Profile = () => {
     selectedTabTitle.style.fontWeight = 'bold';
   }
 
+  // const styleSelectedTab = (tabTitle) => {
+  //   if (tabTitle) {
+  //     tabTitle.style.color = '#E10984';
+  //     tabTitle.style.fontWeight = 'bold';
+  //   }
+  // }
+
   const onClickAppointments = async (e) => {
     e.preventDefault();
     setSelectedTabTitle(appointmentsTab);
@@ -81,7 +88,7 @@ const Profile = () => {
       .then(() => setSelectedTab(<CustomerAppointments/>))
       .then(() => setSelectedTabTitle(appointmentsTab))
       .then(() => setIsLoaded(true));
-  }, [dispatch, userId, appointmentsTab]);
+  }, [dispatch, userId]);
 
 
   let showSelectedTab = false;

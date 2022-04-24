@@ -138,6 +138,10 @@
   cursor: pointer;
 }
 
+#about-tab {
+  cursor: pointer;
+}
+
 .edit-biz {
   display: flex;
   flex-direction: column;

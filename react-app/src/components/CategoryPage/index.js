@@ -42,35 +42,41 @@ const CategoryPage = () => {
 
   return (
     <>
-      {showBusinesses ? (
-        <div className='category-page'>
-          <h1 className='category-pg-title'>{categoryName}</h1>
-          <div className='businesses-in-category'>
-            {businesses?.map((business) => {
-              return (
-                <div className='each-business-in-category'>
-                  <NavLink key={business.id} to={'/businesses/' + business.id}>
-                    <img
-                      src={business.cover_photo}
-                      onError={(e) => {
-                        e.target.setAttribute("src", defaultImage);
-                      }}
-                      alt={`${business.name}`}
-                      height="370px"
-                      width="360px"
-                    />
-                  </NavLink>
-                  <NavLink className='business-name-category-pg' key={business.id} to={'/businesses/' + business.id}>{business.name}</NavLink>
-                </div>
-              );
-            })}
+      {isLoaded && (
+        <>
+        {showBusinesses ? (
+          <div className='category-page'>
+            <h1 className='category-pg-title'>{categoryName}</h1>
+            <div className='businesses-in-category'>
+              {businesses?.map((business) => {
+                return (
+                  <div className='each-business-in-category'>
+                    <NavLink key={business.id} to={'/businesses/' + business.id}>
+                      <img
+                        src={business.cover_photo}
+                        onError={(e) => {
+                          e.target.setAttribute("src", defaultImage);
+                        }}
+                        alt={`${business.name}`}
+                        height="370px"
+                        width="360px"
+                      />
+                    </NavLink>
+                    <NavLink className='business-name-category-pg' key={business.id} to={'/businesses/' + business.id}>{business.name}</NavLink>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      ) : (
+        ) : (
         <>
           <ErrorPage />
         </>
       )}
+      </>
+
+      )}
+
     </>
   );
 };
