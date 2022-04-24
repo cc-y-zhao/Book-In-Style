@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 // import { Redirect, useHistory, NavLink } from "react-router-dom";
 
 import { loadFavoritesByUser } from "../../../../store/favorites";
+import defaultImage from "../../../../images/favicon.png";
 
 import '../Appointments/CustomerAppointments.css'
 
@@ -48,6 +49,9 @@ const UserFavorites = ({userId}) => {
                     <img
                       className='cover-photo'
                       src={favoritesDict[favorite.business_id]['business_cover_photo']}
+                      onError={(e) => {
+                        e.target.setAttribute("src", defaultImage);
+                      }}
                       alt={`${favoritesDict[favorite.business_id]['business_name']}`}
                       height="180px"
                       width="180px"
