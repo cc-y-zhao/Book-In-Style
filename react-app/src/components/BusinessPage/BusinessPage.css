@@ -12,6 +12,7 @@
   flex-direction: column;
   align-items: center;
   width: 40%;
+  overflow-wrap: break-word;
   /* border-bottom: 1px ridge rgb(242, 242, 242); */
 }
 
@@ -27,6 +28,7 @@
   margin-left: 18%;
   margin-right: 18%;
   margin-bottom: 350px;
+  /* overflow-wrap: break-word; */
 }
 
 .biz-page-prof {
@@ -57,11 +59,15 @@
 
 .street-address {
   margin-top: 10px;
+  overflow-wrap: break-word;
 }
 
 .biz-name-bottom {
   font-size: 16px;
   font-weight: bold;
+  overflow-wrap: break-word;
+  width: 260px;
+  /* border: solid; */
 }
 .cover-photo {
   border: 0.6mm ridge black;
@@ -92,6 +98,10 @@
   margin-right: 100px; */
   font-size: 30px;
   font-weight: 600;
+  width: 80%;
+  overflow-wrap: break-word;
+  text-align: center;
+  /* border: solid; */
 }
 
 .biz-page-bottom {

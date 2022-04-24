@@ -75,6 +75,12 @@ def valid_image(form, field):
     if len(image_url) > 2048:
       raise ValidationError('Image URL is too long')
 
+def valid_city(form, field):
+  city = field.data
+
+  if len(city) > 20:
+    raise ValidationError('City name is too long - max 20 characters')
+
 
 class BusinessForm(FlaskForm):
   capacity = IntegerField('Capacity')
@@ -82,7 +88,7 @@ class BusinessForm(FlaskForm):
   description = StringField('Description', validators=[DataRequired(), valid_description])
   phone = StringField('Phone Number', validators=[DataRequired(), valid_phone])
   streetAddress = StringField('Street Address', validators=[DataRequired(), valid_street_address])
-  city = StringField('City', validators=[DataRequired()])
+  city = StringField('City', validators=[DataRequired(), valid_city])
   coverPhoto = StringField('Cover Photo', validators=[DataRequired(), valid_image])
   unit = StringField('Unit')
   state = StringField('State', validators=[DataRequired()])
