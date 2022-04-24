@@ -74,6 +74,23 @@ const BusinessPage = () => {
   }
   // TO DO: DISPATCH USER'S FAVORITES UPON EVERY PAGE VISIT
 
+  // try{
+  //   useEffect(() => {
+  //   dispatch(loadBusiness(businessIdParsed))
+  //     .then(() => dispatch(loadReviewsByBusiness(businessIdParsed)))
+  //     .then(() => setSelectedTab(<Services />))
+  //     .then(() => setSelectedTabTitle(servicesTab))
+  //     .then(() => setIsLoaded(true));
+  //   }, [dispatch, businessIdParsed]);
+
+  // } catch {
+  //   return (
+  //     <>
+  //       <ErrorPage />
+  //     </>
+  //   )
+
+  // }
   useEffect(() => {
     dispatch(loadBusiness(businessIdParsed))
       .then(() => dispatch(loadReviewsByBusiness(businessIdParsed)))
@@ -90,7 +107,11 @@ const BusinessPage = () => {
   // }, [dispatch, businessIdParsed]);
 
   let showBusiness = false;
-  if (business) showBusiness = true;
+  console.log('business if -----------', business);
+  if (business?.id) showBusiness = true;
+
+  let showPage = false;
+  if (isLoaded && business?.id) showPage = true;
 
   let showEdit = false;
   if (userId && business) {
@@ -114,7 +135,7 @@ const BusinessPage = () => {
 
   return (
     <>
-      {isLoaded && (
+      {showPage ? (
         <>
           {showBusiness ? (
           <div className='biz-page-container'>
@@ -250,6 +271,10 @@ const BusinessPage = () => {
           )}
         </>
 
+      ) : (
+        <>
+          <ErrorPage />
+        </>
       )}
 
     </>

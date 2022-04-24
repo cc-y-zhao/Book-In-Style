@@ -66,12 +66,20 @@ export const loadBusiness = (businessId) => async (dispatch) => {
   // console.log('business id before fetch------------', businessId)
   const response = await fetch(`/api/businesses/${businessId}`);
 
+  console.log('response------------', response);
+  // const responseJson = await response.json();
+  // console.log('response json ---', responseJson);
+
   if (response.ok) {
     const business = await response.json();
     dispatch(loadOneBusiness(business));
+    console.log('business---', business);
     return business;
   } else {
     const errors = await response.json();
+    // const response = await response.json();
+    // const errors = {}
+    // console.log('errors from store----------', errors)
     return errors;
   }
 };
