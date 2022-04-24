@@ -11,8 +11,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 40%;
+  width: 50%;
   overflow-wrap: break-word;
+  overflow-y: hidden;
   /* border: solid; */
   /* border-bottom: 1px ridge rgb(242, 242, 242); */
 }
@@ -26,8 +27,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 18%;
-  margin-right: 18%;
+  margin-left: 13%;
+  margin-right: 13%;
   margin-bottom: 350px;
   /* overflow-wrap: break-word; */
 }
