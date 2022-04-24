@@ -263,6 +263,7 @@ const CreateBusinessForm = ({setShowModal}) => {
               <div className='left-column-field'>
                 <div>
                   <label>Cover Photo</label>
+                  <span className='optional'> (Image URL)</span>
                 </div>
                 <input
                   type="text"

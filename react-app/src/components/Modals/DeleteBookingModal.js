@@ -7,7 +7,7 @@ function DeleteBookingModal({booking, setEditBookingModal}) {
 
   return (
     <>
-      <button className='navlink nav-element login-nav login-btn-nav' onClick={() => setShowModal(true)}>Cancel Appointment</button>
+      <button className='cancel-appt' onClick={() => setShowModal(true)}>Cancel Appointment</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <DeleteBooking booking={booking} setShowModal={setShowModal} setEditBookingModal={setEditBookingModal}/>

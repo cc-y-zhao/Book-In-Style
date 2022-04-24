@@ -52,7 +52,7 @@ const Favorite = ({business, businessId, userId, businessName, businessCoverPhot
     }
   }
 
-  const deletedFavoriteAlert = () => window.alert('Removed from favorites');
+  // const deletedFavoriteAlert = () => window.alert('Removed from favorites');
 
   const removeFromFavorites = async (e) => {
     e.preventDefault()
@@ -69,7 +69,7 @@ const Favorite = ({business, businessId, userId, businessName, businessCoverPhot
     if (removedFavorite) {
       favorited = false;
       await dispatch(loadBusiness(businessId))
-        .then(() => deletedFavoriteAlert())
+        // .then(() => deletedFavoriteAlert())
       // return window.alert('Removed from favorites');
     }
   }
