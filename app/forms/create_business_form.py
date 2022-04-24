@@ -81,6 +81,12 @@ def valid_city(form, field):
   if len(city) > 20:
     raise ValidationError('City name is too long - max 20 characters')
 
+def valid_unit(form, field):
+  unit = field.data
+
+  if len(unit) > 10:
+    raise ValidationError('Unit input is too long - max 10 characters')
+
 
 class BusinessForm(FlaskForm):
   capacity = IntegerField('Capacity')
@@ -90,7 +96,7 @@ class BusinessForm(FlaskForm):
   streetAddress = StringField('Street Address', validators=[DataRequired(), valid_street_address])
   city = StringField('City', validators=[DataRequired(), valid_city])
   coverPhoto = StringField('Cover Photo', validators=[DataRequired(), valid_image])
-  unit = StringField('Unit')
+  unit = StringField('Unit', validators=[valid_unit])
   state = StringField('State', validators=[DataRequired()])
   zipcode = StringField('Zipcode', validators=[DataRequired(), valid_zipcode])
 

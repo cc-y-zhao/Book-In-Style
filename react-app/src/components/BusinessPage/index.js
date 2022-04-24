@@ -214,8 +214,10 @@ const BusinessPage = () => {
               {/* BOTTOM RIGHT OF PAGE */}
               <div className='biz-bottom-right'>
                 <div className='biz-name-bottom'>{business['name']}</div>
-                <div className='street-address'>{business.street_address} {business.unit}</div>
-                <div className='biz-city'>{business.city}, {business.state} {business.zip_code}</div>
+                <div className='street-address'>{business.street_address}</div>
+                <div>{business.unit}</div>
+                <div className='biz-city'>{business.city}</div>
+                <div className='biz-state-zip'>{business.state} {business.zip_code}</div>
                 <div className='biz-hours-title'>Business Hours</div>
                 <div className='biz-hours'>
                   <div className='biz-days'>
