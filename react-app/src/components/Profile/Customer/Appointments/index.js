@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Redirect, useHistory, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 import EditBookingModal from '../../../Modals/EditBookingModal';
@@ -54,7 +54,9 @@ const CustomerAppointments = () => {
                 {/* <div>{bookings && bookings[0][0].toString()}</div> */}
                 {bookings && bookings.map((booking) =>
                 <div className='each-booking' key={booking.id}>
-                  <div className='biz-name-bookings'>{booking.business_name}</div>
+                  <NavLink className='no-underline theme-color' key={booking.id} exact to={`/businesses/${booking.business_id}`}>
+                    <div className='biz-name-bookings'>{booking.business_name}</div>
+                  </NavLink>
                   <div className='service-name-bookings'>{booking.service_name}</div>
                   <div className='time-in-bookings'>{booking.time}</div>
                   <div className='calendar-icon'>

@@ -57,7 +57,7 @@ const UserFavorites = ({userId}) => {
                       width="180px"
                     />
                   </NavLink>
-                  <NavLink key={favorite.business_id} to={'/businesses/' + favorite.business_id} className='biz-name-bookings'>{favoritesDict[favorite.business_id]['business_name']}</NavLink>
+                  <NavLink key={favorite.business_id} to={'/businesses/' + favorite.business_id} className='biz-name-bookings theme-color no-underline'>{favoritesDict[favorite.business_id]['business_name']}</NavLink>
                   {/* <div className='service-name-bookings'>{favorite.service_name}</div>
                   <div className='time-in-bookings'>{favorite.time}</div>
                   <div className='calendar-icon'>

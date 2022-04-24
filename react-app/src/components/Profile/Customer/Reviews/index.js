@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import EditReviewModal from "../../../Modals/EditReviewModal";
 import DeleteReviewModal from "../../../Modals/DeleteReviewModal";
@@ -51,7 +51,11 @@ const UserReviews = ({userId}) => {
               {reviewsList && reviewsList.map((review) =>
               <>
                 <div className='each-review reviews-in-prof'>
-                  <div className='biz-name-in-prof'>{review.business_name}</div>
+                  <NavLink className='no-underline' key={review.id} exact to={`/businesses/${review.business_id}`}>
+                    <div className='biz-name-in-prof'>
+                      {review.business_name}
+                    </div>
+                  </NavLink>
                   <div className='stars-and-service'>
                     <div className='stars'>
                       {ratingStars(review.rating)}
