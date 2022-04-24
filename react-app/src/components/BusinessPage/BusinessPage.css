@@ -116,6 +116,7 @@
   align-items: center;
   position: relative;
   top: 60px;
+  margin-bottom: 550px;
 }
 
 
@@ -159,4 +160,9 @@
 
 .heart-biz-page {
   margin-left: 10px;
+}
+
+.description-biz-pg {
+  overflow-wrap: break-word;
+  margin: 10px;
 }

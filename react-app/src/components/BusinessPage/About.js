@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { loadBusiness } from "../../store/businesses";
+import './BusinessPage.css';
 
 const About = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const About = () => {
 
   return (
     <>
-      <div>
+      <div className='description-biz-pg'>
         {business?.description}
       </div>
     </>
