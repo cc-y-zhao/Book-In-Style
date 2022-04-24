@@ -51,7 +51,7 @@ function App() {
           {/* <Route path='/businesses' exact={true}>
             <BusinessesPage />
           </Route> */}
-          <Route path='/businesses/categories/:category'>
+          <Route path='/businesses/categories/:category' exact={true}>
             <CategoryPage />
           </Route>
           <ProtectedRoute path='/users' exact={true} >

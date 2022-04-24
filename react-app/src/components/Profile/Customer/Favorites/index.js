@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 // import { Redirect, useHistory, NavLink } from "react-router-dom";
 
 import { loadFavoritesByUser } from "../../../../store/favorites";
+import defaultImage from "../../../../images/favicon.png";
 
 import '../Appointments/CustomerAppointments.css'
 
@@ -48,12 +49,15 @@ const UserFavorites = ({userId}) => {
                     <img
                       className='cover-photo'
                       src={favoritesDict[favorite.business_id]['business_cover_photo']}
+                      onError={(e) => {
+                        e.target.setAttribute("src", defaultImage);
+                      }}
                       alt={`${favoritesDict[favorite.business_id]['business_name']}`}
                       height="180px"
                       width="180px"
                     />
                   </NavLink>
-                  <NavLink key={favorite.business_id} to={'/businesses/' + favorite.business_id} className='biz-name-bookings'>{favoritesDict[favorite.business_id]['business_name']}</NavLink>
+                  <NavLink key={favorite.business_id} to={'/businesses/' + favorite.business_id} className='biz-name-bookings theme-color no-underline'>{favoritesDict[favorite.business_id]['business_name']}</NavLink>
                   {/* <div className='service-name-bookings'>{favorite.service_name}</div>
                   <div className='time-in-bookings'>{favorite.time}</div>
                   <div className='calendar-icon'>

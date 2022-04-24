@@ -9,14 +9,16 @@ def valid_name(form, field):
   name = field.data
   if len(name) == 0:
     raise ValidationError('Please provide the name of your business.')
+  if len(name) > 40:
+    raise ValidationError('Business name is too long - max 40 characters')
 
 
 def valid_description(form, field):
   description = field.data
   if len(description) < 15:
-    raise ValidationError('Please tell us a litte more about your business.')
-  if len(description) > (2000):
-    raise ValidationError('Descriptions cannot be longer than 2000 characters.')
+    raise ValidationError('Please tell us a litte more about your business')
+  if len(description) > (3000):
+    raise ValidationError('Descriptions is too long - max 3,000 characters')
 
 def valid_phone(form, field):
   phone = field.data
@@ -73,6 +75,18 @@ def valid_image(form, field):
     if len(image_url) > 2048:
       raise ValidationError('Image URL is too long')
 
+def valid_city(form, field):
+  city = field.data
+
+  if len(city) > 20:
+    raise ValidationError('City name is too long - max 20 characters')
+
+def valid_unit(form, field):
+  unit = field.data
+
+  if len(unit) > 10:
+    raise ValidationError('Unit input is too long - max 10 characters')
+
 
 class BusinessForm(FlaskForm):
   capacity = IntegerField('Capacity')
@@ -80,9 +94,9 @@ class BusinessForm(FlaskForm):
   description = StringField('Description', validators=[DataRequired(), valid_description])
   phone = StringField('Phone Number', validators=[DataRequired(), valid_phone])
   streetAddress = StringField('Street Address', validators=[DataRequired(), valid_street_address])
-  city = StringField('City', validators=[DataRequired()])
+  city = StringField('City', validators=[DataRequired(), valid_city])
   coverPhoto = StringField('Cover Photo', validators=[DataRequired(), valid_image])
-  unit = StringField('Unit')
+  unit = StringField('Unit', validators=[valid_unit])
   state = StringField('State', validators=[DataRequired()])
   zipcode = StringField('Zipcode', validators=[DataRequired(), valid_zipcode])
 

@@ -107,7 +107,10 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
   return (
     <div className="CreateReviewFormWrapper">
       <div className="CreateBusinessFormHeader">
-        <div className='list-biz-title'>Tell us about your experience at {business?.name}</div>
+        <div className='review-biz-title'>
+          <div className='tell-us'>Tell us about your experience at</div>
+          <div className='list-biz-title'>{business?.name}</div>
+        </div>
       </div>
       <div className="CreatChannelFormBody">
         <form className='create-biz-form' onSubmit={handleSubmit}>
@@ -127,6 +130,9 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
           <div>
             <div>Review: </div>
             <textarea
+              className='textarea-review'
+              rows="10"
+              col="33"
               type="textArea"
               required
               placeholder="Please describe your experience"

@@ -74,10 +74,28 @@ const BusinessPage = () => {
   }
   // TO DO: DISPATCH USER'S FAVORITES UPON EVERY PAGE VISIT
 
+  // try{
+  //   useEffect(() => {
+  //   dispatch(loadBusiness(businessIdParsed))
+  //     .then(() => dispatch(loadReviewsByBusiness(businessIdParsed)))
+  //     .then(() => setSelectedTab(<Services />))
+  //     .then(() => setSelectedTabTitle(servicesTab))
+  //     .then(() => setIsLoaded(true));
+  //   }, [dispatch, businessIdParsed]);
+
+  // } catch {
+  //   return (
+  //     <>
+  //       <ErrorPage />
+  //     </>
+  //   )
+
+  // }
   useEffect(() => {
     dispatch(loadBusiness(businessIdParsed))
       .then(() => dispatch(loadReviewsByBusiness(businessIdParsed)))
       .then(() => setSelectedTab(<Services />))
+      .then(() => setSelectedTabTitle(servicesTab))
       .then(() => setIsLoaded(true));
   }, [dispatch, businessIdParsed]);
 
@@ -89,7 +107,11 @@ const BusinessPage = () => {
   // }, [dispatch, businessIdParsed]);
 
   let showBusiness = false;
-  if (business) showBusiness = true;
+  console.log('business if -----------', business);
+  if (business?.id) showBusiness = true;
+
+  let showPage = false;
+  if (isLoaded && business?.id) showPage = true;
 
   let showEdit = false;
   if (userId && business) {
@@ -113,7 +135,7 @@ const BusinessPage = () => {
 
   return (
     <>
-      {isLoaded && (
+      {showPage ? (
         <>
           {showBusiness ? (
           <div className='biz-page-container'>
@@ -213,8 +235,10 @@ const BusinessPage = () => {
               {/* BOTTOM RIGHT OF PAGE */}
               <div className='biz-bottom-right'>
                 <div className='biz-name-bottom'>{business['name']}</div>
-                <div className='street-address'>{business.street_address} {business.unit}</div>
+                <div className='street-address'>{business.street_address}</div>
+                <div>{business.unit}</div>
                 <div className='biz-city'>{business.city}, {business.state} {business.zip_code}</div>
+                {/* <div className='biz-state-zip'>{business.state} {business.zip_code}</div> */}
                 <div className='biz-hours-title'>Business Hours</div>
                 <div className='biz-hours'>
                   <div className='biz-days'>
@@ -247,6 +271,10 @@ const BusinessPage = () => {
           )}
         </>
 
+      ) : (
+        <>
+          <ErrorPage />
+        </>
       )}
 
     </>

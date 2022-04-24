@@ -45,6 +45,17 @@
   margin-top: 35px;
 }
 
+.services-homepage-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* max-width: fit-content; */
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 35px;
+  margin-bottom: 150px;
+}
+
 .service-pic-label {
   display: flex;
   flex-direction: column;
@@ -172,6 +183,29 @@
   background-position: left 10%;
 }
 
+.linkedin-logo {
+  height: 21px;
+  width: 21px;
+  margin-left: 5px;
+}
 
+.github-logo {
+  height: 21px;
+  width: 21px;
+  margin-left: 5px;
+}
+
+.linkedin {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* align-items: flex-end; */
+}
+
+.github {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
  /* font for services: BentonSans */

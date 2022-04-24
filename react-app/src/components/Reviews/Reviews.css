@@ -4,6 +4,8 @@
   border: 1px ridge rgb(242, 242, 242);
   padding: 25px;
   height: max-content;
+  width: 500px;
+  overflow-wrap: break-word;
 }
 
 .stars-and-service {
@@ -46,7 +48,7 @@
 }
 
 .add-review-modal {
-  margin-left: 40%;
+  /* margin-left: 40%; */
   background-color: black;
   color: white;
   border-radius: 5px;
