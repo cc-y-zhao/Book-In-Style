@@ -92,7 +92,6 @@ class BusinessForm(FlaskForm):
   capacity = IntegerField('Capacity')
   name = StringField('Name', validators=[DataRequired(), valid_name])
   description = StringField('Description', validators=[DataRequired(), valid_description])
-  phone = StringField('Phone Number', validators=[DataRequired(), valid_phone])
   streetAddress = StringField('Street Address', validators=[DataRequired(), valid_street_address])
   city = StringField('City', validators=[DataRequired(), valid_city])
   coverPhoto = StringField('Cover Photo', validators=[DataRequired(), valid_image])
@@ -110,3 +109,5 @@ class BusinessForm(FlaskForm):
   isMakeup = BooleanField("Makeup")
   isHairColoring = BooleanField("Hair Coloring")
   isPerm = BooleanField("Perm")
+
+  # phone = StringField('Phone Number', validators=[DataRequired(), valid_phone])

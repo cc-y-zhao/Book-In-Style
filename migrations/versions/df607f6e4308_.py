@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: b789f0496e4b
+Revision ID: df607f6e4308
 Revises: 
-Create Date: 2022-04-21 10:31:05.242649
+Create Date: 2022-04-25 08:54:10.626586
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b789f0496e4b'
+revision = 'df607f6e4308'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -42,7 +42,6 @@ def upgrade():
     sa.Column('owner_id', sa.Integer(), nullable=True),
     sa.Column('name', sa.String(length=50), nullable=False),
     sa.Column('description', sa.String(length=2000), nullable=True),
-    sa.Column('phone', sa.String(length=10), nullable=False),
     sa.Column('street_address', sa.String(length=255), nullable=False),
     sa.Column('unit', sa.String(length=10), nullable=True),
     sa.Column('state', sa.String(length=3), nullable=False),
@@ -70,8 +69,7 @@ def upgrade():
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('phone')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('business_languages',
     sa.Column('business_id', sa.Integer(), nullable=False),

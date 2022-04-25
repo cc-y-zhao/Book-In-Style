@@ -24,7 +24,7 @@ class Business(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(2000))
-    phone = db.Column(db.String(10), unique=True, nullable=False)
+    # phone = db.Column(db.String(10), unique=True, nullable=False)
     street_address = db.Column(db.String(255), nullable=False)
     unit = db.Column(db.String(10))
     state = db.Column(db.String(3), nullable=False)
@@ -69,7 +69,6 @@ class Business(db.Model):
             'owner_id': self.owner_id,
             'name': self.name,
             'description': self.description,
-            'phone': self.phone,
             'street_address': self.street_address,
             'unit': self.unit,
             'state': self.state,

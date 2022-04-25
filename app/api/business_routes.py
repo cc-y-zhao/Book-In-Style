@@ -61,7 +61,6 @@ def create_business():
             capacity = form.data['capacity'],
             name = form.data['name'],
             description = form.data['description'],
-            phone = form.data['phone'],
             street_address = form.data['streetAddress'],
             city = form.data['city'],
             unit = form.data['unit'],
@@ -91,6 +90,7 @@ def create_business():
 
         return business.to_dict()
     # print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
+    # phone = form.data['phone'],
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -106,7 +106,6 @@ def edit_business(business_id):
         business.capacity = data['capacity'],
         business.name = data['name'],
         business.description = data['description'],
-        business.phone = data['phone'],
         business.street_address = data['streetAddress'],
         business.city = data['city'],
         business.unit = data['unit'],
@@ -117,6 +116,7 @@ def edit_business(business_id):
         db.session.commit()
 
         return business.to_dict()
+        # business.phone = data['phone'],
     # print('\n\n\n\n errors from business routes \n\n\n', {'errors': validation_errors_to_error_messages(form.errors)}, '\n\n\n')
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

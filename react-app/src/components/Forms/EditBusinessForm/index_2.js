@@ -1,31 +1,40 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import states from './states';
-// import types from './businessTypes';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import states from "../BusinessForm/states";
+import DeleteBusinessModal from "../../Modals/DeleteBusinessModal"
 
-import { createBusiness, loadBusiness } from "../../../store/businesses";
+import { loadBusiness, editBusiness } from "../../../store/businesses";
 
 import "./CreateBusinessForm.css";
 
-const CreateBusinessForm = ({setShowModal}) => {
+const EditBusinessFormTWO = ({setShowModal}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+
+  const { businessId } = useParams();
+  const businessIdParsed = parseInt(businessId);
+
+  const businesses = useSelector((state) => state?.businesses)
+  const business = businesses[businessIdParsed]
+
+  useEffect(() => {
+    dispatch(loadBusiness(businessIdParsed));
+  }, [dispatch, businessIdParsed]);
 
   const [errors, setErrors] = useState([]);
-  // const ownerId = useSelector((state) => state.session.user?.id);
   const capacity = 1;
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  // const [phone, setPhone] = useState("");
-  const [streetAddress, setStreetAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [unit, setUnit] = useState("");
-  const [state, setState] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [coverPhoto, setCoverPhoto] = useState("");
+  const id = businessIdParsed;
+  const [name, setName] = useState(business?.name);
+  const [description, setDescription] = useState(business?.description);
+  const [phone, setPhone] = useState(business?.phone);
+  const [streetAddress, setStreetAddress] = useState(business?.street_address);
+  const [unit, setUnit] = useState(business?.unit);
+  const [city, setCity] = useState(business?.city);
+  const [state, setState] = useState(business?.state);
+  const [zipcode, setZipcode] = useState(business?.zip_code);
+  const [coverPhoto, setCoverPhoto] = useState(business?.cover_photo);
 
-  const [isWomenHaircut, setIsWomenHaircut] = useState(false);
+  const [isWomenHaircut, setIsWomenHaircut] = useState(business?.);
   const [isLashes, setIsLashes] = useState(false);
   const [isMenHaircut, setIsMenHaircut] = useState(false);
   const [isSpa, setIsSpa] = useState(false);
@@ -39,7 +48,7 @@ const CreateBusinessForm = ({setShowModal}) => {
 
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
-  // const updatePhone = (e) => setPhone(e.target.value);
+  const updatePhone = (e) => setPhone(e.target.value);
   const updateStreetAddress = (e) => setStreetAddress(e.target.value);
   const updateUnit = (e) => setUnit(e.target.value);
   const updateCity = (e) => setCity(e.target.value);
@@ -97,6 +106,7 @@ const CreateBusinessForm = ({setShowModal}) => {
       capacity,
       name,
       description,
+      phone,
       streetAddress,
       unit,
       state,
@@ -146,7 +156,7 @@ const CreateBusinessForm = ({setShowModal}) => {
 
   let disabled;
 
-  if (name.length === 0 || description.length === 0 || streetAddress.length === 0 || state.length === 0 || zipcode.length === 0 || coverPhoto.length === 0 || city.length === 0) {
+  if (name.length === 0 || description.length === 0 || phone.length === 0 || streetAddress.length === 0 || state.length === 0 || zipcode.length === 0 || coverPhoto.length === 0 || city.length === 0) {
     disabled = true;
   } else {
     disabled = false;
@@ -192,7 +202,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                 />
               </div>
 
-              {/* <div className='left-column-field'>
+              <div className='left-column-field'>
                 <div>
                   <label>Phone Number</label>
                 </div>
@@ -203,7 +213,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                   value={phone}
                   onChange={updatePhone}
                 />
-              </div> */}
+              </div>
               <div className='left-column-field'>
                 <div>
                   <label>Street Address</label>
@@ -423,4 +433,4 @@ const CreateBusinessForm = ({setShowModal}) => {
   );
 };
 
-export default CreateBusinessForm;
+export default EditBusinessFormTWO;

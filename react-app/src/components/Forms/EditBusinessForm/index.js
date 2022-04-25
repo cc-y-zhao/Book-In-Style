@@ -27,7 +27,7 @@ const EditBusinessForm = ({setShowModal}) => {
   const id = businessIdParsed;
   const [name, setName] = useState(business?.name);
   const [description, setDescription] = useState(business?.description);
-  const [phone, setPhone] = useState(business?.phone);
+  // const [phone, setPhone] = useState(business?.phone);
   const [streetAddress, setStreetAddress] = useState(business?.street_address);
   const [unit, setUnit] = useState(business?.unit);
   const [city, setCity] = useState(business?.city);
@@ -37,7 +37,7 @@ const EditBusinessForm = ({setShowModal}) => {
 
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
-  const updatePhone = (e) => setPhone(e.target.value);
+  // const updatePhone = (e) => setPhone(e.target.value);
   const updateStreetAddress = (e) => setStreetAddress(e.target.value);
   const updateUnit = (e) => setUnit(e.target.value);
   const updateCity = (e) => setCity(e.target.value);
@@ -65,7 +65,6 @@ const EditBusinessForm = ({setShowModal}) => {
       capacity,
       name,
       description,
-      phone,
       streetAddress,
       unit,
       city,
@@ -83,7 +82,6 @@ const EditBusinessForm = ({setShowModal}) => {
       setErrors([]);
       setName('');
       setDescription('');
-      setPhone('');
       setStreetAddress('');
       setUnit('');
       setState('');
@@ -98,7 +96,7 @@ const EditBusinessForm = ({setShowModal}) => {
 
   let disabled;
 
-  if (name?.length === 0 || description?.length === 0 || phone?.length < 10 || streetAddress?.length === 0 || state?.length === 0 || zipcode?.length < 5) {
+  if (name?.length === 0 || description?.length === 0 || streetAddress?.length === 0 || state?.length === 0 || zipcode?.length < 5) {
     disabled = true;
   } else {
     disabled = false;
@@ -146,7 +144,7 @@ const EditBusinessForm = ({setShowModal}) => {
                 onChange={updateDescription}
               />
             </div>
-            <div>
+            {/* <div>
               <div>
                 <label>Phone Number</label>
               </div>
@@ -157,7 +155,7 @@ const EditBusinessForm = ({setShowModal}) => {
                 value={phone}
                 onChange={updatePhone}
               />
-            </div>
+            </div> */}
             <div>
               <div>
                 <label>Street Address</label>
