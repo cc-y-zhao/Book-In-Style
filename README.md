@@ -1,6 +1,6 @@
 # Book-In-Style
 
-[Book-In-Style](https://book-in-style.herokuapp.com/) is inspired by StyleSeat(https://www.styleseat.com/), an online destination for beauty & wellness where clients can discover new services and providers, book appointments, leave reviews, and more. 
+[Book-In-Style](https://book-in-style.herokuapp.com/) is inspired by StyleSeat (https://www.styleseat.com/), an online destination for beauty & wellness where clients can discover new services and providers, book appointments, leave reviews, and more. 
 
 ## Meet the developer behind Book-In-Style~
 
