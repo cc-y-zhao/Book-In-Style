@@ -48,7 +48,6 @@ export const createBusiness = (business) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log('data in action creator-----------', data)
     dispatch(createdBusiness(data))
     return data;
   } else if (response.status < 500) {
@@ -63,30 +62,20 @@ export const createBusiness = (business) => async (dispatch) => {
 
 export const loadBusiness = (businessId) => async (dispatch) => {
 
-  // console.log('business id before fetch------------', businessId)
   const response = await fetch(`/api/businesses/${businessId}`);
-
-  console.log('response------------', response);
-  // const responseJson = await response.json();
-  // console.log('response json ---', responseJson);
 
   if (response.ok) {
     const business = await response.json();
     dispatch(loadOneBusiness(business));
-    console.log('business---', business);
     return business;
   } else {
     const errors = await response.json();
-    // const response = await response.json();
-    // const errors = {}
-    // console.log('errors from store----------', errors)
     return errors;
   }
 };
 
 export const loadBusinessesByCategory = (category) => async (dispatch) => {
 
-  // console.log('business id before fetch------------', categoryName)
   const response = await fetch(`/api/businesses/categories/${category}`);
 
   if (response.ok) {
@@ -136,15 +125,12 @@ export const editBusiness = (editedBusiness) => async (dispatch) => {
 };
 
 export const deleteBusiness = (businessId) => async (dispatch) => {
-  console.log('business id in action creator------', businessId)
   const response = await fetch(`/api/businesses/${businessId}`, {
     method: "DELETE",
   });
 
-  // console.log('response in action creator----------', response.json())
   if (response.ok) {
     const deletedBusiness = await response.json();
-    // console.log('deleted business in action creator-------', deletedBusiness)
     dispatch(deleteOneBusiness(deletedBusiness));
     return deletedBusiness;
   } else {
@@ -175,7 +161,6 @@ export const createService = (service) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log('data in action creator-----------', data)
     dispatch(createdBusiness(data))
     return data;
   } else if (response.status < 500) {
@@ -204,9 +189,7 @@ export default function reducer(state = initialState, action) {
       return newState;
 
     case GET_ALL_BUSINESSES:
-      // console.log('action in get all businesses------------', action)
       newState['businesses_list'] = action.businesses.businesses;
-      // console.log('action.businesses in get all businesses------------', action.businesses)
       action.businesses.businesses.forEach((business) => {
         newState[business.id] = business;
       });

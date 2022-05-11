@@ -15,7 +15,6 @@ const EditBookingForm = ({setShowModal, booking}) => {
   const [errors, setErrors] = useState([]);
   const [time, setTime] = useState(booking.time);
   const [date, setDate] = useState(convertedDate(booking.date));
-  // const [date, setDate] = useState('2022-05-06');
 
   const bookingId = booking.id;
   const serviceId = booking.service_id;
@@ -23,8 +22,6 @@ const EditBookingForm = ({setShowModal, booking}) => {
   const businessId = booking.business_id;
   const serviceName = booking.service_name;
   const businessName = booking.business_name;
-
-  // console.log('date-----------------', date);
 
   const updateTime = (e) => setTime(e.target.value);
   const updateDate = (e) => setDate(e.target.value);
@@ -44,18 +41,11 @@ const EditBookingForm = ({setShowModal, booking}) => {
       time
     };
 
-    // console.log('payload in frontend-------------', payload)
-
     let data;
 
     data = await dispatch(editBooking(payload));
 
-    // console.log('data in beofre if data--------------', data)
-
     if (data?.id) {
-      // setErrors([]);
-      // setTime('');
-      // setDate('');
 
       await dispatch(loadBookingsByUser(userId))
         .then(() => setShowModal(false))

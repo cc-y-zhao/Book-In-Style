@@ -13,17 +13,12 @@ const DeleteBooking = ({booking, setShowModal, setEditBookingModal}) => {
     e.preventDefault();
     let deletedBooking;
 
-    // console.log('business in in frontend---------'. businessId)
-
     deletedBooking = await dispatch(deleteBooking(booking.id));
 
     if (deletedBooking) {
       await dispatch(loadBookingsByUser(deletedBooking.user_id))
       await setShowModal(false);
       return setEditBookingModal(false);
-      // return window.alert('Your appointment has been cancelled');
-      //TO DO: DISPATCH PROFILE TO SHOW ALL USER'S UPCOMING APPOINTMENTS----------
-      // return history.push('/profile');
     }
   }
 

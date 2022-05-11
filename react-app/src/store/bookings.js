@@ -36,7 +36,6 @@ export const createBooking = (booking) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    // console.log('data in action creator-----------', data)
     dispatch(createdBooking(data))
     return data;
   } else if (response.status < 500) {
@@ -55,7 +54,6 @@ export const loadBookingsByUser = (userId) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    // console.log('data in action creator-----------', data)
     dispatch(bookingsByUser(data))
     return data;
   } else if (response.status < 500) {
@@ -69,8 +67,6 @@ export const loadBookingsByUser = (userId) => async (dispatch) => {
 }
 
 export const editBooking = (editedBooking) => async (dispatch) => {
-
-  console.log('edited booking beofre fetch----------', editedBooking)
 
   const response = await fetch(`/api/bookings/${editedBooking.bookingId}`, {
     method: "PUT",
@@ -94,15 +90,12 @@ export const editBooking = (editedBooking) => async (dispatch) => {
 };
 
 export const deleteBooking = (bookingId) => async (dispatch) => {
-  console.log('business id in action creator------', bookingId)
   const response = await fetch(`/api/bookings/${bookingId}`, {
     method: "DELETE",
   });
 
-  // console.log('response in action creator----------', response.json())
   if (response.ok) {
     const deletedBooking = await response.json();
-    // console.log('deleted business in action creator-------', deletedBooking)
     dispatch(deleteOneBooking(deletedBooking));
     return deletedBooking;
   } else {
@@ -124,7 +117,6 @@ export default function reducer(state = initialState, action) {
 
     case GET_BOOKINGS_BY_USER_WHO_BOOKED:
       const bookings = action.bookings.bookings;
-      // console.log('bookings in store----------', bookings);
       newState['bookings_by_user'] = bookings;
 
       return newState;

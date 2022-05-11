@@ -77,7 +77,6 @@ const EditBusinessForm = ({setShowModal}) => {
 
     data = await dispatch(editBusiness(editedBusiness));
 
-    console.log('data in edit form----------', data)
     if (data?.id === businessIdParsed) {
       setErrors([]);
       setName('');

@@ -24,36 +24,11 @@ const Reviews = () => {
   if (businesses) business = businesses[business_id];
   let reviews;
 
-
-  console.log('business in reviews ----------------------', business);
-  // if (reviewsState) {
-  //   // console.log('IN first IF STATEMENT----------',reviewsState);
-  //   if (reviewsState.reviews_by_business_list) {
-  //     // console.log('IN second STATEMENT----------',reviewsState.reviews_by_business);
-  //     if (reviewsState.reviews_by_business[business_id]) {
-  //       // console.log('IN third IF STATEMENT----------',reviewsState.reviews_by_business[business_id]);
-  //       reviews = Object.values(reviewsState.reviews_by_business[business_id]);
-  //     }
-  //   }
-  // }
-
-  // console.log('reviews in reviews page-------------', reviews);
-  // console.log('reviews TO STRING in reviews page-------------', reviews.toString());
-
   if (reviewsState) {
-  // console.log('IN first IF STATEMENT----------',reviewsState);
     if (reviewsState.reviews_by_business_list) {
       reviews = reviewsState.reviews_by_business_list;
     }
   }
-
-
-  // let services;
-  // if (business) services = business.services;
-  // let servicesArr;
-  // if (services) servicesArr = Object.values(services);
-  // const businessName = business?.name;
-
 
   useEffect(() => {
     dispatch(loadReviewsByBusiness(businessIdParsed));

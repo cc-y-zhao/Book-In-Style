@@ -16,15 +16,6 @@ const UserFavorites = ({userId}) => {
   const favoritesArr = favoritesState?.favorites_list;
   const favoritesDict = favoritesState?.favorites_dict;
 
-  // console.log('favoritesArr-------------', favoritesArr)
-  // console.log('favoritesDict-------------', favoritesDict)
-
-  // let favoritesList;
-  // if (bookingsObj) {
-  //   bookings = Object.values(bookingsObj);
-  // }
-  // console.log('bookings in profile-------------', bookings)
-
   useEffect(() => {
     dispatch(loadFavoritesByUser(userId))
       .then(() => setIsLoaded(true));

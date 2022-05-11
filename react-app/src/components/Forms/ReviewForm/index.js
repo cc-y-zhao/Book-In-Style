@@ -20,9 +20,6 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
   let servicesArr;
   if (services) servicesArr = Object.values(services);
 
-  // console.log('services in review form -------------', services);
-  // console.log('services ARRAY in review form -------------', servicesArr);
-
   let servicesNamesAndIds = {};
   servicesArr.forEach((service) => {
     let serviceName = service.name;
@@ -78,13 +75,9 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
       // img2,
       // img3,
 
-    // console.log('payload-------------', payload)
-
     let data;
 
     data = await dispatch(createReview(payload));
-
-    // console.log('data in beofre if data--------------', data)
 
     if (data?.id) {
       setErrors([]);

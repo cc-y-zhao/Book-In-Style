@@ -115,13 +115,9 @@ const CreateBusinessForm = ({setShowModal}) => {
       isPerm,
     };
 
-    console.log('payload-------------', payload)
-
     let data;
 
     data = await dispatch(createBusiness(payload));
-
-    console.log('data in beofre if data--------------', data)
 
     if (data?.id) {
       // setErrors([]);
@@ -138,7 +134,6 @@ const CreateBusinessForm = ({setShowModal}) => {
       await dispatch(loadBusiness(data.id))
       setShowModal(false)
       return history.push(`/businesses/${data.id}`);
-      // return <Redirect to={`/businesses/${data.id}`}/>
     } else {
       return setErrors(data)
     }

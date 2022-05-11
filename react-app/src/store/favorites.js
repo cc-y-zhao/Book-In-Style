@@ -14,8 +14,6 @@ const favoritesByUser = (data) => ({
 
 export const createFavorite = (payload) => async (dispatch) => {
 
-  console.log('payload frrom store-----------', payload)
-
   const response = await fetch('/api/favorites/', {
     method: 'POST',
     headers: {
@@ -26,7 +24,6 @@ export const createFavorite = (payload) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    // console.log('data in action creator-----------', data)
     dispatch(createdFavorite(data))
     return data;
   } else if (response.status < 500) {
@@ -45,7 +42,6 @@ export const loadFavoritesByUser = (userId) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    // console.log('data in action creator-----------', data)
     dispatch(favoritesByUser(data))
     return data;
   } else if (response.status < 500) {
@@ -60,8 +56,6 @@ export const loadFavoritesByUser = (userId) => async (dispatch) => {
 
 export const deleteFavorite = (payload) => async (dispatch) => {
 
-  console.log('payload frrom store-----------', payload)
-
   const response = await fetch('/api/favorites/', {
     method: 'DELETE',
     headers: {
@@ -72,8 +66,6 @@ export const deleteFavorite = (payload) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    // console.log('data in action creator-----------', data)
-    // dispatch(deletedFavorite(data))
     return data;
   } else if (response.status < 500) {
     const data = await response.json();

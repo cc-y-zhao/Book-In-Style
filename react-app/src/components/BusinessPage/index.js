@@ -107,7 +107,7 @@ const BusinessPage = () => {
   // }, [dispatch, businessIdParsed]);
 
   let showBusiness = false;
-  console.log('business if -----------', business);
+
   if (business?.id) showBusiness = true;
 
   let showPage = false;

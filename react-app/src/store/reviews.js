@@ -42,7 +42,6 @@ export const createReview = (review) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    // console.log('data in action creator-----------', data)
     dispatch(createdReview(data))
     return data;
   } else if (response.status < 500) {
@@ -85,8 +84,6 @@ export const loadReviewsByUser = (userId) => async (dispatch) => {
 
 export const editReview = (review) => async (dispatch) => {
 
-  console.log('edited booking beofre fetch----------', review);
-
   const response = await fetch(`/api/reviews/${review.reviewId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -114,10 +111,8 @@ export const deleteReview = (reviewId) => async (dispatch) => {
     method: "DELETE",
   });
 
-  // console.log('response in action creator----------', response.json())
   if (response.ok) {
     const payload = await response.json();
-    // console.log('deleted business in action creator-------', payload)
     dispatch(deleteOneReview(payload));
     return payload;
   } else {
@@ -141,44 +136,21 @@ export default function reducer(state = initialState, action) {
       let newReview = action.review;
 
       let businessId = newReview.business_id;
-      console.log('businessId in reducer-----------', businessId);
-      console.log('new review in reducer-----------', newReview);
 
       newState['reviews_by_business_dict'][newReview.business_id] = newReview;
       newState['reviews_by_business_list'].push(newReview);
 
       return newState;
 
-      // if (newState['reviews_by_business']) {
-      //   if (newState['reviews_by_business'][newReview.business_id]) {
-      //     // let newReviewId = newReview.id;
-      //     newState['reviews_by_business'][newReview.business_id].push(newReview);
-      //     // newState['reviews_by_business'][newReview.business_id].push(newReview)
-      //   } else {
-      //     let newReviewId = newReview.id;
-      //     newState['reviews_by_business'][newReview.business_id] = [];
-      //     newState['reviews_by_business'][newReview.business_id].push(newReview);
-      //   }
-      // } else {
-      //   newState['reviews_by_business'] = {};
-      //   newState['reviews_by_business'][newReview.business_id] = [newReview];
-      // }
-
-      // return newState;
-
     case GET_REVIEWS_BY_BUSINESS:
-      // console.log('action.reviews from reducer ----------', action.reviews);
-      // newState['reviews_by_business'] = {};
-      // newState['reviews_by_business'][action.businessId] = action.reviews.reviews;
+
       newState['reviews_by_business_dict'] = action.payload.reviews_dict;
       newState['reviews_by_business_list'] = action.payload.reviews_list;
 
       return newState;
 
     case GET_REVIEWS_BY_USER:
-      // console.log('action.reviews from reducer ----------', action.reviews);
-      // newState['reviews_by_business'] = {};
-      // newState['reviews_by_business'][action.businessId] = action.reviews.reviews;
+
       newState['reviews_by_user_dict'] = action.payload.reviews_dict;
       newState['reviews_by_user_list'] = action.payload.reviews_list;
 
@@ -200,16 +172,3 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
-
-    // case CREATE_REVIEW:
-    //   let newReview = action.review;
-    //   console.log('new review in reducer-----------', newReview);
-    //   if (newState[newReview.business_id]['reviews_by_business']) {
-    //     newState[newReview.business_id]['reviews_by_business'][newReview.id] = newReview
-    //   } else {
-    //     let newReviewId = newReview.id;
-    //     newState[newReview.business_id]['reviews_by_business'] = {newReviewId: newReview}
-
-    //   }
-
-    //   return newState;
