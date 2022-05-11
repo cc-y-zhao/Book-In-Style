@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 import './ReviewForm.css';
 import { createReview, loadReviewsByBusiness } from "../../../store/reviews";
 
 const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const businesses = useSelector((state) => state?.businesses);
   const user = useSelector((state) => state?.session?.user);
@@ -67,7 +65,6 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
       review,
       serviceId,
       businessId,
-      serviceId,
       userId,
     };
 

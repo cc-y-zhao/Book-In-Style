@@ -141,12 +141,12 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
 
 /////////////////////////////////SERVICES////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
-const CREATE_SERVICE = 'services/CREATE_SERVICE';
+// const CREATE_SERVICE = 'services/CREATE_SERVICE';
 
-const createdService = (service) => ({
-  type: CREATE_SERVICE,
-  service
-});
+// const createdService = (service) => ({
+//   type: CREATE_SERVICE,
+//   service
+// });
 
 
 export const createService = (service) => async (dispatch) => {

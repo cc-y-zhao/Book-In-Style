@@ -135,7 +135,7 @@ export default function reducer(state = initialState, action) {
     case CREATE_REVIEW:
       let newReview = action.review;
 
-      let businessId = newReview.business_id;
+      // let businessId = newReview.business_id;
 
       newState['reviews_by_business_dict'][newReview.business_id] = newReview;
       newState['reviews_by_business_list'].push(newReview);

@@ -7,8 +7,6 @@ import { NavLink } from "react-router-dom";
 import './HomePage.css';
 const HomePage = () => {
 
-  let params1 = "Women's-Haircuts";
-
   return (
     <>
       <div className='home-main-img-div'>

@@ -16,7 +16,7 @@ const LoginForm = ({setShowModal}) => {
   const handleDemoLogin = async (e) => {
     e.preventDefault()
 
-    const data = await dispatch(login('demo@aa.io', 'password'));
+    await dispatch(login('demo@aa.io', 'password'));
   }
 
   const onLogin = async (e) => {
@@ -26,20 +26,6 @@ const LoginForm = ({setShowModal}) => {
       setErrors(data);
     }
   };
-
-  // const handleDemoLogin = (e) => {
-  //   e.preventDefault();
-  //   setErrors([]);
-  //   const credential = 'jeff_winger';
-  //   const password = 'password';
-
-  //   return dispatch(sessionActions.login({ credential, password })).catch(
-  //     async (res) => {
-  //       const data = await res.json();
-  //       if (data && data.errors) setErrors(data.errors);
-  //     }
-  //   );
-  // };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);

@@ -66,7 +66,6 @@ const EditReviewForm = ({setShowModal, origReview, services, businessName}) => {
       review,
       serviceId,
       businessId,
-      serviceId,
       userId,
       reviewId,
     };
