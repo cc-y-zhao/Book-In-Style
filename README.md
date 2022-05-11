@@ -10,10 +10,6 @@ Book-In-Style is brought to you by [Cecilia Zhao](https://www.linkedin.com/in/ce
 
 # Index
 
-### GitHub Documentation
-
-| [MVP Feature List](https://github.com/cc-y-zhao/Book-In-Style/wiki/Feature-List) | [Database Schema](https://github.com/cc-y-zhao/Book-In-Style/wiki/Database-Schema) | [Redux State Shape](https://github.com/cc-y-zhao/Book-In-Style/wiki/Redux-State-Shape--(in-progress)) | [User Stories](https://github.com/cc-y-zhao/Book-In-Style/wiki/User-Stories) |
-<br>
 
 ### Navigating this ReadMe
 
