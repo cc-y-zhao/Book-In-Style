@@ -1,6 +1,6 @@
 # Book-In-Style
 
-<img width="1023" alt="image" src="https://user-images.githubusercontent.com/89670029/163025684-5dff7a8f-0a23-4e49-ace0-b24a1705d73a.png">
+<!-- <img width="1023" alt="image" src="https://user-images.githubusercontent.com/89670029/163025684-5dff7a8f-0a23-4e49-ace0-b24a1705d73a.png"> -->
 
 [Book-In-Style](https://book-in-style.herokuapp.com/) is inspired by StyleSeat (https://www.styleseat.com/), an online destination for beauty & wellness where clients can discover new services and providers, book appointments, leave reviews, and more. 
 
