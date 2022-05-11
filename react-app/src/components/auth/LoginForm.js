@@ -59,7 +59,7 @@ const LoginForm = ({setShowModal}) => {
       <h3 className='sign-in-title'>Sign in for a better experience</h3>
       <form onSubmit={onLogin}>
         <div className='login-form-container'>
-          <div>
+          <div className='errors'>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
@@ -92,14 +92,14 @@ const LoginForm = ({setShowModal}) => {
               onChange={updatePassword}
             />
           <div>
-            <button className='sign-in-btn' type='submit'>Sign In</button>
+            <button className='sign-in-btn pointer' type='submit'>Sign In</button>
           </div>
           </div>
         </div>
       </form>
       <div>
         <button
-          className='demo-btn'
+          className='demo-btn pointer'
           type='submit'
           onClick={(e) => handleDemoLogin(e)}
         >Demo Login

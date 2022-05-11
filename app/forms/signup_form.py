@@ -9,7 +9,7 @@ def user_exists(form, field):
     email = field.data
     user = User.query.filter(User.email == email).first()
     if user:
-        raise ValidationError('Email address is already registered')
+        raise ValidationError('Email address is already registered.')
 
 
 def phone_exists(form, field):
@@ -17,42 +17,42 @@ def phone_exists(form, field):
     phone = field.data
     user = User.query.filter(User.phone == phone).first()
     if user:
-        raise ValidationError('Phone number is already registered')
+        raise ValidationError('Phone number is already registered.')
     if not phone.isnumeric():
-        raise ValidationError('Phone number must contain only digits')
+        raise ValidationError('Phone number must contain only digits.')
     if not len(phone) == 10:
-        raise ValidationError('Phone number must include 10 digits')
+        raise ValidationError('Phone number must include 10 digits.')
 
 def valid_phone(form, field):
   phone = field.data
 
   if not phone.isnumeric():
-    raise ValidationError('Phone number must contain only digits')
+    raise ValidationError('Phone number must contain only digits.')
   if not len(phone) == 10:
-    raise ValidationError('Phone number must include 10 digits')
+    raise ValidationError('Phone number must include 10 digits.')
 
   # print('\n\n\n phone of current user\n\n\n', phone, '\n\n\n')
 
   existing_user = User.query.filter(User.phone == phone).first()
 
   if existing_user:
-      raise ValidationError('Phone number is already registered')
+      raise ValidationError('Phone number is already registered.')
 
 def valid_first_name(form, field):
   first_name = field.data
 
   if len(first_name) < 1:
-    raise ValidationError('Please provide your first name')
+    raise ValidationError('Please provide your first name.')
   if len(first_name) > 100:
-    raise ValidationError('First name is too long')
+    raise ValidationError('First name is too long.')
 
 def valid_last_name(form, field):
   last_name = field.data
 
   if len(last_name) < 1:
-    raise ValidationError('Please provide your last name')
+    raise ValidationError('Please provide your last name.')
   if len(last_name) > 100:
-    raise ValidationError('Last name is too long')
+    raise ValidationError('Last name is too long.')
 
 # def valid_image(form, field):
 #     image_url = field.data

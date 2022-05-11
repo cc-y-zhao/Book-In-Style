@@ -1,7 +1,7 @@
 .login-modal {
   /* height: 200px;
   width: 400px; */
-  margin-top: 15%;
+  margin-top: 10%;
   margin-left: 5%;
   margin-right: 5%;
   display: flex;
@@ -64,4 +64,8 @@
 .no-account:hover {
   font-weight: 300;
   color: black;
+}
+
+.errors {
+  color: #E10984;
 }
