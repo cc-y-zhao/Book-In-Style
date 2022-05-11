@@ -122,6 +122,9 @@ On the log in page, click "Demo Login".
 
 Logged in users can perform the following actions.
 
+## Book Appointments
+![Alt Text](https://github.com/cc-y-zhao/Book-In-Style/blob/misc_v5/react-app/public/videos/booking_demo.gif?raw=true)   
+
 - View all businesses listed and information pertaining to them (services, reviews, business description)
 - Create, read, edit, and delete appointments with businesses 
 - Create, read, edit, and business listings 
