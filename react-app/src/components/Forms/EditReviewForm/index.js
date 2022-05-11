@@ -11,17 +11,11 @@ const EditReviewForm = ({setShowModal, origReview, services, businessName}) => {
 
   const dispatch = useDispatch();
 
-  console.log('review in edit review form ----------', origReview);
-  // console.log('business in edit review form ----------', business);
-
   let businessId = origReview.business_id;
   const userId = origReview.user_id;
 
   let servicesArr;
   if (services) servicesArr = Object.values(services);
-
-  console.log('services in review form -------------', services);
-  console.log('services ARRAY in review form -------------', servicesArr);
 
   let servicesNamesAndIds = {};
   servicesArr.forEach((service) => {
@@ -72,18 +66,13 @@ const EditReviewForm = ({setShowModal, origReview, services, businessName}) => {
       review,
       serviceId,
       businessId,
-      serviceId,
       userId,
       reviewId,
     };
 
-    // console.log('payload-------------', payload)
-
     let data;
 
     data = await dispatch(editReview(payload));
-
-    // console.log('data in beofre if data--------------', data)
 
     if (data?.id) {
       setErrors([]);

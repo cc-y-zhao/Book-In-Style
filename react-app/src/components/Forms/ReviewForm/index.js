@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 import './ReviewForm.css';
 import { createReview, loadReviewsByBusiness } from "../../../store/reviews";
 
 const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const businesses = useSelector((state) => state?.businesses);
   const user = useSelector((state) => state?.session?.user);
@@ -19,9 +17,6 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
   if (business) services = business.services;
   let servicesArr;
   if (services) servicesArr = Object.values(services);
-
-  // console.log('services in review form -------------', services);
-  // console.log('services ARRAY in review form -------------', servicesArr);
 
   let servicesNamesAndIds = {};
   servicesArr.forEach((service) => {
@@ -70,7 +65,6 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
       review,
       serviceId,
       businessId,
-      serviceId,
       userId,
     };
 
@@ -78,13 +72,9 @@ const CreateReviewForm = ({showModal, setShowModal, businessId}) => {
       // img2,
       // img3,
 
-    // console.log('payload-------------', payload)
-
     let data;
 
     data = await dispatch(createReview(payload));
-
-    // console.log('data in beofre if data--------------', data)
 
     if (data?.id) {
       setErrors([]);

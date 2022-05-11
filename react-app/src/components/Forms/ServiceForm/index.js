@@ -25,13 +25,9 @@ const ServiceForm = ({setShowModal, businessId}) => {
       price,
     };
 
-    // console.log('payload-------------', payload)
-
     let data;
 
     data = await dispatch(createService(payload));
-
-    // console.log('data in beofre if data--------------', data)
 
     if (data?.id) {
       setErrors([]);

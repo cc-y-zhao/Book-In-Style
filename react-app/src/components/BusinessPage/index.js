@@ -107,7 +107,7 @@ const BusinessPage = () => {
   // }, [dispatch, businessIdParsed]);
 
   let showBusiness = false;
-  console.log('business if -----------', business);
+
   if (business?.id) showBusiness = true;
 
   let showPage = false;
@@ -122,15 +122,15 @@ const BusinessPage = () => {
   let showSelectedTab = false;
   if (selectedTab) showSelectedTab = true;
 
-  function checkImage(url) {
-    let image = new Image();
-    image.onload = function() {
-      if (this.width > 0) {
-        return true;
-      }
-    }
-    return false;
-  }
+  // function checkImage(url) {
+  //   let image = new Image();
+  //   image.onload = function() {
+  //     if (this.width > 0) {
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // }
 
 
   return (

@@ -64,6 +64,3 @@ const NavBar = () => {
 }
 
 export default NavBar;
-
-
-{/* <div className='signup-nav'><NavLink to='/sign-up' exact={true}>Sign Up</NavLink></div> */}

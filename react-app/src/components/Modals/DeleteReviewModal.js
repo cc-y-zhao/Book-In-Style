@@ -24,6 +24,3 @@ function DeleteReviewModal({setEditReviewModal, businessId, reviewId, userId}) {
 }
 
 export default DeleteReviewModal;
-
-// className='navlink nav-element login-nav login-btn-nav'
-{/* <button className='delete-review-modal-btn' onClick={() => setShowModal(true)}>Delete Review</button> */}

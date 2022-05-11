@@ -6,12 +6,8 @@ import { loadAllBusinesses } from "../../store/businesses";
 
 const BusinessesPage = () => {
   const dispatch = useDispatch();
-  // const history = useHistory();
 
   const businesses = useSelector((state) => state?.businesses?.businesses_list)
-  // console.log('businesses om businesses page-------------', businesses)
-  // const userId = useSelector((state) => state.session.user?.id);
-
 
   let showBusinesses = false;
   if (businesses) showBusinesses = true;

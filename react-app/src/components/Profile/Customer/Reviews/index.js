@@ -19,7 +19,6 @@ const UserReviews = ({userId}) => {
   let reviewsList;
 
   if (reviewsState) {
-  // console.log('IN first IF STATEMENT----------',reviewsState);
     if (reviewsState.reviews_by_user_list) {
       reviewsList = reviewsState.reviews_by_user_list;
     }
@@ -36,8 +35,6 @@ const UserReviews = ({userId}) => {
     return newDate;
   }
 
-  // console.log('reviews from userReviews-------------', reviewsList)
-  // console.log('reviews to string from userReviews-------------', reviewsList.toString())
   let hasReviews = false;
   if (reviewsList?.length > 0) hasReviews = true;
 

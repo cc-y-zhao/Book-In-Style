@@ -31,7 +31,6 @@ const SignUpForm = () => {
         password,
       }
 
-      console.log('payload-------------', payload)
       const data = await dispatch(signUp(payload));
       if (data) {
         return setErrors(data)
@@ -81,7 +80,7 @@ const SignUpForm = () => {
     <div>
       <form className='signup-form-wrapper' onSubmit={onSignUp}>
         <h3 className='welcome-signup'>Welcome to Book-In-Style!</h3>
-        <div>
+        <div className='errors'>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}

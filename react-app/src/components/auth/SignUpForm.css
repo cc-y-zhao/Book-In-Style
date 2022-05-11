@@ -31,3 +31,7 @@
 .firstname-field {
   margin-top: 15px;
 }
+
+.errors {
+  color: #E10984;
+}

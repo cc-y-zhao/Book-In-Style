@@ -12,12 +12,7 @@ const CategoryPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const { category } = useParams();
 
-  console.log('category-------------------', category);
-
   const businesses = useSelector((state) => state?.businesses?.businesses_list)
-  // console.log('businesses om businesses page-------------', businesses)
-
-
 
   useEffect(() => {
     dispatch(loadBusinessesByCategory(category))

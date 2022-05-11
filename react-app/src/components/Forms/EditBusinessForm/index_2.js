@@ -125,13 +125,9 @@ const EditBusinessFormTWO = ({setShowModal}) => {
       isPerm,
     };
 
-    console.log('payload-------------', payload)
-
     let data;
 
     data = await dispatch(createBusiness(payload));
-
-    console.log('data in beofre if data--------------', data)
 
     if (data?.id) {
       // setErrors([]);

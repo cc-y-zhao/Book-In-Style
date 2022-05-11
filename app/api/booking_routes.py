@@ -77,7 +77,7 @@ def edit_booking(booking_id):
     form = EditBookingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     data = form.data
-    print('\n\n\n FORM DATA:', data, '\n\n\n')
+    # print('\n\n\n FORM DATA:', data, '\n\n\n')
 
     if form.validate_on_submit():
         booking_pre_dict = Booking.query.get(booking_id)
@@ -95,7 +95,7 @@ def edit_booking(booking_id):
         booking['business_name'] = business_name
 
         return booking
-    print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
+    # print('\n\n\n errors \n\n\n', validation_errors_to_error_messages(form.errors))
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

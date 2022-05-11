@@ -14,13 +14,11 @@ const CustomerAppointments = () => {
 
   const bookingsObj = useSelector((state) => state?.bookings?.bookings_by_user);
 
-  console.log('bookingsOBJ in profile-------------', bookingsObj)
-
   let bookings;
   if (bookingsObj) {
     bookings = Object.values(bookingsObj);
   }
-  console.log('bookings in profile-------------', bookings)
+
   const userId = useSelector((state) => state.session.user?.id);
 
   useEffect(() => {
@@ -28,9 +26,6 @@ const CustomerAppointments = () => {
       .then(() => setIsLoaded(true));
   }, [dispatch, userId]);
 
-  // const prevDate = "Tue, 26 Apr 2022 00:00:00 GMT";
-  // const prevDateArr = prevDate.split(' ');
-  // console.log('prev data array-----------', prevDateArr);
 
   const formatDate = (date) => {
     let dateArr = date.split(" ");
@@ -38,7 +33,6 @@ const CustomerAppointments = () => {
     return newDate;
   }
 
-  // console.log('formatted date----------', formatDate(prevDate));
   let hasBookings = false;
   if (bookings?.length > 0) hasBookings = true;
 
