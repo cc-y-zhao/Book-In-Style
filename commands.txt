@@ -81,5 +81,3 @@ DELETE HEROKU POSTGRES EXTENSION ON HEROKU (if db changes were made)
 
 heroku run -a  slack-ish flask db upgrade
 heroku run -a  slack-ish flask seed all
-
-heroku push
