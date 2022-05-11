@@ -121,7 +121,7 @@ On the log in page, click "Demo Login".
 # Features
 
 ## Book Appointments
-<img src="https://github.com/cc-y-zhao/Book-In-Style/blob/misc_v5/react-app/public/videos/booking_demo.gif?raw=true" width="500" height="290" />
+<img src="https://github.com/cc-y-zhao/Book-In-Style/blob/misc_v5/react-app/public/videos/booking_demo.gif?raw=true" width="580" height="350" />
 <!-- ![Alt Text](https://github.com/cc-y-zhao/Book-In-Style/blob/misc_v5/react-app/public/videos/booking_demo.gif?raw=true)    -->
 
 Users can book, update, and delete their appointments.
