@@ -13,6 +13,7 @@ from .api.booking_routes import booking_routes
 from .api.service_routes import service_routes
 from .api.review_routes import review_routes
 from .api.favorite_routes import favorite_routes
+from .api.image_routes import image_routes
 
 from .seeds import seed_commands
 
@@ -41,6 +42,8 @@ app.register_blueprint(booking_routes, url_prefix='/api/bookings')
 app.register_blueprint(service_routes, url_prefix='/api/services')
 app.register_blueprint(review_routes, url_prefix='/api/reviews')
 app.register_blueprint(favorite_routes, url_prefix='/api/favorites')
+app.register_blueprint(image_routes, url_prefix='/api/images')
+
 
 
 db.init_app(app)
