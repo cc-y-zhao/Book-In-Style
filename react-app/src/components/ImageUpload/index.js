@@ -17,6 +17,9 @@ const UploadImage = () => {
         // some sort of loading message is a good idea
         setImageLoading(true);
 
+        console.log("image: ", image);
+        console.log("form data: ", formData);
+
         const res = await fetch('/api/images', {
             method: "POST",
             body: formData,
@@ -24,13 +27,13 @@ const UploadImage = () => {
         if (res.ok) {
             await res.json();
             setImageLoading(false);
-            history.push("/images");
+            history.push("/");
         }
         else {
             setImageLoading(false);
             // a real app would probably use more advanced
             // error handling
-            console.log("error");
+            console.log("error :(");
         }
     }
 

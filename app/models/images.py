@@ -14,8 +14,8 @@ class Image(db.Model):
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'))
     # business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'), nullable=False)
     service_id = db.Column(db.Integer, db.ForeignKey('services.id'))
-    name = db.Column(db.String(25))
-    description = db.Column(db.String(50))
+    # name = db.Column(db.String(25))
+    # description = db.Column(db.String(50))
 
 
     business = db.relationship('Business', back_populates="images")
@@ -27,6 +27,6 @@ class Image(db.Model):
             'img_url': self.img_url,
             'business_id': self.business_id,
             'service_id': self.service_id,
-            'name': self.name,
-            'description': self.description,
+            # 'name': self.name,
+            # 'description': self.description,
         }
