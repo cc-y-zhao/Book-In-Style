@@ -28,7 +28,7 @@ def upload_image():
 
   url = upload["url"]
   # we can use the
-  new_image = Image(user=current_user, url=url)
+  new_image = Image(user=current_user, img_url=url)
   db.session.add(new_image)
   db.session.commit()
   return {"url": url}

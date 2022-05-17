@@ -16,6 +16,7 @@ import HomePage from './components/HomePage';
 import ErrorPage from './components/Errors/ErrorPage';
 import Profile from './components/Profile';
 import AboutMe from './components/AboutMe';
+import UploadImage from './components/ImageUpload';
 
 import { authenticate } from './store/session';
 
@@ -74,6 +75,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path='/' exact={true} >
             <h1>My Home Page</h1>
+          </ProtectedRoute>
+          <ProtectedRoute path='/images' exact={true} >
+            <UploadImage />
           </ProtectedRoute>
           <Route path="*">
             <ErrorPage />

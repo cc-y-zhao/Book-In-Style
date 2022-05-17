@@ -11,7 +11,8 @@ class Image(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     img_url = db.Column(db.String, nullable=False)
-    business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'), nullable=False)
+    business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'))
+    # business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'), nullable=False)
     service_id = db.Column(db.Integer, db.ForeignKey('services.id'))
     name = db.Column(db.String(25))
     description = db.Column(db.String(50))

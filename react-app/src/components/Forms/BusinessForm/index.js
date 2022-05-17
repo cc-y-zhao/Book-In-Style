@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import states from './states';
+import UploadImage from "../../ImageUpload";
 // import types from './businessTypes';
 
 import { createBusiness, loadBusiness } from "../../../store/businesses";
@@ -255,7 +256,8 @@ const CreateBusinessForm = ({setShowModal}) => {
                 />
               </div>
               <div className='left-column-field'>
-                <div>
+                {/* <UploadImage /> */}
+                {/* <div>
                   <label>Cover Photo</label>
                   <span className='optional'> (Image URL)</span>
                 </div>
@@ -264,7 +266,7 @@ const CreateBusinessForm = ({setShowModal}) => {
                   placeholder="Please provide an image to represent your business"
                   value={coverPhoto}
                   onChange={updateCoverPhoto}
-                />
+                /> */}
               </div>
             </div>
 {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////           */}
