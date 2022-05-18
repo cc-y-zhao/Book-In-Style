@@ -66,7 +66,7 @@ def create_business():
             unit = form.data['unit'],
             state = form.data['state'],
             zip_code = form.data['zipcode'],
-            cover_photo = form.data['coverPhoto'],
+            # cover_photo = form.data['coverPhoto'],
             monday = '9:00AM - 6:00PM',
             tuesday = '9:00AM - 6:00PM',
             wednesday = '9:00AM - 6:00PM',
@@ -111,7 +111,7 @@ def edit_business(business_id):
         business.unit = data['unit'],
         business.state = data['state'],
         business.zip_code = data['zipcode']
-        business.cover_photo = data['coverPhoto']
+        # business.cover_photo = data['coverPhoto']
 
         db.session.commit()
 

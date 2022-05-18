@@ -142,7 +142,7 @@ const CreateBusinessForm = ({setShowModal}) => {
 
   let disabled;
 
-  if (name.length === 0 || description.length === 0 || streetAddress.length === 0 || state.length === 0 || zipcode.length === 0 || coverPhoto.length === 0 || city.length === 0) {
+  if (name.length === 0 || description.length === 0 || streetAddress.length === 0 || state.length === 0 || zipcode.length === 0 || city.length === 0) {
     disabled = true;
   } else {
     disabled = false;

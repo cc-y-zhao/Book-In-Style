@@ -94,7 +94,7 @@ class BusinessForm(FlaskForm):
   description = StringField('Description', validators=[DataRequired(), valid_description])
   streetAddress = StringField('Street Address', validators=[DataRequired(), valid_street_address])
   city = StringField('City', validators=[DataRequired(), valid_city])
-  coverPhoto = StringField('Cover Photo', validators=[DataRequired(), valid_image])
+  # coverPhoto = StringField('Cover Photo', validators=[DataRequired(), valid_image])
   unit = StringField('Unit', validators=[valid_unit])
   state = StringField('State', validators=[DataRequired()])
   zipcode = StringField('Zipcode', validators=[DataRequired(), valid_zipcode])

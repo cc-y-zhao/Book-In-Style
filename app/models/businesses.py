@@ -31,7 +31,7 @@ class Business(db.Model):
     city = db.Column(db.String(20), nullable=False)
     zip_code = db.Column(db.String(10))
     capacity = db.Column(db.Integer)
-    cover_photo = db.Column(db.String(2083))
+    # cover_photo = db.Column(db.String(2083))
 
     is_women_haircut = db.Column(db.Boolean)
     is_lashes = db.Column(db.Boolean)
@@ -75,7 +75,7 @@ class Business(db.Model):
             'zip_code': self.zip_code,
             'city': self.city,
             'capacity': self.capacity,
-            'cover_photo': self.cover_photo,
+            # 'cover_photo': self.cover_photo,
             'created_at': self.created_at,
             'hours': {'monday': self.monday, 'tuesday': self.tuesday, 'wednesday': self.wednesday, 'thursday': self.thursday, 'friday': self.friday, 'saturday': self.saturday, 'sunday': self.sunday},
             'services' : {service.id: service.to_dict() for service in self.services},
