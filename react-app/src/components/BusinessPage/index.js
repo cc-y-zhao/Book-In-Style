@@ -72,6 +72,10 @@ const BusinessPage = () => {
     servicesTab.style.borderBottom = 'none';
     setSelectedTab(<About />)
   }
+
+  let sessionUserIsBusinessOwner = false;
+  if (business?.owner_id === userId) sessionUserIsBusinessOwner = true;
+
   // TO DO: DISPATCH USER'S FAVORITES UPON EVERY PAGE VISIT
 
   // try{
@@ -168,13 +172,19 @@ const BusinessPage = () => {
                       width="180px"
                     />
                   ) : (
-                    <img
-                      className='cover-photo'
-                      src={defaultImage}
-                      alt={`${business.name}`}
-                      height="180px"
-                      width="180px"
-                    />
+                    <>
+                      {sessionUserIsBusinessOwner ? (
+                        <h3>ADD PHOTO</h3>
+                      ) : (
+                        <img
+                          className='cover-photo'
+                          src={defaultImage}
+                          alt={`${business.name}`}
+                          height="180px"
+                          width="180px"
+                        />
+                      )}
+                    </>
                   )}
                 </div>
                 <div className='biz-name'>{business['name']}</div>
