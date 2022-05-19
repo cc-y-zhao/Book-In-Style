@@ -174,7 +174,15 @@ const BusinessPage = () => {
                   ) : (
                     <>
                       {sessionUserIsBusinessOwner ? (
-                        <h3>ADD PHOTO</h3>
+                        <div className='cover-photo'
+                          height="180px"
+                          width="180px"
+                        >
+                          Add Cover Photo
+                          <div>
+                            <i class="fa-solid fa-plus"></i>
+                          </div>
+                        </div>
                       ) : (
                         <img
                           className='cover-photo'
