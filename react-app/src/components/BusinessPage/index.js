@@ -163,6 +163,7 @@ const BusinessPage = () => {
                   {business?.cover_photo ? (
                     <img
                       className='cover-photo'
+                      // src={'http://book-in-style.s3.amazonaws.com/83bcb6f3cdf947828723a730e498a80b.png'}
                       src={business.cover_photo}
                       onError={(e) => {
                         e.target.setAttribute("src", defaultImage);
