@@ -45,3 +45,14 @@ def upload_image():
   db.session.add(new_image)
   db.session.commit()
   return {"url": url}
+
+
+@image_routes.route('/businesses/<int:businessId>', methods=['GET'])
+def get_image(businessId):
+    image = Image.query.filter(Image.business_id == businessId)
+    if not image:
+      return {}
+
+    image_dict = image.to_dict()
+
+    return image_dict

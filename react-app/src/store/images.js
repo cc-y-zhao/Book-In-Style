@@ -1,46 +1,35 @@
+const LOAD_IMAGE_BY_BUSINESS = 'images/LOAD_IMAGE_BY_BUSINESS';
 
-const UPLOAD_IMAGE = 'images/UPLOAD_IMAGE';
 
-
-const uploadedImage = (image) => ({
-  type: UPLOAD_IMAGE,
-  image
+const loadedImage = (payload) => ({
+  type: LOAD_IMAGE_BY_BUSINESS,
+  payload
 });
 
 
-export const uploadImage = (image) => async (dispatch) => {
+export const loadImageByBusiness = (businessId) => async (dispatch) => {
 
-  const response = await fetch('/api/images/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(image),
-  });
+  const response = await fetch(`/api/images/businesses/${businessId}`);
 
   if (response.ok) {
-    const data = await response.json();
-    dispatch(uploadedImage(data))
-    return data;
-  } else if (response.status < 500) {
-    const data = await response.json();
-    if (data.errors) {
-      return data.errors;
-    }
+    const payload = await response.json();
+    dispatch(loadedImage(payload, businessId));
+    return payload;
   } else {
-    return ['An error occurred. Please try again.']
+    const errors = await response.json();
+    return errors;
   }
-}
+};
 
 const initialState = {};
 export default function reducer(state = initialState, action) {
   let newState = {...state};
   switch (action.type) {
-    case UPLOAD_IMAGE:
-      const newImage = action.image;
-    //   newState[newBusiness.id] = newBusiness;
+    case LOAD_IMAGE_BY_BUSINESS:
+      let newImage = action.image;
+      newState['business_image'] = newImage;
 
-    //   return newState;
+      return newState;
 
     default:
       return state;

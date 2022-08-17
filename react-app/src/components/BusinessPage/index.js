@@ -15,6 +15,7 @@ import Favorite from "../Favorites";
 
 import { loadBusiness } from "../../store/businesses";
 import { loadReviewsByBusiness } from "../../store/reviews";
+import { loadImageByBusiness } from "../../store/images";
 
 import defaultImage from "../../images/favicon.png";
 
@@ -30,6 +31,7 @@ const BusinessPage = () => {
   const userId = useSelector((state) => state.session.user?.id);
   const businesses = useSelector((state) => state?.businesses);
   const business = useSelector((state) => businesses[businessIdParsed]);
+  const image = useSelector((state) => state?.images['business_image']);
   // const favorites = useSelector((state) => state?.favorites?.user)
 
   const [selectedTab, setSelectedTab] = useState(<Services/>)
@@ -98,6 +100,7 @@ const BusinessPage = () => {
   // }
   useEffect(() => {
     dispatch(loadBusiness(businessIdParsed))
+      .then(() => dispatch(loadImageByBusiness(businessIdParsed)))
       .then(() => dispatch(loadReviewsByBusiness(businessIdParsed)))
       .then(() => setSelectedTab(<Services />))
       .then(() => setSelectedTabTitle(servicesTab))
