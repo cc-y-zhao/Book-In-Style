@@ -182,7 +182,7 @@ const BusinessPage = () => {
                         >
                           <div>
                             <div>Add Cover Photo</div>
-                            <UploadImage />
+                            <UploadImage businessId={businessIdParsed}/>
                           </div>
 
                           {/* <div>

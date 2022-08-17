@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
 
 
-const UploadImage = () => {
+const UploadImage = ({businessId}) => {
     const history = useHistory(); // so that we can redirect after the image upload is successful
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
@@ -13,16 +13,19 @@ const UploadImage = () => {
         const formData = new FormData();
         formData.append("image", image);
 
+        const payload = {formData, businessId}
+
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);
 
         console.log("image: ", image);
         console.log("form data: ", formData);
+        console.log('\n\n\n FORM DATA: \n\n\n', formData)
 
         const res = await fetch('/api/images', {
             method: "POST",
-            body: formData,
+            body: payload,
         });
         if (res.ok) {
             await res.json();
@@ -49,6 +52,7 @@ const UploadImage = () => {
               accept="image/*"
               onChange={updateImage}
             />
+            <input type="hidden" value={businessId} />
             <button type="submit">Submit</button>
             {(imageLoading)&& <p>Loading...</p>}
         </form>

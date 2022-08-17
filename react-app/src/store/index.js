@@ -5,6 +5,7 @@ import businesses from './businesses';
 import bookings from './bookings';
 import reviews from './reviews';
 import favorites from './favorites';
+import images from './images';
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   bookings,
   reviews,
   favorites,
+  images,
 });
 
 
