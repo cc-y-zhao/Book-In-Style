@@ -7,6 +7,7 @@ import AddServiceModal from "../Modals/AddServiceModal";
 // import { createFavorite } from "../../store/favorites";
 import ErrorPage from "../Errors/ErrorPage";
 
+import UploadImage from "../ImageUpload";
 import Services from "../Services";
 import Reviews from "../Reviews";
 import About from "./About";
@@ -179,10 +180,14 @@ const BusinessPage = () => {
                           height="180px"
                           width="180px"
                         >
-                          Add Cover Photo
                           <div>
-                            <i class="fa-solid fa-plus"></i>
+                            <div>Add Cover Photo</div>
+                            <UploadImage />
                           </div>
+
+                          {/* <div>
+                            <i class="fa-solid fa-plus"></i>
+                          </div> */}
                         </div>
                       ) : (
                         <img
