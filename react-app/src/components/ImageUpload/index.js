@@ -12,8 +12,7 @@ const UploadImage = ({businessId}) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append("image", image);
-
-        const payload = {formData, businessId}
+        formData.append("business_id", businessId)
 
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
@@ -25,7 +24,7 @@ const UploadImage = ({businessId}) => {
 
         const res = await fetch('/api/images', {
             method: "POST",
-            body: payload,
+            body: formData,
         });
         if (res.ok) {
             await res.json();

@@ -9,13 +9,14 @@ image_routes = Blueprint("images", __name__)
 @image_routes.route("", methods=["POST"])
 @login_required
 def upload_image():
-  print("\n\n\n request.files: \n\n\n", request.files, '\n\n\n')
+
   if "image" not in request.files:
       return {"errors": "image required"}, 400
 
   image = request.files["image"]
   # business_id = request.files["business_id"]
-  print("\n\n\n request.files: \n\n\n", request.files, '\n\n\n')
+  # print("\n\n\n REQUEST: \n\n\n", request.form['business_id'], '\n\n\n')
+  business_id = request.form['business_id']
   # print("\n\n\n business_id: \n\n\n", business_id, '\n\n\n')
 
 
@@ -39,7 +40,7 @@ def upload_image():
 
   url = upload["url"]
   # we can use the
-  new_image = Image(img_url=url, business_id=2)
+  new_image = Image(img_url=url, business_id=business_id)
   # new_image.business_id = business_id
   db.session.add(new_image)
   db.session.commit()
