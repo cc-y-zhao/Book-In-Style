@@ -34,6 +34,9 @@ const BusinessPage = () => {
   const image = useSelector((state) => state?.images['business_image']);
   // const favorites = useSelector((state) => state?.favorites?.user)
 
+  console.log('/////////////////')
+  console.log('image:', image)
+
   const [selectedTab, setSelectedTab] = useState(<Services/>)
 
   let servicesTab = document?.getElementById("services-tab");
@@ -164,11 +167,11 @@ const BusinessPage = () => {
             <div className="prof-and-heart">
               <div className='biz-page-prof'>
                 <div>
-                  {business?.cover_photo ? (
+                  {image.length > 0 ? (
                     <img
                       className='cover-photo'
                       // src={'http://book-in-style.s3.amazonaws.com/83bcb6f3cdf947828723a730e498a80b.png'}
-                      src={business.cover_photo}
+                      src={image}
                       onError={(e) => {
                         e.target.setAttribute("src", defaultImage);
                       }}
