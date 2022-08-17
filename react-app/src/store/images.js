@@ -13,6 +13,8 @@ export const loadImageByBusiness = (businessId) => async (dispatch) => {
 
   if (response.ok) {
     const payload = await response.json();
+    console.log('//////////////////////')
+    console.log('payload in images store:', payload)
     dispatch(loadedImage(payload, businessId));
     return payload;
   } else {
@@ -26,7 +28,7 @@ export default function reducer(state = initialState, action) {
   let newState = {...state};
   switch (action.type) {
     case LOAD_IMAGE_BY_BUSINESS:
-      let newImage = action.image;
+      let newImage = action.payload.img_url;
       newState['business_image'] = newImage;
 
       return newState;

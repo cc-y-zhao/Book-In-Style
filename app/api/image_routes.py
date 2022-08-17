@@ -49,10 +49,13 @@ def upload_image():
 
 @image_routes.route('/businesses/<int:businessId>', methods=['GET'])
 def get_image(businessId):
-    image = Image.query.filter(Image.business_id == businessId)
-    if not image:
-      return {}
+  image = Image.query.filter(Image.business_id == businessId).one()
+  print('\n\n\n image: \n\n', image, '\n\n\n')
+  # print('\n\n\n image index 0: \n\n', image[0]['img_url'], '\n\n\n')
 
-    image_dict = image.to_dict()
+  if not image:
+    return {}
 
-    return image_dict
+  image_dict = image.to_dict()
+
+  return image_dict
